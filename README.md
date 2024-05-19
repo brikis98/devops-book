@@ -1,7 +1,7 @@
 # _Fundamentals of DevOps and Software Delivery_ code
 
-This repo contains the sample code for the book and blog post series _Fundamentals of DevOps and Software Delivery_ by 
-Yevgeniy Brikman.
+This repo contains the sample code for the book and blog post series [_Fundamentals of DevOps and Software 
+Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 ## Quick start
 
