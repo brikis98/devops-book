@@ -1,0 +1,6 @@
+- name: Configure the EC2 instance to run a sample app
+  hosts: ch2_instances 
+  gather_facts: true
+  become: true
+  roles:
+    - sample-app       

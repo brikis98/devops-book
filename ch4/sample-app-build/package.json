@@ -1,0 +1,13 @@
+{
+  "name": "sample-app-build",
+  "version": "v4",
+  "description": "Sample app for the book 'Ready for Production'",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dockerize": "docker buildx build --platform=linux/amd64,linux/arm64 -t sample-app:$(npm pkg get version | tr -d '\"') .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yevgeniy Brikman",
+  "license": "MIT"
+}

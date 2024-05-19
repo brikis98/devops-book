@@ -1,0 +1,6 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-east-2
+keyed_groups:
+  - key: tags.Ansible
+leading_separator: ''

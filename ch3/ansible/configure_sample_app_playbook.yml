@@ -1,0 +1,11 @@
+- name: Configure servers to run the sample-app
+  hosts: sample_app_instances 
+  gather_facts: true
+  become: true
+
+  serial: 1               
+  max_fail_percentage: 30 
+  roles:
+    - role: nodejs-app        
+    - role: sample-app        
+      become_user: app-user   

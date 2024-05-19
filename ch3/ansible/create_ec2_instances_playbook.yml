@@ -1,0 +1,48 @@
+- name: Deploy EC2 instances in AWS
+  hosts: localhost
+  gather_facts: no
+  environment:
+    AWS_REGION: us-east-2
+  vars_prompt:                                                
+    - name: num_instances
+      prompt: How many instances to create?
+      private: false
+    - name: base_name
+      prompt: What to use as the base name for resources?
+      private: false
+    - name: http_port
+      prompt: What port to use for HTTP requests?
+      private: false
+  tasks:
+    - name: Create security group
+      amazon.aws.ec2_security_group:
+        name: "{{ base_name }}"
+        description: "{{ base_name }}"
+        rules:
+          - proto: tcp
+            ports:
+              - "{{ http_port }}"
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            ports:
+              - 22
+            cidr_ip: 0.0.0.0/0
+      register: aws_security_group
+
+    - name: Create a new EC2 key pair
+      amazon.aws.ec2_key:
+        name: ansible-ch3                                     
+        file_name: ansible-ch3.key
+      no_log: true
+      register: aws_ec2_key_pair
+
+    - name: Create EC2 instances with Amazon Linux 2003 AMI
+      loop: "{{ range(num_instances | int) | list }}"         
+      amazon.aws.ec2_instance:
+        name: "{{ '%s-%d' | format(base_name, item) }}"       
+        key_name: "{{ aws_ec2_key_pair.key.name }}"
+        instance_type: t2.micro
+        security_group: "{{ aws_security_group.group_id }}"
+        image_id: ami-0900fe555666598a2
+        tags:
+          Ansible: "{{ base_name }}"                          
