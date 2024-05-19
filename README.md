@@ -15,4 +15,4 @@ you want to maximize your learning, you're better off writing the code yourself,
 
 ## License
 
-This code is released under the MIT License. See LICENSE.txt.
+This code is released under the MIT License. See [LICENSE.txt](./LICENSE.txt).
