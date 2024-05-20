@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "assume_role_policy_for_tests" {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
       # TODO: fill in your own repo name here!
-      values   = ["repo:brikis98/ready-for-production-examples:*"]       
+      values   = ["repo:brikis98/fundamentals-of-devops-examples:*"]     
     }
 
     condition {
@@ -109,7 +109,7 @@ data "aws_iam_policy_document" "plan_serverless_app" {
 
 locals {
 
-  state_bucket_arn = "arn:aws:s3:::ready-for-production-tofu-state-2"
+  state_bucket_arn = "arn:aws:s3:::fundamentals-of-devops-tofu-state"
 }
 
 resource "aws_iam_role" "lambda_deploy_apply" {
@@ -132,7 +132,7 @@ data "aws_iam_policy_document" "assume_role_policy_for_deploy" {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
       # TODO: fill in your own repo name here!
-      values   = ["repo:brikis98/ready-for-production-examples:ref:refs/heads/main"]
+      values   = ["repo:brikis98/fundamentals-of-devops-examples:ref:refs/heads/main"]
     }
 
     condition {
@@ -182,6 +182,6 @@ data "aws_iam_policy_document" "apply_serverless_app" {
     sid       = "TofuStateDynamoPermissions"
     effect    = "Allow"
     actions   = ["dynamodb:*"]
-    resources = ["arn:aws:dynamodb:*:*:table/ready-for-production-tofu-locks"]
+    resources = ["arn:aws:dynamodb:*:*:table/fundamentals-of-devops-tofu-locks"]
   }
 }

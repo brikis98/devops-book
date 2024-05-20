@@ -1,7 +1,7 @@
 {
   "name": "sample-app-build",
   "version": "v4",
-  "description": "Sample app for the book 'Ready for Production'",
+  "description": "Sample app for the book 'Fundamentals of DevOps and Software Delivery'",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",

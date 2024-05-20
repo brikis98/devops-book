@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "tofu_state" {
   # TODO: fill in your own bucket name here!
-  bucket = "ready-for-production-tofu-state"
+  bucket = "fundamentals-of-devops-tofu-state"
 
   # This is only here so automated tests can clean up. You should not copy this for production usage.
   force_destroy = true
@@ -36,7 +36,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 }
 
 resource "aws_dynamodb_table" "tofu_locks" {
-  name         = "ready-for-production-tofu-locks"
+  name         = "fundamentals-of-devops-tofu-locks"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 

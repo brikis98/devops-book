@@ -7,7 +7,7 @@ remote_state {
   }
 
   config = {
-    bucket         = "ready-for-production-terraform-state"
+    bucket         = "fundamentals-of-devops-terraform-state"
     key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = "us-east-2"
     encrypt        = true
