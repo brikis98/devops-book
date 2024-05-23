@@ -10,12 +10,10 @@
         description: Allow HTTP and SSH traffic
         rules:
           - proto: tcp
-            ports:
-              - 8080
+            ports: [8080]
             cidr_ip: 0.0.0.0/0
           - proto: tcp
-            ports:
-              - 22
+            ports: [22]
             cidr_ip: 0.0.0.0/0
       register: aws_security_group
 

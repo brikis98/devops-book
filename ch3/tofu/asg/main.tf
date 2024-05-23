@@ -7,7 +7,7 @@ resource "aws_launch_template" "sample_app" {
   image_id               = var.ami_id                                
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.sample_app.id]        
-  user_data              = filebase64("${path.cwd}/user-data.sh")    
+  user_data              = filebase64("${path.module}/user-data.sh") 
 }
 
 resource "aws_security_group" "sample_app" {

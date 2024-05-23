@@ -17,17 +17,17 @@ http {
     include             /etc/nginx/mime.types;
     default_type        application/octet-stream;
 
-    upstream backend {                                                              
-        {% for host in groups['sample_app_instances'] %}                            
-        server {{ hostvars[host]['public_dns_name'] }}:8080;                        
+    upstream backend {                                       
+        {% for host in groups['sample_app_instances'] %}     
+        server {{ hostvars[host]['public_dns_name'] }}:8080; 
         {% endfor %}
     }
 
     server {
-        listen       80;                                                            
+        listen       80;                                     
         listen       [::]:80;
 
-        location / {                                                                
+        location / {                                         
                 proxy_pass http://backend;
         }
     }

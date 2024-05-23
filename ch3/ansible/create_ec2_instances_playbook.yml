@@ -20,12 +20,10 @@
         description: "{{ base_name }}"
         rules:
           - proto: tcp
-            ports:
-              - "{{ http_port }}"
+            ports: ["{{ http_port }}"]
             cidr_ip: 0.0.0.0/0
           - proto: tcp
-            ports:
-              - 22
+            ports: [22]
             cidr_ip: 0.0.0.0/0
       register: aws_security_group
 
