@@ -12,6 +12,7 @@ module "asg" {
   user_data     = filebase64("${path.module}/user-data.sh") 
   app_http_port = 8080                                      
 
+  instance_type    = "t2.micro"                             
   min_size         = 1                                      
   max_size         = 10                                     
   desired_capacity = 3                                      
