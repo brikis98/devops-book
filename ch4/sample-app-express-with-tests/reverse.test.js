@@ -6,9 +6,9 @@ describe('test reverseWords', () => {
     expect(result).toBe('world hello');                 
   });
 
-  test('handles trailing whitespace   => whitespace trailing handles', () => {
-    const result = reverse.reverseWords('handles trailing whitespace   ');
-    expect(result).toBe('whitespace trailing handles');
+  test('trailing whitespace   => whitespace trailing', () => {
+    const result = reverse.reverseWords('trailing whitespace   ');
+    expect(result).toBe('whitespace trailing');
   });
 });
 

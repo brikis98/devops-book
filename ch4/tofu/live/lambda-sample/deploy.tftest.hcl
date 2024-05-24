@@ -7,7 +7,7 @@ run "validate" {
 
   
   module {
-    source = "../test-endpoint"
+    source = "github.com/brikis98/fundamentals-of-devops-code//ch4/tofu/modules/test-endpoint"
   }
 
   

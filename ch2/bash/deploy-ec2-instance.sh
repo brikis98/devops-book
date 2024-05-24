@@ -2,10 +2,9 @@
 
 set -e
 
-# The AWS region to use. The AWS CLI should pick up this env var automatically.
 export AWS_DEFAULT_REGION="us-east-2"
-# Get the dir where this script is located
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+user_data=$(cat "$SCRIPT_DIR/../../ch/ec2-user-data-script/user-data.sh")
 
 echo "Creating security group"
 security_group_id=$(aws ec2 create-security-group \
@@ -20,9 +19,6 @@ aws ec2 authorize-security-group-ingress \
   --protocol tcp \
   --port 80 \
   --cidr "0.0.0.0/0" > /dev/null
-
-echo "Reading user data script from chapter 1"
-user_data=$(cat "$SCRIPT_DIR/../../ch-1-how-to-deploy-your-app/ec2-user-data-script/user-data.sh")
 
 echo "Creating EC2 instance with Amazon Linux 2003 AMI"
 instance_id=$(aws ec2 run-instances \
@@ -39,10 +35,6 @@ public_ip=$(aws ec2 describe-instances \
   --instance-ids "$instance_id" \
   --output text \
   --query 'Reservations[*].Instances[*].PublicIpAddress')
-
-echo
-echo "Done!"
-echo
 
 echo "Instance ID = $instance_id"
 echo "Security Group ID = $security_group_id"
