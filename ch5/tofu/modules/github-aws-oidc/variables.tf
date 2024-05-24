@@ -2,7 +2,7 @@
 # REQUIRED PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "endpoint" {
-  description = "The endpoint to make an HTTP request to"
+variable "provider_url" {
+  description = "The URL the identity provider uses for OIDC"
   type        = string
 }

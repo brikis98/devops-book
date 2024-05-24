@@ -14,10 +14,10 @@ jobs:
         uses: tenable/terrascan-action@main
         with:
           iac_type: 'terraform'
-          iac_dir: 'ch5/tofu/lambda'
+          iac_dir: 'ch5/tofu/live/lambda-sample'
           verbose: true
           non_recursive: true
-          config_path: 'ch5/tofu/lambda/terrascan.toml'
+          config_path: 'ch5/tofu/live/lambda-sample/terrascan.toml'
 
   opentofu_test:
     name: "Run OpenTofu tests"
@@ -31,7 +31,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v3                                 
         with:
           # TODO: fill in your IAM role ARN!
-          role-to-assume: arn:aws:iam::111111111111:role/lambda-tests                  
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-tests           
           role-session-name: lambda-tests-${{ github.run_number }}-${{ github.actor }} 
           aws-region: us-east-2
 
@@ -39,8 +39,8 @@ jobs:
 
       - name: Tofu Test
         env:
-          TF_VAR_name: sample-app-test-${{ github.run_id }}-${{ github.run_attempt }}  
-        working-directory: ch5/tofu/lambda
+          TF_VAR_name: lambda-sample-${{ github.run_id }}-${{ github.run_attempt }}    
+        working-directory: ch5/tofu/live/lambda-sample
         run: |                                                                         
           tofu init -backend=false -input=false
           tofu test -verbose

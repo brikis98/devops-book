@@ -5,14 +5,17 @@ run "deploy" {
 run "validate" {
   command = apply
 
+  
   module {
-    source = "../test-endpoint"
+    source = "../../modules/test-endpoint"
   }
 
+  
   variables {
     endpoint = run.deploy.api_endpoint
   }
 
+  
   assert {
     condition     = data.http.test_endpoint.status_code == 200
     error_message = "Website responded with HTTP status ${data.http.test_endpoint.status_code}"

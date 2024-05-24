@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - ch5/tofu/lambda/**
+      - ch5/tofu/live/lambda-sample/**
 
 jobs:
   plan:
@@ -23,7 +23,7 @@ jobs:
         with:
           
           # TODO: fill in your IAM role ARN!
-          role-to-assume: arn:aws:iam::111111111111:role/lambda-deploy-plan
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-plan
           role-session-name: tofu-plan-${{ github.run_number }}-${{ github.actor }}
           aws-region: us-east-2
 
@@ -32,7 +32,7 @@ jobs:
       
       - name: tofu plan
         id: tofu_plan
-        working-directory: ch5/tofu/lambda
+        working-directory: ch5/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu plan -no-color -input=false -lock=false

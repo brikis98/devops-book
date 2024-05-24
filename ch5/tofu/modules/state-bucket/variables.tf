@@ -2,7 +2,7 @@
 # REQUIRED PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "endpoint" {
-  description = "The endpoint to make an HTTP request to"
+variable "name" {
+  description = "The name of the S3 bucket and all other resources created by this module"
   type        = string
 }

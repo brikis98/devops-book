@@ -1,37 +1,25 @@
-provider "aws" {
-  region = "us-east-2"
-}
-
-resource "aws_iam_openid_connect_provider" "github_actions" {
-  url             = "https://token.actions.githubusercontent.com"                  
-  client_id_list  = ["sts.amazonaws.com"]                                          
-  thumbprint_list = [data.tls_certificate.github.certificates[0].sha1_fingerprint] 
-}
-
-data "tls_certificate" "github" {
-  url = "https://token.actions.githubusercontent.com"
-}
-
 resource "aws_iam_role" "lambda_tests" {
-  name               = "lambda-tests"
-  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_tests.json
+  count              = var.enable_iam_role_for_testing ? 1 : 0
+  name               = "${var.name}-tests"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_tests[0].json
 }
 
 data "aws_iam_policy_document" "assume_role_policy_for_tests" {
+  count = var.enable_iam_role_for_testing ? 1 : 0
+
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
 
     principals {
-      identifiers = [aws_iam_openid_connect_provider.github_actions.arn] 
+      identifiers = [var.oidc_provider_arn]
       type        = "Federated"
     }
 
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      # TODO: fill in your own repo name here!
-      values   = ["repo:brikis98/fundamentals-of-devops-examples:*"]     
+      values   = ["repo:${var.github_repo}:*"]
     }
 
     condition {
@@ -43,11 +31,15 @@ data "aws_iam_policy_document" "assume_role_policy_for_tests" {
 }
 
 resource "aws_iam_role_policy" "test_serverless_app" {
-  role   = aws_iam_role.lambda_tests.id
-  policy = data.aws_iam_policy_document.test_serverless_app.json
+  count = var.enable_iam_role_for_testing ? 1 : 0
+
+  role   = aws_iam_role.lambda_tests[0].id
+  policy = data.aws_iam_policy_document.test_serverless_app[0].json
 }
 
 data "aws_iam_policy_document" "test_serverless_app" {
+  count = var.enable_iam_role_for_testing ? 1 : 0
+
   statement {
     sid    = "IamPermissions"
     effect = "Allow"
@@ -59,7 +51,7 @@ data "aws_iam_policy_document" "test_serverless_app" {
       "iam:List*Role*",
       "iam:Get*Role*"
     ]
-    resources = ["arn:aws:iam::*:role/sample-app*"]
+    resources = ["arn:aws:iam::*:role/${var.lambda_base_name}*"]
   }
 
   statement {
@@ -71,16 +63,46 @@ data "aws_iam_policy_document" "test_serverless_app" {
 }
 
 resource "aws_iam_role" "lambda_deploy_plan" {
-  name               = "lambda-deploy-plan"
-  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_tests.json
+  count              = var.enable_iam_role_for_plan ? 1 : 0
+  name               = "${var.name}-plan"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_plan[0].json
+}
+
+data "aws_iam_policy_document" "assume_role_policy_for_plan" {
+  count = var.enable_iam_role_for_plan ? 1 : 0
+
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+
+    principals {
+      identifiers = [var.oidc_provider_arn]
+      type        = "Federated"
+    }
+
+    condition {
+      test     = "StringLike"
+      variable = "token.actions.githubusercontent.com:sub"
+      values   = ["repo:${var.github_repo}:*"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+  }
 }
 
 resource "aws_iam_role_policy" "plan_serverless_app" {
-  role   = aws_iam_role.lambda_deploy_plan.id
-  policy = data.aws_iam_policy_document.plan_serverless_app.json
+  count  = var.enable_iam_role_for_plan ? 1 : 0
+  role   = aws_iam_role.lambda_deploy_plan[0].id
+  policy = data.aws_iam_policy_document.plan_serverless_app[0].json
 }
 
 data "aws_iam_policy_document" "plan_serverless_app" {
+  count = var.enable_iam_role_for_plan ? 1 : 0
+
   statement {
     sid    = "IamReadOnlyPermissions"
     effect = "Allow"
@@ -88,7 +110,7 @@ data "aws_iam_policy_document" "plan_serverless_app" {
       "iam:List*Role*",
       "iam:Get*Role*"
     ]
-    resources = ["arn:aws:iam::*:role/sample-app*"]
+    resources = ["arn:aws:iam::*:role/${var.lambda_base_name}*"]
   }
 
   statement {
@@ -98,7 +120,6 @@ data "aws_iam_policy_document" "plan_serverless_app" {
     resources = ["*"]
   }
 
-  
   statement {
     sid       = "TofuStateS3ReadOnlyPermissions"
     effect    = "Allow"
@@ -108,31 +129,32 @@ data "aws_iam_policy_document" "plan_serverless_app" {
 }
 
 locals {
-
-  state_bucket_arn = "arn:aws:s3:::fundamentals-of-devops-tofu-state"
+  state_bucket_arn = "arn:aws:s3:::${var.tofu_state_bucket}"
 }
 
 resource "aws_iam_role" "lambda_deploy_apply" {
-  name               = "lambda-deploy-apply"
-  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_deploy.json
+  count = var.enable_iam_role_for_apply ? 1 : 0
+
+  name               = "${var.name}-apply"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy_for_apply[0].json
 }
 
-data "aws_iam_policy_document" "assume_role_policy_for_deploy" {
+data "aws_iam_policy_document" "assume_role_policy_for_apply" {
+  count = var.enable_iam_role_for_apply ? 1 : 0
+
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
 
     principals {
-      identifiers = [aws_iam_openid_connect_provider.github_actions.arn]
+      identifiers = [var.oidc_provider_arn]
       type        = "Federated"
     }
 
-    
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      # TODO: fill in your own repo name here!
-      values   = ["repo:brikis98/fundamentals-of-devops-examples:ref:refs/heads/main"]
+      values   = ["repo:${var.github_repo}:ref:refs/heads/main"]
     }
 
     condition {
@@ -144,11 +166,14 @@ data "aws_iam_policy_document" "assume_role_policy_for_deploy" {
 }
 
 resource "aws_iam_role_policy" "apply_serverless_app" {
-  role   = aws_iam_role.lambda_deploy_apply.id
-  policy = data.aws_iam_policy_document.apply_serverless_app.json
+  count  = var.enable_iam_role_for_apply ? 1 : 0
+  role   = aws_iam_role.lambda_deploy_apply[0].id
+  policy = data.aws_iam_policy_document.apply_serverless_app[0].json
 }
 
 data "aws_iam_policy_document" "apply_serverless_app" {
+  count = var.enable_iam_role_for_apply ? 1 : 0
+
   statement {
     sid    = "IamPermissions"
     effect = "Allow"
@@ -160,7 +185,7 @@ data "aws_iam_policy_document" "apply_serverless_app" {
       "iam:List*Role*",
       "iam:Get*Role*"
     ]
-    resources = ["arn:aws:iam::*:role/sample-app*"]
+    resources = ["arn:aws:iam::*:role/${var.lambda_base_name}*"]
   }
 
   statement {
@@ -170,7 +195,6 @@ data "aws_iam_policy_document" "apply_serverless_app" {
     resources = ["*"]
   }
 
-  
   statement {
     sid       = "TofuStateS3Permissions"
     effect    = "Allow"
@@ -182,6 +206,6 @@ data "aws_iam_policy_document" "apply_serverless_app" {
     sid       = "TofuStateDynamoPermissions"
     effect    = "Allow"
     actions   = ["dynamodb:*"]
-    resources = ["arn:aws:dynamodb:*:*:table/fundamentals-of-devops-tofu-locks"]
+    resources = ["arn:aws:dynamodb:*:*:table/${var.tofu_state_dynamodb_table}"]
   }
 }
