@@ -902,6 +902,11 @@ pre {
 #toc-dynamic>ul {
     margin: 0;
 }
+
+table ul {
+    margin-left: 0;
+    padding-left: 15px;
+}
 </style>
 
 </head>
@@ -911,7 +916,7 @@ pre {
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <nav id="toc-dynamic" class="sticky-top vh-100" style="overflow: scroll; margin-top: 25px;">
+      <nav id="toc-dynamic" class="sticky-top vh-100" style="overflow: scroll; padding-top: 25px; padding-bottom: 25px;">
           <a href="index.html" class="h6 text-decoration-none">Fundamentals of DevOps and Software Delivery</a>
           <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#preface" class="nav-link">Introduction</a>
 </li>
@@ -1011,55 +1016,67 @@ including:</p>
 
 <li>
 
-<p>Deploying apps using VMs (e.g., EC2), containers (e.g., Kubernetes), and serverless (e.g., Lambda).</p>
+<p><a href="02.html#how_to_deploy_your_app"><em>How to Deploy Your App</em></a></p>
 
 </li>
 
 <li>
 
-<p>Managing your infrastructure as code using tools such as OpenTofu/Terraform, Packer, Docker, and Ansible.</p>
+<p><a href="03.html#how_to_manage_your_infra_as_code"><em>How to Manage Your Infrastructure as Code</em></a></p>
 
 </li>
 
 <li>
 
-<p>Automating your software delivery lifecycle (builds, tests, deployments) in a CI/CD pipeline.</p>
+<p><a href="04.html#how_to_deploy_many_apps"><em>How to Deploy Many Apps: Orchestration, VMs, Containers, and Serverless</em></a></p>
 
 </li>
 
 <li>
 
-<p>Configuring networking, including VPCs, VPNs, and DNS.</p>
+<p><a href="05.html#how_to_version_build_test"><em>How to Version, Build, and Test Your Code</em></a></p>
 
 </li>
 
 <li>
 
-<p>Managing multiple environments, multiple microservices, and multiple repos.</p>
+<p><a href="06.html#how_to_set_up_ci_cd"><em>How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)</em></a></p>
 
 </li>
 
 <li>
 
-<p>Securing your systems with authentication, authorization, encryption, and secrets management.</p>
+<p><a href="07.html#how_to_set_up_networking"><em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p>
 
 </li>
 
 <li>
 
-<p>Setting up data stores, including relational databases, NoSQL databases, and file stores.</p>
+<p><a href="08.html#how_to_manage_auth_and_secrets"><em>How to Manage Authentication, Authorization, and Secrets</em></a></p>
 
 </li>
 
 <li>
 
-<p>Hooking up monitoring, including metrics, dashboards, logs, and alerts.</p>
+<p><a href="09.html#how_to_work_with_multiple_teams"><em>How to Work with Multiple Teams and Environments</em></a></p>
 
 </li>
 
 <li>
 
-<p>And much more!</p>
+<p><a href="10.html#how_to_store_data"><em>How to Store Data: SQL, NoSQL, Queues, Warehouses, and File Stores</em></a></p>
+
+</li>
+
+<li>
+
+<p><a href="11.html#how_to_monitor_your_systems"><em>How to Monitor Your Systems: Metrics, Logs, Alerts, and Observability</em></a></p>
+
+</li>
+
+<li>
+
+<p><a href="12.html#the_future_of_devops"><em>The Future of DevOps and Software Delivery</em></a></p>
 
 </li>
 
@@ -1705,7 +1722,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="02.html#how_to_deploy_your_app">Part 1</a>: How to Deploy Your App</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="02.html#how_to_deploy_your_app">Part 1, <em>How to Deploy Your App</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to deploy an app in the cloud in minutes.</p></td>
 
@@ -1759,7 +1776,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>: How to Manage Your Infrastructure as Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="03.html#how_to_manage_your_infra_as_code">Part 2, <em>How to Manage Your Infrastructure as Code</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to manage your infrastructure as code (IaC) instead of manually (ClickOps).</p></td>
 
@@ -1837,7 +1854,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04.html#how_to_deploy_many_apps">Part 3</a>: How to Deploy Many Apps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04.html#how_to_deploy_many_apps">Part 3, <em>How to Deploy Many Apps: Orchestration, VMs, Containers, and Serverless</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to run your app by using the most popular orchestration approaches.</p></td>
 
@@ -1909,7 +1926,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05.html#how_to_version_build_test">Part 4</a>: How to Version, Build, and Test Your Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05.html#how_to_version_build_test">Part 4, <em>How to Version, Build, and Test Your Code</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to use version control, build systems, and automated tests.</p></td>
 
@@ -1975,7 +1992,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="06.html#how_to_set_up_ci_cd">Part 5</a>: How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="06.html#how_to_set_up_ci_cd">Part 5, <em>How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to fully automate your software development lifecycle (SDLC).</p></td>
 
@@ -2047,7 +2064,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07.html#how_to_set_up_networking">Part 6</a>: How to Set Up Networking: VPCs, VPN, and DNS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07.html#how_to_set_up_networking">Part 6, <em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">The basics of networking and its impact on connectivity and security.</p></td>
 
@@ -2113,7 +2130,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>: How to Manage Authentication, Authorization, and Secrets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="08.html#how_to_manage_auth_and_secrets">Part 7, <em>How to Manage Authentication, Authorization, and Secrets</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to manage access to your systems and protect sensitive data.</p></td>
 
@@ -2191,7 +2208,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="09.html#how_to_work_with_multiple_teams">Part 8</a>: How to Work with Multiple Teams and Environments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="09.html#how_to_work_with_multiple_teams">Part 8, <em>How to Work with Multiple Teams and Environments</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">The basics of governance in larger organizations.</p></td>
 
@@ -2263,7 +2280,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="10.html#how_to_store_data">Part 9</a>: How to Store Data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="10.html#how_to_store_data">Part 9, <em>How to Store Data: SQL, NoSQL, Queues, Warehouses, and File Stores</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data storage options, trade-offs, and back-up.</p></td>
 
@@ -2341,7 +2358,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="11.html#how_to_monitor_your_systems">Part 10</a>: How to Monitor Your Systems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="11.html#how_to_monitor_your_systems">Part 10, <em>How to Monitor Your Systems: Metrics, Logs, Alerts, and Observability</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How to get visibility into your systems.</p></td>
 
@@ -2401,7 +2418,7 @@ you&#8217;ll get to try out in that part:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="12.html#the_future_of_devops">Part 11</a>: The Future of DevOps and Software Delivery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="12.html#the_future_of_devops">Part 11, <em>The Future of DevOps and Software Delivery</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">How DevOps and software delivery may change over time.</p></td>
 
@@ -2615,19 +2632,9 @@ you want to maximize your learning, you&#8217;re better off writing the code you
 
 </div>
 
-<div class="admonitionblock note">
+<div class="sidebarblock">
 
-<table>
-
-<tr>
-
-<td class="icon">
-
-<div class="title">Note</div>
-
-</td>
-
-<td class="content">
+<div class="content">
 
 <div class="title">An important note for Windows users</div>
 
@@ -2645,11 +2652,7 @@ Windows, you can use the <a href="https://learn.microsoft.com/en-us/windows/wsl/
 
 </div>
 
-</td>
-
-</tr>
-
-</table>
+</div>
 
 </div>
 
