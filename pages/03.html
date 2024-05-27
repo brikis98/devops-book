@@ -1,0 +1,6299 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Asciidoctor 2.0.16">
+
+<title>Part 2. How to Manage Your Infrastructure as Code</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+
+<style>
+
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+
+/* Uncomment the following line when using as a custom stylesheet */
+
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+
+a{background:none}
+
+a:focus{outline:thin dotted}
+
+a:active,a:hover{outline:0}
+
+h1{font-size:2em;margin:.67em 0}
+
+b,strong{font-weight:bold}
+
+abbr{font-size:.9em}
+
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+
+dfn{font-style:italic}
+
+hr{height:0}
+
+mark{background:#ff0;color:#000}
+
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+
+pre{white-space:pre-wrap}
+
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+
+small{font-size:80%}
+
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+
+sup{top:-.5em}
+
+sub{bottom:-.25em}
+
+img{border:0}
+
+svg:not(:root){overflow:hidden}
+
+figure{margin:0}
+
+audio,video{display:inline-block}
+
+audio:not([controls]){display:none;height:0}
+
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+
+legend{border:0;padding:0}
+
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+
+button,input{line-height:normal}
+
+button,select{text-transform:none}
+
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+
+button[disabled],html input[disabled]{cursor:default}
+
+input[type=checkbox],input[type=radio]{padding:0}
+
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+
+textarea{overflow:auto;vertical-align:top}
+
+table{border-collapse:collapse;border-spacing:0}
+
+*,::before,::after{box-sizing:border-box}
+
+html,body{font-size:100%}
+
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+
+a:hover{cursor:pointer}
+
+img,object,embed{max-width:100%;height:auto}
+
+object,embed{height:100%}
+
+img{-ms-interpolation-mode:bicubic}
+
+.left{float:left!important}
+
+.right{float:right!important}
+
+.text-left{text-align:left!important}
+
+.text-right{text-align:right!important}
+
+.text-center{text-align:center!important}
+
+.text-justify{text-align:justify!important}
+
+.hide{display:none}
+
+img,object,svg{display:inline-block;vertical-align:middle}
+
+textarea{height:auto;min-height:50px}
+
+select{width:100%}
+
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+
+a:hover,a:focus{color:#1d4b8f}
+
+a img{border:0}
+
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+
+h1{font-size:2.125em}
+
+h2{font-size:1.6875em}
+
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+
+h4,h5{font-size:1.125em}
+
+h6{font-size:1em}
+
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+
+em,i{font-style:italic;line-height:inherit}
+
+strong,b{font-weight:bold;line-height:inherit}
+
+small{font-size:60%;line-height:inherit}
+
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+
+ul,ol{margin-left:1.5em}
+
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+
+ul.square{list-style-type:square}
+
+ul.circle{list-style-type:circle}
+
+ul.disc{list-style-type:disc}
+
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+
+dl dt{margin-bottom:.3125em;font-weight:bold}
+
+dl dd{margin-bottom:1.25em}
+
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+
+h1{font-size:2.75em}
+
+h2{font-size:2.3125em}
+
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+
+h4{font-size:1.4375em}}
+
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+
+table thead,table tfoot{background:#f7f8f7}
+
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+
+table tr.even,table tr.alt{background:#f8f8f7}
+
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+
+.center{margin-left:auto;margin-right:auto}
+
+.stretch{width:100%}
+
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+
+.clearfix::after,.float-group::after{clear:both}
+
+:not(pre).nobreak{word-wrap:normal}
+
+:not(pre).nowrap{white-space:nowrap}
+
+:not(pre).pre-wrap{white-space:pre-wrap}
+
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+
+pre>code{display:block}
+
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+
+em em{font-style:normal}
+
+strong strong{font-weight:400}
+
+.keyseq{color:rgba(51,51,51,.8)}
+
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+
+.keyseq kbd:first-child{margin-left:0}
+
+.keyseq kbd:last-child{margin-right:0}
+
+.menuseq,.menuref{color:#000}
+
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+
+.menuseq{word-spacing:-.02em}
+
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+
+b.button::before{content:"[";padding:0 3px 0 2px}
+
+b.button::after{content:"]";padding:0 2px 0 3px}
+
+p a>code:hover{color:rgba(0,0,0,.9)}
+
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+
+#content{margin-top:1.25em}
+
+#content::before{content:none}
+
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+
+#header .details span:first-child{margin-left:-.125em}
+
+#header .details span.email a{color:rgba(0,0,0,.85)}
+
+#header .details br{display:none}
+
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+
+#header #revnumber{text-transform:capitalize}
+
+#header #revnumber::after{content:"\00a0"}
+
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+
+#toc>ul{margin-left:.125em}
+
+#toc ul.sectlevel0>li>a{font-style:italic}
+
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+
+#toc li{line-height:1.3334;margin-top:.3334em}
+
+#toc a{text-decoration:none}
+
+#toc a:active{text-decoration:underline}
+
+#toctitle{color:#7a2518;font-size:1.2em}
+
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+
+body.toc2{padding-left:15em;padding-right:0}
+
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+
+#toc.toc2{width:20em}
+
+#toc.toc2 #toctitle{font-size:1.375em}
+
+#toc.toc2>ul{font-size:.95em}
+
+#toc.toc2 ul ul{padding-left:1.25em}
+
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+
+#content #toc>:first-child{margin-top:0}
+
+#content #toc>:last-child{margin-bottom:0}
+
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+
+#content{margin-bottom:.625em}
+
+.sect1{padding-bottom:.625em}
+
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+
+.sect1{padding-bottom:1.25em}}
+
+.sect1:last-child{padding-bottom:0}
+
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+
+details{margin-left:1.25rem}
+
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+
+.admonitionblock>table td.icon{text-align:center;width:80px}
+
+.admonitionblock>table td.icon img{max-width:none}
+
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+
+.exampleblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child{margin-bottom:0}
+
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+
+.sidebarblock>:first-child{margin-top:0}
+
+.sidebarblock>:last-child{margin-bottom:0}
+
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+
+.listingblock>.content{position:relative}
+
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+
+.listingblock:hover code[data-lang]::before{display:block}
+
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+
+.listingblock pre.highlightjs{padding:0}
+
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+
+.listingblock pre.prettyprint{border-width:0}
+
+.prettyprint{background:#f7f7f8}
+
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+
+pre.prettyprint li code[data-lang]::before{opacity:1}
+
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+
+table.linenotable td.code{padding-left:.75em}
+
+table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+
+pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
+
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+
+.quoteblock blockquote{margin:0;padding:0;border:0}
+
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+
+.verseblock{margin:0 1em 1.25em}
+
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+
+.verseblock pre strong{font-weight:400}
+
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+
+p.tableblock:last-child{margin-bottom:0}
+
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+
+table.grid-all>*>tr>*{border-width:1px}
+
+table.grid-cols>*>tr>*{border-width:0 1px}
+
+table.grid-rows>*>tr>*{border-width:1px 0}
+
+table.frame-all{border-width:1px}
+
+table.frame-ends{border-width:1px 0}
+
+table.frame-sides{border-width:0 1px}
+
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+
+th.halign-left,td.halign-left{text-align:left}
+
+th.halign-right,td.halign-right{text-align:right}
+
+th.halign-center,td.halign-center{text-align:center}
+
+th.valign-top,td.valign-top{vertical-align:top}
+
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+
+th.valign-middle,td.valign-middle{vertical-align:middle}
+
+table thead th,table tfoot th{font-weight:bold}
+
+tbody tr th{background:#f7f8f7}
+
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+
+p.tableblock>code:only-child{background:none;padding:0}
+
+p.tableblock{font-size:1em}
+
+ol{margin-left:1.75em}
+
+ul li ol{margin-left:1.5em}
+
+dl dd{margin-left:1.125em}
+
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+
+ul.unstyled,ol.unstyled{margin-left:0}
+
+ul.checklist>li>p:first-child{margin-left:-1em}
+
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+
+ul.inline>li{margin-left:1.25em}
+
+.unstyled dl dt{font-weight:400;font-style:normal}
+
+ol.arabic{list-style-type:decimal}
+
+ol.decimal{list-style-type:decimal-leading-zero}
+
+ol.loweralpha{list-style-type:lower-alpha}
+
+ol.upperalpha{list-style-type:upper-alpha}
+
+ol.lowerroman{list-style-type:lower-roman}
+
+ol.upperroman{list-style-type:upper-roman}
+
+ol.lowergreek{list-style-type:lower-greek}
+
+.hdlist>table,.colist>table{border:0;background:none}
+
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+
+td.hdlist2{word-wrap:anywhere}
+
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+
+.colist td:not([class]):first-child img{max-width:none}
+
+.colist td:not([class]):last-child{padding:.25em 0}
+
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+
+.imageblock.left{margin:.25em .625em 1.25em 0}
+
+.imageblock.right{margin:.25em 0 1.25em .625em}
+
+.imageblock>.title{margin-bottom:0}
+
+.imageblock.thumb,.imageblock.th{border-width:6px}
+
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+
+.image.left{margin-right:.625em}
+
+.image.right{margin-left:.625em}
+
+a.image{text-decoration:none;display:inline-block}
+
+a.image object{pointer-events:none}
+
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+
+#footnotes .footnote:last-of-type{margin-bottom:0}
+
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+
+.gist .file-data>table td.line-data{width:99%}
+
+div.unbreakable{page-break-inside:avoid}
+
+.big{font-size:larger}
+
+.small{font-size:smaller}
+
+.underline{text-decoration:underline}
+
+.overline{text-decoration:overline}
+
+.line-through{text-decoration:line-through}
+
+.aqua{color:#00bfbf}
+
+.aqua-background{background:#00fafa}
+
+.black{color:#000}
+
+.black-background{background:#000}
+
+.blue{color:#0000bf}
+
+.blue-background{background:#0000fa}
+
+.fuchsia{color:#bf00bf}
+
+.fuchsia-background{background:#fa00fa}
+
+.gray{color:#606060}
+
+.gray-background{background:#7d7d7d}
+
+.green{color:#006000}
+
+.green-background{background:#007d00}
+
+.lime{color:#00bf00}
+
+.lime-background{background:#00fa00}
+
+.maroon{color:#600000}
+
+.maroon-background{background:#7d0000}
+
+.navy{color:#000060}
+
+.navy-background{background:#00007d}
+
+.olive{color:#606000}
+
+.olive-background{background:#7d7d00}
+
+.purple{color:#600060}
+
+.purple-background{background:#7d007d}
+
+.red{color:#bf0000}
+
+.red-background{background:#fa0000}
+
+.silver{color:#909090}
+
+.silver-background{background:#bcbcbc}
+
+.teal{color:#006060}
+
+.teal-background{background:#007d7d}
+
+.white{color:#bfbfbf}
+
+.white-background{background:#fafafa}
+
+.yellow{color:#bfbf00}
+
+.yellow-background{background:#fafa00}
+
+span.icon>.fa{cursor:default}
+
+a span.icon>.fa{cursor:inherit}
+
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+
+.conum[data-value] *{color:#fff!important}
+
+.conum[data-value]+b{display:none}
+
+.conum[data-value]::after{content:attr(data-value)}
+
+pre .conum[data-value]{position:relative;top:-.125em}
+
+b.conum *{color:inherit!important}
+
+.conum:not([data-value]):empty{display:none}
+
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+
+p{margin-bottom:1.25rem}
+
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+
+.print-only{display:none!important}
+
+@page{margin:1.25cm .75cm}
+
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+
+html{font-size:80%}
+
+a{color:inherit!important;text-decoration:underline!important}
+
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+
+abbr[title]{border-bottom:1px dotted}
+
+abbr[title]::after{content:" (" attr(title) ")"}
+
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+
+thead{display:table-header-group}
+
+svg{max-width:100%}
+
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+
+#header,#content,#footnotes,#footer{max-width:none}
+
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+
+body.book #header{text-align:center}
+
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+
+body.book #header .details{border:0!important;display:block;padding:0!important}
+
+body.book #header .details span:first-child{margin-left:0!important}
+
+body.book #header .details br{display:block}
+
+body.book #header .details br+span::before{content:none!important}
+
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+
+.listingblock code[data-lang]::before{display:block}
+
+#footer{padding:0 .9375em}
+
+.hide-on-print{display:none!important}
+
+.print-only{display:block!important}
+
+.hide-for-print{display:none!important}
+
+.show-for-print{display:inherit!important}}
+
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+
+.sect1{padding:0!important}
+
+.sect1+.sect1{border:0}
+
+#footer{background:none}
+
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+</style>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<style>
+h1 {
+    margin-bottom: 50px;
+}
+h2 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+pre {
+    line-height: 12px !important;
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+}
+
+#toc-dynamic>ul {
+    margin: 0;
+}
+</style>
+
+</head>
+
+<body class="book" data-bs-spy="scroll" data-bs-target="#toc-dynamic" data-bs-smooth-scroll="true" tabindex="0">
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <nav id="toc-dynamic" class="sticky-top vh-100" style="overflow: scroll; margin-top: 25px;">
+          <a href="index.html" class="h6 text-decoration-none">Fundamentals of DevOps and Software Delivery</a>
+          <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#how_to_manage_your_infra_as_code" class="nav-link">2. How to Manage Your Infrastructure as Code</a>
+</li>
+
+<li class="nav-item"><a href="#_the_benefits_of_iac" class="nav-link">2.1. The benefits of IaC</a></li>
+
+<li class="nav-item"><a href="#example_authenticate_on_the_cli" class="nav-link">2.2. Example: authenticating on the command line</a></li>
+
+<li class="nav-item"><a href="#_categories_of_iac_tools" class="nav-link">2.3. Categories of IaC tools</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_ad_hoc_scripts" class="nav-link">2.3.1. Ad hoc scripts</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_deploy_ec2_using_bash" class="nav-link">Example: deploy an EC2 instance using a Bash script</a></li>
+
+<li class="nav-item"><a href="#_how_ad_hoc_scripts_stack_up" class="nav-link">How ad hoc scripts stack up</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_configuration_management_tools" class="nav-link">2.3.2. Configuration management tools</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_deploy_ec2_using_ansible" class="nav-link">Example: deploy an EC2 instance using Ansible</a></li>
+
+<li class="nav-item"><a href="#example_configure_server_ansible" class="nav-link">Example: configuring a server using Ansible</a></li>
+
+<li class="nav-item"><a href="#_how_configuration_management_tools_stack_up" class="nav-link">How configuration management tools stack up</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#server_templating_tools" class="nav-link">2.3.3. Server templating tools</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_vm_image_packer" class="nav-link">Example: create a VM image using Packer</a></li>
+
+<li class="nav-item"><a href="#_how_server_templating_tools_stack_up" class="nav-link">How server templating tools stack up</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_orchestration_tools" class="nav-link">2.3.4. Orchestration tools</a></li>
+
+<li class="nav-item"><a href="#_provisioning_tools" class="nav-link">2.3.5. Provisioning tools</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_deploy_ec2_opentofu" class="nav-link">Example: deploy an EC2 instance using OpenTofu</a></li>
+
+<li class="nav-item"><a href="#example_deploy_update_destroy_opentofu" class="nav-link">Example: updating and destroying infrastructure using OpenTofu</a></li>
+
+<li class="nav-item"><a href="#opentofu_reusable_module" class="nav-link">Example: deploy an EC2 instance using a reusable OpenTofu module</a></li>
+
+<li class="nav-item"><a href="#_how_provisioning_tools_stack_up" class="nav-link">How provisioning tools stack up</a></li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_using_multiple_iac_tools_together" class="nav-link">2.4. Using multiple IaC tools together</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_provisioning_plus_configuration_management" class="nav-link">2.4.1. Provisioning plus configuration management</a></li>
+
+<li class="nav-item"><a href="#_provisioning_plus_server_templating" class="nav-link">2.4.2. Provisioning plus server templating</a></li>
+
+<li class="nav-item"><a href="#_provisioning_plus_server_templating_plus_orchestration" class="nav-link">2.4.3. Provisioning plus server templating plus orchestration</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_conclusion_2" class="nav-link">2.5. Conclusion</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+    <div class="col-sm-8">
+
+<div id="content">
+<div class="sect1">
+
+<h1 id="how_to_manage_your_infra_as_code">Part 2. How to Manage Your Infrastructure as Code</h1>
+
+<div class="sectionbody">
+
+<div class="paragraph">
+
+<p>In <a href="02.html#how_to_deploy_your_app">Part 1</a>, you learned how to deploy your app using PaaS and IaaS, but it required a lot of manual
+
+steps clicking around a web UI. This is fine while you&#8217;re learning and experimenting, but if you manage everything at
+
+a company this way—what&#8217;s sometimes called <em>ClickOps</em>—it quickly leads to problems:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Deployments are slow and tedious, so you can&#8217;t do them too often.</p>
+
+</li>
+
+<li>
+
+<p>Deployments are error-prone, so you end up with lots of bugs, outages, and late-night debugging sessions.</p>
+
+</li>
+
+<li>
+
+<p>Only one sysadmin at the company knows the magic incantations to make everything work, so all changes have to go
+
+through them, which means they are overloaded, and as a result, even the simplest updates take a long time, and
+
+there&#8217;s never time left for bigger, longer-term improvements.</p>
+
+</li>
+
+<li>
+
+<p>Since all the information is locked inside that one sysadmin&#8217;s head, if they ever go on vacation, everything grinds to
+
+a halt—and you don&#8217;t even dare consider what happens if that sysadmin ever leaves the company or gets hit by a
+
+bus.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="13-footnotes.html#_footnotedef_9" title="View footnote.">9</a>]</sup></p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>Fortunately, these days, there is a better way to do things: you can manage your <em>infrastructure as code (IaC)</em>.
+
+Instead of clicking around manually, you write and execute code to define, deploy, update, and destroy your
+
+infrastructure. This represents an important shift in mindset in which you treat all aspects of operations as
+
+software—even those aspects that represent hardware (e.g., setting up servers). In fact, a key insight of modern DevOps
+
+practices is that you can manage almost <em>everything</em> in code, including servers, databases, networks, logfiles,
+
+application configuration, documentation, automated tests, deployment processes, and so on.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you search around, you&#8217;ll quickly find that there are many tools out there that allow you to manage your
+
+infrastructure as code, including Chef, Puppet, Ansible, Pulumi, Terraform/OpenTofu, CloudFormation, Docker, Packer,
+
+and so on. Which one should you use? Many of the comparisons you find online between these tools do little more than
+
+list the general properties of each tool and make it sound like you could be equally successful with any of them. And
+
+while that’s true in theory, it&#8217;s not true in practice. There are considerable differences between these tools, and
+
+your odds of success go up significantly if you know how to pick the right tool for the job.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This blog post will help you navigate the IaC space by introducing you to the most common types of IaC
+
+tools, which, broadly speaking, fall into the following four <em>IaC categories</em>:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Ad hoc scripts: e.g., use a Bash script to deploy an app.</p>
+
+</li>
+
+<li>
+
+<p>Configuration management tools: e.g., use Ansible to deploy an app.</p>
+
+</li>
+
+<li>
+
+<p>Server templating tools: e.g., use Packer to build a VM image or Docker image of an app.</p>
+
+</li>
+
+<li>
+
+<p>Orchestration tools: e.g., use Kubernetes to deploy a Docker image of an app.</p>
+
+</li>
+
+<li>
+
+<p>Provisioning tools: e.g., Use OpenTofu to deploy a VM image of an app.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>You&#8217;ll work through examples where you deploy the same app using each of these approaches, which will allow you to
+
+see how different IaC categories perform across a variety of dimensions (e.g., verbosity, consistency, error handling,
+
+and so on), so that you can pick the right tool for the job.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Here&#8217;s an outline of this blog post:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>The benefits of IaC</p>
+
+</li>
+
+<li>
+
+<p>Authenticating on the command line</p>
+
+</li>
+
+<li>
+
+<p>Categories of IaC tools</p>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Ad hoc scripts</p>
+
+</li>
+
+<li>
+
+<p>Configuration management tools</p>
+
+</li>
+
+<li>
+
+<p>Server templating tools</p>
+
+</li>
+
+<li>
+
+<p>Orchestration tools</p>
+
+</li>
+
+<li>
+
+<p>Provisioning tools</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</li>
+
+<li>
+
+<p>Using multiple IaC tools together</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_the_benefits_of_iac">The benefits of IaC</h2>
+
+<div class="paragraph">
+
+<p>Before digging into the details of various IaC tools, it&#8217;s worth asking, why bother? Learning and adopting new tools has
+
+a cost, so what are the benefits of IaC that make this worthwhile?</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The answer is that when your infrastructure is defined as code, you are able to use a wide variety of software
+
+engineering practices to dramatically improve your software delivery process, including the following:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Self-service</dt>
+
+<dd>
+
+<p>If your infrastructure is defined in code, the entire deployment process can be automated, and developers can kick off
+
+their own deployments whenever necessary (rather than being bottlenecked by one sysadmin).</p>
+
+</dd>
+
+<dt class="hdlist1">Speed and safety</dt>
+
+<dd>
+
+<p>If the deployment process is automated, it will be significantly faster, since a computer can carry out the deployment
+
+steps far faster than a person, and safer, given that an automated process will be more consistent, more repeatable, and
+
+not prone to manual error.</p>
+
+</dd>
+
+<dt class="hdlist1">Documentation</dt>
+
+<dd>
+
+<p>If your infrastructure is defined as code, then the state of your infrastructure is in source files that anyone can
+
+read, rather than locked away in a single sysadmin&#8217;s head. In other words, IaC acts as documentation, allowing
+
+everyone in the organization to understand how things work, even if the sysadmin goes on vacation.</p>
+
+</dd>
+
+<dt class="hdlist1">Version control</dt>
+
+<dd>
+
+<p>You can store your IaC source files in version control (which you&#8217;ll do in <a href="05.html#how_to_version_build_test">Part 4</a>), which
+
+means that the entire history of your infrastructure is now captured in the commit log. This becomes a powerful tool
+
+for debugging issues, because any time a problem pops up, your first step will be to check the commit log and find out
+
+what changed in your infrastructure, and your second step might be to resolve the problem by simply reverting back to
+
+a previous, known-good version of your IaC code.</p>
+
+</dd>
+
+<dt class="hdlist1">Validation</dt>
+
+<dd>
+
+<p>If the state of your infrastructure is defined in code, for every single change, you can perform a code review,
+
+run a suite of automated tests, and pass the code through static analysis tools—all practices that are known to
+
+significantly reduce the chance of defects (you&#8217;ll see examples of all of these practices in
+
+<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Reuse</dt>
+
+<dd>
+
+<p>You can package your infrastructure into reusable modules so that instead of doing every deployment for every
+
+product in every environment from scratch, you can build on top of known, documented, battle-tested
+
+pieces.</p>
+
+</dd>
+
+<dt class="hdlist1">Happiness</dt>
+
+<dd>
+
+<p>There is one other very important, and often overlooked, reason for why you should use IaC: happiness. Deploying code
+
+and managing infrastructure manually is repetitive and tedious. Developers and sysadmins resent this type of
+
+work, since it involves no creativity, no challenge, and no recognition. You could deploy code perfectly for months,
+
+and no one will take notice—until that one day when you mess it up. That creates a stressful and unpleasant
+
+environment. IaC offers a better alternative that allows computers to do what they do best (automation) and
+
+developers to do what they do best (coding).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now that you have a sense of why IaC is so valuable, in the next section, you&#8217;ll learn how to authenticate from the
+
+command line, which you need to know how to do to use any IaC tool, and in the section after that, you&#8217;ll start to
+
+explore the most common categories of IaC tools.</p>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="example_authenticate_on_the_cli">Example: authenticating on the command line</h2>
+
+<div class="paragraph">
+
+<p>Most IaC tools are tools that you run on the command-line. Since these tools need to manage your infrastructure, they
+
+must have a way to authenticate to your cloud provider or data center. As discussed in <a href="02.html#deploy_an_app_using_iaas">Section 1.4.2</a>,
+
+most of the examples in this blog post series will run in AWS, so you&#8217;ll need to learn to authenticate to AWS on the
+
+command line.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To authenticate on the command line, you need an IAM user. You can reuse the IAM user you created in
+
+<a href="02.html#deploy_an_app_using_iaas">Section 1.4.2</a>. However, the username and password you have for the IAM user only
+
+work for authenticating in a web browser. One way to authenticate on the command line is to create an <em>access key</em>;
+
+you&#8217;ll learn other ways to authenticate to AWS in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>. Head over to the
+
+<a href="https://console.aws.amazon.com/iam/">IAM Console</a>, click Users, and click on the IAM user you created earlier. Next,
+
+click on the "Security credentials" tab and scroll down to the "Access keys" section, as shown in
+
+<a href="03.html#iam_user_access_keys">Figure 10</a>.</p>
+
+</div>
+
+<div id="iam_user_access_keys" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/iam-user-access-keys.png" alt="Create an access key for your IAM user">
+
+</div>
+
+<div class="title">Figure 10. Create an access key for your IAM user.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Click the "Create access key" button. On the next page, select "Command Line Interface (CLI)" as the use case, tick the
+
+Confirmation check box, as shown in <a href="03.html#iam_user_access_keys_use_case">Figure 11</a>, and click Next.</p>
+
+</div>
+
+<div id="iam_user_access_keys_use_case" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/iam-user-access-keys-use-case.png" alt="Create an access key for Command Line Usage">
+
+</div>
+
+<div class="title">Figure 11. Create an access key for Command Line Usage.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>On the next page, enter a description, and click "Create access key." This will take you to a page that shows two
+
+values, an <em>access key id</em> and a <em>secret access key</em>, as shown in <a href="03.html#iam_user_access_keys_save">Figure 12</a>.</p>
+
+</div>
+
+<div id="iam_user_access_keys_save" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/iam-user-access-keys-save.png" alt="Make sure to store your access key in a secure password manager">
+
+</div>
+
+<div class="title">Figure 12. Make sure to store your access key in a secure password manager.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Make sure to save both of these values in a secure password manager, such as 1Password (you&#8217;ll learn more about secrets
+
+management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>), especially the secret access key, as it will <em>never</em> be shown again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To use the access keys on the command line, you need to set the access key id and secret access key as the
+
+environment variables <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>, respectively. For example, here is how you can
+
+set these environment variables in a Unix/Linux/macOS terminal:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ export AWS_ACCESS_KEY_ID=(your access key id)
+
+$ export AWS_SECRET_ACCESS_KEY=(your secret access key)</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Note that these environment variables apply only to the current shell, so if you reboot your computer or open a
+
+new terminal window, you&#8217;ll need to export these variables again.</p>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_categories_of_iac_tools">Categories of IaC tools</h2>
+
+<div class="paragraph">
+
+<p>Broadly speaking, there are 5 major categories of IaC tools:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Ad hoc scripts</p>
+
+</li>
+
+<li>
+
+<p>Configuration management tools</p>
+
+</li>
+
+<li>
+
+<p>Server templating tools</p>
+
+</li>
+
+<li>
+
+<p>Orchestration tools</p>
+
+</li>
+
+<li>
+
+<p>Provisioning tools</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>Let&#8217;s look at these one at a time.</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_ad_hoc_scripts">Ad hoc scripts</h3>
+
+<div class="paragraph">
+
+<p>The first approach you might think of for managing your infrastructure as code is to use an <em>ad hoc script</em>. You take
+
+whatever task you were doing manually, break it down into discrete steps, and use your favorite scripting language
+
+(e.g., Bash, Ruby, Python) to capture each of those steps in code. When you run that code, it can automate the process
+
+of creating infrastructure for you, as shown in <a href="03.html#ad_hoc_script">Figure 13</a>.</p>
+
+</div>
+
+<div id="ad_hoc_script" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/ad-hoc-script.png" alt="Using an ad hoc script to automate the process of creating a server">
+
+</div>
+
+<div class="title">Figure 13. Using an ad hoc script to automate the process of creating a server.</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_deploy_ec2_using_bash">Example: deploy an EC2 instance using a Bash script</h4>
+
+<div class="admonitionblock note">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Note</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Example Code</div>
+
+<div class="paragraph">
+
+<p>As a reminder, you can find all the code examples in the blog post series&#8217;s <a href="https://github.com/brikis98/fundamentals-of-devops-code">sample
+
+code repo in GitHub</a>.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>As an example, let&#8217;s create a Bash script that takes all the manual steps you did in <a href="02.html#how_to_deploy_your_app">Part 1</a> to
+
+deploy a simple Node.js app in AWS, and captures it as code. Head into the <em>fundamentals-of-devops</em> folder you created in
+
+<a href="02.html#how_to_deploy_your_app">Part 1</a> to work through the examples in this blog post series, and create a new subfolder for this
+
+part and the Bash script:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cd fundamentals-of-devops
+
+$ mkdir -p ch2/bash
+
+$ cd ch2/bash</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Within the <em>bash</em> folder, create a Bash script called <em>deploy-ec2-instance.sh</em>, with the contents shown in
+
+<a href="03.html#example_ad_hoc_script_deploy_ec2">Example 4</a>:</p>
+
+</div>
+
+<div id="example_ad_hoc_script_deploy_ec2" class="exampleblock">
+
+<div class="title">Example 4. Bash script to deploy an EC2 instance (<em>ch2/bash/deploy-ec2-instance.sh</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+
+
+
+set -e
+
+
+
+export AWS_DEFAULT_REGION=&quot;us-east-2&quot;
+
+SCRIPT_DIR=&quot;$(cd &quot;$(dirname &quot;${BASH_SOURCE[0]}&quot;)&quot; &amp;&amp; pwd)&quot;
+
+user_data=$(cat &quot;$SCRIPT_DIR/../../ch/ec2-user-data-script/user-data.sh&quot;)
+
+
+
+# <b class="conum">(1)</b>
+
+echo &quot;Creating security group&quot;
+
+security_group_id=$(aws ec2 create-security-group \
+
+  --group-name &quot;sample-app-script&quot; \
+
+  --description &quot;Allow HTTP traffic into the sample app&quot; \
+
+  --output text \
+
+  --query GroupId)
+
+
+
+# <b class="conum">(2)</b>
+
+echo &quot;Adding rule to allow inbound requests on port 80 to security group&quot;
+
+aws ec2 authorize-security-group-ingress \
+
+  --group-id &quot;$security_group_id&quot; \
+
+  --protocol tcp \
+
+  --port 80 \
+
+  --cidr &quot;0.0.0.0/0&quot; &gt; /dev/null
+
+
+
+# <b class="conum">(3)</b>
+
+echo &quot;Creating EC2 instance with Amazon Linux 2003 AMI&quot;
+
+instance_id=$(aws ec2 run-instances \
+
+  --image-id &quot;ami-0900fe555666598a2&quot; \
+
+  --instance-type &quot;t2.micro&quot; \
+
+  --security-group-ids &quot;$security_group_id&quot; \
+
+  --user-data &quot;$user_data&quot; \
+
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=sample-app-script}]' \
+
+  --output text \
+
+  --query Instances[0].InstanceId)
+
+
+
+echo &quot;Getting public IP address of EC2 instance&quot;
+
+public_ip=$(aws ec2 describe-instances \
+
+  --instance-ids &quot;$instance_id&quot; \
+
+  --output text \
+
+  --query 'Reservations[*].Instances[*].PublicIpAddress')
+
+
+
+# <b class="conum">(4)</b>
+
+echo &quot;Instance ID = $instance_id&quot;
+
+echo &quot;Security Group ID = $security_group_id&quot;
+
+echo &quot;Public IP = $public_ip&quot;</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you&#8217;re not an expert in Bash syntax, all you have to know about this script is that it uses the
+
+<a href="https://aws.amazon.com/cli/">AWS Command Line Interface (CLI)</a> to do the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Create a security group.</p>
+
+</li>
+
+<li>
+
+<p>Update the security group to allow inbound HTTP requests on port 80.</p>
+
+</li>
+
+<li>
+
+<p>Deploy an EC2 instance that uses that security group and runs the Node.js app on boot in a user data script.</p>
+
+</li>
+
+<li>
+
+<p>Output the IDs of the security group and EC2 instance and the public IP of the EC2 instance.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="admonitionblock warning">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Warning</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">These are simplified examples for learning, not for production (watch out for snakes!)</div>
+
+<div class="paragraph">
+
+<p>The examples in this blog post are still simplified for learning and <em>not</em> suitable for production
+
+usage, due to the security concerns and user data limitations explained in <a href="02.html#simplified_example_not_for_prod">These are simplified examples for learning, not for production (watch out for snakes!)</a>. You&#8217;ll
+
+see how to work around some of these limitations starting in the next chapter.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you want to try the script out, you&#8217;ll first need to give the script execute permissions:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ chmod u+x deploy-ec2-instance.sh</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, authenticate to AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the script
+
+as follows:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ ./deploy-ec2-instance.sh
+
+Creating security group
+
+Adding rule to allow inbound requests on port 80 to security group
+
+Reading user data script from chapter 1
+
+Creating EC2 instance with Amazon Linux 2003 AMI
+
+Getting public IP address of EC2 instance
+
+
+
+Done!
+
+
+
+Instance ID = i-0335edfebd780886f
+
+Security Group ID = sg-09251ea2fe2ab2828
+
+Public IP = 52.15.237.52</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>After the script finishes, give the EC2 instance a minute or two to boot up, and then try opening up
+
+<a href="http://&lt;Public" class="bare">http://&lt;Public</a> IP&gt; in your web browser, where <code>&lt;Public IP&gt;</code> is the IP address the script outputs at the very end.
+
+You should see:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Hello, World!</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you are now managing your infrastructure as code! Well, sort of. This script, and most ad hoc scripts, have
+
+quite a few drawbacks in terms of using them to manage infrastructure, as discussed in the next section.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for using Bash:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>What happens if you run the Bash script a second time? Do you get an error? If so, why?</p>
+
+</li>
+
+<li>
+
+<p>How would you have to tweak the script if you wanted to run multiple EC2 instances?</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you&#8217;re done experimenting with this script, you should manually undeploy the EC2 instance by finding it in the
+
+<a href="https://console.aws.amazon.com/ec2/home">EC2 Console</a> (look for the instance ID the script outputs at the end),
+
+clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in
+
+<a href="03.html#ec2_terminate_instance_instructions">Figure 14</a>. This ensures that your account doesn&#8217;t start accumulating any unwanted
+
+charges.</p>
+
+</div>
+
+<div id="ec2_terminate_instance_instructions" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-terminate-instance.png" alt="Make sure to terminate your EC2 instance when you&#8217;re done testing">
+
+</div>
+
+<div class="title">Figure 14. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_ad_hoc_scripts_stack_up">How ad hoc scripts stack up</h4>
+
+<div class="paragraph">
+
+<p>Below is a list of criteria, which I&#8217;ll refer to as the <em>IaC category criteria</em> in this blog post,
+
+that you can use to compare different categories of IaC tools. In this section, I&#8217;ll flush out how ad hoc scripts
+
+stack up according to the IaC category criteria; in later sections, you&#8217;ll see how the other IaC categories perform
+
+along the same criteria, giving you a consistent way to compare the different options.</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">CRUD</dt>
+
+<dd>
+
+<p><em>CRUD</em> stands for create, read, update, and delete. To manage infrastructure as code, you typically need that code to
+
+support all four of these operations, whereas most ad hoc scripts only handle create. For example, this script can
+
+create a security group and EC2 instance, but if you run this script a second or third time, the script doesn&#8217;t know
+
+how to "read" the state of the world, so it has no awareness that the security group and EC2 instance already exist,
+
+and so it&#8217;ll never update them, but only try to create new infrastructure all over again. Likewise, this script has
+
+no built-in support for deleting any of the infrastructure it creates (which is why you had to terminate the EC2
+
+instance manually). So while ad hoc scripts make it much faster to <em>create</em> infrastructure, they don&#8217;t really help
+
+you <em>manage</em> it.</p>
+
+</dd>
+
+<dt class="hdlist1">Scale</dt>
+
+<dd>
+
+<p>Solving the CRUD problem in an ad hoc script for a single EC2 instance is hard enough, but a real architecture may
+
+contain hundreds of instances, plus databases, load balancers, networking configuration, and so on. Not only do you
+
+need a way to keep track of and connect to all this infrastructure, you may also need use specific <em>deployment
+
+strategies</em>, such as zero-downtime rolling deployments, blue-green deployments, canary deployments, and so on
+
+(you&#8217;ll learn more about deployment strategies in <a href="06.html#how_to_set_up_ci_cd">Part 5</a>). Tools specifically designed to manage
+
+infrastructure often have this sort functionality built-in to help you manage infrastructure scale, whereas with an
+
+ad hoc script, you&#8217;d have to figure it all out yourself.</p>
+
+</dd>
+
+<dt class="hdlist1">Idempotency and error handling</dt>
+
+<dd>
+
+<p>To manage infrastructure, you typically want code that is <em>idempotent</em>, which means it can be re-run many times, even
+
+in the face of errors, and still produce the desired result. Most ad hoc scripts are not idempotent and do not handle
+
+errors gracefully. If you hit an error part way through running this script, it just exits, leaving work in a
+
+partially completed state, but retaining no memory of what the script got done. If you then try to re-run the script,
+
+you&#8217;ll often get a <em>different</em> error because some of the partially completed work will now interfere with the new
+
+work the script is trying to do. For example, perhaps you ran the script the first time, and it created the security
+
+group called "sample-app-script" successfully, but when it tried to create the EC2 instance, AWS was out of capacity,
+
+and you got an error. If you wait until AWS has more capacity and try to re-run the script, you&#8217;ll now get an error as
+
+the script tries to create a security group called "sample-app-script" again, which isn&#8217;t allowed, as AWS requires
+
+security group names to be unique.</p>
+
+</dd>
+
+<dt class="hdlist1">Consistency</dt>
+
+<dd>
+
+<p>The great thing about ad hoc scripts is that you can use any programming language you want, and you can write the
+
+code however you want. The terrible thing about ad hoc scripts is that you can use any programming language you want,
+
+and you can write the code however you want. I wrote the Bash script one way; someone else might write it another way;
+
+someone else may choose a different language entirely. If you&#8217;ve ever had to maintain a large repository of ad hoc
+
+scripts, you know that it almost always devolves into a mess of unmaintainable spaghetti code. As you&#8217;ll see shortly,
+
+tools that are designed specifically for managing infrastructure as code often provide a single, idiomatic way to
+
+solve each problem, so that your codebase tends to be more consistent and easier to navigate and maintain.</p>
+
+</dd>
+
+<dt class="hdlist1">Verbosity</dt>
+
+<dd>
+
+<p>The Bash script to launch a simple EC2 instance, plus the user data script, add up to around 80 lines of code—and
+
+that&#8217;s <em>without</em> the code for CRUD, idempotency, and error handling. An ad hoc script that handles all of these
+
+properly would be hundreds or thousands of lines of code. And we&#8217;re talking about just one EC2 instance; a real
+
+infrastructure may consist of hundreds of instances, plus databases, load balancers, network configurations, and much
+
+more. The amount of custom code it takes to manage all of this with ad hoc scripts quickly becomes untenable. As
+
+you&#8217;ll see shortly, tools that are designed specifically for managing infrastructure as code typically provide APIs
+
+that are much more concise for accomplishing common infrastructure tasks.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Here&#8217;s a general rule with ad hoc scripts:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #1</div>
+
+<div class="paragraph">
+
+<p>Ad hoc scripts are great for small, one-off tasks, but not for managing all your infrastructure as code.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you&#8217;re going to be managing all of your infrastructure as code, you should use an IaC tool that is purpose-built for
+
+the job, such as one of the ones discussed in the next several sections.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_configuration_management_tools">Configuration management tools</h3>
+
+<div class="paragraph">
+
+<p>After trying out ad hoc scripts, and hitting all the issues mentioned in the previous section, the software industry
+
+moved on to <em>configuration management tools</em>, such as <a href="https://www.chef.io/">Chef</a>, <a href="https://www.puppet.com/">Puppet</a>,
+
+<a href="https://saltproject.io/index.html">Salt</a>. and <a href="https://www.ansible.com/">Ansible</a>. These tools first started to appear
+
+before cloud computing was ubiquitous, so the way they were originally designed was to assume someone else had done the
+
+work of setting up the hardware (e.g., your Ops team racked the servers in your own data center), and the primary
+
+purpose of these tools was to handle the software, including configuring the operating system, installing dependencies,
+
+deploying and updating apps, and so on.</p>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_deploy_ec2_using_ansible">Example: deploy an EC2 instance using Ansible</h4>
+
+<div class="paragraph">
+
+<p>To be able to use configuration management, the first thing you need is a server. If you have an existing server you
+
+can use—e.g., a physical server on-prem or a virtual server in the cloud—and you have SSH access to that server, you
+
+can skip this section, and go to the next one.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you don&#8217;t have a server you can use, this section will show you how to deploy an EC2 instance using Ansible. Note
+
+that deploying and managing servers (hardware) is not really what configuration management tools were designed to
+
+do—later in this blog post, you&#8217;ll see how provisioning tools are typically a better fit for this
+
+task—but for spinning up a single server for learning and testing, Ansible is good enough.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Create a new folder called <em>ansible</em>:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cd fundamentals-of-devops
+
+$ mkdir -p ch2/ansible
+
+$ cd ch2/ansible</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Inside the Ansible folder, create an <em>Ansible playbook</em> called <em>create_ec2_instance_playbook.yml</em>, with the contents
+
+shown in <a href="03.html#example_ansible_playbook_deploy_ec2">Example 5</a>:</p>
+
+</div>
+
+<div id="example_ansible_playbook_deploy_ec2" class="exampleblock">
+
+<div class="title">Example 5. Ansible playbook to deploy an EC2 instance (<em>ch2/ansible/create_ec2_instance_playbook.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Deploy an EC2 instance in AWS</span></span>
+
+  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">localhost</span></span>
+
+  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">no</span></span>
+
+  <span style="color:#606">environment</span>:
+
+    <span style="color:#606">AWS_REGION</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2                              </span></span># <b class="conum">(1)</b>
+
+  <span style="color:#606">tasks</span>:    
+
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create security group                      </span></span># <b class="conum">(2)</b>
+
+      <span style="color:#606">amazon.aws.ec2_security_group</span>:
+
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-ansible </span></span>
+
+        <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Allow HTTP and SSH traffic</span></span>
+
+        <span style="color:#606">rules</span>:
+
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">proto: tcp</span></span>
+
+            <span style="color:#606">ports</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[8080]</span></span>
+
+            <span style="color:#606">cidr_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0/0</span></span>
+
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">proto: tcp</span></span>
+
+            <span style="color:#606">ports</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[22]</span></span>
+
+            <span style="color:#606">cidr_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0/0</span></span>
+
+      <span style="color:#606">register</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">aws_security_group</span></span>
+
+
+
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create a new EC2 key pair                  </span></span># <b class="conum">(3)</b>
+
+      <span style="color:#606">amazon.aws.ec2_key</span>:
+
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2</span></span>
+
+        <span style="color:#606">file_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2.key                     </span></span># <b class="conum">(4)</b>
+
+      <span style="color:#606">no_log</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+
+      <span style="color:#606">register</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">aws_ec2_key_pair</span></span>
+
+
+
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create EC2 instance with Amazon Linux 2003 </span></span># <b class="conum">(5)</b>
+
+      <span style="color:#606">amazon.aws.ec2_instance</span>:
+
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-ansible</span></span>
+
+        <span style="color:#606">key_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ aws_ec2_key_pair.key.name }}</span><span style="color:#710">&quot;</span></span>
+
+        <span style="color:#606">instance_type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">t2.micro</span></span>
+
+        <span style="color:#606">security_group</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ aws_security_group.group_id }}</span><span style="color:#710">&quot;</span></span>
+
+        <span style="color:#606">image_id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ami-0900fe555666598a2</span></span>
+
+        <span style="color:#606">tags</span>:
+
+          <span style="color:#606">Ansible</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch2_instances                       </span></span># <b class="conum">(6)</b></code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Instead of a <em>general-purpose programming language (GPL)</em>, such as Bash or Ruby or Python, Ansible uses a <em>domain
+
+specific language (DSL)</em> defined on top of YAML. The YAML in the preceding playbook does the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p><strong>Deploy to us-east-2</strong>: Configure Ansible to deploy all AWS resources into the <code>us-east-2</code> (Ohio) region (you&#8217;ll
+
+learn more about data centers and regions in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</li>
+
+<li>
+
+<p><strong>Create a security group</strong>: Allow inbound HTTP requests on port 8080 and inbound SSH requests on port 22. The SSH
+
+port is new: Ansible configures servers by connecting to them over SSH (a topic you&#8217;ll learn more about in
+
+<a href="07.html#how_to_set_up_networking">Part 6</a>). In some ways, using SSH to configure servers is an advantage over the user data
+
+technique you saw with the Bash script, as user data has several significant limitations (only runs on first
+
+boot, max size 16 KB). However, the reliance on SSH requires you to deal with extra open ports and authentication
+
+mechanisms (e.g., EC2 key pairs, as described next), which is a drawback from a security perspective.</p>
+
+</li>
+
+<li>
+
+<p><strong>Create an EC2 key pair</strong>: An <em>EC2 key pair</em> is a public/private key pair that can be used to authenticate to an EC2
+
+instance.</p>
+
+</li>
+
+<li>
+
+<p><strong>Save the private key</strong>: Store the private key of the EC2 key pair locally in a file called
+
+<em>ansible-ch2.key</em>. You&#8217;ll use this private key in the next section to authenticate to the EC2 instance when
+
+configuring it.</p>
+
+</li>
+
+<li>
+
+<p><strong>Deploy an EC2 instance</strong>: The instance uses the security group and public key from the previous steps.</p>
+
+</li>
+
+<li>
+
+<p><strong>Tag the instance</strong>: This sets the <code>Ansible</code> tag on the instance to "ch2_instances." You&#8217;ll use this tag in the next
+
+section.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>To run this Ansible playbook,
+
+<a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">install Ansible</a>, authenticate to
+
+AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following command:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ ansible-playbook -v create_ec2_instance_playbook.yml</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You should get log output for each step that looks something like this (truncated for readability):</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>PLAY [Deploy an EC2 instance in AWS]
+
+
+
+TASK [Create security group]
+
+changed: [localhost] =&gt; {"changed": true, "description": "..."}
+
+
+
+TASK [Create a new EC2 key pair]
+
+changed: [localhost] =&gt; {"censored": "...", "changed": true}
+
+
+
+TASK [Create EC2 instance with Amazon Linux 2003]
+
+changed: [localhost] =&gt; {"changed": true, "instance_ids": ["..."]}
+
+
+
+PLAY RECAP
+
+localhost: ok=3    changed=3    unreachable=0    failed=0</pre>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_configure_server_ansible">Example: configuring a server using Ansible</h4>
+
+<div class="paragraph">
+
+<p>Now that you have a server to work with, you can see what configuration management tools are really designed to do:
+
+configuring servers to run software. The first step is to tell Ansible what server(s) you want to configure, or what
+
+Ansible calls its <em>inventory</em>. If you have a set of physical servers on-prem, you can put the IP addresses of those
+
+servers in an <em>inventory file</em>, as shown in <a href="03.html#example_ansible_inventory_file">Example 6</a>:</p>
+
+</div>
+
+<div id="example_ansible_inventory_file" class="exampleblock">
+
+<div class="title">Example 6. Example Ansible inventory file (<em>inventory.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">webservers</span>:
+
+  <span style="color:#606">hosts</span>:
+
+    <span style="color:#606">10.16.10.1</span>:
+
+    <span style="color:#606">10.16.10.2</span>:
+
+<span style="color:#606">dbservers</span>:
+
+  <span style="color:#606">hosts</span>:
+
+    <span style="color:#606">10.16.20.1</span>:
+
+    <span style="color:#606">10.16.20.2</span>:
+
+    <span style="color:#606">10.16.20.3</span>:</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The preceding file organizes your servers into <em>groups</em>: the <code>webservers</code> group has two servers in it and the
+
+<code>dbservers</code> group has three servers. You&#8217;ll then be able to write Ansible playbooks that target specific groups.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you are running servers in the cloud, where servers come and go often, and IP addresses change more frequently,
+
+you&#8217;re better off using an <em>inventory plugin</em> that can dynamically discover your servers. For example, if you deployed
+
+an EC2 instance in AWS in the previous section, you can use the <code>aws_ec2</code> inventory plugin by creating a file called
+
+<em>inventory.aws_ec2.yml</em> with the contents shown in <a href="03.html#example_ansible_inventory_plugin">Example 7</a>:</p>
+
+</div>
+
+<div id="example_ansible_inventory_plugin" class="exampleblock">
+
+<div class="title">Example 7. Example Ansible inventory plugin to discovery EC2 instances (<em>ch2/ansible/inventory.aws_ec2.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">plugin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">amazon.aws.aws_ec2</span></span>
+
+<span style="color:#606">regions</span>:
+
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2         </span></span># <b class="conum">(1)</b>
+
+<span style="color:#606">keyed_groups</span>:
+
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">key: tags.Ansible </span></span># <b class="conum">(2)</b>
+
+<span style="color:#606">leading_separator</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'' </span></span># <b class="conum">(3)</b></code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This code does the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Look up EC2 instances in the <code>us-east-2</code> region, which is the region the previous section used for deploy an EC2
+
+instance.</p>
+
+</li>
+
+<li>
+
+<p>Automatically create groups based on the <code>Ansible</code> tag of the instance. In the previous section, you set this tag
+
+to "ch2_instances," so you&#8217;ll get an Ansible group of that name.</p>
+
+</li>
+
+<li>
+
+<p>By default, Ansible adds a leading underscore to group names. This disables it so the group name matches the tag
+
+name.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>For each group in your inventory, you can also specify <em>group variables</em> to configure how to connect to the servers in
+
+that group. You define these variables in YAML files in the <em>group_vars</em> folder, with the name of the file set to the
+
+name of the group you&#8217;re configuring. For example, for the EC2 instance in the ch2_instances group, you should
+
+create a file in <em>group_vars/ch2_instances.yml</em> with the contents shown in <a href="03.html#example_ansible_group_vars">Example 8</a>:</p>
+
+</div>
+
+<div id="example_ansible_group_vars" class="exampleblock">
+
+<div class="title">Example 8. Variables for the sample app group (<em>ch2/ansible/group_vars/ch2_instances.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">ansible_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ec2-user                        </span></span># <b class="conum">(1)</b>
+
+<span style="color:#606">ansible_ssh_private_key_file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2.key </span></span># <b class="conum">(2)</b>
+
+<span style="color:#606">ansible_host_key_checking</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false              </span></span># <b class="conum">(3)</b></code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The variables this file defines are:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Use "ec2-user" as the username to connect to the EC2 instance. This is the username you need to use with Amazon
+
+Linux AMIs.</p>
+
+</li>
+
+<li>
+
+<p>Use the private key at <em>ansible-ch2.key</em> to authenticate to the instance. This is the private key of the EC2 key
+
+pair you created with the playbook in the previous section.</p>
+
+</li>
+
+<li>
+
+<p>Skip host key checking so you don&#8217;t get interactive prompts from Ansible.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>Alright, with the inventory stuff out of the way, you can now create a playbook to configure your server to run the
+
+Node.js sample app. Create a file called <em>configure_sample_app_playbook.yml</em> with the contents shown in
+
+<a href="03.html#example_ansible_configure_sample_app_playbook">Example 9</a>:</p>
+
+</div>
+
+<div id="example_ansible_configure_sample_app_playbook" class="exampleblock">
+
+<div class="title">Example 9. The playbook to configure the server to run the sample app (<em>ch2/ansible/configure_sample_app_playbook.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure the EC2 instance to run a sample app</span></span>
+
+  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch2_instances </span></span># <b class="conum">(1)</b>
+
+  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+
+  <span style="color:#606">become</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+
+  <span style="color:#606">roles</span>:
+
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app       </span></span># <b class="conum">(2)</b></code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This playbook does two things:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>It targets the servers in the ch2_instances group, which should be a group with the EC2 instance you
+
+deployed in the previous section. If you are configuring some other server (e.g., your own servers on-prem), update
+
+this to the name of the group to target in your inventory file.</p>
+
+</li>
+
+<li>
+
+<p>It configures the servers in using an Ansible role called "sample-app," as discussed next.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>An Ansible <em>role</em> is a structured way to organize tasks, templates, files, and other configuration you might want to
+
+apply to a server. The standard folder structure used by just about every Ansible role looks like this:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>roles
+
+  └── &lt;role-name&gt;
+
+      ├── defaults
+
+      │   └── main.yml
+
+      ├── files
+
+      │   └── foo.txt
+
+      ├── handlers
+
+      │   └── main.yml
+
+      ├── tasks
+
+      │   └── main.yml
+
+      ├── templates
+
+      │   └── foo.txt.j2
+
+      └── vars
+
+          └── main.yml</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Each folder has a specific purpose: e.g., the <em>tasks</em> folder defines tasks to run on a server; the <em>vars</em> folder
+
+defines variables the user can provide; the <em>defaults</em> folder defines default values for the variables; the <em>files</em>
+
+folder has files to copy to the server; and so on. Having this standardized structure makes it easier to navigate and
+
+understand an Ansible code base.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To create the <em>sample-app</em> role for this playbook, create a <em>roles/sample-app</em> folder in the same directory as
+
+<em>configure_sample_app_playbook.yml</em>, your inventory file, and your <em>group_vars</em> folder:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>.
+
+├── configure_sample_app_playbook.yml
+
+├── group_vars
+
+├── inventory.aws_ec2.yml
+
+└── roles
+
+    └── sample-app
+
+        ├── files
+
+        │   └── app.js
+
+        └── tasks
+
+            └── main.yml</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Within <em>roles/sample-app</em>, you should create <em>files</em> and <em>tasks</em> subfolders, which are the only parts of the
+
+standardized role folder structure you&#8217;ll need for this simple example. Copy the Node.js sample app you saw earlier in
+
+this blog post and in <a href="02.html#example_run_sample_app_locally">Section 1.1.1</a> into <em>files/app.js</em>. Copy the code shown in
+
+<a href="03.html#example_ansible_role_sample_app">Example 10</a> into <em>tasks/main.yml</em>:</p>
+
+</div>
+
+<div id="example_ansible_role_sample_app" class="exampleblock">
+
+<div class="title">Example 10. Ansible role to run the Node.js sample app (<em>ch2/ansible/roles/sample-app/tasks/main.yml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Add Node packages to yum  </span></span># <b class="conum">(1)</b>
+
+  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -</span></span>
+
+
+
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install Node.js</span></span>
+
+  <span style="color:#606">yum</span>:
+
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nodejs</span></span>
+
+
+
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Copy sample app           </span></span># <b class="conum">(2)</b>
+
+  <span style="color:#606">copy</span>:
+
+    <span style="color:#606">src</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app.js</span></span>
+
+    <span style="color:#606">dest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app.js</span></span>
+
+
+
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Start sample app          </span></span># <b class="conum">(3)</b>
+
+  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nohup node app.js &amp;</span></span></code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This code does the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p><strong>Install Node.js</strong>: Use the <code>shell</code> module to run a command on the server to add Node packages to <code>yum</code>, and then
+
+use the <code>yum</code> module to install Node.js.</p>
+
+</li>
+
+<li>
+
+<p><strong>Copy the sample app</strong>: Use the <code>copy</code> module to copy <em>app.js</em> to the server.</p>
+
+</li>
+
+<li>
+
+<p><strong>Start the sample app</strong>: Use the <code>shell</code> module to execute the <code>node</code> binary to run the app in the background.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>To run this playbook, authenticate to AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following
+
+command:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ ansible-playbook -v -i inventory.aws_ec2.yml configure_sample_app_playbook.yml</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You should get log output for each step, including a recap at the end that looks something like this:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>PLAY RECAP
+
+xxx.us-east-2.compute.amazonaws.com : ok=5    changed=4    failed=0</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The value on the left, "xxx.us-east-2.compute.amazonaws.com," is a domain name you can use to access the instance.
+
+If you open <a href="http://xxx.us-east-2.compute.amazonaws.com:8080" class="bare">http://xxx.us-east-2.compute.amazonaws.com:8080</a> (note it&#8217;s port 8080 this time, not 80) in your web
+
+browser, you should see the familiar "Hello, World!"</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you&#8217;re now using a configuration management tool to manage your infrastructure as code!</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for Ansible:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>What happens if you run the Ansible playbook a second time? How does this compare to running the Bash script a second
+
+time?</p>
+
+</li>
+
+<li>
+
+<p>How would you have to tweak the playbook if you wanted to run multiple EC2 instances?</p>
+
+</li>
+
+<li>
+
+<p>Figure out how to use the SSH key created by Ansible (<em>ansible.key</em>) to manually SSH to your EC2 instance and make
+
+changes locally.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you&#8217;re done experimenting with Ansible, you should manually undeploy the EC2 instance by finding it in the
+
+<a href="https://console.aws.amazon.com/ec2/home">EC2 Console</a> (look for the instance ID the playbook writes to the log),
+
+clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 9</a>.
+
+This ensures that your account doesn&#8217;t start accumulating any unwanted charges.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_configuration_management_tools_stack_up">How configuration management tools stack up</h4>
+
+<div class="paragraph">
+
+<p>Here is how configuration management tools stack up using the IaC category criteria from before:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">CRUD</dt>
+
+<dd>
+
+<p>Most configuration management tools support at least 3 of the 4 CRUD operations: they can create the initial
+
+configuration, read the current configuration to see if it matches the desired configuration, and if not, update the
+
+existing configuration. Unfortunately, most configuration management tools <em>don&#8217;t</em> support delete (which is why you
+
+had to undeploy the EC2 instance manually). For example, you can run the preceding Ansible code multiple times, and
+
+it&#8217;ll do the right thing: the first time, it&#8217;ll create the EC2 instance and configure it to run the app; the second
+
+time and beyond, it&#8217;ll detect the EC2 instance already exists and is configured, and won&#8217;t try to make any changes;
+
+if you manually delete the instance and re-run, it&#8217;ll recreate the instance, and reconfigure. However, if you wanted
+
+to <em>undeploy</em> the EC2 instance, you&#8217;d have to do that manually or write new Ansible code.</p>
+
+</dd>
+
+<dt class="hdlist1">Scale</dt>
+
+<dd>
+
+<p>Most configuration management tools are designed specifically for managing multiple remote servers. For
+
+example, you could easily update the preceding Ansible code to deploy 3 EC2 instances, and Ansible will automatically
+
+configure all 3 to run the web server, as shown in <a href="03.html#ansible_role">Figure 15</a>. Moreover, some configuration management tools
+
+have built-in support for deployment strategies: for example, Ansible has built-in support for <em>rolling deployments</em>,
+
+so if you deployed 20 servers, then updated the configuration in the Ansible role (e.g., to deploy a new version of
+
+the app) and re-ran Ansible, it could roll out the change in batches (e.g., updating 5 servers at a time), with zero
+
+downtime.</p>
+
+<div id="ansible_role" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/ansible-role.png" alt="Using Ansible to configure your servers">
+
+</div>
+
+<div class="title">Figure 15. Using Ansible to configure your servers.</div>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Idempotency and error handling</dt>
+
+<dd>
+
+<p>Some tasks you do with configuration management tools are idempotent, some are not. For example, the <code>yum</code> task in
+
+Ansible is idempotent: it only installs the software if it&#8217;s not installed already, so it&#8217;s safe to re-run that task
+
+as many times as you want. On the other hand, arbitrary <code>shell</code> tasks may or may not be idempotent, depending on what
+
+shell commands you execute. For example, the preceding playbook uses a <code>shell</code> task to directly execute the <code>node</code>
+
+binary, which is <em>not</em> idempotent: after the first run, subsequent runs of this playbook will fail, as the Node.js
+
+app is already running and listening on port 8080, so you&#8217;ll get an error about conflicting ports. In
+
+<a href="04.html#how_to_deploy_many_apps">Part 3</a>, you&#8217;ll see a better way of running apps with Ansible that is idempotent.</p>
+
+</dd>
+
+<dt class="hdlist1">Consistency</dt>
+
+<dd>
+
+<p>Most configuration management tools enforce a consistent, predictable structure to the code, including documentation,
+
+file layout, clearly named parameters, secrets management, and so on. While every developer organizes their ad hoc
+
+scripts in a different way, most configuration management tools come with a set of conventions that makes it easier
+
+to navigate and maintain the code, as you saw with the folder structure for Ansible roles.</p>
+
+</dd>
+
+<dt class="hdlist1">Verbosity</dt>
+
+<dd>
+
+<p>Most configuration management tools provide a DSL for specifying server configuration that is considerably more
+
+concise than the equivalent in an ad hoc script. For example, you saw Ansible&#8217;s YAML-based DSL. At first, it might
+
+not seem like the code is any shorter than the Bash script: in fact, it&#8217;s roughly equal, with around 80 lines of
+
+Bash code (script to deploy EC2 instance plus user data script) versus about 80 lines of YAML with Ansible (playbook
+
+plus role). However, the 80 lines of Ansible code are doing considerably more: as just mentioned, the Ansible code
+
+supports most CRUD operations, idempotency, scaling operations to many servers, and consistent code structure. An ad
+
+hoc script that supported all of this would be many times the length.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Configuration management tools brought a number of advantages over ad hoc scripts, but they also introduced their
+
+own drawbacks. One big drawback is that some configuration management tools have a considerable setup cost: for
+
+example, the idiomatic way to use Chef and Puppet requires that you first (a) deploy a master server and (b) find a way
+
+to install special <em>agent software</em> on all your other servers, before you can effectively use Chef and Puppet to
+
+manage those servers. A second big drawback is that most configuration management tools were designed for a
+
+<em>mutable infrastructure</em> pattern, where you have long-running servers that you update (mutate) over and over again,
+
+over many years.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>As cloud and virtualization becomes more and more ubiquitous, it&#8217;s becoming more common to use <em>immutable
+
+infrastructure</em> patterns, where instead of long-running physical servers, you use short-lived virtual servers that you
+
+replace every time you do an update. This is inspired by functional programming, where variables are immutable, so
+
+after you&#8217;ve set a variable to a value, you can never change that variable again, and if you need to update something,
+
+you create a new variable. Because variables never change, it&#8217;s a lot easier to reason about your code.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The idea behind immutable infrastructure is similar: once you&#8217;ve deployed a server, you never make changes to it again.
+
+If you need to update something, such as deploying a new version of your code, you deploy a new server. Because
+
+servers never change after being deployed, it&#8217;s a lot easier to reason about what&#8217;s deployed. The typical analogy used
+
+here, which is admittedly crude (my apologies to vegetarians and anima lovers), is <em>cattle vs pets</em>: with mutable
+
+infrastructure, you treat your servers like pets, giving each one its own name, taking care of it, and trying to keep
+
+it alive as long as possible; with immutable infrastructure, you treat your servers like cattle, each one more or less
+
+indistinguishable from the others, with no names, and you kill them off and replace them regularly.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Here&#8217;s the general rule on configuration management tools:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #2</div>
+
+<div class="paragraph">
+
+<p>Configuration management tools are great for managing the configuration of servers, but not for deploying the servers
+
+themselves, or other infrastructure.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>While it&#8217;s possible to use configuration management tools with immutable infrastructure patterns, it&#8217;s not what they
+
+were originally designed for, and that led to new approaches, as discussed in the next section.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="server_templating_tools">Server templating tools</h3>
+
+<div class="paragraph">
+
+<p>An alternative to configuration management that has been growing in popularity recently are <em>server templating tools</em>
+
+such as Docker, Packer, and Vagrant. Instead of launching a bunch of servers and configuring them by running the same
+
+code on each one, the idea behind server templating tools is to create an <em>image</em> of a server that captures a fully
+
+self-contained "snapshot" of the operating system (OS), the software, the files, and all other relevant details. You can
+
+then use some other IaC tool to install that image on all of your servers, as shown in <a href="03.html#sever_templating">Figure 16</a>.</p>
+
+</div>
+
+<div id="sever_templating" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/server-templating.png" alt="A server templating tool like Packer can be used to create a self-contained image of a server. You can then use other tools, such as OpenTofu, to install that image across all of your servers.">
+
+</div>
+
+<div class="title">Figure 16. You can use a server templating tool like Packer to create a self-contained image of a server. You can then use other tools, such as OpenTofu, to install that image across all of your servers.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>There are two broad categories of tools for working with images, as shown in <a href="03.html#vm_versus_container">Figure 17</a>:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Virtual machines</dt>
+
+<dd>
+
+<p>A <em>virtual machine</em> emulates an entire computer system, including the hardware. You run a <em>hypervisor</em>, such as VMware,
+
+VirtualBox, or Parallels, to virtualize (i.e., simulate) the underlying CPU, memory, hard drive, and networking.</p>
+
+<div class="paragraph">
+
+<p>The benefit of this is that any <em>VM image</em> that you run on top of the hypervisor can see only the virtualized hardware,
+
+so it&#8217;s fully isolated from the host machine and any other VM images, and it will run exactly the same way in all
+
+environments (e.g., your computer, a QA server, a production server). The drawback is that virtualizing all this
+
+hardware and running a totally separate OS for each VM incurs a lot of overhead in terms of CPU usage, memory usage,
+
+and startup time. You can define VM images as code using tools such as Packer and Vagrant.</p>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Containers</dt>
+
+<dd>
+
+<p>A <em>container</em> emulates the user space of an OS.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="13-footnotes.html#_footnotedef_10" title="View footnote.">10</a>]</sup> You run a <em>container engine</em>, such as Docker or cri-o, to create isolated processes, memory, mount
+
+points, and networking.</p>
+
+<div class="paragraph">
+
+<p>The benefit of this is that any container you run on top of the container engine can see only its own user space, so
+
+it&#8217;s isolated from the host machine and other containers, and will run exactly the same way in all environments (your
+
+computer, a QA server, a production server, etc.). The drawback is that all of the containers running on a single
+
+server share that server&#8217;s OS kernel and hardware, so it&#8217;s much more difficult to achieve the level of isolation and
+
+security you get with a VM.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="13-footnotes.html#_footnotedef_11" title="View footnote.">11</a>]</sup> However, because the kernel
+
+and hardware are shared, your containers can boot up in milliseconds and have virtually no CPU or memory overhead. You
+
+can define container images as code using tools such as Docker; you&#8217;ll see an example of how to use Docker in
+
+<a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div id="vm_versus_container" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/vms-docker.png" alt="The two main types of images: VMs on the left, and containers on the right. VMs virtualize the hardware, whereas containers virtualize only user space.">
+
+</div>
+
+<div class="title">Figure 17. The two main types of images: VMs, on the left, and containers, on the right. VMs virtualize the hardware, whereas containers virtualize only user space.</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_vm_image_packer">Example: create a VM image using Packer</h4>
+
+<div class="paragraph">
+
+<p>As an example, let&#8217;s take a look at using Packer to create a VM image for AWS called an <em>Amazon Machine Image (AMI)</em>.
+
+First, create a folder called <em>packer</em>:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cd fundamentals-of-devops
+
+$ mkdir -p ch2/packer
+
+$ cd ch2/packer</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, create a <em>Packer template</em> called <em>sample-app.pkr.hcl</em>, with the contents shown in <a href="03.html#example_packer_template">Example 11</a>:</p>
+
+</div>
+
+<div id="example_packer_template" class="exampleblock">
+
+<div class="title">Example 11. Packer template to create AMI (<em>ch2/packer/sample-app.pkr.hcl</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="hcl">packer {
+
+  required_plugins {
+
+    amazon = {
+
+      version = &quot;&gt;= 1.3.1&quot;
+
+      source  = &quot;github.com/hashicorp/amazon&quot;
+
+    }
+
+  }
+
+}
+
+
+
+# <b class="conum">(1)</b>
+
+source &quot;amazon-ebs&quot; &quot;amazon_linux&quot; {
+
+  ami_name        = &quot;sample-app-packer-${uuidv4()}&quot;
+
+  ami_description = &quot;An Amazon Linux 2023 AMI that has a Node.js sample app installed.&quot;
+
+  instance_type   = &quot;t2.micro&quot;
+
+  region          = &quot;us-east-2&quot;
+
+  source_ami      = &quot;ami-0900fe555666598a2&quot;
+
+  ssh_username    = &quot;ec2-user&quot;
+
+}
+
+
+
+# <b class="conum">(2)</b>
+
+build {
+
+  sources = [
+
+    &quot;source.amazon-ebs.amazon_linux&quot;
+
+  ]
+
+
+
+  # <b class="conum">(3)</b>
+
+  provisioner &quot;file&quot; {
+
+    source      = &quot;app.js&quot;
+
+    destination = &quot;/home/ec2-user/app.js&quot;
+
+  }
+
+
+
+  # <b class="conum">(4)</b>
+
+  provisioner &quot;shell&quot; {
+
+    inline = [
+
+      &quot;curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -&quot;,
+
+      &quot;sudo yum install -y nodejs&quot;
+
+    ]
+
+    pause_before = &quot;30s&quot;
+
+  }
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>With Packer, you create templates using the <em>HashiCorp Configuration Language (HCL)</em> in files with a <em>.hcl</em> extension.
+
+The preceding Packer template does the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p><strong>Source images</strong>: Packer will start a server running each <em>source image</em> you specify. The preceding code will
+
+result in Packer starting an EC2 instance running the Amazon Linux AMI you saw in the Bash and Ansible examples.</p>
+
+</li>
+
+<li>
+
+<p><strong>Build steps</strong>: Packer then connects to the server (e.g., via SSH) and runs the <em>build steps</em> in the order
+
+you specified. When all the build steps have finished, Packer will take a <em>snapshot</em> of the server and shut the
+
+server down. The preceding example runs two build steps, as described next, and the snapshot it creates is an AMI
+
+that has everything installed and configured to run the sample app.</p>
+
+</li>
+
+<li>
+
+<p><strong>File provisioner</strong>: The first build step is to run a <em>file provisioner</em>, which copies files to the server. The
+
+preceding examples use this to copy the Node.js sample app code in <em>app.js</em> to the server.</p>
+
+</li>
+
+<li>
+
+<p><strong>Shell provisioner</strong>: The second build step is to run a <em>shell provisioner</em>, which executes shell commands on the
+
+server. The preceding example uses this to install Node.js.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>So this Packer template is nearly identical to the Bash script and Ansible playbook, except for the following two
+
+differences:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>The result of running Packer is not a server running your app, but the <em>image</em> of a server: the preceding example
+
+creates an AMI that has Node.js and the sample app installed. The idea is to use other IaC tools to launch one or
+
+more servers running that image: you&#8217;ll see an example later in this blog post of using OpenTofu to
+
+launch an EC2 instance running this AMI.</p>
+
+</li>
+
+<li>
+
+<p>The Packer template installs and configures everything, but it doesn&#8217;t actually run your app: unlike the Bash script
+
+and Ansible playbook, the preceding example does <em>not</em> run <code>node.js app.js</code>. That command should be executed when you
+
+deploy the AMI, which you&#8217;ll also see later in this post.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you want to try the Packer template out, <a href="https://developer.hashicorp.com/packer/install">install Packer</a>,
+
+authenticate to AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following commands:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ packer init
+
+$ packer build sample-app.pkr.hcl</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The first command, <code>packer init</code>, installs any <em>plugins</em> used in this Packer template: Packer can create images for
+
+many cloud providers—e.g., AWS, GCP, Azure, etc.—and the code for each of these providers lives not in the Packer binary
+
+itself, but in separate plugins that the <code>init</code> command can install. The second command, <code>packer build</code>, kicks off the
+
+build process. When the build is done, which typically takes 3-5 minutes, you should see some log output that looks
+
+like this:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>==&gt; Builds finished. The artifacts of successful builds are:
+
+--&gt; amazon-ebs.amazon_linux: AMIs were created:
+
+us-east-2: ami-0ee5157dd67ca79fc</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you&#8217;re now using a server templating tool to manage your server configuration as code! The <code>ami-xxx</code> value is
+
+the ID of the AMI that was created from this template. Save the value somewhere, as later in this
+
+post, you&#8217;ll see an example of how to deploy this AMI.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for using Packer:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>What happens if you run <code>packer build</code> on this template a second time? Why?</p>
+
+</li>
+
+<li>
+
+<p>Figure out how to update the Packer template so it builds images not only for AWS, but also images you can run on
+
+other clouds (e.g., Azure or GCP) or on your own computer (e.g., VirtualBox or Docker).</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_server_templating_tools_stack_up">How server templating tools stack up</h4>
+
+<div class="paragraph">
+
+<p>So, how do server templating tools stack up using the IaC category criteria from before?</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">CRUD</dt>
+
+<dd>
+
+<p>Server templating only needs to support the create operation in CRUD. This is because server templating is a key
+
+component of the shift to immutable infrastructure: if you need to roll out a change, instead of updating an existing
+
+server, you use your server templating tool to create a new image, and deploy that image on a new server. So, with
+
+server templating, you&#8217;re always creating totally new images; there&#8217;s never a reason to read, update, or delete. That
+
+said, server templating tools aren&#8217;t used in isolation; you need some other tool to deploy these images (e.g., a
+
+configuration management tool, as you saw earlier in the blog post, or an orchestration or
+
+provisioning tool, as you&#8217;ll see later in the post), and you typically want that tool to
+
+support all CRUD operations.</p>
+
+</dd>
+
+<dt class="hdlist1">Scale</dt>
+
+<dd>
+
+<p>Server templating tools support scaling very well, as you can create an image once, and then roll that same image out
+
+to 1 server or 1,000 servers, as necessary.</p>
+
+</dd>
+
+<dt class="hdlist1">Idempotency and error handling</dt>
+
+<dd>
+
+<p>Server templating tools are idempotent by design: since you create a new image every time, the tool just executes the
+
+exact same steps every time; if you hit an error part of the way through, just re-run, and try again.</p>
+
+</dd>
+
+<dt class="hdlist1">Consistency</dt>
+
+<dd>
+
+<p>Most server templating tools enforce a consistent, predictable structure to the code, including documentation,
+
+file layout, clearly named parameters, secrets management, and so on.</p>
+
+</dd>
+
+<dt class="hdlist1">Verbosity</dt>
+
+<dd>
+
+<p>Because server templating tools don&#8217;t have to deal with most CRUD operations and are idempotent "for free," the
+
+amount of code you need is typically pretty small. Moreover, server templating tools provide concise DSLs. As a
+
+result, the code tends to be fairly short.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>You can summarize this as follows:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #3</div>
+
+<div class="paragraph">
+
+<p>Server templating tools are great for managing the configuration of servers with immutable infrastructure practices.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Note that the different server templating tools have slightly different purposes. Packer is typically used to create
+
+images that you run directly on top of production servers, such as an AMI that you run in your production AWS account.
+
+Vagrant is typically used to create images that you run on your development computers, such as a VirtualBox image that
+
+you run on your Mac or Windows laptop. Docker is typically used to create images of individual applications. You can
+
+run the Docker images on production or development computers, as long as some other tool has configured that computer
+
+with the Docker Engine. For example, a common pattern is to use Packer to create an AMI that has the Docker Engine
+
+installed, deploy that AMI on a cluster of servers in your AWS account, and then deploy individual Docker containers
+
+across that cluster to run your applications.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>As I mentioned a few times, server templating tools are powerful, but they don&#8217;t work by themselves. You need another
+
+tool to actually deploy and manage the images you create, such as orchestration tools and provisioning tools, which are
+
+the focus of the next two sections.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_orchestration_tools">Orchestration tools</h3>
+
+<div class="paragraph">
+
+<p>Server templating tools are great for creating VMs and containers, but merely having an image is not enough. You also
+
+need a way to do the following:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Deployment</dt>
+
+<dd>
+
+<p>Deploy VMs and containers, making efficient use of your hardware (<em>scheduling</em> and <em>bin packing</em>).</p>
+
+</dd>
+
+<dt class="hdlist1">Deployment strategies</dt>
+
+<dd>
+
+<p>Roll out updates to an existing fleet of VMs and containers using strategies such as
+
+rolling deployment, blue-green deployment, and canary deployment.</p>
+
+</dd>
+
+<dt class="hdlist1">Scaling</dt>
+
+<dd>
+
+<p>Scale the number of VMs and containers up or down in response to load (<em>auto scaling</em>).</p>
+
+</dd>
+
+<dt class="hdlist1">Monitoring</dt>
+
+<dd>
+
+<p>Get visibility into the health of your VMs and containers and automatically replace unhealthy ones
+
+(<em>auto healing</em>).</p>
+
+</dd>
+
+<dt class="hdlist1">Networking</dt>
+
+<dd>
+
+<p>Distribute traffic across your VMs and containers (<em>load balancing</em>) and allow your VMs and
+
+containers to find and talk to one another over the network (<em>service discovery</em>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Handling these tasks is the realm of <em>orchestration tools</em> such as Kubernetes, Marathon/Mesos, Amazon Elastic Container
+
+Service (Amazon ECS), Docker Swarm, and Nomad. I&#8217;m mentioning orchestration tools in this blog post
+
+because just about all of them allow you to manage you infrastructure as code: for example, Kubernetes allows you to
+
+define all the items in the preceding list (i.e., what containers to deploy, how to roll out updates, how many replicas
+
+to run, etc.) in YAML files, whereas Nomad uses HCL files.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>However, orchestration merits its own dedicated focus, so you&#8217;ll come back to all of this in
+
+<a href="04.html#how_to_deploy_many_apps">Part 3</a>, where you&#8217;ll learn to deploy a Kubernetes cluster, build a container image using Docker,
+
+and deploy that image into your cluster.</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_provisioning_tools">Provisioning tools</h3>
+
+<div class="paragraph">
+
+<p>Whereas configuration management, server templating, and orchestration tools define the code that runs on each server,
+
+<em>provisioning tools</em> such as OpenTofu/Terraform<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="13-footnotes.html#_footnotedef_12" title="View footnote.">12</a>]</sup>, CloudFormation, OpenStack Heat, and Pulumi are responsible for creating the servers
+
+themselves. In fact, you can use provisioning tools to create not only servers but also databases, caches, load
+
+balancers, queues, monitoring, subnet configurations, firewall settings, routing rules, TLS certificates, and almost
+
+every other aspect of your infrastructure, as shown in <a href="03.html#provisioning">Figure 18</a>.</p>
+
+</div>
+
+<div id="provisioning" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/tofu.png" alt="You can use provisioning tools such as OpenTofu with your cloud provider to create servers, databases, load balancers, and all other parts of your infrastructure">
+
+</div>
+
+<div class="title">Figure 18. You can use provisioning tools such as OpenTofu with your cloud provider to create servers, databases, load balancers, and all other parts of your infrastructure.</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_deploy_ec2_opentofu">Example: deploy an EC2 instance using OpenTofu</h4>
+
+<div class="paragraph">
+
+<p>As an example, lets create an OpenTofu <em>module</em> that can deploy an EC2 instance. You write OpenTofu modules in HCL (the
+
+same language you used with Packer), in <em>configuration files</em> with a <em>.tf</em> extension. OpenTofu will find all files with
+
+the <em>.tf</em> extension in a folder, so you can name the files whatever you want, but there are some standard conventions,
+
+such as putting the main resources in <em>main.tf</em>, input variables in <em>variables.tf</em>, and output variables in
+
+<em>outputs.tf</em>.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>First, create a new <em>tofu/ec2-instance</em> folder for the module:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cd fundamentals-of-devops
+
+$ mkdir -p ch2/tofu/ec2-instance
+
+$ cd ch2/tofu/ec2-instance</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Within the <em>tofu/ec2-instance</em> folder, create a file called <em>main.tf</em>, with the contents shown in
+
+<a href="03.html#example_tofu_ec2_main">Example 12</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_main" class="exampleblock">
+
+<div class="title">Example 12. OpenTofu module to deploy an EC2 instance (<em>ch2/tofu/ec2-instance/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform"># <b class="conum">(1)</b>
+
+provider &quot;aws&quot; {
+
+  region = &quot;us-east-2&quot;
+
+}
+
+
+
+# <b class="conum">(2)</b>
+
+resource &quot;aws_security_group&quot; &quot;sample_app&quot; {
+
+  name        = &quot;sample-app-tofu&quot;
+
+  description = &quot;Allow HTTP traffic into the sample app&quot;
+
+}
+
+
+
+# <b class="conum">(3)</b>
+
+resource &quot;aws_security_group_rule&quot; &quot;allow_http_inbound&quot; {
+
+  type              = &quot;ingress&quot;
+
+  protocol          = &quot;tcp&quot;
+
+  from_port         = 8080
+
+  to_port           = 8080
+
+  security_group_id = aws_security_group.sample_app.id
+
+  cidr_blocks       = [&quot;0.0.0.0/0&quot;]
+
+}
+
+
+
+# <b class="conum">(4)</b>
+
+resource &quot;aws_instance&quot; &quot;sample_app&quot; {
+
+  ami                    = var.ami_id # <b class="conum">(5)</b>
+
+  instance_type          = &quot;t2.micro&quot;
+
+  vpc_security_group_ids = [aws_security_group.sample_app.id]
+
+  user_data              = file(&quot;${path.module}/user-data.sh&quot;) # <b class="conum">(6)</b>
+
+
+
+  tags = {
+
+    Name = &quot;sample-app-tofu&quot;
+
+  }
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The code in <em>main.tf</em> does something very similar to the Bash script and Ansible playbook from earlier in the
+
+blog post:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p><strong>Configure the AWS provider</strong>: OpenTofu works with many <em>providers</em>, such as AWS, GCP, Azure, and so on. This code
+
+configures the AWS provider to use the <code>us-east-2</code> (Ohio) region. AWS has datacenters all over the world, grouped
+
+into regions. An <em>AWS region</em> is a separate geographic area, such as <code>us-east-2</code> (Ohio), <code>eu-west-1</code> (Ireland), and
+
+<code>ap-southeast-2</code> (Sydney). Within each region, there are multiple isolated datacenters known as <em>Availability
+
+Zones</em> (AZs), such as <code>us-east-2a</code>, <code>us-east-2b</code>, and so on.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="13-footnotes.html#_footnotedef_13" title="View footnote.">13</a>]</sup> There are
+
+many other settings you can configure on this provider, but for now, let&#8217;s keep it simple.</p>
+
+</li>
+
+<li>
+
+<p><strong>Create a security group</strong>: For each type of provider, there are many different kinds of <em>resources</em> that you can
+
+create, such as servers, databases, and load balancers. The general syntax for creating a resource in OpenTofu is
+
+as follows:</p>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">resource &quot;&lt;PROVIDER&gt;_&lt;TYPE&gt;&quot; &quot;&lt;NAME&gt;&quot; {
+
+  [CONFIG ...]
+
+}</code></pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>where <code>PROVIDER</code> is the name of a provider (e.g., <code>aws</code>), <code>TYPE</code> is the type of resource to create in that provider
+
+(e.g., <code>instance</code>), <code>NAME</code> is an identifier you can use throughout the OpenTOfu code to refer to this
+
+resource (e.g., <code>my_instance</code>), and <code>CONFIG</code> consists of one or more <em>arguments</em> that are specific to
+
+that resource.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The preceding code creates an <code>aws_security_group</code> resource, which, as you can guess from the name, is a security group
+
+that controls what network traffic can go in and out of the EC2 instance.</p>
+
+</div>
+
+</li>
+
+<li>
+
+<p><strong>Allow HTTP requests</strong>: Use the <code>aws_security_group_rule</code> resource to add a rule to the security group from (2) that
+
+allows inbound HTTP requests on port 8080.</p>
+
+</li>
+
+<li>
+
+<p><strong>Deploy an EC2 instance</strong>: Use the <code>aws_instance</code> resource to create an EC2 instance that uses the security group
+
+and has the <code>Name</code> tag set to "sample-app-tofu."</p>
+
+</li>
+
+<li>
+
+<p><strong>Set the AMI</strong>: The EC2 instance sets the AMI to <code>var.ami_id</code>. This is a reference to an <em>input variable</em> defined
+
+in <em>variables.tf</em>, as shown in <a href="03.html#example_tofu_ec2_variables">Example 13</a>.</p>
+
+</li>
+
+<li>
+
+<p><strong>Set the user data</strong>: The EC2 instance configures a user data script by reading in the <em>user-data.sh</em> file shown in
+
+<a href="03.html#example_tofu_ec2_user_data">Example 14</a>.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>In the same folder as <em>main.tf</em>, create a file called <em>variables.tf</em> to define input variables, as shown in
+
+<a href="03.html#example_tofu_ec2_variables">Example 13</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_variables" class="exampleblock">
+
+<div class="title">Example 13. Input variables for the OpenTofu module (<em>ch2/tofu/ec2-instance/variables.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">variable &quot;ami_id&quot; {
+
+  description = &quot;The ID of the AMI to run. Should be built from the Packer template in the packer folder.&quot;
+
+  type        = string
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This input variable will allow you to pass in the ID of a custom AMI to run in the EC2 instance. As you&#8217;ll see shortly,
+
+the idea is to set this to the ID of the AMI you built from the Packer template in the previous section.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>You should also create a file called <em>user-data.sh</em>, which contains the user data script shown in
+
+<a href="03.html#example_tofu_ec2_user_data">Example 14</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_user_data" class="exampleblock">
+
+<div class="title">Example 14. User data script for the OpenTofu module (<em>ch2/tofu/ec2-instance/user-data.sh</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+
+nohup node /home/ec2-user/app.js &amp;</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Note how this user data script is much shorter than the one you saw in the Bash code. That&#8217;s because all the
+
+dependencies (Node.js) and code (<em>app.js</em>) are already installed in the AMI by Packer. So the only thing this user data
+
+script does is start the sample app. This is a more idiomatic way to use user data.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Finally, create a file called <em>outputs.tf</em> to define some <em>output variables</em>, as shown in <a href="03.html#example_tofu_ec2_outputs">Example 15</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_outputs" class="exampleblock">
+
+<div class="title">Example 15. Output variables for the OpenTofu module (<em>ch2/tofu/ec2-instance/outputs.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="bash">output &quot;instance_id&quot; {
+
+  description = &quot;The ID of the EC2 instance&quot;
+
+  value       = aws_instance.sample_app.id
+
+}
+
+
+
+output &quot;security_group_id&quot; {
+
+  description = &quot;The ID of the security group&quot;
+
+  value       = aws_security_group.sample_app.id
+
+}
+
+
+
+output &quot;public_ip&quot; {
+
+  description = &quot;The public IP of the EC2 instance&quot;
+
+  value       = aws_instance.sample_app.public_ip
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This will log the EC2 instance ID, security group ID, and EC2 instance public IP, similar to what you saw with the Bash
+
+and Ansible code.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you want to try the OpenTofu code out, <a href="https://opentofu.org/docs/intro/install/">install OpenTofu</a>, authenticate to
+
+AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following command:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu init</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The <code>init</code> command installs any <em>providers</em> used in this Tofu configuration: OpenTofu works with many
+
+cloud providers, including AWS, which is used in the preceding example, as well as Azure, GCP, Alibaba Cloud, OCI,
+
+and so on. The code for each provider doesn&#8217;t live in the <code>tofu</code> binary, but in separate provider binaries, which you
+
+download via the <code>init</code> command.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Once <code>init</code> has completed, run the <code>apply</code> command to start the deployment process:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu apply</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The first thing the <code>apply</code> command will do is prompt you for the <code>ami_id</code> value:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>var.ami_id
+
+  The ID of the AMI to run. Should be built from the Packer template in the packer folder.
+
+
+
+  Enter a value:</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You can paste in the ID of the AMI you built using Packer in the previous section and hit Enter. Alternatively, if you
+
+don&#8217;t want to be prompted interactively, you can instead use a <code>-var</code> flag:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu apply -var ami_id=ami-0ee5157dd67ca79fc</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You could aos use an environment variable: you can set the value for any input variable <code>foo</code> using the environment
+
+variable <code>TF_VAR_foo</code>:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ export TF_VAR_ami_id=ami-0ee5157dd67ca79fc
+
+$ tofu apply</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Another option is to define the values for your variables in a <em>terraform.tfvars</em> file, as shown in
+
+<a href="03.html#example_tofu_ec2_tfvars">Example 16</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_tfvars" class="exampleblock">
+
+<div class="title">Example 16. An OpenTofu variables file (<em>ch2/tofu/ec2-instance/terraform.tfvars</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="hcl">ami_id = &quot;ami-01be7f51c631050b0&quot;</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you define this file and re-run <code>tofu apply</code>, it&#8217;ll automatically find the <code>ami_id</code> value, and won&#8217;t prompt you for
+
+it interactively.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The second thing the <code>apply</code> command will do is show you the <em>execution plan</em> (just <em>plan</em> for short), which will look
+
+something like this (truncated for readability):</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>OpenTofu will perform the following actions:
+
+
+
+  # aws_instance.sample_app will be created
+
+  + resource "aws_instance" "sample_app" {
+
+      + ami                                  = "ami-027600b6c9164ac31"
+
+      + instance_type                        = "t2.micro"
+
+      + user_data                            = "8695191206f8593f0a2c82459be7a5375fe398d0"
+
+      ... (truncated) ...
+
+    }
+
+
+
+  # aws_security_group.sample_app will be created
+
+  + resource "aws_security_group" "sample_app" {
+
+      + description            = "Allow HTTP traffic into the sample app"
+
+      + name                   = "sample-app-tofu"
+
+      ... (truncated) ...
+
+    }
+
+
+
+  # aws_security_group_rule.allow_http_inbound will be created
+
+  + resource "aws_security_group_rule" "allow_http_inbound" {
+
+      + cidr_blocks              = [
+
+          + "0.0.0.0/0",
+
+        ]
+
+      + from_port                = 8080
+
+      + protocol                 = "tcp"
+
+      + to_port                  = 8080
+
+      + type                     = "ingress"
+
+      ... (truncated) ...
+
+    }
+
+
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+
+
+Changes to Outputs:
+
+  + instance_id       = (known after apply)
+
+  + public_ip         = (known after apply)
+
+  + security_group_id = (known after apply)
+
+
+
+Do you want to perform these actions?
+
+  OpenTofu will perform the actions described above.
+
+  Only 'yes' will be accepted to approve.
+
+
+
+  Enter a value:</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The plan lets you see what OpenTofu will do before actually making any changes, and prompts you for confirmation before
+
+continuing. This is a great way to sanity-check your code before unleashing it onto the world. The plan output is
+
+similar to the output of the <code>diff</code> command that is part of Unix, Linux, and <code>git</code>: anything with a plus sign (+) will
+
+be created, anything with a minus sign (&#x2013;) will be deleted, and anything with a tilde sign (~) will be modified
+
+in place. Every time you run <code>apply</code>, OpenTofu will show you this execution plan; you can also get <em>just</em> the execution
+
+plan by using the <code>plan</code> command.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>In the preceding plan output, you can see that Tofu is planning on creating an EC2 Instance, security group, and
+
+security group rule, which is exactly what you want. Type <strong><code>yes</code></strong> and hit Enter to let OpenTofu proceed. You should see
+
+log output that looks like this:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Do you want to perform these actions?
+
+  OpenTofu will perform the actions described above.
+
+  Only 'yes' will be accepted to approve.
+
+
+
+  Enter a value: yes
+
+
+
+aws_security_group.sample_app: Creating...
+
+aws_security_group.sample_app: Creation complete after 2s [id=sg-087227914c9b3aa1e]
+
+aws_security_group_rule.allow_http_inbound: Creating...
+
+aws_instance.sample_app: Creating...
+
+aws_security_group_rule.allow_http_inbound: Creation complete after 0s [id=sgrule-2505725742]
+
+aws_instance.sample_app: Still creating... [10s elapsed]
+
+aws_instance.sample_app: Still creating... [20s elapsed]
+
+aws_instance.sample_app: Still creating... [30s elapsed]
+
+aws_instance.sample_app: Creation complete after 32s [id=i-0a4c593f4c9e645f8]
+
+
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+
+
+Outputs:
+
+
+
+instance_id = "i-0a4c593f4c9e645f8"
+
+public_ip = "3.138.110.216"
+
+security_group_id = "sg-087227914c9b3aa1e"</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You can see the three output variables from <em>outputs.tf</em> at the end, including the public IP address in <code>public_ip</code>.
+
+Wait a minute or two for the EC2 instance to boot up, copy the <code>public_ip</code>, open <a href="http://&lt;public_ip&gt;:8080" class="bare">http://&lt;public_ip&gt;:8080</a> in your web
+
+browser, and you should see the familiar "Hello, World!" yet again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you&#8217;re now using a provisioning tool to manage your infrastructure as code!</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_deploy_update_destroy_opentofu">Example: updating and destroying infrastructure using OpenTofu</h4>
+
+<div class="paragraph">
+
+<p>One of the big advantages of provisioning tools is that they support not just deploying infrastructure, but also
+
+updating and destroying it. For example, now that you&#8217;ve deployed an EC2 instance using OpenTofu, make a change to the
+
+configuration, such as adding a new <code>Test</code> tag with the value "update," as shown in
+
+<a href="03.html#example_tofu_ec2_update_tags">Example 17</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_update_tags" class="exampleblock">
+
+<div class="title">Example 17. Update the tags on the EC2 instance (<em>ch2/tofu/ec2-instance/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">  tags = {
+
+    Name = &quot;sample-app-tofu&quot;
+
+    Test = &quot;update&quot;
+
+  }</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Run the <code>apply</code> command again, and you should see output that looks like this (truncated for readability):</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu apply
+
+
+
+aws_security_group.sample_app: Refreshing state... [id=sg-066de0b621838841a]
+
+aws_security_group_rule.allow_http_inbound: Refreshing state... [id=sgrule-709981046]
+
+aws_instance.sample_app: Refreshing state... [id=i-0738de27643533e98]
+
+
+
+OpenTofu used the selected providers to generate the following execution plan.
+
+Resource actions are indicated with the following symbols:
+
+  ~ update in-place
+
+
+
+OpenTofu will perform the following actions:
+
+
+
+  # aws_instance.sample_app will be updated in-place
+
+  ~ resource "aws_instance" "sample_app" {
+
+        id                                   = "i-0738de27643533e98"
+
+      ~ tags                                 = {
+
+            "Name" = "sample-app-tofu"
+
+          + "Test" = "update"
+
+        }
+
+      ~ tags_all                             = {
+
+          + "Test" = "update"
+
+            # (1 unchanged element hidden)
+
+        }
+
+        # (31 unchanged attributes hidden)
+
+
+
+        # (8 unchanged blocks hidden)
+
+    }
+
+
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+
+
+Do you want to perform these actions?
+
+  OpenTofu will perform the actions described above.
+
+  Only 'yes' will be accepted to approve.
+
+
+
+  Enter a value:</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Every time you run OpenTofu, it records information about what infrastructure it created in an <em>OpenTofu state file</em>.
+
+OpenTofu manages state using <em>backends</em>; if you don&#8217;t specify a backend, the default is to use the <em>local backend</em>,
+
+which stores state locally in a <em>terraform.tfstate</em> file in the same folder as the OpenTofu module (you&#8217;ll see how to
+
+use other backends in <a href="06.html#how_to_set_up_ci_cd">Part 5</a>). This file contains a custom JSON format that records a mapping from the
+
+OpenTofu resources in your configuration files to the representation of those resources in the real world.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>For example, when you run <code>apply</code> the first on the <code>tofu</code> module, OpenTofu records in the state file the IDs of
+
+the EC2 instance, security group, security group rules, and any other resources it created. When you run <code>apply</code> again,
+
+you can see "Refreshing state" in the log output, which is OpenTofu updating itself on the latest status of the world.
+
+As a result, the new plan output that you see is the diff between what&#8217;s currently deployed in the real world and
+
+what&#8217;s in your OpenTofu code. The preceding diff shows that OpenTofu wants to create a single tag called Test, which is
+
+exactly what you want, so type <strong><code>yes</code></strong> and hit Enter, and you&#8217;ll see OpenTofu perform an update operation, updating the
+
+EC2 instance with your new tag.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you&#8217;re done testing, you can have OpenTofu undeploy everything it deployed before by running the <code>tofu destroy</code>
+
+command, which should give you log output that looks something like this (log output truncated for readability):</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu destroy
+
+
+
+OpenTofu will perform the following actions:
+
+
+
+  # aws_instance.sample_app will be destroyed
+
+  - resource "aws_instance" "sample_app" {
+
+      - ami                                  = "ami-01be7f51c631050b0" -&gt; null
+
+      - associate_public_ip_address          = true -&gt; null
+
+      - id                                   = "i-0738de27643533e98" -&gt; null
+
+      - instance_type                        = "t2.micro" -&gt; null
+
+      - public_ip                            = "18.188.174.48" -&gt; null
+
+      - user_data                            = "33483c1a13abd4e034532f2451fcc8285cceb789" -&gt; null
+
+      ... (truncated) ...
+
+    }
+
+
+
+  # aws_security_group.sample_app will be destroyed
+
+  - resource "aws_security_group" "sample_app" {
+
+      - description            = "Allow HTTP traffic into the sample app" -&gt; null
+
+      - id                     = "sg-066de0b621838841a" -&gt; null
+
+      ... (truncated) ...
+
+    }
+
+
+
+  # aws_security_group_rule.allow_http_inbound will be destroyed
+
+  - resource "aws_security_group_rule" "allow_http_inbound" {
+
+      - from_port              = 8080 -&gt; null
+
+      - protocol               = "tcp" -&gt; null
+
+      - to_port                = 8080 -&gt; null
+
+      - type                   = "ingress" -&gt; null
+
+      ... (truncated) ...
+
+    }
+
+
+
+Plan: 0 to add, 0 to change, 3 to destroy.
+
+
+
+Changes to Outputs:
+
+  - instance_id       = "i-0738de27643533e98" -&gt; null
+
+  - public_ip         = "18.188.174.48" -&gt; null
+
+  - security_group_id = "sg-066de0b621838841a" -&gt; null
+
+
+
+Do you really want to destroy all resources?
+
+  OpenTofu will destroy all your managed infrastructure, as shown above.
+
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+
+
+  Enter a value:</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you run <code>destroy</code>, OpenTofu shows you a <em>destroy plan</em>, which tells you about all the resources it&#8217;s about to
+
+delete. This gives you one last chance to check that you really want to delete this stuff before you actually do it.
+
+It goes without saying that you should rarely, if ever, run <code>destroy</code> in a production environment—there&#8217;s no "undo"
+
+for the <code>destroy</code> command. If everything looks good, type <strong><code>yes</code></strong> and hit Enter, and in a minute or two, OpenTofu will
+
+clean up everything it deployed.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for using OpenTofu:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>How would you have to tweak the OpenTofu code if you wanted to run multiple EC2 instances?</p>
+
+</li>
+
+<li>
+
+<p>Figure out how to configure the EC2 instance with an EC2 key pair so you can connect to it over SSH.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="opentofu_reusable_module">Example: deploy an EC2 instance using a reusable OpenTofu module</h4>
+
+<div class="paragraph">
+
+<p>There&#8217;s one more thing that you should take the time to learn about OpenTofu: the modules are <em>reusable</em>. In a general
+
+purpose programming language (e.g., JavaScript, Python, Java), you put reusable code in a function; in OpenTofu, you
+
+put reusable code in a module. You can then use that module multiple times to spin up many copies of the same
+
+infrastructure, without having to copy/paste the code.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>So far, you&#8217;ve been using the <code>ec2-instance</code> module as a <em>root module</em>, which is any module on which you run <code>apply</code>
+
+directly. However, you can also use it as a <em>resuable module</em>, which is a module meant to be included in other modules
+
+(e.g., in other root modules) as a means of code re-use.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Let&#8217;s give it a shot. First, create a folder called <em>modules</em> to store your reusable modules:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cd fundamentals-of-devops
+
+$ mkdir -p ch2/tofu/modules</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, move the <code>ec2-instance</code> module into the <em>modules</em> folder:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ mv ch2/tofu/ec2-instance ch2/tofu/modules/ec2-instance</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, create a folder called <em>live</em> to store your root modules, as these modules configure your live environments:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ mkdir -p ch2/tofu/live</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Inside the <em>live</em> folder, create a new folder called <em>sample-app</em>, which will house the new root module you&#8217;ll use
+
+to deploy the sample app:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ mkdir -p ch2/tofu/live/sample-app
+
+$ cd ch2/tofu/live/sample-app</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>In the <em>live/sample-app</em> folder, create a <em>main.tf</em> file with the initial contents shown in
+
+<a href="03.html#example_tofu_ec2_module_usage_initial">Example 18</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_initial" class="exampleblock">
+
+<div class="title">Example 18. Basic module usage (<em>ch2/tofu/live/sample-app/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>To use one module from another, all you need is the following:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>A <code>module</code> block.</p>
+
+</li>
+
+<li>
+
+<p>A <code>source</code> parameter that contains the file path of the module you want to use: the preceding code sets <code>source</code> to
+
+the relative file path to the <code>ec2-instance</code> module in the <em>modules</em> folder.</p>
+
+</li>
+
+<li>
+
+<p>If the module defines input variables, you can set those as parameters within the <code>module</code> block. The <code>ec2-instance</code>
+
+module defines an input variable called <code>ami_id</code>, which you&#8217;ll need to set to the <code>ami_id</code> to the ID of the AMI you
+
+built in the server templating section earlier in this blog post.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you were to run <code>apply</code> on this code, it would use the <code>ec2-instance</code> module code to create a single EC2 instance.
+
+But the beauty of code reuse is that you can use the module multiple times, as shown in
+
+<a href="03.html#example_tofu_ec2_module_usage_multiple">Example 19</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_multiple" class="exampleblock">
+
+<div class="title">Example 19. Basic module usage (<em>ch2/tofu/live/sample-app/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+}
+
+
+
+module &quot;sample_app_2&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This code uses two <code>module</code> blocks, so if you run <code>apply</code> on it, it will create two EC2 instances. If you had three
+
+<code>module</code> blocks, it would create three EC2 instances; four <code>module</code> blocks would create four EC2 instances; and so on.
+
+And, of course, you can mix and match different modules, include modules in other modules, and so on. It&#8217;s not unusual
+
+for modules to be reused dozens or hundreds of times across a company, so that you put in the work to create
+
+a module that meets your company&#8217;s needs once, and then use it over and over again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>However, there are two changes you need to make to the <code>ec2-instance</code> module in order for it to work effectively as a
+
+reusable module.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The first change is to <em>namespace</em> all the resources created by the <code>ec2-instance</code> module. Currently, it hard-codes all
+
+names, such as the name of the security group, to "sample-app-tofu." AWS requires all security group names to be unique,
+
+so if you ran <code>apply</code> on these two <code>module</code> blocks, you&#8217;d get an error due to the name conflicts. To fix this,
+
+introduce a <code>name</code> input variable in <code>ec2-instance/variables.tf</code>, as shown in <a href="03.html#example_tofu_ec2_module_name">Example 20</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_name" class="exampleblock">
+
+<div class="title">Example 20. Add a <code>name</code> input variable to the <code>ec2-instance</code> module (<em>ch2/tofu/modules/ec2-instance/variables.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">variable &quot;name&quot; {
+
+  description = &quot;The base name for the instance and all other resources&quot;
+
+  type        = string
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, update the <code>ec2-instance</code> module to use the <code>name</code> input variable everywhere that was hard-coded to
+
+"sample-app-tofu," including the <code>aws_security_group</code> resource and the <code>tags</code> in the <code>aws_instance</code> resource, as shown
+
+in <a href="03.html#example_tofu_ec2_module_use_name">Example 21</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_use_name" class="exampleblock">
+
+<div class="title">Example 21. Use the <code>name</code> input variable in the <code>ec2-instance</code> module (<em>ch2/tofu/modules/ec2-instance/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">resource &quot;aws_security_group&quot; &quot;sample_app&quot; {
+
+  name        = var.name
+
+  description = &quot;Allow HTTP traffic into ${var.name}&quot;
+
+}
+
+
+
+resource &quot;aws_instance&quot; &quot;sample_app&quot; {
+
+
+
+  # ... (other params omitted) ...
+
+
+
+  tags = {
+
+    Name = var.name
+
+  }
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now, back in <code>sample-app</code>, you can set the <code>name</code> parameter to different values in each of the <code>module</code>
+
+blocks, as shown in <a href="03.html#example_tofu_ec2_module_usage_name">Example 22</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_name" class="exampleblock">
+
+<div class="title">Example 22. Set the <code>name</code> input to different values in each <code>module</code> block (<em>ch2/tofu/live/sample-app/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+
+
+  name = &quot;sample-app-tofu-1&quot;
+
+}
+
+
+
+module &quot;sample_app_2&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+
+
+  name = &quot;sample-app-tofu-2&quot;
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now you&#8217;ll get two EC2 instances, one with all resources named "sample-app-tofu-1," and the other with all resources
+
+named "sample-app-tofu-2."</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The second change is to remove the <code>provider</code> block from the <code>ec2-instance</code> module. Having a <code>provider</code> block inside
+
+a module isn&#8217;t wrong per se, but typically, reusable modules do <em>not</em> declare <code>provider</code> blocks, and instead inherit
+
+those from the root module. This allows the <code>provider</code> block to be configured in different ways in different usages of
+
+the module: e.g., one usage might configure the <code>provider</code> to use a different region, another usage might configure it
+
+to a different AWS account, and so on. All you need to do is to move the <code>provider</code> block from the <code>ec2-instance</code>
+
+(reusable) module to the <code>sample-app</code> (root) module, as shown in <a href="03.html#example_tofu_ec2_module_usage_provider">Example 23</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_provider" class="exampleblock">
+
+<div class="title">Example 23. Move the <code>provider</code> block to the <code>sample-app</code> module (<em>ch2/tofu/live/sample-app/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+
+  region = &quot;us-east-2&quot;
+
+}
+
+
+
+module &quot;sample_app_1&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+
+
+  name = &quot;sample-app-tofu-1&quot;
+
+}
+
+
+
+module &quot;sample_app_2&quot; {
+
+  source = &quot;../../modules/ec2-instance&quot;
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = &quot;ami-09a9ad4735def0515&quot;
+
+
+
+  name = &quot;sample-app-tofu-2&quot;
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>One last step: create an <em>outputs.tf</em> file in the <em>sample-app</em> folder with the contents shown in
+
+<a href="03.html#example_tofu_ec2_module_usage_outputs">Example 24</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_outputs" class="exampleblock">
+
+<div class="title">Example 24. Proxy the output variables from the <code>ec2-instance</code> module (<em>ch2/tofu/live/sample-app/outputs.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;sample_app_1_public_ip&quot; {
+
+  value = module.sample_app_1.public_ip
+
+}
+
+
+
+output &quot;sample_app_2_public_ip&quot; {
+
+  value = module.sample_app_2.public_ip
+
+}
+
+
+
+output &quot;sample_app_1_instance_id&quot; {
+
+  value = module.sample_app_1.instance_id
+
+}
+
+
+
+output &quot;sample_app_2_instance_id&quot; {
+
+  value = module.sample_app_2.instance_id
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The preceding code "proxies" the output variables from the underlying <code>ec2-instance</code> module usages so that you can see
+
+those outputs when you run <code>apply</code> on the <code>sample-app</code> module.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>OK, you&#8217;re finally ready to run this code:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu init
+
+$ tofu apply</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>When <code>apply</code> completes, you should have two EC2 instances running, and the output variables should show their IPs and
+
+instance IDs. If you open <code><a href="http://&lt;IP&gt;:8080" class="bare">http://&lt;IP&gt;:8080</a></code> in your browser, where <code>&lt;IP&gt;</code> is the public IP of either instance, you
+
+should see the familiar "Hello, World!" text. When you&#8217;re done experimenting, run <code>tofu destroy</code> to clean everything up
+
+again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>There&#8217;s one more trick with OpenTofu modules: the <code>source</code> parameter can be set to not only a local file path, but also
+
+to a URL. For example, the blog post series&#8217;s <a href="https://github.com/brikis98/fundamentals-of-devops-code">sample code repo in GitHub</a> includes an
+
+<code>ec2-instance</code> module that is more or less identical to your own <code>ec2-instance</code> module. You can use the module from the
+
+series&#8217;s sample code repo by updating the <code>source</code> URLs as shown in
+
+<a href="03.html#example_tofu_ec2_module_usage_source_url">Example 25</a>:</p>
+
+</div>
+
+<div id="example_tofu_ec2_module_usage_source_url" class="exampleblock">
+
+<div class="title">Example 25. Set the <code>source</code> parameters to GitHub URLs (<em>ch2/tofu/live/sample-app/main.tf</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+
+  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch2/tofu/modules/ec2-instance&quot;
+
+
+
+  # ... (other params omitted) ...
+
+
+
+}</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The preceding code sets the <code>source</code> URL to a GitHub URL. Note the intentional use of two slashes (<code>//</code>): the
+
+part to the left of the two slashes specifies the GitHub repo and the part to the right of the two slashes specifies
+
+the subfolder within that repo.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Run <code>init</code> on this code one more time:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ tofu init
+
+
+
+Initializing the backend...
+
+Initializing modules...
+
+Downloading git::https://github.com/brikis98/fundamentals-of-devops-code.git for sample_app_1...
+
+Downloading git::https://github.com/brikis98/fundamentals-of-devops-code.git for sample_app_2...
+
+
+
+Initializing provider plugins...</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The <code>init</code> command is responsible for downloading provider code and module code, and you can see in the preceding
+
+output that, this time, it downloaded the module code from GitHub.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you now run <code>apply</code>, you should get the exact same two EC2 instances as before. When you&#8217;re done experimenting, run
+
+<code>destroy</code> to clean everything up.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>You&#8217;ve now seen the power of reusable modules. A common pattern at many companies is for the Ops team to define and
+
+manage a library of vetted, reusable OpenTofu modules—e.g., one module to deploy servers, another to deploy databases,
+
+another to configure networking, and so on—and for the Dev teams to use these modules as a <em>self-service</em> way to deploy
+
+and manage the infrastructure they need for their apps.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This blog post series will make use of this pattern as well in future chapters: instead of writing every line of code
+
+from scratch, you&#8217;ll be able to use modules directly from this series&#8217;s sample code repo to deploy the
+
+infrastructure you need for each chapter.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for using OpenTofu:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Figure out how to update your <code>ec2-instance</code> module to make it more configurable: e.g., add input variables to
+
+configure the instance type it uses, the port it opens up for HTTP requests, and so on.</p>
+
+</li>
+
+<li>
+
+<p>Look up how to use <em>data sources</em> in OpenTofu to find the ID of your AMI automatically, instead of having to provide
+
+the ID manually.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_provisioning_tools_stack_up">How provisioning tools stack up</h4>
+
+<div class="paragraph">
+
+<p>So, how do provisioning tools stack up using the IaC category criteria from before?</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">CRUD</dt>
+
+<dd>
+
+<p>Most provisioning tools have full support all four CRUD operations. For example, you just saw OpenTofu create an EC2
+
+instance, read the EC2 instance ("Refreshing state"), update the EC2 instance (to add a tag), and delete the EC2
+
+instance.</p>
+
+</dd>
+
+<dt class="hdlist1">Scale</dt>
+
+<dd>
+
+<p>Provisioning tools scale very well. For example, the self-service approach mentioned in the previous section—where
+
+you have a library of reusable modules that is managed by the Ops team and used by the Dev teams—can scale to
+
+thousands of developers and tens of thousands of resources, something that would be a nightmare to manage with ad
+
+hoc scripts.</p>
+
+</dd>
+
+<dt class="hdlist1">Idempotency and error handling</dt>
+
+<dd>
+
+<p>Whereas most ad hoc scripts are <em>procedural</em>, where you specify step by step how to achieve some desired end state,
+
+most provisioning tools are <em>declarative</em>, where you specify the end state you want, and the provisioning itself
+
+tool automatically figures out how to get you from your current state to that desired end state. As a result, most
+
+provisioning tools are idempotent and can handle errors automatically, based on their inherent design. For example,
+
+you already saw in the CRUD discussion that you can re-run OpenTofu multiple times, and it will refresh its state,
+
+and come up with an execution plan to try to make the state of the world match the desired state in your code,
+
+handling changes in your code, changes in the outside world, and errors along the way.</p>
+
+</dd>
+
+<dt class="hdlist1">Consistency</dt>
+
+<dd>
+
+<p>Most provisioning tools enforce a consistent, predictable structure to the code, including documentation,
+
+file layout, clearly named parameters, secrets management, and so on.</p>
+
+</dd>
+
+<dt class="hdlist1">Verbosity</dt>
+
+<dd>
+
+<p>The declarative nature of provisioning tools and the custom DSLs they provide typically result in concise code,
+
+especially considering that code supports all CRUD operations, scale, idempotency, and error handling out-of-the-box.
+
+The OpenTofu code for deploying an EC2 instance is about half the length of the Bash code, even though it does
+
+considerably more, and the more complex the infrastructure you&#8217;re managing, the larger this gap becomes.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>This can be summarized as follows:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #4</div>
+
+<div class="paragraph">
+
+<p>Provisioning tools are great for deploying and managing servers and infrastructure.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_using_multiple_iac_tools_together">Using multiple IaC tools together</h2>
+
+<div class="paragraph">
+
+<p>Although I&#8217;ve been comparing IaC tools this entire blog post, here&#8217;s the reality:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #5</div>
+
+<div class="paragraph">
+
+<p>You usually need to use multiple IaC tools together to manage your infrastructure.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Each of the tools you&#8217;ve seen has strengths and weaknesses, so it&#8217;s your job to pick the right tools for the job. The
+
+following sections show three common combinations I&#8217;ve seen work well at a number of companies.</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_provisioning_plus_configuration_management">Provisioning plus configuration management</h3>
+
+<div class="paragraph">
+
+<p>Example: OpenTofu and Ansible. You use OpenTofu to deploy all the underlying infrastructure, including the network
+
+topology (i.e., virtual private clouds [VPCs], subnets, route tables), data stores (e.g., MySQL, Redis), load balancers,
+
+and servers. You then use Ansible to deploy your apps on top of those servers, as depicted in <a href="03.html#tofu_and_ansible">Figure 19</a>.</p>
+
+</div>
+
+<div id="tofu_and_ansible" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/tofu-and-ansible.png" alt="OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers">
+
+</div>
+
+<div class="title">Figure 19. OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is an easy approach to get started with and there are many ways to get Ansible and OpenTofu to work together
+
+(e.g., OpenTofu adds tags to your servers, and Ansible uses an inventory plugin to automatically discover servers with
+
+those tags). The major downside is that using Ansible typically means mutable infrastructure, rather than immutable, so
+
+as your codebase, infrastructure, and team grow, maintenance and debugging can become more difficult.</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_provisioning_plus_server_templating">Provisioning plus server templating</h3>
+
+<div class="paragraph">
+
+<p>Example: OpenTofu and Packer. You use Packer to package your apps as VM images. You then use OpenTofu to deploy servers
+
+with these VM images and the rest of your infrastructure, including the network topology (i.e., VPCs, subnets, route
+
+tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in <a href="03.html#tofu_and_packer">Figure 20</a>.</p>
+
+</div>
+
+<div id="tofu_and_packer" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/tofu-and-packer.png" alt="OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers">
+
+</div>
+
+<div class="title">Figure 20. OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is also an easy approach to get started with: in fact, you already had a chance to try this combination out
+
+earlier in this post. Moreover, this is an immutable infrastructure approach, which will
+
+make maintenance easier. However, there are two major drawbacks. First, VMs can take a long time to build and  deploy,
+
+which will slow down your iteration speed. Second, as you&#8217;ll see in later posts, the
+
+deployment strategies you can implement with OpenTofu are limited (e.g., you can&#8217;t implement blue-green deployment
+
+natively in OpenTofu), so you either end up writing lots of complicated deployment scripts or you turn to orchestration
+
+tools, as described next.</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_provisioning_plus_server_templating_plus_orchestration">Provisioning plus server templating plus orchestration</h3>
+
+<div class="paragraph">
+
+<p>Example: OpenTofu, Packer, Docker, and Kubernetes.
+
+You use Packer to create a VM image that has Docker and Kubernetes agents installed. You then use OpenTofu to deploy
+
+a cluster of servers, each of which runs this VM image, and the rest of your infrastructure, including the
+
+network topology (i.e., VPCs, subnets, route tables), data stores (e.g., MySQL, Redis), and load balancers. Finally,
+
+when the cluster of servers boots up, it forms a Kubernetes cluster that you use to run and manage your Dockerized
+
+applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_docker">Figure 21</a>.</p>
+
+</div>
+
+<div id="tofu_and_packer_and_kubernetes_and_docker" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch2/tofu-packer-docker-k8s.png" alt="OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers">
+
+</div>
+
+<div class="title">Figure 21. OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The advantage of this approach is that Docker images build fairly quickly, you can run and test them on your local
+
+computer, and you can take advantage of all of the built-in functionality of Kubernetes, including various deployment
+
+strategies, auto healing, auto scaling, and so on. The drawback is the added complexity, both in terms of extra
+
+infrastructure to run (Kubernetes clusters are difficult and expensive to deploy and operate, though most major cloud
+
+providers now provide managed Kubernetes services, which can offload some of this work) and in terms of several extra
+
+layers of abstraction (Kubernetes, Docker, Packer) to learn, manage, and debug.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>You&#8217;ll see an example of this approach in <a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_conclusion_2">Conclusion</h2>
+
+<div class="paragraph">
+
+<p>You now understand how to manage your infrastructure as code. Instead of clicking around a web UI, which is tedious and
+
+error-prone, you can automate the process, making if faster and more reliable. Moreover, whereas manual deployments
+
+always require someone at your company to do the busywork, with IaC, you can reuse code written by others, including
+
+both open source code (e.g., see <a href="https://galaxy.ansible.com/ui/">Ansible Galaxy</a>,
+
+<a href="https://hub.docker.com/">Docker Hub</a>, and the <a href="https://registry.terraform.io/">Terraform Registry</a>) and commercial code
+
+(e.g., see the <a href="https://gruntwork.io/infrastructure-as-code-library/">Gruntwork Infrastructure as Code Library</a>).
+
+This also includes the examples in the rest of this blog post series, most of which will be defined as code: you&#8217;ll see
+
+snippets of the code in the series itself, and you can find the fully-working examples in the
+
+<a href="https://github.com/brikis98/fundamentals-of-devops-code">sample code repo in GitHub</a>.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>As a general rule, you want to pick the right tool for the job. Here are the 5 key takeaways you&#8217;ve seen
+
+throughout the chapter to help you pick the right category of IaC tool:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Ad hoc scripts are great for small, one-off tasks, but not for managing all your infrastructure as code.</p>
+
+</li>
+
+<li>
+
+<p>Configuration management tools are great for managing the configuration of servers, but not for deploying the servers
+
+themselves, or other infrastructure.</p>
+
+</li>
+
+<li>
+
+<p>Server templating tools are great for managing the configuration of servers with immutable infrastructure practices.</p>
+
+</li>
+
+<li>
+
+<p>Provisioning tools are great for deploying and managing servers and infrastructure.</p>
+
+</li>
+
+<li>
+
+<p>You usually need to use multiple IaC tools together to manage your infrastructure.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>If the job you&#8217;re doing is provisioning infrastructure, you&#8217;ll probably want to use a provisioning tool. If the job
+
+you&#8217;re doing is configuring servers, you&#8217;ll probably want to use a server templating or configuration management tool.
+
+And as most real-world software delivery setups require you to do multiple jobs, you&#8217;ll most likely have to combine
+
+several tools together: e.g., provisioning plus server templating.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>It&#8217;s worth remembering that there is also a lot of variety within an IaC category: e.g., there are big differences
+
+between Ansible and Chef within the configuration management category, and between OpenTofu and CloudFormation within
+
+the provisioning tool category. For a more detailed comparison of specific tools, have a look at
+
+<a href="https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c">this
+
+comparison of Chef, Puppet, Ansible, Pulumi, CloudFormation, and Terraform/OpenTofu</a>.</p>
+
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Note</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Going deeper on OpenTofu / Terraform</div>
+
+<div class="paragraph">
+
+<p>Many of the examples in the rest of this blog post series involve provisioning infrastructure, so these examples will
+
+be defined using a provisioning tool. I&#8217;ve picked OpenTofu / Terraform as the provisioning tool for most of these
+
+examples, so you may want to become a bit more familiar with this toolset. The best way to do that, with apologies for
+
+a bit of self-promotion, is to grab a copy of my other book,
+
+<a href="https://www.oreilly.com/library/view/terraform-up-and/9781098116736/"><em>Terraform: Up &amp; Running</em></a>.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Being able to run a server with your app as code is a huge advantage over managing it manually, but a single server is
+
+also a single point of failure. What if it crashes? What if the load exceeds the capacity of a single server? How do you
+
+roll out changes without downtime? All of these topics are the focus of the next blog post,
+
+<a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div id="footer">
+
+<div id="footer-text">
+
+Last updated 2024-05-20 14:12:46 -0400
+
+</div>
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script>
+  anchors.add();
+</script>
+
+</body>
+
+</html>

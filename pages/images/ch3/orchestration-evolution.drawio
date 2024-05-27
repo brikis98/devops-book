@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net" modified="2024-04-16T15:30:53.754Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="BrWhMYMLsDU9fk9Z3j_j" version="21.5.2" type="device">
+  <diagram name="Page-1" id="cTKs301DgG9_2S9JDV6R">
+    <mxGraphModel dx="1912" dy="1060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-10" value="Hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="320" y="510" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-11" value="Host OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="460" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-12" value="Host user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="410" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-14" value="Virtual machine hypervisor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-15" value="Virtual Machine" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="320" y="110" width="80" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-16" value="Virtualized hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-17" value="Guest OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-18" value="Guest user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="200" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-19" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="150" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-20" value="Virtual Machine" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="410" y="110" width="80" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-21" value="Virtualized hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-22" value="Guest OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-23" value="Guest user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="200" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-24" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="150" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-25" value="Virtual Machine" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="500" y="110" width="80" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-26" value="Virtualized hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-27" value="Guest OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-28" value="Guest user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="200" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-29" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="150" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-30" value="Hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="20" y="510" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-31" value="Host OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="20" y="460" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-32" value="Host user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="20" y="410" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-33" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="20" y="360" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-34" value="Hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="620" y="510" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-35" value="Host OS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="460" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-36" value="Host user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="410" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-37" value="Container engine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="620" y="360" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-38" value="Container" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="620" y="220" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-41" value="Virtualized user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="630" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-42" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="630" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-53" value="Container" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="710" y="220" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-54" value="Virtualized user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-55" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-56" value="Container" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="800" y="220" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-57" value="Virtualized user space" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CKM-afRGNhMGAmo_8pNI-58" value="App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="250" width="60" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

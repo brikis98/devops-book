@@ -1,0 +1,3645 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Asciidoctor 2.0.16">
+
+<title>Part 1. How to Deploy Your App</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+
+<style>
+
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+
+/* Uncomment the following line when using as a custom stylesheet */
+
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+
+a{background:none}
+
+a:focus{outline:thin dotted}
+
+a:active,a:hover{outline:0}
+
+h1{font-size:2em;margin:.67em 0}
+
+b,strong{font-weight:bold}
+
+abbr{font-size:.9em}
+
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+
+dfn{font-style:italic}
+
+hr{height:0}
+
+mark{background:#ff0;color:#000}
+
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+
+pre{white-space:pre-wrap}
+
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+
+small{font-size:80%}
+
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+
+sup{top:-.5em}
+
+sub{bottom:-.25em}
+
+img{border:0}
+
+svg:not(:root){overflow:hidden}
+
+figure{margin:0}
+
+audio,video{display:inline-block}
+
+audio:not([controls]){display:none;height:0}
+
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+
+legend{border:0;padding:0}
+
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+
+button,input{line-height:normal}
+
+button,select{text-transform:none}
+
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+
+button[disabled],html input[disabled]{cursor:default}
+
+input[type=checkbox],input[type=radio]{padding:0}
+
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+
+textarea{overflow:auto;vertical-align:top}
+
+table{border-collapse:collapse;border-spacing:0}
+
+*,::before,::after{box-sizing:border-box}
+
+html,body{font-size:100%}
+
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+
+a:hover{cursor:pointer}
+
+img,object,embed{max-width:100%;height:auto}
+
+object,embed{height:100%}
+
+img{-ms-interpolation-mode:bicubic}
+
+.left{float:left!important}
+
+.right{float:right!important}
+
+.text-left{text-align:left!important}
+
+.text-right{text-align:right!important}
+
+.text-center{text-align:center!important}
+
+.text-justify{text-align:justify!important}
+
+.hide{display:none}
+
+img,object,svg{display:inline-block;vertical-align:middle}
+
+textarea{height:auto;min-height:50px}
+
+select{width:100%}
+
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+
+a:hover,a:focus{color:#1d4b8f}
+
+a img{border:0}
+
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+
+h1{font-size:2.125em}
+
+h2{font-size:1.6875em}
+
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+
+h4,h5{font-size:1.125em}
+
+h6{font-size:1em}
+
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+
+em,i{font-style:italic;line-height:inherit}
+
+strong,b{font-weight:bold;line-height:inherit}
+
+small{font-size:60%;line-height:inherit}
+
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+
+ul,ol{margin-left:1.5em}
+
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+
+ul.square{list-style-type:square}
+
+ul.circle{list-style-type:circle}
+
+ul.disc{list-style-type:disc}
+
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+
+dl dt{margin-bottom:.3125em;font-weight:bold}
+
+dl dd{margin-bottom:1.25em}
+
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+
+h1{font-size:2.75em}
+
+h2{font-size:2.3125em}
+
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+
+h4{font-size:1.4375em}}
+
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+
+table thead,table tfoot{background:#f7f8f7}
+
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+
+table tr.even,table tr.alt{background:#f8f8f7}
+
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+
+.center{margin-left:auto;margin-right:auto}
+
+.stretch{width:100%}
+
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+
+.clearfix::after,.float-group::after{clear:both}
+
+:not(pre).nobreak{word-wrap:normal}
+
+:not(pre).nowrap{white-space:nowrap}
+
+:not(pre).pre-wrap{white-space:pre-wrap}
+
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+
+pre>code{display:block}
+
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+
+em em{font-style:normal}
+
+strong strong{font-weight:400}
+
+.keyseq{color:rgba(51,51,51,.8)}
+
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+
+.keyseq kbd:first-child{margin-left:0}
+
+.keyseq kbd:last-child{margin-right:0}
+
+.menuseq,.menuref{color:#000}
+
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+
+.menuseq{word-spacing:-.02em}
+
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+
+b.button::before{content:"[";padding:0 3px 0 2px}
+
+b.button::after{content:"]";padding:0 2px 0 3px}
+
+p a>code:hover{color:rgba(0,0,0,.9)}
+
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+
+#content{margin-top:1.25em}
+
+#content::before{content:none}
+
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+
+#header .details span:first-child{margin-left:-.125em}
+
+#header .details span.email a{color:rgba(0,0,0,.85)}
+
+#header .details br{display:none}
+
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+
+#header #revnumber{text-transform:capitalize}
+
+#header #revnumber::after{content:"\00a0"}
+
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+
+#toc>ul{margin-left:.125em}
+
+#toc ul.sectlevel0>li>a{font-style:italic}
+
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+
+#toc li{line-height:1.3334;margin-top:.3334em}
+
+#toc a{text-decoration:none}
+
+#toc a:active{text-decoration:underline}
+
+#toctitle{color:#7a2518;font-size:1.2em}
+
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+
+body.toc2{padding-left:15em;padding-right:0}
+
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+
+#toc.toc2{width:20em}
+
+#toc.toc2 #toctitle{font-size:1.375em}
+
+#toc.toc2>ul{font-size:.95em}
+
+#toc.toc2 ul ul{padding-left:1.25em}
+
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+
+#content #toc>:first-child{margin-top:0}
+
+#content #toc>:last-child{margin-bottom:0}
+
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+
+#content{margin-bottom:.625em}
+
+.sect1{padding-bottom:.625em}
+
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+
+.sect1{padding-bottom:1.25em}}
+
+.sect1:last-child{padding-bottom:0}
+
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+
+details{margin-left:1.25rem}
+
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+
+.admonitionblock>table td.icon{text-align:center;width:80px}
+
+.admonitionblock>table td.icon img{max-width:none}
+
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+
+.exampleblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child{margin-bottom:0}
+
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+
+.sidebarblock>:first-child{margin-top:0}
+
+.sidebarblock>:last-child{margin-bottom:0}
+
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+
+.listingblock>.content{position:relative}
+
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+
+.listingblock:hover code[data-lang]::before{display:block}
+
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+
+.listingblock pre.highlightjs{padding:0}
+
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+
+.listingblock pre.prettyprint{border-width:0}
+
+.prettyprint{background:#f7f7f8}
+
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+
+pre.prettyprint li code[data-lang]::before{opacity:1}
+
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+
+table.linenotable td.code{padding-left:.75em}
+
+table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+
+pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
+
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+
+.quoteblock blockquote{margin:0;padding:0;border:0}
+
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+
+.verseblock{margin:0 1em 1.25em}
+
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+
+.verseblock pre strong{font-weight:400}
+
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+
+p.tableblock:last-child{margin-bottom:0}
+
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+
+table.grid-all>*>tr>*{border-width:1px}
+
+table.grid-cols>*>tr>*{border-width:0 1px}
+
+table.grid-rows>*>tr>*{border-width:1px 0}
+
+table.frame-all{border-width:1px}
+
+table.frame-ends{border-width:1px 0}
+
+table.frame-sides{border-width:0 1px}
+
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+
+th.halign-left,td.halign-left{text-align:left}
+
+th.halign-right,td.halign-right{text-align:right}
+
+th.halign-center,td.halign-center{text-align:center}
+
+th.valign-top,td.valign-top{vertical-align:top}
+
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+
+th.valign-middle,td.valign-middle{vertical-align:middle}
+
+table thead th,table tfoot th{font-weight:bold}
+
+tbody tr th{background:#f7f8f7}
+
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+
+p.tableblock>code:only-child{background:none;padding:0}
+
+p.tableblock{font-size:1em}
+
+ol{margin-left:1.75em}
+
+ul li ol{margin-left:1.5em}
+
+dl dd{margin-left:1.125em}
+
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+
+ul.unstyled,ol.unstyled{margin-left:0}
+
+ul.checklist>li>p:first-child{margin-left:-1em}
+
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+
+ul.inline>li{margin-left:1.25em}
+
+.unstyled dl dt{font-weight:400;font-style:normal}
+
+ol.arabic{list-style-type:decimal}
+
+ol.decimal{list-style-type:decimal-leading-zero}
+
+ol.loweralpha{list-style-type:lower-alpha}
+
+ol.upperalpha{list-style-type:upper-alpha}
+
+ol.lowerroman{list-style-type:lower-roman}
+
+ol.upperroman{list-style-type:upper-roman}
+
+ol.lowergreek{list-style-type:lower-greek}
+
+.hdlist>table,.colist>table{border:0;background:none}
+
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+
+td.hdlist2{word-wrap:anywhere}
+
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+
+.colist td:not([class]):first-child img{max-width:none}
+
+.colist td:not([class]):last-child{padding:.25em 0}
+
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+
+.imageblock.left{margin:.25em .625em 1.25em 0}
+
+.imageblock.right{margin:.25em 0 1.25em .625em}
+
+.imageblock>.title{margin-bottom:0}
+
+.imageblock.thumb,.imageblock.th{border-width:6px}
+
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+
+.image.left{margin-right:.625em}
+
+.image.right{margin-left:.625em}
+
+a.image{text-decoration:none;display:inline-block}
+
+a.image object{pointer-events:none}
+
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+
+#footnotes .footnote:last-of-type{margin-bottom:0}
+
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+
+.gist .file-data>table td.line-data{width:99%}
+
+div.unbreakable{page-break-inside:avoid}
+
+.big{font-size:larger}
+
+.small{font-size:smaller}
+
+.underline{text-decoration:underline}
+
+.overline{text-decoration:overline}
+
+.line-through{text-decoration:line-through}
+
+.aqua{color:#00bfbf}
+
+.aqua-background{background:#00fafa}
+
+.black{color:#000}
+
+.black-background{background:#000}
+
+.blue{color:#0000bf}
+
+.blue-background{background:#0000fa}
+
+.fuchsia{color:#bf00bf}
+
+.fuchsia-background{background:#fa00fa}
+
+.gray{color:#606060}
+
+.gray-background{background:#7d7d7d}
+
+.green{color:#006000}
+
+.green-background{background:#007d00}
+
+.lime{color:#00bf00}
+
+.lime-background{background:#00fa00}
+
+.maroon{color:#600000}
+
+.maroon-background{background:#7d0000}
+
+.navy{color:#000060}
+
+.navy-background{background:#00007d}
+
+.olive{color:#606000}
+
+.olive-background{background:#7d7d00}
+
+.purple{color:#600060}
+
+.purple-background{background:#7d007d}
+
+.red{color:#bf0000}
+
+.red-background{background:#fa0000}
+
+.silver{color:#909090}
+
+.silver-background{background:#bcbcbc}
+
+.teal{color:#006060}
+
+.teal-background{background:#007d7d}
+
+.white{color:#bfbfbf}
+
+.white-background{background:#fafafa}
+
+.yellow{color:#bfbf00}
+
+.yellow-background{background:#fafa00}
+
+span.icon>.fa{cursor:default}
+
+a span.icon>.fa{cursor:inherit}
+
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+
+.conum[data-value] *{color:#fff!important}
+
+.conum[data-value]+b{display:none}
+
+.conum[data-value]::after{content:attr(data-value)}
+
+pre .conum[data-value]{position:relative;top:-.125em}
+
+b.conum *{color:inherit!important}
+
+.conum:not([data-value]):empty{display:none}
+
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+
+p{margin-bottom:1.25rem}
+
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+
+.print-only{display:none!important}
+
+@page{margin:1.25cm .75cm}
+
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+
+html{font-size:80%}
+
+a{color:inherit!important;text-decoration:underline!important}
+
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+
+abbr[title]{border-bottom:1px dotted}
+
+abbr[title]::after{content:" (" attr(title) ")"}
+
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+
+thead{display:table-header-group}
+
+svg{max-width:100%}
+
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+
+#header,#content,#footnotes,#footer{max-width:none}
+
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+
+body.book #header{text-align:center}
+
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+
+body.book #header .details{border:0!important;display:block;padding:0!important}
+
+body.book #header .details span:first-child{margin-left:0!important}
+
+body.book #header .details br{display:block}
+
+body.book #header .details br+span::before{content:none!important}
+
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+
+.listingblock code[data-lang]::before{display:block}
+
+#footer{padding:0 .9375em}
+
+.hide-on-print{display:none!important}
+
+.print-only{display:block!important}
+
+.hide-for-print{display:none!important}
+
+.show-for-print{display:inherit!important}}
+
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+
+.sect1{padding:0!important}
+
+.sect1+.sect1{border:0}
+
+#footer{background:none}
+
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+</style>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<style>
+h1 {
+    margin-bottom: 50px;
+}
+h2 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+pre {
+    line-height: 12px !important;
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+}
+
+#toc-dynamic>ul {
+    margin: 0;
+}
+</style>
+
+</head>
+
+<body class="book" data-bs-spy="scroll" data-bs-target="#toc-dynamic" data-bs-smooth-scroll="true" tabindex="0">
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <nav id="toc-dynamic" class="sticky-top vh-100" style="overflow: scroll; margin-top: 25px;">
+          <a href="index.html" class="h6 text-decoration-none">Fundamentals of DevOps and Software Delivery</a>
+          <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#how_to_deploy_your_app" class="nav-link">1. How to Deploy Your App</a>
+</li>
+
+<li class="nav-item"><a href="#_deploying_an_app_on_your_own_computer" class="nav-link">1.1. Deploying an app on your own computer</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_run_sample_app_locally" class="nav-link">1.1.1. Example: running the sample app locally</a></li>
+
+<li class="nav-item"><a href="#_exposing_an_app_on_your_computer_to_users_not_recommended" class="nav-link">1.1.2. Exposing an app on your computer to users (not recommended)</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_deploying_an_app_on_a_server" class="nav-link">1.2. Deploying an app on a server</a></li>
+
+<li class="nav-item"><a href="#_deploying_on_prem_vs_in_the_cloud" class="nav-link">1.3. Deploying on prem vs in the cloud</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_when_to_go_with_the_cloud" class="nav-link">1.3.1. When to go with the cloud</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_on_prem" class="nav-link">1.3.2. When to go with on-prem</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_hybrid" class="nav-link">1.3.3. When to go with hybrid</a></li>
+
+<li class="nav-item"><a href="#_this_blog_post_series_will_mostly_use_the_cloud" class="nav-link">1.3.4. This blog post series will mostly use the cloud</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_deploying_using_platform_as_a_service_paas_vs_infrastructure_as_a_service_iaas" class="nav-link">1.4. Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_deploying_an_app_using_paas" class="nav-link">1.4.1. Deploying an app using PaaS</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_fly_io" class="nav-link">Example: deploying an app using Fly.io</a></li>
+
+<li class="nav-item"><a href="#_how_paas_stacks_up" class="nav-link">How PaaS stacks up</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#deploy_an_app_using_iaas" class="nav-link">1.4.2. Deploying an app using IaaS</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#example_deploy_app_aws" class="nav-link">Example: deploying an app using AWS</a></li>
+
+<li class="nav-item"><a href="#_how_iaas_stacks_up" class="nav-link">How IaaS stacks up</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_when_to_go_with_paas" class="nav-link">1.4.3. When to go with PaaS</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_iaas" class="nav-link">1.4.4. When to go with IaaS</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_conclusion" class="nav-link">1.5. Conclusion</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+    <div class="col-sm-8">
+
+<div id="content">
+<div class="sect1">
+
+<h1 id="how_to_deploy_your_app">Part 1. How to Deploy Your App</h1>
+
+<div class="sectionbody">
+
+<div class="paragraph">
+
+<p>In the <a href="index.html#preface">introduction to the blog post series</a>, you learned where DevOps came from, and what world-class
+
+software delivery can look like. But really, almost all software delivery starts like this:</p>
+
+</div>
+
+<div class="quoteblock">
+
+<blockquote>
+
+<div class="paragraph">
+
+<p>I wrote an app. Now what?</p>
+
+</div>
+
+</blockquote>
+
+</div>
+
+<div class="paragraph">
+
+<p>You and your team have spent months putting together an app. You picked a programming language and a framework, you
+
+designed the UI, you implemented the backend, and finally, things seem to be working just the way you want. It&#8217;s time
+
+to expose the app to real users.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>How, exactly, do you do that?</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>There are so many questions to figure out here. Should you use AWS or Azure or Google Cloud? (And what about Heroku,
+
+Vercel, and Netlify?) Do you need one server or multiple servers? (And what the hell is serverless?) Do you need to use
+
+Docker? (And what the hell is Kubernetes?) What is a VPC and why do you need one? (And what about VPN and SSH?) How do
+
+you get a custom domain name working? (And what&#8217;s with these scary TLS errors?) What&#8217;s the right way to set up your
+
+database? (And are the backups even working)? Why did that app crash? (And how the hell do you debug it)? What do all
+
+these errors mean? Why does nothing seem to be working? Why is this so hard???</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>OK, easy now. Take a deep breath. If you&#8217;re new to software delivery—you&#8217;ve worked as app developer your whole
+
+career, or you&#8217;re just starting out in operations—it can be overwhelming, and you can get stuck in analysis paralysis
+
+right out of the gate. This blog post series is here to help. I will walk you through each of these questions—and many
+
+others you didn&#8217;t even think to ask—and help you figure out the answers, step-by-step.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>In this first blog post of the blog post series, let&#8217;s start with just one simple step: learn how to
+
+<em>deploy</em> your app somewhere. That is, for now, you&#8217;ll focus on just one question—how to run an app on some computer
+
+that users can access—and you can ignore all the other questions until later in this blog post series.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>There are quite a few different options for deploying apps. This blog post will walk you through the
+
+most common ones:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Deploying an app on your own computer</p>
+
+</li>
+
+<li>
+
+<p>Deploying an app on a server</p>
+
+</li>
+
+<li>
+
+<p>Deploying on prem vs in the cloud</p>
+
+</li>
+
+<li>
+
+<p>Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>Along the way, you&#8217;ll work through examples where you deploy the same app multiple different ways: on your own computer,
+
+on fly.io (a popular PaaS), and on AWS (a popular IaaS). This will allow you to see how the different options
+
+compare across a variety of dimensions (e.g., ease-of-use, security, control, debugging, etc.), so that you can pick
+
+the right tool for your use cases.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Let&#8217;s get started!</p>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_deploying_an_app_on_your_own_computer">Deploying an app on your own computer</h2>
+
+<div class="paragraph">
+
+<p>The first place you should be able to deploy your app is locally, on your own computer. This is typically how you&#8217;d
+
+build the app in the first place, writing and running your code locally until you have something working.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>How you run an app locally depends on the technology. Throughout this blog post series, you&#8217;re going to be using a
+
+simple Node.js sample app, as described in the next section.</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="example_run_sample_app_locally">Example: running the sample app locally</h3>
+
+<div class="admonitionblock note">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Note</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Example Code</div>
+
+<div class="paragraph">
+
+<p>As a reminder, you can find all the code examples in the blog post series&#8217;s <a href="https://github.com/brikis98/fundamentals-of-devops-code">sample
+
+code repo in GitHub</a>.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Create a new folder on your computer, perhaps called something like <em>fundamentals-of-devops</em>, which you can use to store
+
+code for various examples you&#8217;ll be running throughout the blog post series. You can run the following commands in a
+
+terminal to create the folder and go into it:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ mkdir fundamentals-of-devops
+
+$ cd fundamentals-of-devops</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>In that folder, create a new subfolder for the part 1 examples, and a subfolder within that for the sample
+
+app:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ mkdir -p ch1/sample-app
+
+$ cd ch1/sample-app</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The sample app you&#8217;ll be using is a very simple "Hello, World" app, written in JavaScript. You don&#8217;t
+
+need to understand much JavaScript to make sense of the app. In fact, one of the nice things about getting started with
+
+Node.js is that all the code for a simple web app fits in a single file that&#8217;s ~10 lines long. Within the
+
+<em>sample-app</em> folder, create a file called <em>app.js</em>, as shown in <a href="02.html#example_node_js_sample_app">Example 1</a>:</p>
+
+</div>
+
+<div id="example_node_js_sample_app" class="exampleblock">
+
+<div class="title">Example 1. A Node.js "Hello, World" sample app (<em>ch1/sample-app/app.js</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="javascript">const http = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http</span><span style="color:#710">'</span></span>);
+
+
+
+const server = http.createServer((req, res) =&gt; {
+
+  res.writeHead(<span style="color:#00D">200</span>, { <span style="color:#606"><span style="color:#404">'</span><span>Content-Type</span><span style="color:#404">'</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text/plain</span><span style="color:#710">'</span></span> });
+
+  res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>); // <b class="conum">(2)</b>
+
+});
+
+
+
+const port = <span style="color:#00D">8080</span>; // <b class="conum">(1)</b>
+
+server.listen(port,() =&gt; {
+
+  console.log(<span style="color:#F00;background-color:#FAA">`</span>Listening on port <span style="color:#369;font-weight:bold">$</span>{port}<span style="color:#F00;background-color:#FAA">`</span>);
+
+});</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is a "Hello, World" app that does the following:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Listen on port 8080 for requests.</p>
+
+</li>
+
+<li>
+
+<p>Respond to all requests with the text "Hello, World!"</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>To run it locally, you must first <a href="https://nodejs.org/en/download">install Node.js</a>. Once that&#8217;s done, you can start
+
+the app with <code>node app.js</code>:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ node app.js
+
+Listening on port 8080</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You can then open <a href="http://localhost:8080" class="bare">http://localhost:8080</a> in your browser, and you should see:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Hello, World!</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you&#8217;re running the app locally!</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_exposing_an_app_on_your_computer_to_users_not_recommended">Exposing an app on your computer to users (not recommended)</h3>
+
+<div class="paragraph">
+
+<p>By default, when you run an app on your computer, it is only available on <em>localhost</em>. This is a hostname that is
+
+configured on every computer to point back to the <em>loopback</em> network interface (typically 127.0.0.1—you can try out
+
+<a href="http://127.0.0.1:8080" class="bare">http://127.0.0.1:8080</a> in your browser and it should give the same "Hello, World!" response), which means it bypasses
+
+any real network interface. In other words, when you&#8217;re running an app on your computer locally, it typically can
+
+<em>only</em> be accessed from your own computer, and not from the outside world.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is by design, and for the most part, a good thing. In fact, this leads to an important rule:<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="13-footnotes.html#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #1</div>
+
+<div class="paragraph">
+
+<p>You should <em>never</em> expose apps running on a <em>personal computer</em> to the outside world.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Instead, if you&#8217;re going to expose your app to the outside world, you should run it on a <em>server</em>, as
+
+described in the next section.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_deploying_an_app_on_a_server">Deploying an app on a server</h2>
+
+<div class="paragraph">
+
+<p>A <em>server</em> is a computer specifically designed for running apps and exposing those apps to the outside world. There are
+
+many differences between a server and a personal computer, including the following:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Security</dt>
+
+<dd>
+
+<p>When you run your app on a server, you typically use a stripped down operating system (OS) that has nothing else
+
+installed on it that is not absolutely necessary for running the app. You also use a variety of <em>server hardening</em>
+
+techniques to protect that server, including OS permissions, firewalls, intrusion prevention tools,
+
+file integrity monitoring, sandboxing tools, and so on. On the other hand, your personal computer is likely not nearly
+
+as hardened, has all sorts of other apps installed (the more apps that you run, the more likely it is that one of
+
+them has a vulnerability somewhere that an attacker could exploit if you expose your computer on the public Internet),
+
+and also may have your personal data on it (e.g., documents, photos, videos, passwords) which you really
+
+wouldn&#8217;t want to leak to the world.</p>
+
+</dd>
+
+<dt class="hdlist1">Availability</dt>
+
+<dd>
+
+<p>You may shut off your personal computer at any time, or the battery might die, or the power might go out. Most
+
+servers are designed to be on all the time, in data centers with redundant power. Moreover, production apps are
+
+typically deployed across multiple servers, and sometimes across multiple data centers, in case one of them goes down.</p>
+
+</dd>
+
+<dt class="hdlist1">Performance</dt>
+
+<dd>
+
+<p>If you&#8217;re using your personal computer for personal tasks (e.g., writing code, browsing the Internet, playing games),
+
+that will take away system resources (CPU, memory, bandwidth, etc.) from your app, possibly causing performance
+
+issues for your users. Servers are typically dedicated solely to running the app installed on them.</p>
+
+</dd>
+
+<dt class="hdlist1">Collaboration</dt>
+
+<dd>
+
+<p>Most apps that you build are worked on by a team of developers and not just one person. Those other developers will
+
+want access to that app, either to update it or to debug an issue, but they typically don&#8217;t have any way to access
+
+your personal computer—and nor should they. On the other hand, servers are usually configured in such a way that your
+
+entire team has a way to push updates to them, connect to the server to debug issues, and so on.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Despite all the drawbacks of running apps on personal computers, it&#8217;s astonishing just how many businesses have
+
+critical apps running on single computer sitting under someone&#8217;s desk. This typically happens for one of three reasons:</p>
+
+</div>
+
+<div class="olist arabic">
+
+<ol class="arabic">
+
+<li>
+
+<p>Sometimes, this is done because your company is resource constrained (e.g., a tiny startup), and you can&#8217;t afford to
+
+buy proper servers.</p>
+
+</li>
+
+<li>
+
+<p>Sometimes, this is done because the person running the app didn&#8217;t know any better.</p>
+
+</li>
+
+<li>
+
+<p>Sometimes, this is done because the company&#8217;s software delivery process is so slow and cumbersome that the only way
+
+to get something running quickly is to sneak it onto an office computer.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>As you&#8217;ll see later in this blog post, these days, there are far better options for dealing with reason
+
+(1). And hopefully, after reading this blog post series, reasons (2) and (3) will no longer apply, as you now know
+
+better, and will learn how to create a software delivery process that allows your team to quickly &amp; easily run their
+
+apps the right way: on a server.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Broadly speaking, there are two ways to get access to servers:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>You can buy and set up your own servers ("on prem").</p>
+
+</li>
+
+<li>
+
+<p>You rent servers from others ("the cloud").</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>We&#8217;ll discuss each of these in the next section.</p>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_deploying_on_prem_vs_in_the_cloud">Deploying on prem vs in the cloud</h2>
+
+<div class="paragraph">
+
+<p>The traditional way to run software is to buy your own servers and to set them up <em>on-premises</em> (<em>on-prem</em> for short),
+
+in a physical location you own. When you are just starting out, the location could be as simple as a closet in your
+
+office with a handful of servers crammed into it—barely one step up from using a personal computer. But as a company&#8217;s
+
+user base grows, so do the computing demands, and you eventually have to move to a dedicated <em>data center</em>, with all
+
+the requisite equipment (e.g., cabinets, racks, servers, hard drives, wiring, cooling, power, and so on) and staff
+
+(e.g., data center technicians, electricians, engineers, network administrators, security guards, and so on). So for
+
+decades, if you wanted to build a software company, you also had to invest quite a bit into hardware.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This all started to change in the early 2000s. At that time, Amazon was already a huge web retailer, and like all other
+
+software companies, they had built massive data centers to run their products. The company was growing quickly, but
+
+despite hiring many new software engineers, they found they weren&#8217;t building their software any faster. When they dug
+
+into the problem, they found a common complaint: for each new project, every team in Amazon was spending a huge amount
+
+of time not writing the software, but building out hardware (e.g., servers, databases, etc.) to run that software. The
+
+types of hardware the teams needed were often similar, so all these teams were spinning their wheels on the same type of
+
+"undifferentiated heavy lifting."</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To solve this problem, Amazon started to build an internal platform that could abstract away and automate a lot of this
+
+undifferentiated heavy lifting, giving developers access to the hardware they needed through a software interface. At
+
+some point along the way, they realized that this platform could help not only their own internal dev teams, but dev
+
+teams from outside Amazon as well. The result was the launch of Amazon Web Services (AWS) in 2006, the first <em>cloud
+
+computing platform</em> (<em>cloud</em> for short), which allowed you to rent servers from Amazon using a software
+
+interface.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="13-footnotes.html#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is a profound shift. Instead of having to invest lots of time and money up front to set up servers yourself, in a
+
+few clicks, you can rent servers from the cloud. You can be up and running in seconds instead of weeks or months, at
+
+the cost of a few cents (or even free) instead of thousands of dollars. These days, while AWS is still the dominant
+
+player in cloud computing, there are dozens of other companies that offer cloud services as well, and these services
+
+have expanded beyond simply renting servers: you can now rent higher level services, such as databases, file
+
+stores, machine learning systems, natural language processing, edge computing, and more.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>So which should you use? Should you go with on-prem or make the jump to the cloud?</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_when_to_go_with_the_cloud">When to go with the cloud</h3>
+
+<div class="paragraph">
+
+<p>If you&#8217;re starting something new, in the majority of cases, you should go with the cloud. Here are just a few of the
+
+advantages:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Pay-as-you-go</dt>
+
+<dd>
+
+<p>With on-prem, you have to buy all the hardware (servers, racks, wiring, cooling, etc) up front, which can be a huge
+
+expense. With the cloud, you only pay for what you use, which is typically extremely cheap or even free in the early
+
+days (most cloud providers have free tiers or free credits when you&#8217;re starting out), when you have no users, and
+
+only grows if your business and usage grows too.</p>
+
+</dd>
+
+<dt class="hdlist1">Maintenance and expertise</dt>
+
+<dd>
+
+<p>Deploying your own servers requires hiring experts in hardware, data centers, cooling, power, etc. Moreover, data
+
+centers need to be maintained constantly, and the hardware you buy needs to be replaced over time, either because it
+
+breaks or goes obsolete. The cloud gives you all this expertise and maintenance out-of-the-box, at a scale most
+
+individual companies can&#8217;t come close to matching.</p>
+
+</dd>
+
+<dt class="hdlist1">Speed</dt>
+
+<dd>
+
+<p>With on-prem, every time you need new hardware, you have to find it, order it, pay for it, wait for it to ship,
+
+assemble it, rack it, test, it, etc. This typically takes weeks or months, and the more you need to buy, the longer
+
+it takes. With the cloud, virtual servers launch in seconds or minutes, whether you need to launch one or thousands.</p>
+
+</dd>
+
+<dt class="hdlist1">Elasticity</dt>
+
+<dd>
+
+<p>With on-prem, you have to buy all the hardware up front, which means you have to plan long in advance. If you
+
+suddenly need an extra 5,000 CPUs, you have no easy way to scale up to meet that capacity; and if you do buy that
+
+hardware, but you only need those 5,000 CPUs for a short period of time, you still pay the full cost. With the
+
+cloud, you can scale up and down elastically, at will. If you suddenly need 5,000 CPUs, you can get that in minutes.
+
+And once you&#8217;re done with them, you can scale back to 0, and pay nothing more.</p>
+
+</dd>
+
+<dt class="hdlist1">Managed services</dt>
+
+<dd>
+
+<p>With on-prem, you buy servers, and everything else is up to you. With the cloud, you not only get access to
+
+servers, but also dozens of other powerful managed services, such as managed databases, load balancers, file stores,
+
+data analytics, networking, machine learning, and much more. Building these in-house would take years and cost lots
+
+of money, whereas with the cloud, you get access to it with the same pay-as-you go model, often starting for free or
+
+extremely low cost.</p>
+
+</dd>
+
+<dt class="hdlist1">Security</dt>
+
+<dd>
+
+<p>With on-prem, all security is up to you, and most companies don&#8217;t have the time or expertise to do it well. With the
+
+cloud, the cloud providers can afford to invest huge amounts of time, money, and expertise in security. AWS, for
+
+example, has gone through a huge range of security audits and pen testing, is compliant with a variety of compliance
+
+standards (PCI, HIPAA, CIS, etc.), has passed security requirements for even the most highly regulated industries
+
+(government, military, financial, health care), is recognized as a leader in data center physical security, and so on.
+
+There is a persistent rumor that on-prem is more secure than the cloud, because only you have access to it, and you
+
+have all the incentives to keep it secure, but in practice, unless you work at a company that&#8217;s at the scale of one
+
+of the major cloud providers (Amazon, Microsoft, Google), you simply won&#8217;t have the resources to secure your data
+
+centers the way those companies can.</p>
+
+</dd>
+
+<dt class="hdlist1">Global reach</dt>
+
+<dd>
+
+<p>With on-prem, you have to have a team physically located at your data center to build and maintain it. And if you
+
+need to span the globe and have multiple data centers, then you need to build up and maintain a physical presence in
+
+multiple locations around the world. With the cloud, your team can be anywhere in the world (as long as you have an
+
+Internet connection) and get instant access to dozens of data centers around the world (and constantly growing).</p>
+
+</dd>
+
+<dt class="hdlist1">Scale</dt>
+
+<dd>
+
+<p>The cloud industry is massive and growing at an incredible rate. For example, as of the end of
+
+2023, AWS alone is a $100 billion per year run-rate
+
+business.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup>
+
+Yup, $100 billion per year. That&#8217;s with a "B." That&#8217;s not a typo. And they are still growing fast. The amount of
+
+money that major cloud providers can invest in their offerings utterly dwarfs what almost any other company could
+
+ever hope to invest into an on-prem deployment. So the cloud is not only already way ahead of where you could get to
+
+today with on-prem, but that lead will only widen over time.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>With all these advantages, here&#8217;s a general rule on using the cloud:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #2</div>
+
+<div class="paragraph">
+
+<p>Using the cloud should be your <em>default</em> choice for most deployments these days.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>The cloud is more or less the de facto option for all new startups that launch today. The vast majority of existing
+
+companies are establishing a presence in the cloud as well, often preferring it for all new development.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>So with all these advantages of using the cloud, does it ever make sense to go with on-prem these days?</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_when_to_go_with_on_prem">When to go with on-prem</h3>
+
+<div class="paragraph">
+
+<p>There are a number of cases where running servers yourself on-prem still makes sense:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">You already have an on-prem presence</dt>
+
+<dd>
+
+<p>If it ain&#8217;t broke, don&#8217;t fix it! If your company has been around a while and already has its own data centers—you&#8217;ve
+
+already made all the up-front investments, and things are working well for you—then sticking with on-prem may make
+
+sense. Even if your on-prem deployment isn&#8217;t working especially well, and you can see the benefits of using the cloud
+
+(e.g., increased agility for your company), bear in mind that migrating from on-prem to the cloud can be hugely
+
+expensive and time-consuming, and those costs can outweigh any potential benefits.</p>
+
+</dd>
+
+<dt class="hdlist1">You have load patterns that are a better fit for on-prem</dt>
+
+<dd>
+
+<p>Certain load patterns may be a better fit for on-prem than the cloud. For example, some cloud providers charge a lot
+
+of money for bandwidth and disk space usage, so if your apps are sending or storing huge amounts of data, you may
+
+find it cheaper to run servers on-prem (even when factoring in all the up-front and on-going costs). Another example
+
+is if your company is large enough that you can afford to buy and manage your own servers, and you have apps that
+
+handle a lot of traffic, but that traffic is fairly steady and predictable. In that case, you aren&#8217;t benefiting as
+
+much from the elasticity of the cloud, and may find it cheaper to run things on prem.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="13-footnotes.html#_footnotedef_6" title="View footnote.">6</a>]</sup> One final example is if you need access to very specific hardware (e.g.,
+
+certain types of CPUs, GPUs, or hard-drives), you can&#8217;t always get that in the cloud, and may have to buy it yourself.</p>
+
+</dd>
+
+<dt class="hdlist1">Compliance</dt>
+
+<dd>
+
+<p>Certain types of compliance standards, regulations, laws, auditors, and even customers, have not yet adapted to the
+
+world of the cloud yet, so depending on the industry you&#8217;re in, and the types of products you&#8217;re building, you may
+
+find that on-prem is a better fit.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_when_to_go_with_hybrid">When to go with hybrid</h3>
+
+<div class="paragraph">
+
+<p>It&#8217;s worth mentioning that it doesn&#8217;t have to be cloud vs on-prem; it can also be cloud <em>and</em> on-prem. That is, you use
+
+both, which is known as a <em>hybrid</em> deployment. The most common use cases for this are:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Partial cloud migration</dt>
+
+<dd>
+
+<p>Many companies that have on-prem deployments are adopting the cloud, but not always 100%. They might migrate some of
+
+their apps to the cloud, and develop most new apps in the cloud, but they keep some apps on-prem, either temporarily
+
+(as the migration happens, which can take years) or permanently (some apps are not worth the cost to migrate).</p>
+
+</dd>
+
+<dt class="hdlist1">Right tool for the job</dt>
+
+<dd>
+
+<p>The cloud can be a better fit for certain types of software than others. For example, if you have an app with
+
+traffic patterns that can spike wildly up and down (e.g., an ecommerce app with spikes on certain holidays), you
+
+might choose to run that app in the cloud to take advantage of the cloud&#8217;s elasticity; and if you have another app
+
+with steady traffic patterns that use lots of disk space and bandwidth, you may choose to run that app on-prem to
+
+save on costs. In short, pick the right tool for the job!</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_this_blog_post_series_will_mostly_use_the_cloud">This blog post series will mostly use the cloud</h3>
+
+<div class="paragraph">
+
+<p>My goal with this blog post series is to allow as many readers as possible to try out the examples, and to do so as
+
+quickly and cheaply as possible, so the cloud—especially cloud services with free tiers—is the right tool for this job.
+
+So while most of the underlying concepts will apply to both on-prem and the cloud, most of the examples in this
+
+series will use the cloud.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Broadly speaking, there are two types of cloud computing offerings:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Platform as a Service</p>
+
+</li>
+
+<li>
+
+<p>Infrastructure as a Service</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>We&#8217;ll discuss each of these in the next section.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_deploying_using_platform_as_a_service_paas_vs_infrastructure_as_a_service_iaas">Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</h2>
+
+<div class="paragraph">
+
+<p>One of the first cloud computing offerings from AWS was Elastic Compute Cloud (EC2), which came out in 2006, and
+
+allowed you to rent servers from AWS. This was the first <em>Infrastructure as a Service (IaaS)</em> offering, which gives you
+
+access directly to computing resources, such as servers. This dramatically reduced the time it took to do hardware
+
+aspects of operations (e.g., buying and racking servers), but it didn&#8217;t help as much with the software aspects of
+
+operations, such as installing the app and its dependencies, setting up databases, configuring networking, and so on.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>About a year later, in 2007, a company called Heroku came out with one of the first <em>Platform as a Service (PaaS)</em>
+
+offerings.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="13-footnotes.html#_footnotedef_7" title="View footnote.">7</a>]</sup> The
+
+key difference with PaaS is that the focus is on higher level primitives: not just the underlying infrastructure (i.e.,
+
+servers), but also application packaging, deployment pipelines, database management, and so on.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The difference between IaaS and PaaS isn&#8217;t so black and white; it&#8217;s really more of a continuum. Some PaaS offerings are
+
+higher level than Heroku; some are lower level; many IaaS providers have PaaS offerings too (e.g., AWS offers Elastic
+
+Beanstalk, GCP offers App Engine); and so on. The difference really comes down to this: PaaS gives you a full,
+
+opinionated software delivery process; IaaS gives you low-level primitives to create your own software delivery
+
+process.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The best way to get a feel for the difference is to try it out. You&#8217;ll try out a PaaS in the next section and an IaaS
+
+in the section after that.</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_deploying_an_app_using_paas">Deploying an app using PaaS</h3>
+
+<div class="paragraph">
+
+<p>There are many PaaS offerings out there, including <a href="https://www.heroku.com/">Heroku</a>, <a href="https://fly.io/">Fly.io</a>,
+
+<a href="https://vercel.com/">Vercel</a>, <a href="https://firebase.google.com/">Firebase</a>, <a href="https://render.com/">Render</a>,
+
+<a href="https://railway.app/">Railway</a>, <a href="https://platform.sh/">Platform.sh</a>, and <a href="https://www.netlify.com/">Netlify</a>. For the
+
+examples in this blog post series, I wanted a PaaS that met the following requirements:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>There is a free tier or free credits so that readers can try it out at no cost.</p>
+
+</li>
+
+<li>
+
+<p>You can deploy application code, without having to set up a build system, framework, Docker image, etc.
+
+(these are topics you&#8217;ll learn about later in the series).</p>
+
+</li>
+
+<li>
+
+<p>You can deploy directly from a folder, without having to mess with version control (also a topic you&#8217;ll see later in
+
+the series).</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p><a href="https://fly.io/">Fly.io</a> is the best fit for these criteria: it offers
+
+<a href="https://fly.io/docs/about/pricing/#free-allowances">free usage allowances</a> on all their plans, and new
+
+customers get <a href="https://fly.io/docs/about/pricing/#new-customers-get-a-free-trial">$5 in free credits</a> to cover any
+
+initial usage costs beyond the free allowances, so running the examples in this blog post series shouldn&#8217;t cost you
+
+anything; they support <a href="https://buildpacks.io/">Buildpacks</a> for automatically packaging code for deployment (no need to
+
+worry about how this works now, we&#8217;ll come back to packaging in <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>); and they provide
+
+a command-line tool called <code>flyctl</code> that lets you deploy code straight from your computer.</p>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_fly_io">Example: deploying an app using Fly.io</h4>
+
+<div class="paragraph">
+
+<p>Here&#8217;s what you need to do to use Fly.io to deploy the sample app:</p>
+
+</div>
+
+<div class="olist arabic">
+
+<ol class="arabic">
+
+<li>
+
+<p><a href="https://fly.io/docs/hands-on/install-flyctl/"><strong>Install <code>flyctl</code></strong></a>: This will give you the <code>fly</code> CLI tool, which you
+
+can use to manage and deploy your apps.</p>
+
+</li>
+
+<li>
+
+<p><strong>Sign up for a Fly.io account</strong>:</p>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ fly auth signup</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This will pop open your web browser to a sign-up form. Note that you will need to enter a credit card, but as mentioned
+
+before, the examples in this blog post series shouldn&#8217;t cost you anything.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you already have a Fly.io account, login by running:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ fly auth login</pre>
+
+</div>
+
+</div>
+
+</li>
+
+<li>
+
+<p><strong>Configure the build</strong>: Create a file called <em>fly.toml</em> in the same <em>sample-app</em> folder as your <em>app.js</em> file with the
+
+contents shown in <a href="02.html#example_fly_io_config">Example 2</a>:</p>
+
+<div id="example_fly_io_config" class="exampleblock">
+
+<div class="title">Example 2. Fly.io config file (<em>ch1/sample-app/fly.toml</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="toml">[build]
+
+  builder = &quot;paketobuildpacks/builder:base&quot; # <b class="conum">(1)</b>
+
+  buildpacks = [&quot;gcr.io/paketo-buildpacks/nodejs&quot;] # <b class="conum">(2)</b>
+
+
+
+[http_service]
+
+  internal_port = 8080 # <b class="conum">(3)</b>
+
+  force_https = true
+
+  auto_stop_machines = true
+
+  auto_start_machines = true
+
+  min_machines_running = 0</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Normally, with real-world applications, you wouldn&#8217;t need this config file, as Fly.io can recognize many popular app
+
+frameworks automatically, but to keep this first blog post as simple as possible, I&#8217;ve intentionally
+
+omitted a lot of code from the sample app that you&#8217;d have in a real app, so you need to help Fly.io with a few hints:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Use <a href="https://buildpacks.io/">Buildpacks</a> to package the app.</p>
+
+</li>
+
+<li>
+
+<p>Use the Node.js Buildpack specifically.</p>
+
+</li>
+
+<li>
+
+<p>Send requests to the app on port 8080.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+</li>
+
+<li>
+
+<p><strong>Launch the app</strong>:</p>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ fly launch --generate-name --copy-config --yes</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This will kick off a process that builds and deploys your app. It should take about five minutes the very first time.
+
+When it&#8217;s done, you should see log output that contains the URL for your deployed app:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Visit your newly deployed app at https://&lt;NAME&gt;.fly.dev/</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Where <code>&lt;NAME&gt;</code> is a randomly generated name for your app deployment. Open that URL up in your web browser, and you
+
+should see:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Hello, World!</pre>
+
+</div>
+
+</div>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>And there you go! In handful of commands, you now have your app running on a server.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for what you get out-of-the-box with a PaaS such as
+
+Fly.io:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p><code>fly status</code>: See the status of your app.</p>
+
+</li>
+
+<li>
+
+<p><code>fly logs</code>: See the logs for your app. You can also try <a href="https://fly-metrics.net/" class="bare">https://fly-metrics.net/</a> to see metrics.</p>
+
+</li>
+
+<li>
+
+<p><code>fly scale</code>: Scale the number of servers up and down.</p>
+
+</li>
+
+<li>
+
+<p><code>fly deploy</code>: Deploy a new version of your app. For example, make a small change to <em>app.js</em>, such as responding with
+
+the text "Fundamentals of DevOps!" instead of "Hello, World!", and then run <code>fly deploy</code> to deploy this change.
+
+After a couple minutes, the deployment should be done, and if you refresh your URL (<code>&lt;NAME&gt;.fly.dev</code>) in the browser,
+
+you should see "Fundamentals of DevOps!"</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you&#8217;re done experimenting with Fly.io, you should undeploy your app using the following command:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ fly apps destroy &lt;NAME&gt;</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Where <code>&lt;NAME&gt;</code> is the auto-generated name for your app (which shows up in all the log output and the URL of your app).
+
+Running <code>destroy</code> ensures that your account doesn&#8217;t start accumulating any unwanted charges.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_paas_stacks_up">How PaaS stacks up</h4>
+
+<div class="paragraph">
+
+<p>Using a PaaS typically means you get not just a server, but a lot of powerful functionality out-of-the-box, such as the
+
+following:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Multiple servers</dt>
+
+<dd>
+
+<p>Fly.io can easily scale your app across multiple servers, which can help with scalability and high availability.
+
+You&#8217;ll learn more about this topic in <a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
+
+</dd>
+
+<dt class="hdlist1">Domain names</dt>
+
+<dd>
+
+<p>Fly.io automatically creates a custom subdomain for your app (e.g., <code>&lt;NAME&gt;.fly.dev</code>); it also supports custom
+
+top-level domain names (e.g., <code>your-domain.com</code>). You&#8217;ll learn more about this topic in <a href="07.html#how_to_set_up_networking">Part 6</a>.</p>
+
+</dd>
+
+<dt class="hdlist1">TLS certificates and termination</dt>
+
+<dd>
+
+<p>Note how the Fly.io URL is https, not http. This means Fly.io also takes care of TLS certificates and TLS
+
+termination, a topic you&#8217;ll learn more about in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>.</p>
+
+</dd>
+
+<dt class="hdlist1">Monitoring</dt>
+
+<dd>
+
+<p>Fly.io automatically aggregates logs and metrics in a single place, which is helpful in troubleshooting and
+
+understanding the status of your app. You&#8217;ll learn more about this topic in <a href="11.html#how_to_monitor_your_systems">Part 10</a>.</p>
+
+</dd>
+
+<dt class="hdlist1">Automated deployment</dt>
+
+<dd>
+
+<p>Fly.io can automatically roll out updates to your app with zero downtime. You&#8217;ll learn more about this topic in
+
+<a href="06.html#how_to_set_up_ci_cd">Part 5</a>.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is the power of PaaS: in a matter of minutes, a good PaaS can take care of so many software delivery concerns for
+
+you. It&#8217;s like magic. And that&#8217;s the greatest strength of PaaS: it just works!</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Except when it doesn&#8217;t. Then, this very same magic becomes the greatest weakness of PaaS. By design, with a PaaS, just
+
+about everything is happening behind the scenes, so if something doesn&#8217;t work, it can be very hard to debug it or fix
+
+it. Moreover, to make the magic possible, most PaaS offerings have a number of limitations: e.g., limitations on what
+
+you can deploy, what types of apps you can run, what sort of access you can have to the underlying hardware, what sort
+
+of hardware is available, and so on. If the PaaS doesn&#8217;t support it—if the CLI or UI the PaaS provides doesn&#8217;t expose
+
+the ability to do something you need—you typically can&#8217;t do it at all.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>As a result, while many projects start on PaaS, if they grow big enough and require more control, they end up migrating
+
+to IaaS, which is the topic of the next section.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="deploy_an_app_using_iaas">Deploying an app using IaaS</h3>
+
+<div class="paragraph">
+
+<p>Just as with PaaS, there are many IaaS providers to choose from, including <a href="https://aws.amazon.com/">Amazon Web Services
+
+(AWS)</a>, <a href="https://azure.microsoft.com/">Microsoft Azure</a>, <a href="https://cloud.google.com/">Google Cloud Platform (GCP)</a>,
+
+<a href="https://www.alibabacloud.com/">Alibaba Cloud</a>, <a href="https://www.ibm.com/cloud">IBM Cloud</a>, and
+
+<a href="https://www.oracle.com/cloud/">Oracle Cloud Infrastructure (OCI)</a>. For the examples in this blog post series, I wanted
+
+an IaaS provider that met the following requirements:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>There is a free tier or free credits so that readers can try it out at no cost.</p>
+
+</li>
+
+<li>
+
+<p>It should be one of the more popular cloud providers, so you&#8217;re learning something you&#8217;re more likely to use at work.</p>
+
+</li>
+
+<li>
+
+<p>It should provide a wide range of cloud services that support the many DevOps and software delivery examples in the
+
+rest of this blog post series.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p><a href="https://aws.amazon.com/">AWS</a> is the best fit for these criteria: it offers
+
+<a href="https://aws.amazon.com/free/">a generous free tier</a>, so running the examples in this blog post series shouldn&#8217;t cost you
+
+anything; it&#8217;s the most popular cloud provider, with a <a href="https://canalys.com/newsroom/global-cloud-services-q3-2023">31%
+
+share of the market</a>; and it provides a huge range of reliable and scalable cloud-hosting services, including servers,
+
+serverless, containers, databases, machine learning, and much more.</p>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="example_deploy_app_aws">Example: deploying an app using AWS</h4>
+
+<div class="paragraph">
+
+<p>Here&#8217;s what you need to do to use AWS to deploy the sample app:</p>
+
+</div>
+
+<div class="olist arabic">
+
+<ol class="arabic">
+
+<li>
+
+<p><strong>Sign up for AWS</strong>: If you don&#8217;t already have an AWS account, head over to <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> and sign up. When
+
+you first register for AWS, you initially sign in as the <em>root user</em>. This user account has access permissions to do
+
+absolutely anything in the account, so from a security perspective, it&#8217;s not a good idea to use the root user on a
+
+day-to-day basis. In fact, the <em>only</em> thing you should use the root user for is to create other user accounts with
+
+more-limited permissions, and then switch to one of those accounts immediately, as per the next step. Make sure to
+
+store the root user credentials in a secure password manager, such as 1Password (you&#8217;ll learn more about secrets
+
+management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+
+</li>
+
+<li>
+
+<p><strong>Create an IAM user</strong>: To create a more-limited user account, you will need to use the <em>Identity and Access Management
+
+(IAM)</em> service. IAM is where you manage user accounts as well as the permissions for each user. We&#8217;ll go into more
+
+detail on this topic in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>, but for now, we&#8217;ll do the simplest thing we can to get
+
+started. To create a new <em>IAM user</em>, go to the <a href="https://console.aws.amazon.com/iam/">IAM Console</a> (note: you can use
+
+the search bar at the top of the AWS Console to find services such as IAM), click Users, and
+
+then click the Create User button. Enter a name for the user, and make sure "Provide user access to the AWS Management
+
+Console" is selected, as shown in <a href="02.html#create_iam_user">Figure 1</a> (note that AWS occasionally makes changes to its web console,
+
+so what you see may look slightly different from the screenshots in this blog post series).</p>
+
+<div id="create_iam_user" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/create-iam-user.png" alt="Use the AWS Console to create a new IAM user.">
+
+</div>
+
+<div class="title">Figure 1. Use the AWS Console to create a new IAM user.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Click the Next button. AWS will ask you to add permissions to the user. By default, new IAM users have no permissions
+
+whatsoever and cannot do anything in an AWS account. To give your IAM user the ability to do something, you need to
+
+associate one or more IAM Policies with that user&#8217;s account. An <em>IAM Policy</em> is a JSON document that defines what a
+
+user is or isn&#8217;t allowed to do. You can create your own IAM Policies or use some of the predefined IAM Policies built
+
+into your AWS account, which are known as <em>Managed Policies</em>.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To run the examples in this blog post series, the easiest way to get started is to select "Attach policies directly"
+
+and add the <code>AdministratorAccess</code> Managed Policy to your IAM user (search for it, and click the checkbox next to it),
+
+as shown in <a href="02.html#managed_policies">Figure 2</a>.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="13-footnotes.html#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
+
+</div>
+
+<div id="managed_policies" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/attach-iam-user-policies.png" alt="Adding the AdministratorAccess Managed IAM Policy to your new IAM user">
+
+</div>
+
+<div class="title">Figure 2. Add the <code>AdministratorAccess</code> Managed IAM Policy to your new IAM user.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Click Next again and then the "Create user" button. AWS will show you the security credentials for that
+
+user, which consist of (a) a sign-in URL, (b) the user name, and (c) the console password, as shown in <a href="02.html#aws_creds">Figure 3</a>.
+
+Save all three of these immediately in a secure password manager (e.g., 1Password), especially the console password, as
+
+it will <em>never</em> be shown again.</p>
+
+</div>
+
+<div id="aws_creds" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/aws-creds.png" alt="Store your AWS credentials somewhere secure. Never share them with anyone.">
+
+</div>
+
+<div class="title">Figure 3. Store your AWS credentials somewhere secure. Never share them with anyone.</div>
+
+</div>
+
+</li>
+
+<li>
+
+<p><strong>Login as the IAM user</strong>. Now that you&#8217;ve created an IAM user, log out of your AWS account, go to the sign-in URL you
+
+got in the previous step, and enter the user name and console password from that step to sign in as the IAM user.</p>
+
+</li>
+
+<li>
+
+<p><strong>Deploy an EC2 instance</strong>. Now you&#8217;re finally ready to deploy a server. You can do this through the AWS <em>Elastic
+
+Compute Cloud (EC2)</em> service, which lets you launch servers called <em>EC2 instances</em>. Head over to the
+
+<a href="https://console.aws.amazon.com/ec2/home">EC2 Console</a> and click the "Launch instance" button (as of April, 2024, it&#8217;s
+
+an orange button in the middle of the page). This will take you to a page where you configure your EC2 instance, as
+
+shown in <a href="02.html#ec2_name_ami">Figure 4</a>.</p>
+
+<div id="ec2_name_ami" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-name-ami.png" alt="Configure the name and AMI to use for your EC2 instance">
+
+</div>
+
+<div class="title">Figure 4. Configure the name and AMI to use for your EC2 instance.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Fill in a name for the instance. Below that, you need to pick the operating system image to use (the Amazon Machine
+
+Image or <em>AMI</em>), which is a topic we&#8217;ll come back to in <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>. For now, you can stick
+
+with the default, which should be Amazon Linux. Below that, you&#8217;ll need to configure the instance type and key pair,
+
+as shown in <a href="02.html#ec2_instance_type_key_pair">Figure 5</a>.</p>
+
+</div>
+
+<div id="ec2_instance_type_key_pair" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-instance-type-key-pair.png" alt="Configure the instance type and key pair to use for your EC2 instance">
+
+</div>
+
+<div class="title">Figure 5. Configure the instance type and key pair to use for your EC2 instance.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The <em>instance type</em> specifies what type of server to use: that is, what sort of CPU, memory, hard drive, etc. it&#8217;ll
+
+have. For this quick test, you can use the default, which should be <code>t2.micro</code> or <code>t3.micro</code>, small instances (1 CPU,
+
+1GB of memory) that are part of the AWS Free Tier. The <em>key pair</em> can be used to connect to the EC2 instance via SSH, a
+
+topic you&#8217;ll learn more about in <a href="07.html#how_to_set_up_networking">Part 6</a>. You&#8217;re not going to be using SSH for this example, so
+
+select "Proceed without a key pair." Scroll down to the network settings, as shown in <a href="02.html#ec2_network_settings">Figure 6</a>.</p>
+
+</div>
+
+<div id="ec2_network_settings" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-network-settings.png" alt="Configure the network settings for your EC2 instance">
+
+</div>
+
+<div class="title">Figure 6. Configure the network settings for your EC2 instance.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>You&#8217;ll learn about  networking in <a href="07.html#how_to_set_up_networking">Part 6</a>. For now, you can leave most of these settings at their
+
+defaults: the Network should pick your Default VPC (in <a href="02.html#ec2_network_settings">Figure 6</a>, my Default VPC has the ID
+
+<code>vpc-deb90eb6</code>, but your ID will be different), the Subnet should be "No preference," and Auto-assign public IP should
+
+be "Enable." The only thing you should change is the Firewall (security groups) setting, selecting the "Create
+
+security group" radio button, disabling the "Allow SSH traffic from" setting, and enabling the "Allow HTTP traffic
+
+from the internet" setting, as shown in <a href="02.html#ec2_network_settings">Figure 6</a>. By default, EC2 instances have firewalls,
+
+called <em>security groups</em>, that don&#8217;t allow any network traffic in our out. Allowing HTTP traffic tells the security
+
+group to allow inbound TCP traffic on port 80 so that the sample app can receive requests and respond with "Hello,
+
+World!"</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, open up the "Advanced details" section, and scroll down to "User data," as shown in <a href="02.html#ec2_user_data">Figure 7</a>.</p>
+
+</div>
+
+<div id="ec2_user_data" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-user-data.png" alt="Configure user data for your EC2 instance">
+
+</div>
+
+<div class="title">Figure 7. Configure user data for your EC2 instance.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><em>User data</em> is a script that will be executed by the EC2 instance the very first time it boots up. Copy and paste the
+
+following script into user data:</p>
+
+</div>
+
+<div id="example_ec2_user_data" class="exampleblock">
+
+<div class="title">Example 3. User data script (<em>ch1/ec2-user-data-script/user-data.sh</em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+
+
+
+set -e
+
+
+
+# <b class="conum">(1)</b>
+
+curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
+
+yum install -y nodejs
+
+
+
+# <b class="conum">(2)</b>
+
+tee app.js &gt; /dev/null &lt;&lt; &quot;EOF&quot;
+
+const http = require('http');
+
+
+
+const server = http.createServer((req, res) =&gt; {
+
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+  res.end('Hello, World!\n');
+
+});
+
+
+
+// <b class="conum">(3)</b>
+
+const port = 80;
+
+server.listen(port,() =&gt; {
+
+  console.log(`Listening on port ${port}`);
+
+});
+
+EOF
+
+
+
+# <b class="conum">(4)</b>
+
+nohup node app.js &amp;</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This Bash script will do the following when the EC2 instance boots:</p>
+
+</div>
+
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Install Node.js.</p>
+
+</li>
+
+<li>
+
+<p>Write the sample app code to a file called <em>app.js</em>. This is the same Node.js code you saw earlier in the
+
+blog post, with one difference, as described next.</p>
+
+</li>
+
+<li>
+
+<p>The only difference from the sample app code you saw earlier is that this code listens on port 80 instead of 8080,
+
+as that&#8217;s the port you opened up in the security group.</p>
+
+</li>
+
+<li>
+
+<p>Run the app using <code>node app.js</code>, just like you did on your own computer. The only difference is the use of <code>nohup</code>
+
+and ampersand (<code>&amp;</code>), which allows the app to run permanently in the background, while the Bash script itself can
+
+exit.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div id="simplified_example_not_for_prod" class="admonitionblock warning">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Warning</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">These are simplified examples for learning, not for production (watch out for snakes!)</div>
+
+<div class="paragraph">
+
+<p>The approach shown here with user data has a number of drawbacks:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Root user</dt>
+
+<dd>
+
+<p>User data scripts run as the root user of the OS, so if you run your app directly from a User Data
+
+script, it&#8217;ll run as the root user too. Production apps should always run as a separate OS user with limited
+
+permissions.</p>
+
+</dd>
+
+<dt class="hdlist1">Port 80</dt>
+
+<dd>
+
+<p>The app is listening on port 80, which typically requires the root user of the OS. Production apps
+
+should typically use a port greater than 1024 to avoid this requirement.</p>
+
+</dd>
+
+<dt class="hdlist1">User data limits</dt>
+
+<dd>
+
+<p>Cramming all the code for installing dependencies and your app code into a User Data script
+
+works for a simple sample app, but may get you into trouble with production apps, as user data scripts have a size
+
+limit of just 16 KB.</p>
+
+</dd>
+
+<dt class="hdlist1">Process supervisors</dt>
+
+<dd>
+
+<p>You are starting your app in user data, but user data scripts only run on the very first
+
+boot. Production apps should typically use process supervisors to ensure they are restarted automatically if they
+
+crash or the server reboots.</p>
+
+</dd>
+
+<dt class="hdlist1">Node.js specifics</dt>
+
+<dd>
+
+<p>While the preceding items apply to any type of app you may want to run, it&#8217;s also worth
+
+looking into production best practices for your chosen languages and frameworks. For example, with Node.js, running
+
+<code>node &lt;file&gt;</code> runs just a single Node.js process in development mode. For production usage, you typically want to run
+
+Node.js in cluster mode, so it runs multiple processes to make use of all available CPUs, and you want to set the app
+
+to production mode by setting the <code>NODE_ENV</code> environment variable to "production."</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>You&#8217;ll see how to address all of these limitations later in the blog post series. Since this is just a first example
+
+for learning, it&#8217;s OK to use this simple, insecure approach for now, but make sure not to use this approach in
+
+production!</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Leave all the other settings at their defaults and click "Launch instance." Once the EC2 instance has been launched,
+
+you should see the ID of the instance on the page (something like <code>i-05565e469650271b6</code>). Click on the ID to go to the
+
+EC2 instances page, where you should see your EC2 instance booting up. Once it has finished booting (you&#8217;ll see the
+
+instance state go from "Pending" to "Running"), which typically takes 1-2 minutes, click on the row with your instance,
+
+and in a drawer that pops up at the bottom of the page, you should see more details about your EC2 instance, including
+
+its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 8</a>.</p>
+
+</div>
+
+<div id="ec2_instance_ip" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-instance-ip.png" alt="Find the public IP address for your EC2 instance">
+
+</div>
+
+<div class="title">Figure 8. Find the public IP address for your EC2 instance.</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Copy and paste that IP address, open <code>http://&lt;IP&gt;</code>  in your browser (note: you have to actually type the <code>http://</code>
+
+portion in your browser, or the browser may try to use <code>https://</code> by default, which will <em>not</em> work; you&#8217;ll learn more
+
+about HTTPS in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>), and you should see:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>Hello, World!</pre>
+
+</div>
+
+</div>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>Congrats, you now have your app running on a server in AWS!</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>Here are a few exercises you can try at home to get a better feel for an IaS such as AWS:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Try restarting your EC2 instance. Does the sample-app still work after the reboot? If not, why not?</p>
+
+</li>
+
+<li>
+
+<p>Create a custom security group that opens up port 8080, and launch a new EC2 instance that uses this new security
+
+group. This will allow the sample app to listen on port 8080 rather than 80, which is better from a security
+
+standpoint.</p>
+
+</li>
+
+<li>
+
+<p>Find CloudWatch in the AWS Console and use it to find what logs and metrics you can about your EC2 instance. How does
+
+this compare to the monitoring you get out-of-the-box with Fly.io?</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>When you&#8217;re done experimenting with AWS, you should undeploy your app by selecting your EC2 instance, clicking
+
+"Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 9</a>.
+
+This ensures that your account doesn&#8217;t start accumulating any unwanted charges.</p>
+
+</div>
+
+<div id="ec2_terminate_instance" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/ec2-terminate-instance.png" alt="Make sure to terminate your EC2 instance when you&#8217;re done testing">
+
+</div>
+
+<div class="title">Figure 9. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_how_iaas_stacks_up">How IaaS stacks up</h4>
+
+<div class="paragraph">
+
+<p>Since you&#8217;re using IaaS, what you see really is what you get: it&#8217;s just a single server. Unlike PaaS, you
+
+don&#8217;t get multiple servers, TLS certificates and termination, detailed monitoring, automated deployment, and so on out
+
+of the box. What you do get is access to all the low-level primitives, so you can build all those parts of the software
+
+delivery process yourself, as described in the rest of this blog post series. And that&#8217;s both the greatest strength and
+
+weakness of IaaS: you have much more control and visibility, so you have fewer limits, can customize things more, and
+
+meet a much wider set of requirements; but for those very same reasons, it&#8217;s much more work than using a PaaS.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now that you&#8217;ve seen both IaaS and PaaS in action, the question is, when should you use one or the other? This is the
+
+topic of the next two sections.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_when_to_go_with_paas">When to go with PaaS</h3>
+
+<div class="paragraph">
+
+<p>This may seem like a strange thing to say in a blog post series about DevOps and software delivery, but here&#8217;s my take:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #3</div>
+
+<div class="paragraph">
+
+<p>You should spend as little time on software delivery as you possibly can, while still meeting your company&#8217;s
+
+requirements.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Your customers don&#8217;t care what kind of CI / CD pipeline you have, or if you are running a fancy Kubernetes cluster, or
+
+if you&#8217;re on the newest NoSQL database. Your investors don&#8217;t care. Your boss doesn&#8217;t care. No one cares. All that
+
+matters is that you can deliver a product that meets your customers' needs. Every single thing you do that isn&#8217;t
+
+absolutely required to deliver that product is wasteful. So if you can find someone else who can take care of software
+
+delivery for you, and still meet your requirements, you should take advantage of that as much as possible.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>And that&#8217;s precisely what a good PaaS offers: out-of-the-box software delivery. If you can find a PaaS that meets your
+
+requirements, then you should use it, stick with it for as long as you can, and avoid moving to an IaaS and investing in
+
+recreating all those software delivery pieces until you absolutely have to.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Here are a few of the most common cases where a PaaS is usually the best choice:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Side projects</dt>
+
+<dd>
+
+<p>If you want to put up a website for fun or for a hobby, the last thing you want to do is spend a bunch of time
+
+fighting with builds or pipelines or TLS certs. That&#8217;s precisely the sort of thing that can kill your passion for
+
+your side project. Therefore, use a PaaS, let them do all the heavy lifting, and focus all your time on the side
+
+project itself.</p>
+
+</dd>
+
+<dt class="hdlist1">Startups and small companies</dt>
+
+<dd>
+
+<p>If you&#8217;re building a new company, you should almost always start with a PaaS. In the vast majority of cases, startups
+
+live or die based on their product—whether they managed to build something the market wants—and not their software
+
+delivery process. Therefore, you typically want to invest as much time as possible into the product, and as little
+
+time as possible into the software delivery process. As you saw earlier in this blog post, you can
+
+get live on a PaaS in <em>minutes</em>. Moreover, as a startup, your requirements in terms of scalability, availability,
+
+security, and compliance are typically fairly minimal, so you can often go for years before you start to run into the
+
+limitations of a PaaS. It&#8217;s only when you find product/market fit, and start hitting the problem of having to scale
+
+your company—which is a good problem to have—that you may need to start thinking of moving off PaaS. But by then, you
+
+hopefully have grown large enough to have the time and resources available to invest in building a software delivery
+
+process on top of IaaS.</p>
+
+</dd>
+
+<dt class="hdlist1">New and experimental projects</dt>
+
+<dd>
+
+<p>Another common use case for PaaS is at established companies that want to try something new or experimental. Often,
+
+the software delivery processes within larger companies are slow and inefficient, making it hard to launch something
+
+and iterate on it quickly. Using a PaaS for these sorts of new projects can make experimentation far easier. Moreover,
+
+the new projects often don&#8217;t have the same requirements in terms of scalability, availability, security, and
+
+compliance as the company&#8217;s older and more mature products, so you are less likely to hit the limitations of a PaaS.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_when_to_go_with_iaas">When to go with IaaS</h3>
+
+<div class="paragraph">
+
+<p>As a general rule, you want to use a PaaS whenever you can, and only move on to IaaS when a PaaS can no longer meet
+
+your requirements. Here are a few of the most common cases where IaaS is usually the best choice:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Load</dt>
+
+<dd>
+
+<p>If you are dealing with a huge amount of traffic, the pricing of PaaS offerings may become prohibitively expensive.
+
+Moreover, even if you could afford the bill, most PaaS offerings only support relatively simple architectures, whereas
+
+handling high load &amp; scale may require you to migrate to IaaS to run more complicated systems.</p>
+
+</dd>
+
+<dt class="hdlist1">Company size</dt>
+
+<dd>
+
+<p>PaaS offerings can also struggle to deal with larger companies. As you shift from a handful of developers to dozens
+
+of teams with hundreds or even thousands of developers, not only can PaaS pricing become untenable, but you may also
+
+hit limits in terms of the types of governance and access controls offered by the PaaS: e.g., allowing some teams to
+
+make some types of changes, but no others, may be difficult in a PaaS.</p>
+
+</dd>
+
+<dt class="hdlist1">Availability</dt>
+
+<dd>
+
+<p>Your business may need to provide uptime guarantees (e.g., SLAs, a topic you&#8217;ll learn more about in
+
+<a href="11.html#how_to_monitor_your_systems">Part 10</a>) that are higher than what your PaaS can provide. Moreover, when there is an outage
+
+or a bug, PaaS offerings are often limited in the type of visibility and connectivity options they provide, which
+
+can make debugging hard. For example, for many years, there was no way to SSH to Heroku servers, and even today, most
+
+serverless offerings (a topic we&#8217;ll cover in <a href="04.html#how_to_deploy_many_apps">Part 3</a>) still don&#8217;t offer SSH access. As your
+
+company and architecture grow larger and more complicated, being able to introspect your systems becomes more and
+
+more important, and this may be a reason to go with IaaS over PaaS.</p>
+
+</dd>
+
+<dt class="hdlist1">Security &amp; compliance</dt>
+
+<dd>
+
+<p>One of the most common reasons to move off PaaS is to meet security and compliance requirements: e.g., SOC 2, ISO
+
+27001, PCI, HIPAA, GDPR, etc. Although there are a handful of PaaS providers (e.g., Aptible) that can help you meet
+
+some types of compliance requirements, most of them do not. Moreover, the general lack of visibility into and control
+
+of the underlying systems can make it hard to meet certain security and compliance requirements.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>The trade-offs between PaaS and IaaS can be summarized in a simple, general rule:</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #4</div>
+
+<div class="paragraph">
+
+<p>Go with PaaS whenever you can; go with IaaS when you have to.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_conclusion">Conclusion</h2>
+
+<div class="paragraph">
+
+<p>You now know the basics of deploying your app. Here are the 4 key takeaways from this chapter:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">You should <em>never</em> expose apps running on a <em>personal computer</em> to the outside world</dt>
+
+<dd>
+
+<p>Instead, deploy those apps on a server.</p>
+
+</dd>
+
+<dt class="hdlist1">Using the cloud should be your <em>default</em> choice for most deployments these days</dt>
+
+<dd>
+
+<p>Run your server(s) in the cloud whenever you can. Use on-prem only if you already have an on-prem presence that&#8217;s
+
+working well or you have load patterns or compliance requirements that work best on-prem.</p>
+
+</dd>
+
+<dt class="hdlist1">You should spend as little time on software delivery as you possibly can, while still meeting your company&#8217;s requirements</dt>
+
+<dd>
+
+<p>If you can offload your software delivery to someone else, while still responsibly meeting your company&#8217;s
+
+requirements, you should.</p>
+
+</dd>
+
+<dt class="hdlist1">Go with PaaS whenever you can; go with IaaS when you have to</dt>
+
+<dd>
+
+<p>A PaaS cloud provider lets you offload most of your software delivery needs, so if you can find a PaaS that meets
+
+your company&#8217;s requirements, you should use it. Only go with an IaaS if your company&#8217;s requirements exceed what a
+
+PaaS can offer.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Knowing how to deploy your apps is an important step, but it&#8217;s just the first step in understanding DevOps and software
+
+delivery. There are quite a few steps left to go. One problem you may have noticed, for example, is that you had to
+
+deploy everything in this blog post by clicking around a web UI or manually running a series of CLI
+
+commands. Doing things manually is tedious, slow, and error-prone. Imagine if instead of one app, you had to deploy
+
+five or fifty; and imagine you had to do that many times per day. Not fun.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The solution is to automate everything by managing all of your infrastructure as code, which is the topic of the next
+
+blog post, <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div id="footer">
+
+<div id="footer-text">
+
+Last updated 2024-05-20 14:12:46 -0400
+
+</div>
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script>
+  anchors.add();
+</script>
+
+</body>
+
+</html>
