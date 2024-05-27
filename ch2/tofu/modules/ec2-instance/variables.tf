@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 variable "name" {
-  description = "The name of the EC2 instance and all other resources created by this module"
+  description = "The base name for the instance and all other resources"
   type        = string
 }
 

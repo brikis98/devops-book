@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 variable "name" {
-  description = "The name of the Lambda function and all other resources created by this module"
+  description = "The base name for the Lambda function and all other resources"
   type        = string
 }
 

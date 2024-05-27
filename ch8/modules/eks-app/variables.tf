@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The name for the app and all resources created by this module"
+  description = "The base name for the app and all other resources"
   type        = string
 }
 

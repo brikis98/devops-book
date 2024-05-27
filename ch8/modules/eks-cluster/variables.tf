@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The base name to use for the EKS cluster and all its resources"
+  description = "The base name for the EKS cluster and all other resources"
   type        = string
 }
 

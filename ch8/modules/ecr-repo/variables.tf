@@ -1,4 +1,4 @@
 variable "name" {
-  description = "The name to use for the ECR repo"
+  description = "The base name for the ECR repo and all other resources"
   type        = string
 }

@@ -1,5 +1,5 @@
 {
-  "name": "sample-app-build",
+  "name": "sample-app",
   "version": "v4",
   "description": "Sample app for 'Fundamentals of DevOps and Software Delivery'",
   "main": "app.js",
