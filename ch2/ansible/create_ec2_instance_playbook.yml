@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: no
   environment:
-    AWS_REGION: us-east-2                              
+    AWS_REGION: us-east-2
   tasks:    
     - name: Create security group                      
       amazon.aws.ec2_security_group:

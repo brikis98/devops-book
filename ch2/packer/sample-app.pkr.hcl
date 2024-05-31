@@ -7,28 +7,24 @@ packer {
   }
 }
 
-source "amazon-ebs" "amazon_linux" {
+source "amazon-ebs" "amazon_linux" {                  
   ami_name        = "sample-app-packer-${uuidv4()}"
-  ami_description = "An Amazon Linux 2023 AMI that has a Node.js sample app installed."
+  ami_description = "Amazon Linux 2023 AMI with a Node.js sample app."
   instance_type   = "t2.micro"
   region          = "us-east-2"
   source_ami      = "ami-0900fe555666598a2"
   ssh_username    = "ec2-user"
 }
 
-build {
-  sources = [
-    "source.amazon-ebs.amazon_linux"
-  ]
+build {                                               
+  sources = ["source.amazon-ebs.amazon_linux"]
 
-  
-  provisioner "file" {
+  provisioner "file" {                                
     source      = "app.js"
     destination = "/home/ec2-user/app.js"
   }
 
-  
-  provisioner "shell" {
+  provisioner "shell" {                               
     inline = [
       "curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -",
       "sudo yum install -y nodejs"
