@@ -1168,7 +1168,7 @@ types of orchestration tools, which, broadly speaking, fall into the following f
 
 <div class="paragraph">
 
-<p>You&#8217;ll work through examples where you deploy the same app using each of these approaches. which will let you see how
+<p>You&#8217;ll work through examples where you deploy the same app using each of these approaches, which will let you see how
 
 different orchestration approaches perform across a variety of dimensions (e.g., rolling out updates, load balancing,
 
@@ -1540,7 +1540,7 @@ maintain and update in place.</p>
 
 <div class="paragraph">
 
-<p>To get a feel for server orchestration, let&#8217;s use Ansible. In <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, you saw how to
+<p>To get a feel for server orchestration, let&#8217;s use Ansible. In <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.1</a>, you saw how to
 
 deploy a single EC2 instance using Ansible. In this post, you&#8217;ll first use Ansible to deploy
 
@@ -1758,7 +1758,7 @@ contents shown in <a href="04.html#example_ansible_ec2_instances_variables">Exam
 
 <div class="paragraph">
 
-<p>This is similar to the Ansible Playbook you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, which deployed a
+<p>This is similar to the Ansible Playbook you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.1</a>, which deployed a
 
 single EC2 instance, except for the following changes to allow deploying multiple instances:</p>
 
@@ -1930,7 +1930,7 @@ closer to something you could use in production.</p>
 
 <div class="paragraph">
 
-<p>First, just as in <a href="03.html#example_configure_server_ansible">Section 2.2.2.2</a>, you need to tell Ansible what servers you want to configure.
+<p>First, just as in <a href="03.html#example_configure_server_ansible">Section 2.3.2</a>, you need to tell Ansible what servers you want to configure.
 
 You do this using either an inventory file or, if you deployed servers in the cloud, such as the EC2 instances in the
 
@@ -2074,7 +2074,7 @@ can use a playbook to configure the servers in this group to run the Node.js sam
 
 <li>
 
-<p>Instead of a single sample-app role that does everything, as you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, the
+<p>Instead of a single sample-app role that does everything, as you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.1</a>, the
 
 code in this blog post uses two roles. The first role, called nodejs-app, is responsible for
 
@@ -3650,7 +3650,7 @@ crashes.</p>
 
 <div class="paragraph">
 
-<p>Let&#8217;s use a reusable module (as introduced in <a href="03.html#opentofu_reusable_module">Section 2.2.4.3</a>) called <code>asg</code> from this blog post series&#8217;s
+<p>Let&#8217;s use a reusable module (as introduced in <a href="03.html#opentofu_reusable_module">Section 2.5.3</a>) called <code>asg</code> from this blog post series&#8217;s
 
 <a href="https://github.com/brikis98/devops-book">sample code repo</a> to deploy an ASG. You can find the module in the <em>ch3/tofu/modules/asg</em>
 
@@ -4872,7 +4872,7 @@ your account doesn&#8217;t start accumulating any unwanted charges.</p>
 
 <div class="paragraph">
 
-<p>I first mentioned containers back in <a href="03.html#server_templating_tools">Section 2.2.3</a>, introducing them as essentially a lightweight
+<p>I first mentioned containers back in <a href="03.html#server_templating_tools">Section 2.4</a>, introducing them as essentially a lightweight
 
 alternative to VMs. The idea with <em>container orchestration</em> is to do the following:</p>
 
@@ -5074,7 +5074,7 @@ Docker and Kubernetes in AWS. Let&#8217;s get into it!</p>
 
 <div class="paragraph">
 
-<p>As you may remember from <a href="03.html#server_templating_tools">Section 2.2.3</a>, Docker images are like self-contained "snapshots" of the operating
+<p>As you may remember from <a href="03.html#server_templating_tools">Section 2.4</a>, Docker images are like self-contained "snapshots" of the operating
 
 system (OS), the software, the files, and all other relevant details. Let&#8217;s now see Docker in action.</p>
 
