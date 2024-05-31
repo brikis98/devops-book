@@ -956,49 +956,49 @@ table ul {
 
 <div class="footnote" id="_footnotedef_5">
 
-<a href="#_footnoteref_5">5</a>. <a href="https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/" class="bare">https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/</a>
+<a href="#_footnoteref_5">5</a>. See Basecamp for an example: <a href="https://basecamp.com/cloud-exit" class="bare">https://basecamp.com/cloud-exit</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_6">
 
-<a href="#_footnoteref_6">6</a>. See Basecamp for an example: <a href="https://basecamp.com/cloud-exit" class="bare">https://basecamp.com/cloud-exit</a>.
+<a href="#_footnoteref_6">6</a>. The first PaaS, Zimki, was actually created by Canon (the camera company) in 2006, but shut down just a year later: <a href="https://www.porter.run/blog/history-of-paas-how-canon-almost-became-a-major-cloud-provider" class="bare">https://www.porter.run/blog/history-of-paas-how-canon-almost-became-a-major-cloud-provider</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_7">
 
-<a href="#_footnoteref_7">7</a>. The first PaaS, Zimki, was actually created by Canon (the camera company) in 2006, but shut down just a year later: <a href="https://www.porter.run/blog/history-of-paas-how-canon-almost-became-a-major-cloud-provider" class="bare">https://www.porter.run/blog/history-of-paas-how-canon-almost-became-a-major-cloud-provider</a>.
+<a href="#_footnoteref_7">7</a>. I&#8217;m assuming that you&#8217;re running the examples in this blog post series in an AWS account dedicated solely to learning and testing so that the broad permissions of the <code>AdministratorAccess</code> Managed Policy are not a big risk.
 
 </div>
 
 <div class="footnote" id="_footnotedef_8">
 
-<a href="#_footnoteref_8">8</a>. I&#8217;m assuming that you&#8217;re running the examples in this blog post series in an AWS account dedicated solely to learning and testing so that the broad permissions of the <code>AdministratorAccess</code> Managed Policy are not a big risk.
+<a href="#_footnoteref_8">8</a>. This is where the term <em>bus factor</em> comes from: your team&#8217;s bus factor is the number of people you canlose (e.g., because they got hit by a bus, or perhaps something less dramatic, like they changed jobs) before you can no longer operate your business. You never want to have a bus factor of 1.
 
 </div>
 
 <div class="footnote" id="_footnotedef_9">
 
-<a href="#_footnoteref_9">9</a>. This is where the term <em>bus factor</em> comes from: your team&#8217;s bus factor is the number of people you canlose (e.g., because they got hit by a bus, or perhaps something less dramatic, like they changed jobs) before you can no longer operate your business. You never want to have a bus factor of 1.
+<a href="#_footnoteref_9">9</a>. On most modern operating systems, code runs in one of two "spaces": <em>kernel space</em> or <em>user space</em>. Code running in kernel space has direct, unrestricted access to all of the hardware. There are no security restrictions (i.e., you can execute any CPU instruction, access any part of the hard drive, write to any address in memory) or safety restrictions (e.g., a crash in kernel space will typically crash the entire computer), so kernel space is generally reserved for the lowest-level, most trusted functions of the OS (typically called the <em>kernel</em>). Code running in user space does not have any direct access to the hardware and must use APIs exposed by the OS kernel instead. These APIs can enforce security restrictions (e.g., user permissions) and safety (e.g., a crash in a user space app typically affects only that app), so just about all application code runs in user space.
 
 </div>
 
 <div class="footnote" id="_footnotedef_10">
 
-<a href="#_footnoteref_10">10</a>. On most modern operating systems, code runs in one of two "spaces": <em>kernel space</em> or <em>user space</em>. Code running in kernel space has direct, unrestricted access to all of the hardware. There are no security restrictions (i.e., you can execute any CPU instruction, access any part of the hard drive, write to any address in memory) or safety restrictions (e.g., a crash in kernel space will typically crash the entire computer), so kernel space is generally reserved for the lowest-level, most trusted functions of the OS (typically called the <em>kernel</em>). Code running in user space does not have any direct access to the hardware and must use APIs exposed by the OS kernel instead. These APIs can enforce security restrictions (e.g., user permissions) and safety (e.g., a crash in a user space app typically affects only that app), so just about all application code runs in user space.
+<a href="#_footnoteref_10">10</a>. As a general rule, containers provide isolation that&#8217;s good enough to run your own code, but if you need to run third-party code (e.g., you&#8217;re building your own cloud provider) that might actively be performing malicious actions, you&#8217;ll want the increased isolation guarantees of a VM.
 
 </div>
 
 <div class="footnote" id="_footnotedef_11">
 
-<a href="#_footnoteref_11">11</a>. As a general rule, containers provide isolation that&#8217;s good enough to run your own code, but if you need to run third-party code (e.g., you&#8217;re building your own cloud provider) that might actively be performing malicious actions, you&#8217;ll want the increased isolation guarantees of a VM.
+<a href="#_footnoteref_11">11</a>. You can learn more about AWS regions and Availability Zones on the <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">AWS website</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_12">
 
-<a href="#_footnoteref_12">12</a>. You can learn more about AWS regions and Availability Zones on the <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">AWS website</a>.
+<a href="#_footnoteref_12">12</a>. See <a href="https://aws.amazon.com/compliance/services-in-scope/">AWS Services in Scope by Compliance Program</a>.
 
 </div>
 
@@ -1028,175 +1028,181 @@ table ul {
 
 <div class="footnote" id="_footnotedef_17">
 
-<a href="#_footnoteref_17">17</a>. Kubernetes Deployments support rolling and canary deployments natively. Several popular tools in the Kubernetes ecosystem support blue-green deployments, such as <a href="https://argo-rollouts.readthedocs.io/en/stable/features/bluegreen/">Argo Rollouts</a>.
+<a href="#_footnoteref_17">17</a>. See the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">Lambda runtimes documentation</a> for details.
 
 </div>
 
 <div class="footnote" id="_footnotedef_18">
 
-<a href="#_footnoteref_18">18</a>. See <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html">Deploying serverless applications gradually</a> for details.
+<a href="#_footnoteref_18">18</a>. Kubernetes Deployments support rolling and canary deployments natively. Several popular tools in the Kubernetes ecosystem support blue-green deployments, such as <a href="https://argo-rollouts.readthedocs.io/en/stable/features/bluegreen/">Argo Rollouts</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_19">
 
-<a href="#_footnoteref_19">19</a>. This is true up to a point. For example, AWS Lambda has concurrency limits, and if you have enough load to exceed them, you may have to <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html">configure concurrency controls</a> to avoid being throttled.
+<a href="#_footnoteref_19">19</a>. See <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html">Deploying serverless applications gradually</a> for details.
 
 </div>
 
 <div class="footnote" id="_footnotedef_20">
 
-<a href="#_footnoteref_20">20</a>. Kubernetes supports several types of <em>probes</em> as health checks, including <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">liveness, readiness, and startup probes</a>.
+<a href="#_footnoteref_20">20</a>. This is true up to a point. For example, AWS Lambda has concurrency limits, and if you have enough load to exceed them, you may have to <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html">configure concurrency controls</a> to avoid being throttled.
 
 </div>
 
 <div class="footnote" id="_footnotedef_21">
 
-<a href="#_footnoteref_21">21</a>. See the <a href="https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services">discovering services documentation</a> for details
+<a href="#_footnoteref_21">21</a>. Kubernetes supports several types of <em>probes</em> as health checks, including <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">liveness, readiness, and startup probes</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_22">
 
-<a href="#_footnoteref_22">22</a>. Lambda functions can use the <a href="https://docs.aws.amazon.com/lambda/latest/api/API_Invoke.html">Invoke API</a> to trigger other functions, but <a href="https://docs.aws.amazon.com/lambda/latest/operatorguide/functions-calling-functions.html">this is typically considered an anti-pattern</a>. The more common approach is to use an <a href="https://docs.aws.amazon.com/lambda/latest/operatorguide/event-driven-architectures.html">event-driven architecture</a> where one Lambda function performs an action—e.g., put a message in a queue, write a file to a file store, etc.—which, in turn, triggers another Lambda function asynchronously.
+<a href="#_footnoteref_22">22</a>. See the <a href="https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services">discovering services documentation</a> for details.
 
 </div>
 
 <div class="footnote" id="_footnotedef_23">
 
-<a href="#_footnoteref_23">23</a>. For example, it&#8217;s easy to launch an ASG with 5 EC2 instances, and to have an <em>EBS Volume</em>—a network-attached hard drive you&#8217;ll learn more about in <a href="#how_to_store_data">Part 9</a>—attached to each one. However, when you roll out a new change with instance refresh, you&#8217;ll end up with 5 <em>new</em> EC2 instances, and 5 <em>new</em> EBS Volumes attached, so any data they had before is not carried over.
+<a href="#_footnoteref_23">23</a>. Lambda functions can use the <a href="https://docs.aws.amazon.com/lambda/latest/api/API_Invoke.html">Invoke API</a> to trigger other functions, but <a href="https://docs.aws.amazon.com/lambda/latest/operatorguide/functions-calling-functions.html">this is typically considered an anti-pattern</a>. The more common approach is to use an <a href="https://docs.aws.amazon.com/lambda/latest/operatorguide/event-driven-architectures.html">event-driven architecture</a> where one Lambda function performs an action—e.g., put a message in a queue, write a file to a file store, etc.—which, in turn, triggers another Lambda function asynchronously.
 
 </div>
 
 <div class="footnote" id="_footnotedef_24">
 
-<a href="#_footnoteref_24">24</a>. For example, Chef &amp; Puppet require you to run master nodes and agent software, all of which must be maintained.
+<a href="#_footnoteref_24">24</a>. For example, it&#8217;s easy to launch an ASG with 5 EC2 instances, and to have an <em>EBS Volume</em>—a network-attached hard drive you&#8217;ll learn more about in <a href="#how_to_store_data">Part 9</a>—attached to each one. However, when you roll out a new change with instance refresh, you&#8217;ll end up with 5 <em>new</em> EC2 instances, and 5 <em>new</em> EBS Volumes attached, so any data they had before is not carried over.
 
 </div>
 
 <div class="footnote" id="_footnotedef_25">
 
-<a href="#_footnoteref_25">25</a>. For example, there is a new Kubernetes release once per quarter, and upgrading your cluster can be a considerable undertaking.
+<a href="#_footnoteref_25">25</a>. For example, Chef &amp; Puppet require you to run master nodes and agent software, all of which must be maintained.
 
 </div>
 
 <div class="footnote" id="_footnotedef_26">
 
-<a href="#_footnoteref_26">26</a>. Especially if you use tools like the Serverless Framework and SAM.
+<a href="#_footnoteref_26">26</a>. For example, there is a new Kubernetes release once per quarter, and upgrading your cluster can be a considerable undertaking.
 
 </div>
 
 <div class="footnote" id="_footnotedef_27">
 
-<a href="#_footnoteref_27">27</a>. One of the drawbacks to the mutable infrastructure paradigm is something known as <em>configuration drift</em>, where over time, your long-running servers can build up unique histories of changes, so each server is subtly different from the others, which can make debugging incredibly difficult.
+<a href="#_footnoteref_27">27</a>. Especially if you use tools like the Serverless Framework and SAM.
 
 </div>
 
 <div class="footnote" id="_footnotedef_28">
 
-<a href="#_footnoteref_28">28</a>. For example, with Kubernetes, you can get a <a href="https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/">shell in a running container</a> at any time.
+<a href="#_footnoteref_28">28</a>. One of the drawbacks to the mutable infrastructure paradigm is something known as <em>configuration drift</em>, where over time, your long-running servers can build up unique histories of changes, so each server is subtly different from the others, which can make debugging incredibly difficult.
 
 </div>
 
 <div class="footnote" id="_footnotedef_29">
 
-<a href="#_footnoteref_29">29</a>. For example, with AWS Lambda, if you want a database connection pool, you have to run a separate service called the <a href="https://aws.amazon.com/rds/proxy/">Amazon RDS Proxy</a>.
+<a href="#_footnoteref_29">29</a>. For example, with Kubernetes, you can get a <a href="https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/">shell in a running container</a> at any time.
 
 </div>
 
 <div class="footnote" id="_footnotedef_30">
 
-<a href="#_footnoteref_30">30</a>. The way Git calculates commit IDs is very clever. First, it ensures that commit IDs are consistent without the need for any central mechanism for issuing IDs: the same commit done on any computer. anywhere in the world, at any time always gets the exact same ID. Second, it ensures commits can&#8217;t be tampered with: change even 1 bit of the contents or metadata or history, and you get a totally different SHA-1 hash. Third, it gives you a very efficient way to compare commits. In part, this is because you can compare commits using just the IDs, without having to send the full contents. But even more interesting is that you can compare the full history just by comparing IDs. That&#8217;s because the commit ID calculation includes the ID of the previous commit, which, in turn, included the ID of its predecessor, and so on, so two commit IDs are only equal if their entire history is equal.
+<a href="#_footnoteref_30">30</a>. For example, with AWS Lambda, if you want a database connection pool, you have to run a separate service called the <a href="https://aws.amazon.com/rds/proxy/">Amazon RDS Proxy</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_31">
 
-<a href="#_footnoteref_31">31</a>. One study of code reviews found that they can catch 55%-60% of bugs, which is a higher rate than even automated testing ("Software Defect-Removal Efficiency" by Capers Jones, IEEE Computer, April 1996). Another study found code reviews could reduce error rates by over 80% (<em>Handbook of Walkthroughs, Inspections, and Technical Reviews: Evaluating Programs, Projects, and Products</em> by Daniel P. Freedman and Gerald M. Weinberg, Dorset House).
+<a href="#_footnoteref_31">31</a>. The way Git calculates commit IDs is very clever. First, it ensures that commit IDs are consistent without the need for any central mechanism for issuing IDs: the same commit done on any computer. anywhere in the world, at any time always gets the exact same ID. Second, it ensures commits can&#8217;t be tampered with: change even 1 bit of the contents or metadata or history, and you get a totally different SHA-1 hash. Third, it gives you a very efficient way to compare commits. In part, this is because you can compare commits using just the IDs, without having to send the full contents. But even more interesting is that you can compare the full history just by comparing IDs. That&#8217;s because the commit ID calculation includes the ID of the previous commit, which, in turn, included the ID of its predecessor, and so on, so two commit IDs are only equal if their entire history is equal.
 
 </div>
 
 <div class="footnote" id="_footnotedef_32">
 
-<a href="#_footnoteref_32">32</a>. Unit tests for application code are typically fast. Unit tests for infrastructure code are typically moderate, at best.
+<a href="#_footnoteref_32">32</a>. One study of code reviews found that they can catch 55%-60% of bugs, which is a higher rate than even automated testing ("Software Defect-Removal Efficiency" by Capers Jones, IEEE Computer, April 1996). Another study found code reviews could reduce error rates by over 80% (<em>Handbook of Walkthroughs, Inspections, and Technical Reviews: Evaluating Programs, Projects, and Products</em> by Daniel P. Freedman and Gerald M. Weinberg, Dorset House).
 
 </div>
 
 <div class="footnote" id="_footnotedef_33">
 
-<a href="#_footnoteref_33">33</a>. "ISS Configuration." Wikipedia, The Free Encyclopedia, December 12, 2022. <a href="https://commons.wikimedia.org/wiki/File:ISS_configuration_2022-12_en.svg" class="bare">https://commons.wikimedia.org/wiki/File:ISS_configuration_2022-12_en.svg</a>
+<a href="#_footnoteref_33">33</a>. Unit tests for application code are typically fast. Unit tests for infrastructure code are typically moderate, at best.
 
 </div>
 
 <div class="footnote" id="_footnotedef_34">
 
-<a href="#_footnoteref_34">34</a>. <a href="https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/" class="bare">https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/</a>
+<a href="#_footnoteref_34">34</a>. "ISS Configuration." Wikipedia, The Free Encyclopedia, December 12, 2022. <a href="https://commons.wikimedia.org/wiki/File:ISS_configuration_2022-12_en.svg" class="bare">https://commons.wikimedia.org/wiki/File:ISS_configuration_2022-12_en.svg</a>
 
 </div>
 
 <div class="footnote" id="_footnotedef_35">
 
-<a href="#_footnoteref_35">35</a>. <a href="https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/" class="bare">https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/</a>.
+<a href="#_footnoteref_35">35</a>. <a href="https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/" class="bare">https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/</a>
 
 </div>
 
 <div class="footnote" id="_footnotedef_36">
 
-<a href="#_footnoteref_36">36</a>. See <a href="https://github.com/actions/runner-images" class="bare">https://github.com/actions/runner-images</a> for the details.
+<a href="#_footnoteref_36">36</a>. <a href="https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/" class="bare">https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_37">
 
-<a href="#_footnoteref_37">37</a>. For large deployments, you may be able to replace batches of servers rather than one at a time: e.g., if you have 50 nodes to replace, you might take 5 down at a time, boot up 5 new ones, and when they are healthy, repeat with the next batch of 5, until all 50 are replaced.
+<a href="#_footnoteref_37">37</a>. See <a href="https://github.com/actions/runner-images" class="bare">https://github.com/actions/runner-images</a> for the details.
 
 </div>
 
 <div class="footnote" id="_footnotedef_38">
 
-<a href="#_footnoteref_38">38</a>. See <a href="http://www.experimentcalculator.com/" class="bare">http://www.experimentcalculator.com/</a>
+<a href="#_footnoteref_38">38</a>. For large deployments, you may be able to replace batches of servers rather than one at a time: e.g., if you have 50 nodes to replace, you might take 5 down at a time, boot up 5 new ones, and when they are healthy, repeat with the next batch of 5, until all 50 are replaced.
 
 </div>
 
 <div class="footnote" id="_footnotedef_39">
 
-<a href="#_footnoteref_39">39</a>. See <a href="http://mcfunley.com/data-driven-products-now">Data Driven Products Now!</a> by Dan McKinley for a great write-up on how data-driven product development works.
+<a href="#_footnoteref_39">39</a>. See <a href="http://www.experimentcalculator.com/" class="bare">http://www.experimentcalculator.com/</a>
 
 </div>
 
 <div class="footnote" id="_footnotedef_40">
 
-<a href="#_footnoteref_40">40</a>. Learn more about S3&#8217;s guarantees <a href="https://aws.amazon.com/s3/details/#durability">on the AWS website</a>.
+<a href="#_footnoteref_40">40</a>. See <a href="http://mcfunley.com/data-driven-products-now">Data Driven Products Now!</a> by Dan McKinley for a great write-up on how data-driven product development works.
 
 </div>
 
 <div class="footnote" id="_footnotedef_41">
 
-<a href="#_footnoteref_41">41</a>. See pricing information for S3 <a href="https://aws.amazon.com/s3/pricing/">on the AWS website</a>.
+<a href="#_footnoteref_41">41</a>. Learn more about S3&#8217;s guarantees <a href="https://aws.amazon.com/s3/details/#durability">on the AWS website</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_42">
 
-<a href="#_footnoteref_42">42</a>. Pricing information for DynamoDB is available <a href="https://aws.amazon.com/dynamodb/pricing/">on the AWS website</a>.
+<a href="#_footnoteref_42">42</a>. See pricing information for S3 <a href="https://aws.amazon.com/s3/pricing/">on the AWS website</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_43">
 
-<a href="#_footnoteref_43">43</a>. For an example of a full-featured deployment pipeline that implements most of this functionality out-of-the-box, see <a href="https://www.gruntwork.io/products/pipelines">Gruntwork Pipelines</a>.
+<a href="#_footnoteref_43">43</a>. Pricing information for DynamoDB is available <a href="https://aws.amazon.com/dynamodb/pricing/">on the AWS website</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_44">
 
-<a href="#_footnoteref_44">44</a>. See <a href="https://research.nccgroup.com/2022/01/13/10-real-world-stories-of-how-weve-compromised-ci-cd-pipelines/">10 real-world stories of how we’ve compromised CI/CD pipelines.</a>
+<a href="#_footnoteref_44">44</a>. For an example of a full-featured deployment pipeline that implements most of this functionality out-of-the-box, see <a href="https://www.gruntwork.io/products/pipelines">Gruntwork Pipelines</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_45">
 
-<a href="#_footnoteref_45">45</a>. For example, see <a href="https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets:">GitHub&#8217;s push rulesets</a> for a way to lock down who can edit specific file paths in a repo.
+<a href="#_footnoteref_45">45</a>. See <a href="https://research.nccgroup.com/2022/01/13/10-real-world-stories-of-how-weve-compromised-ci-cd-pipelines/">10 real-world stories of how we’ve compromised CI/CD pipelines.</a>
+
+</div>
+
+<div class="footnote" id="_footnotedef_46">
+
+<a href="#_footnoteref_46">46</a>. For example, see <a href="https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets:">GitHub&#8217;s push rulesets</a> for a way to lock down who can edit specific file paths in a repo.
 
 </div>
 
@@ -1208,7 +1214,7 @@ table ul {
 
 <div id="footer-text">
 
-Last updated 2024-05-31 11:34:28 -0400
+Last updated 2024-05-31 16:43:42 -0400
 
 </div>
 
