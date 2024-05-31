@@ -951,7 +951,7 @@ table ul {
 
 </li>
 
-<li class="nav-item"><a href="#_deploying_using_platform_as_a_service_paas_vs_infrastructure_as_a_service_iaas" class="nav-link">1.4. Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</a>
+<li class="nav-item"><a href="#_deploying_using_paas_vs_iaas" class="nav-link">1.4. Deploying using PaaS vs IaaS</a>
 
 <ul class="nav nav-pills flex-column">
 
@@ -1236,7 +1236,7 @@ $ cd ch1/sample-app</pre>
 
 <div class="paragraph">
 
-<p>The sample app you&#8217;ll be using is a very simple "Hello, World" app, written in JavaScript. You don&#8217;t
+<p>The sample app you&#8217;ll be using is a very simple "Hello, World" Node.js app, written in JavaScript. You don&#8217;t
 
 need to understand much JavaScript to make sense of the app. In fact, one of the nice things about getting started with
 
@@ -1264,13 +1264,13 @@ const server = http.createServer((req, res) =&gt; {
 
   res.writeHead(<span style="color:#00D">200</span>, { <span style="color:#606"><span style="color:#404">'</span><span>Content-Type</span><span style="color:#404">'</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text/plain</span><span style="color:#710">'</span></span> });
 
-  res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>); // <b class="conum">(2)</b>
+  res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>); // <b class="conum">(1)</b>
 
 });
 
 
 
-const port = <span style="color:#00D">8080</span>; // <b class="conum">(1)</b>
+const port = <span style="color:#00D">8080</span>; // <b class="conum">(2)</b>
 
 server.listen(port,() =&gt; {
 
@@ -1298,13 +1298,13 @@ server.listen(port,() =&gt; {
 
 <li>
 
-<p>Listen on port 8080 for requests.</p>
+<p>Respond to all requests with the text "Hello, World!"</p>
 
 </li>
 
 <li>
 
-<p>Respond to all requests with the text "Hello, World!"</p>
+<p>Listen on port 8080 for requests.</p>
 
 </li>
 
@@ -1786,7 +1786,7 @@ need to span the globe and have multiple data centers, then you need to build up
 
 multiple locations around the world. With the cloud, your team can be anywhere in the world (as long as you have an
 
-Internet connection) and get instant access to dozens of data centers around the world (and constantly growing).</p>
+Internet connection) and get instant access to dozens of data centers around the world.</p>
 
 </dd>
 
@@ -1860,7 +1860,7 @@ companies are establishing a presence in the cloud as well, often preferring it 
 
 <div class="paragraph">
 
-<p>So with all these advantages of using the cloud, does it ever make sense to go with on-prem these days?</p>
+<p>So with all these advantages of using the cloud, does it ever make sense to go with on-prem?</p>
 
 </div>
 
@@ -1972,7 +1972,7 @@ traffic patterns that can spike wildly up and down (e.g., an ecommerce app with 
 
 might choose to run that app in the cloud to take advantage of the cloud&#8217;s elasticity; and if you have another app
 
-with steady traffic patterns that use lots of disk space and bandwidth, you may choose to run that app on-prem to
+with steady traffic patterns that uses lots of disk space and bandwidth, you may choose to run that app on-prem to
 
 save on costs. In short, pick the right tool for the job!</p>
 
@@ -2012,13 +2012,13 @@ series will use the cloud.</p>
 
 <li>
 
-<p>Platform as a Service</p>
+<p>Platform as a Service (PaaS)</p>
 
 </li>
 
 <li>
 
-<p>Infrastructure as a Service</p>
+<p>Infrastructure as a Service (IaaS)</p>
 
 </li>
 
@@ -2038,7 +2038,7 @@ series will use the cloud.</p>
 
 <div class="sect2">
 
-<h2 id="_deploying_using_platform_as_a_service_paas_vs_infrastructure_as_a_service_iaas">Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</h2>
+<h2 id="_deploying_using_paas_vs_iaas">Deploying using PaaS vs IaaS</h2>
 
 <div class="paragraph">
 
@@ -2046,7 +2046,7 @@ series will use the cloud.</p>
 
 allowed you to rent servers from AWS. This was the first <em>Infrastructure as a Service (IaaS)</em> offering, which gives you
 
-access directly to computing resources, such as servers. This dramatically reduced the time it took to do hardware
+access directly to computing resources, such as servers. This dramatically reduced the time it took to do the hardware
 
 aspects of operations (e.g., buying and racking servers), but it didn&#8217;t help as much with the software aspects of
 
@@ -2162,21 +2162,19 @@ a command-line tool called <code>flyctl</code> that lets you deploy code straigh
 
 </div>
 
-<div class="olist arabic">
+<div class="paragraph">
 
-<ol class="arabic">
+<p><strong>Step 1: <a href="https://fly.io/docs/hands-on/install-flyctl/">Install <code>flyctl</code></a>.</strong> This will give you the <code>fly</code>
 
-<li>
+CLI tool, which you can use to manage and deploy your apps.</p>
 
-<p><a href="https://fly.io/docs/hands-on/install-flyctl/"><strong>Install <code>flyctl</code></strong></a>: This will give you the <code>fly</code> CLI tool, which you
+</div>
 
-can use to manage and deploy your apps.</p>
+<div class="paragraph">
 
-</li>
+<p><strong>Step 2: Sign up for a Fly.io account.</strong> Run the <code>fly auth</code> command:</p>
 
-<li>
-
-<p><strong>Sign up for a Fly.io account</strong>:</p>
+</div>
 
 <div class="listingblock">
 
@@ -2212,13 +2210,13 @@ before, the examples in this blog post series shouldn&#8217;t cost you anything.
 
 </div>
 
-</li>
+<div class="paragraph">
 
-<li>
+<p><strong>Step 3: Configure the build.</strong> Create a file called <em>fly.toml</em> in the same <em>sample-app</em> folder as your
 
-<p><strong>Configure the build</strong>: Create a file called <em>fly.toml</em> in the same <em>sample-app</em> folder as your <em>app.js</em> file with the
+<em>app.js</em> file with the contents shown in <a href="02.html#example_fly_io_config">Example 2</a>:</p>
 
-contents shown in <a href="02.html#example_fly_io_config">Example 2</a>:</p>
+</div>
 
 <div id="example_fly_io_config" class="exampleblock">
 
@@ -2294,11 +2292,11 @@ omitted a lot of code from the sample app that you&#8217;d have in a real app, s
 
 </div>
 
-</li>
+<div class="paragraph">
 
-<li>
+<p><strong>Step 4: Launch the app.</strong> Run <code>fly launch</code>:</p>
 
-<p><strong>Launch the app</strong>:</p>
+</div>
 
 <div class="listingblock">
 
@@ -2343,12 +2341,6 @@ should see:</p>
 <pre>Hello, World!</pre>
 
 </div>
-
-</div>
-
-</li>
-
-</ol>
 
 </div>
 
@@ -2534,17 +2526,17 @@ you. It&#8217;s like magic. And that&#8217;s the greatest strength of PaaS: it j
 
 <div class="paragraph">
 
-<p>Except when it doesn&#8217;t. Then, this very same magic becomes the greatest weakness of PaaS. By design, with a PaaS, just
+<p>Except when it doesn&#8217;t. When that happens, this very same magic becomes the greatest weakness of PaaS. By design, with
 
-about everything is happening behind the scenes, so if something doesn&#8217;t work, it can be very hard to debug it or fix
+a PaaS, just about everything is happening behind the scenes, so if something doesn&#8217;t work, it can be very hard to
 
-it. Moreover, to make the magic possible, most PaaS offerings have a number of limitations: e.g., limitations on what
+debug it or fix it. Moreover, to make the magic possible, most PaaS offerings have a number of limitations: e.g.,
 
-you can deploy, what types of apps you can run, what sort of access you can have to the underlying hardware, what sort
+limitations on what you can deploy, what types of apps you can run, what sort of access you can have to the underlying
 
-of hardware is available, and so on. If the PaaS doesn&#8217;t support it—if the CLI or UI the PaaS provides doesn&#8217;t expose
+hardware, what sort of hardware is available, and so on. If the PaaS doesn&#8217;t support it—if the CLI or UI the PaaS
 
-the ability to do something you need—you typically can&#8217;t do it at all.</p>
+provides doesn&#8217;t expose the ability to do something you need—you typically can&#8217;t do it at all.</p>
 
 </div>
 
@@ -2630,45 +2622,43 @@ serverless, containers, databases, machine learning, and much more.</p>
 
 </div>
 
-<div class="olist arabic">
+<div class="paragraph">
 
-<ol class="arabic">
+<p><strong>Step 1: Sign up for AWS.</strong> If you don&#8217;t already have an AWS account, head over to <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a>
 
-<li>
+and sign up. When you first register for AWS, you initially sign in as the <em>root user</em>. This user account has access
 
-<p><strong>Sign up for AWS</strong>: If you don&#8217;t already have an AWS account, head over to <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> and sign up. When
+permissions to do absolutely anything in the account, so from a security perspective, it&#8217;s not a good idea to use the
 
-you first register for AWS, you initially sign in as the <em>root user</em>. This user account has access permissions to do
+root user on a day-to-day basis. In fact, the <em>only</em> thing you should use the root user for is to create other user
 
-absolutely anything in the account, so from a security perspective, it&#8217;s not a good idea to use the root user on a
+accounts with more-limited permissions, and then switch to one of those accounts immediately, as per the next step.
 
-day-to-day basis. In fact, the <em>only</em> thing you should use the root user for is to create other user accounts with
+Make sure to store the root user credentials in a secure password manager, such as 1Password (you&#8217;ll learn more about
 
-more-limited permissions, and then switch to one of those accounts immediately, as per the next step. Make sure to
+secrets management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
 
-store the root user credentials in a secure password manager, such as 1Password (you&#8217;ll learn more about secrets
+</div>
 
-management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+<div class="paragraph">
 
-</li>
+<p><strong>Step 2: Create an IAM user.</strong> To create a more-limited user account, you will need to use the <em>Identity
 
-<li>
+and Access Management (IAM)</em> service. IAM is where you manage user accounts as well as the permissions for each user.
 
-<p><strong>Create an IAM user</strong>: To create a more-limited user account, you will need to use the <em>Identity and Access Management
+We&#8217;ll go into more detail on this topic in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>, but for now, we&#8217;ll do the simplest thing
 
-(IAM)</em> service. IAM is where you manage user accounts as well as the permissions for each user. We&#8217;ll go into more
+we can to get started. To create a new <em>IAM user</em>, go to the <a href="https://console.aws.amazon.com/iam/">IAM Console</a> (note:
 
-detail on this topic in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>, but for now, we&#8217;ll do the simplest thing we can to get
+you can use the search bar at the top of the AWS Console to find services such as IAM), click Users, and then click the
 
-started. To create a new <em>IAM user</em>, go to the <a href="https://console.aws.amazon.com/iam/">IAM Console</a> (note: you can use
+Create User button. Enter a name for the user, and make sure "Provide user access to the AWS Management Console" is
 
-the search bar at the top of the AWS Console to find services such as IAM), click Users, and
+selected, as shown in <a href="02.html#create_iam_user">Figure 1</a> (note that AWS occasionally makes changes to its web console, so what you
 
-then click the Create User button. Enter a name for the user, and make sure "Provide user access to the AWS Management
+see may look slightly different from the screenshots in this blog post series).</p>
 
-Console" is selected, as shown in <a href="02.html#create_iam_user">Figure 1</a> (note that AWS occasionally makes changes to its web console,
-
-so what you see may look slightly different from the screenshots in this blog post series).</p>
+</div>
 
 <div id="create_iam_user" class="imageblock">
 
@@ -2742,27 +2732,29 @@ it will <em>never</em> be shown again.</p>
 
 </div>
 
-</li>
+<div class="paragraph">
 
-<li>
+<p><strong>Step 3: Login as the IAM user.</strong> Now that you&#8217;ve created an IAM user, log out of your AWS account, go to
 
-<p><strong>Login as the IAM user</strong>. Now that you&#8217;ve created an IAM user, log out of your AWS account, go to the sign-in URL you
+the sign-in URL you got in the previous step, and enter the user name and console password from that step to sign in as
 
-got in the previous step, and enter the user name and console password from that step to sign in as the IAM user.</p>
+the IAM user.</p>
 
-</li>
+</div>
 
-<li>
+<div class="paragraph">
 
-<p><strong>Deploy an EC2 instance</strong>. Now you&#8217;re finally ready to deploy a server. You can do this through the AWS <em>Elastic
+<p><strong>Step 4: Deploy an EC2 instance.</strong> Now you&#8217;re finally ready to deploy a server. You can do this through
 
-Compute Cloud (EC2)</em> service, which lets you launch servers called <em>EC2 instances</em>. Head over to the
+the AWS <em>Elastic Compute Cloud (EC2)</em> service, which lets you launch servers called <em>EC2 instances</em>. Head over to the
 
 <a href="https://console.aws.amazon.com/ec2/home">EC2 Console</a> and click the "Launch instance" button (as of April, 2024, it&#8217;s
 
 an orange button in the middle of the page). This will take you to a page where you configure your EC2 instance, as
 
 shown in <a href="02.html#ec2_name_ami">Figure 4</a>.</p>
+
+</div>
 
 <div id="ec2_name_ami" class="imageblock">
 
@@ -3004,83 +2996,97 @@ exit.</p>
 
 <td class="content">
 
-<div class="title">These are simplified examples for learning, not for production (watch out for snakes!)</div>
+<div class="title">Watch out for snakes: these are simplified examples for learning, not for production</div>
 
 <div class="paragraph">
 
-<p>The approach shown here with user data has a number of drawbacks:</p>
+<p>The approach shown here with user data has a number of drawbacks, as explained in <a href="02.html#example_problems">Table 2</a>:</p>
 
 </div>
 
-<div class="dlist">
+<table id="example_problems" class="tableblock frame-all grid-all stretch">
 
-<dl>
+<caption class="title">Table 2. Problems with the simplified example</caption>
 
-<dt class="hdlist1">Root user</dt>
+<colgroup>
 
-<dd>
+<col style="width: 20%;">
 
-<p>User data scripts run as the root user of the OS, so if you run your app directly from a User Data
+<col style="width: 40%;">
 
-script, it&#8217;ll run as the root user too. Production apps should always run as a separate OS user with limited
+<col style="width: 40%;">
 
-permissions.</p>
+</colgroup>
 
-</dd>
+<thead>
 
-<dt class="hdlist1">Port 80</dt>
+<tr>
 
-<dd>
+<th class="tableblock halign-left valign-top">Problem</th>
 
-<p>The app is listening on port 80, which typically requires the root user of the OS. Production apps
+<th class="tableblock halign-left valign-top">What the example app does</th>
 
-should typically use a port greater than 1024 to avoid this requirement.</p>
+<th class="tableblock halign-left valign-top">What you should do instead</th>
 
-</dd>
+</tr>
 
-<dt class="hdlist1">User data limits</dt>
+</thead>
 
-<dd>
+<tbody>
 
-<p>Cramming all the code for installing dependencies and your app code into a User Data script
+<tr>
 
-works for a simple sample app, but may get you into trouble with production apps, as user data scripts have a size
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root user</p></td>
 
-limit of just 16 KB.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User data scripts run as the root user, so running the app from user data means it runs as the root user, too.</p></td>
 
-</dd>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run apps using a separate OS user with limited permissions: you&#8217;ll see an example of this in <a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p></td>
 
-<dt class="hdlist1">Process supervisors</dt>
+</tr>
 
-<dd>
+<tr>
 
-<p>You are starting your app in user data, but user data scripts only run on the very first
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port 80</p></td>
 
-boot. Production apps should typically use process supervisors to ensure they are restarted automatically if they
+<td class="tableblock halign-left valign-top"><p class="tableblock">The app listens on port 80, which requires root user permissions.</p></td>
 
-crash or the server reboots.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have apps listen on a port greater than 1024.</p></td>
 
-</dd>
+</tr>
 
-<dt class="hdlist1">Node.js specifics</dt>
+<tr>
 
-<dd>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User data limits</p></td>
 
-<p>While the preceding items apply to any type of app you may want to run, it&#8217;s also worth
+<td class="tableblock halign-left valign-top"><p class="tableblock">The app crams all of its code and dependencies into the user data script. User data scripts are limited to 16 KB.</p></td>
 
-looking into production best practices for your chosen languages and frameworks. For example, with Node.js, running
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use configuration management or server templating tools: you&#8217;ll see example of both in <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p></td>
 
-<code>node &lt;file&gt;</code> runs just a single Node.js process in development mode. For production usage, you typically want to run
+</tr>
 
-Node.js in cluster mode, so it runs multiple processes to make use of all available CPUs, and you want to set the app
+<tr>
 
-to production mode by setting the <code>NODE_ENV</code> environment variable to "production."</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process supervision</p></td>
 
-</dd>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user data script starts the app, but user data scripts only run on the very first boot.</p></td>
 
-</dl>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use process supervisors to restart your app if it crashes or the server reboots: you&#8217;ll see an example of this in <a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p></td>
 
-</div>
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js specifics</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user data script runs just a single Node.js process, in development mode, using only one CPU core.</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run multiple Node.js processes to use all CPU cores. Set the <code>NODE_ENV</code> environment variable to "production."</p></td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 <div class="paragraph">
 
@@ -3145,12 +3151,6 @@ about HTTPS in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>), and
 <pre>Hello, World!</pre>
 
 </div>
-
-</div>
-
-</li>
-
-</ol>
 
 </div>
 
@@ -3324,7 +3324,7 @@ requirements.</p>
 
 <p>Your customers don&#8217;t care what kind of CI / CD pipeline you have, or if you are running a fancy Kubernetes cluster, or
 
-if you&#8217;re on the newest NoSQL database. Your investors don&#8217;t care. Your boss doesn&#8217;t care. No one cares. All that
+if you&#8217;re on the newest NoSQL database. All that
 
 matters is that you can deliver a product that meets your customers' needs. Every single thing you do that isn&#8217;t
 
@@ -3454,7 +3454,7 @@ of teams with hundreds or even thousands of developers, not only can PaaS pricin
 
 hit limits in terms of the types of governance and access controls offered by the PaaS: e.g., allowing some teams to
 
-make some types of changes, but no others, may be difficult in a PaaS.</p>
+make some types of changes, but not others, may be difficult in a PaaS.</p>
 
 </dd>
 
@@ -3466,15 +3466,13 @@ make some types of changes, but no others, may be difficult in a PaaS.</p>
 
 <a href="11.html#how_to_monitor_your_systems">Part 10</a>) that are higher than what your PaaS can provide. Moreover, when there is an outage
 
-or a bug, PaaS offerings are often limited in the type of visibility and connectivity options they provide, which
+or a bug, PaaS offerings are often limited in the type of visibility and connectivity options they provide: e.g.,
 
-can make debugging hard. For example, for many years, there was no way to SSH to Heroku servers, and even today, most
+many PaaS offerings don&#8217;t let you SSH to the server (e.g., this has been a limitation in Heroku for over a decade),
 
-serverless offerings (a topic we&#8217;ll cover in <a href="04.html#how_to_deploy_many_apps">Part 3</a>) still don&#8217;t offer SSH access. As your
+which can make debugging a lot harder. As your company and architecture grow larger and more complicated, being able
 
-company and architecture grow larger and more complicated, being able to introspect your systems becomes more and
-
-more important, and this may be a reason to go with IaaS over PaaS.</p>
+to introspect your systems becomes more and more important, and this may be a reason to go with IaaS over PaaS.</p>
 
 </dd>
 
@@ -3562,9 +3560,9 @@ of the underlying systems can make it hard to meet certain security and complian
 
 <dd>
 
-<p>Run your server(s) in the cloud whenever you can. Use on-prem only if you already have an on-prem presence that&#8217;s
+<p>Run your server(s) in the cloud whenever you can. Use on-prem only if you already have an on-prem presence or you
 
-working well or you have load patterns or compliance requirements that work best on-prem.</p>
+have load patterns or compliance requirements that work best on-prem.</p>
 
 </dd>
 
@@ -3651,7 +3649,7 @@ blog post, <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
 
 <div id="footer-text">
 
-Last updated 2024-05-27 15:56:22 -0400
+Last updated 2024-05-28 14:56:24 -0400
 
 </div>
 

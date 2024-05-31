@@ -1540,7 +1540,7 @@ maintain and update in place.</p>
 
 <div class="paragraph">
 
-<p>To get a feel for server orchestration, let&#8217;s use Ansible. In <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.2.1</a>, you saw how to
+<p>To get a feel for server orchestration, let&#8217;s use Ansible. In <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, you saw how to
 
 deploy a single EC2 instance using Ansible. In this post, you&#8217;ll first use Ansible to deploy
 
@@ -1758,7 +1758,7 @@ contents shown in <a href="04.html#example_ansible_ec2_instances_variables">Exam
 
 <div class="paragraph">
 
-<p>This is similar to the Ansible Playbook you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.2.1</a>, which deployed a
+<p>This is similar to the Ansible Playbook you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, which deployed a
 
 single EC2 instance, except for the following changes to allow deploying multiple instances:</p>
 
@@ -1830,7 +1830,7 @@ that includes the <code>base_name</code> and followed by the digit in <code>item
 
 <p>To run this playbook, make sure Ansible is installed, authenticate to AWS as described in
 
-<a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run <code>ansible-playbook</code> as before. Ansible will start to interactively prompt
+<a href="03.html#example_authenticate_on_the_cli">Authenticating to AWS on the command line</a>, and run <code>ansible-playbook</code> as before. Ansible will start to interactively prompt
 
 you for the variables in <code>vars_prompt</code>:</p>
 
@@ -1918,7 +1918,7 @@ discussed next.</p>
 
 <div class="paragraph">
 
-<p>As explained in <a href="02.html#simplified_example_not_for_prod">These are simplified examples for learning, not for production (watch out for snakes!)</a>, the code used in the previous blog posts had a
+<p>As explained in <a href="02.html#simplified_example_not_for_prod">Watch out for snakes: these are simplified examples for learning, not for production</a>, the code used in the previous blog posts had a
 
 number of concerns related to security and reliability issues: e.g., running the app as a root user, listening on port
 
@@ -1930,7 +1930,7 @@ closer to something you could use in production.</p>
 
 <div class="paragraph">
 
-<p>First, just as in <a href="03.html#example_configure_server_ansible">Section 2.3.2.2</a>, you need to tell Ansible what servers you want to configure.
+<p>First, just as in <a href="03.html#example_configure_server_ansible">Section 2.2.2.2</a>, you need to tell Ansible what servers you want to configure.
 
 You do this using either an inventory file or, if you deployed servers in the cloud, such as the EC2 instances in the
 
@@ -2074,7 +2074,7 @@ can use a playbook to configure the servers in this group to run the Node.js sam
 
 <li>
 
-<p>Instead of a single sample-app role that does everything, as you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.3.2.1</a>, the
+<p>Instead of a single sample-app role that does everything, as you saw in <a href="03.html#example_deploy_ec2_using_ansible">Section 2.2.2.1</a>, the
 
 code in this blog post uses two roles. The first role, called nodejs-app, is responsible for
 
@@ -2458,7 +2458,7 @@ production mode rather than development mode.</p>
 
 <div class="paragraph">
 
-<p>These changes address most of the concerns in <a href="02.html#simplified_example_not_for_prod">These are simplified examples for learning, not for production (watch out for snakes!)</a>, improving your security posture
+<p>These changes address most of the concerns in <a href="02.html#simplified_example_not_for_prod">Watch out for snakes: these are simplified examples for learning, not for production</a>, improving your security posture
 
 (no more root user) and the reliability and performance of your app (process supervisor, cluster mode).</p>
 
@@ -2468,7 +2468,7 @@ production mode rather than development mode.</p>
 
 <p>To try this code out, make sure you have Ansible installed, authenticate to AWS as described in
 
-<a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following command:</p>
+<a href="03.html#example_authenticate_on_the_cli">Authenticating to AWS on the command line</a>, and run the following command:</p>
 
 </div>
 
@@ -3570,7 +3570,7 @@ the home folder of <code>app-user</code>, doesn&#8217;t exist until a later step
 
 <p>To build the AMI, make sure Packer is installed, authenticate to AWS as described in
 
-<a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following commands:</p>
+<a href="03.html#example_authenticate_on_the_cli">Authenticating to AWS on the command line</a>, and run the following commands:</p>
 
 </div>
 
@@ -3650,7 +3650,7 @@ crashes.</p>
 
 <div class="paragraph">
 
-<p>Let&#8217;s use a reusable module (as introduced in <a href="03.html#opentofu_reusable_module">Section 2.3.5.3</a>) called <code>asg</code> from this blog post series&#8217;s
+<p>Let&#8217;s use a reusable module (as introduced in <a href="03.html#opentofu_reusable_module">Section 2.2.4.3</a>) called <code>asg</code> from this blog post series&#8217;s
 
 <a href="https://github.com/brikis98/fundamentals-of-devops-code">sample code repo</a> to deploy an ASG. You can find the module in the <em>ch3/tofu/modules/asg</em>
 
@@ -4126,7 +4126,7 @@ actually several types of AWS load balancers to choose from; the one that&#8217;
 
 is the <a href="https://aws.amazon.com/elasticloadbalancing/application-load-balancer/"><em>Application Load Balancer (ALB)</em></a>. The
 
-ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure 22</a>:</p>
+ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure 16</a>:</p>
 
 </div>
 
@@ -4178,7 +4178,7 @@ time period (e.g., within 2 seconds). The target group will only send requests t
 
 </div>
 
-<div class="title">Figure 22. An ALB consists of listeners, listener rules, and target groups.</div>
+<div class="title">Figure 16. An ALB consists of listeners, listener rules, and target groups.</div>
 
 </div>
 
@@ -4392,7 +4392,7 @@ detect both hardware and software issues.</p>
 
 <p>To deploy the module, make sure OpenTofu is installed, authenticate to AWS as described in
 
-<a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the following commands:</p>
+<a href="03.html#example_authenticate_on_the_cli">Authenticating to AWS on the command line</a>, and run the following commands:</p>
 
 </div>
 
@@ -4668,7 +4668,7 @@ AWS will kick off the instance refresh process in the background. If you go to t
 
 Groups in the left nav, find your ASG, and click the "Instance refresh" tab, you should be able to see the instance
 
-refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 23</a>.</p>
+refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 17</a>.</p>
 
 </div>
 
@@ -4680,7 +4680,7 @@ refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 2
 
 </div>
 
-<div class="title">Figure 23. Using the EC2 console to see an ASG instance refresh in progress</div>
+<div class="title">Figure 17. Using the EC2 console to see an ASG instance refresh in progress</div>
 
 </div>
 
@@ -4872,7 +4872,7 @@ your account doesn&#8217;t start accumulating any unwanted charges.</p>
 
 <div class="paragraph">
 
-<p>I first mentioned containers back in <a href="03.html#server_templating_tools">Section 2.3.3</a>, introducing them as essentially a lightweight
+<p>I first mentioned containers back in <a href="03.html#server_templating_tools">Section 2.2.3</a>, introducing them as essentially a lightweight
 
 alternative to VMs. The idea with <em>container orchestration</em> is to do the following:</p>
 
@@ -4916,7 +4916,7 @@ old containers.</p>
 
 <div class="paragraph">
 
-<p>Although containers have been around for decades<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="13-footnotes.html#_footnotedef_14" title="View footnote.">14</a>]</sup>, container orchestration started to explode in popularity
+<p>Although containers have been around for decades<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="13-footnotes.html#_footnotedef_13" title="View footnote.">13</a>]</sup>, container orchestration started to explode in popularity
 
 around 2013, with the emergence of Docker, a tool for building, running, and sharing containers, and
 
@@ -4950,7 +4950,7 @@ faster: you can expect 10-20 minutes for VMs, but just 1-5 minutes for container
 
 should run which containers, using bin packing algorithms to use the available resources as efficiently as
 
-possible.<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="13-footnotes.html#_footnotedef_15" title="View footnote.">15</a>]</sup></p>
+possible.<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="13-footnotes.html#_footnotedef_14" title="View footnote.">14</a>]</sup></p>
 
 </dd>
 
@@ -5074,7 +5074,7 @@ Docker and Kubernetes in AWS. Let&#8217;s get into it!</p>
 
 <div class="paragraph">
 
-<p>As you may remember from <a href="03.html#server_templating_tools">Section 2.3.3</a>, Docker images are like self-contained "snapshots" of the operating
+<p>As you may remember from <a href="03.html#server_templating_tools">Section 2.2.3</a>, Docker images are like self-contained "snapshots" of the operating
 
 system (OS), the software, the files, and all other relevant details. Let&#8217;s now see Docker in action.</p>
 
@@ -5732,7 +5732,7 @@ response to load), load balancing (distributing traffic across containers), and 
 
 <div class="paragraph">
 
-<p>Under the hood, Kubernetes consists of two main pieces, as shown in <a href="04.html#kubernetes_architecture">Figure 24</a>:</p>
+<p>Under the hood, Kubernetes consists of two main pieces, as shown in <a href="04.html#kubernetes_architecture">Figure 18</a>:</p>
 
 </div>
 
@@ -5744,7 +5744,7 @@ response to load), load balancing (distributing traffic across containers), and 
 
 </div>
 
-<div class="title">Figure 24. The Kubernetes architecture consists of a control plane and worker nodes</div>
+<div class="title">Figure 18. The Kubernetes architecture consists of a control plane and worker nodes</div>
 
 </div>
 
@@ -5798,7 +5798,7 @@ the ability to fire up a Kubernetes cluster locally with just a few clicks.</p>
 
 <p>If you open Docker Desktop&#8217;s preferences on your computer, you should see Kubernetes in the nav, as shown in
 
-<a href="04.html#docker_desktop_k8s">Figure 25</a>.</p>
+<a href="04.html#docker_desktop_k8s">Figure 19</a>.</p>
 
 </div>
 
@@ -5810,7 +5810,7 @@ the ability to fire up a Kubernetes cluster locally with just a few clicks.</p>
 
 </div>
 
-<div class="title">Figure 25. Enable Kubernetes on Docker Desktop.</div>
+<div class="title">Figure 19. Enable Kubernetes on Docker Desktop.</div>
 
 </div>
 
@@ -6380,7 +6380,7 @@ Service to "sample-app-loadbalancer."</p>
 
 <li>
 
-<p>Configure the Service to be a load balancer.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="13-footnotes.html#_footnotedef_16" title="View footnote.">16</a>]</sup> Under the hood, depending on what sort of Kubernetes cluster you&#8217;re running, and how you configure
+<p>Configure the Service to be a load balancer.<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="13-footnotes.html#_footnotedef_15" title="View footnote.">15</a>]</sup> Under the hood, depending on what sort of Kubernetes cluster you&#8217;re running, and how you configure
 
 that cluster, the actual type of load balancer you get will be different: for example, if you run this code in AWS,
 
@@ -7040,7 +7040,7 @@ module &quot;cluster&quot; {
 
 <div class="paragraph">
 
-<p>To deploy the EKS cluster, authenticate to AWS as described in <a href="03.html#example_authenticate_on_the_cli">Section 2.2</a>, and run the
+<p>To deploy the EKS cluster, authenticate to AWS as described in <a href="03.html#example_authenticate_on_the_cli">Authenticating to AWS on the command line</a>, and run the
 
 following commands:</p>
 
@@ -7870,7 +7870,7 @@ extremely quickly onto any server that has spare resources. That said, most of t
 
 cloud providers, but they do pass some of those cost savings down to the end-user too, offering serverless at
 
-incredibly low prices.<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="13-footnotes.html#_footnotedef_17" title="View footnote.">17</a>]</sup></p>
+incredibly low prices.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="13-footnotes.html#_footnotedef_16" title="View footnote.">16</a>]</sup></p>
 
 </dd>
 
@@ -8242,7 +8242,7 @@ $ tofu apply</pre>
 
 <a href="https://console.aws.amazon.com/lambda/home">Lambda console</a> in your browser, click on the function called
 
-"sample-app-lambda," and you should see your function and the handler code, as shown in <a href="04.html#lambda_console">Figure 26</a>:</p>
+"sample-app-lambda," and you should see your function and the handler code, as shown in <a href="04.html#lambda_console">Figure 20</a>:</p>
 
 </div>
 
@@ -8254,7 +8254,7 @@ $ tofu apply</pre>
 
 </div>
 
-<div class="title">Figure 26. The Lambda console shows your newly created function</div>
+<div class="title">Figure 20. The Lambda console shows your newly created function</div>
 
 </div>
 
@@ -8266,7 +8266,7 @@ blue Test button. The console will pop up a box where you can enter test data in
 
 as the <code>event</code> object; leave everything at its default value and and click the Invoke button. That should run your
 
-function and show you log output that looks similar to <a href="04.html#lambda_test_event">Figure 27</a>:</p>
+function and show you log output that looks similar to <a href="04.html#lambda_test_event">Figure 21</a>:</p>
 
 </div>
 
@@ -8278,7 +8278,7 @@ function and show you log output that looks similar to <a href="04.html#lambda_t
 
 </div>
 
-<div class="title">Figure 27. The output from manually triggering the Lambda function with a test event</div>
+<div class="title">Figure 21. The output from manually triggering the Lambda function with a test event</div>
 
 </div>
 
@@ -8654,7 +8654,7 @@ ensures that your account doesn&#8217;t start accumulating any unwanted charges.
 
 <p>You&#8217;ve now seen the most common approaches to orchestration: server orchestration, VM orchestration, container
 
-orchestration, and serverless orchestration. <a href="04.html#orchestration_core_problems_comparison">Table 2</a> shows how these orchestration
+orchestration, and serverless orchestration. <a href="04.html#orchestration_core_problems_comparison">Table 3</a> shows how these orchestration
 
 approaches compare in their ability to solve the core orchestration problems introduced in the beginning of the
 
@@ -8700,7 +8700,7 @@ variation within a category gets lost.</p>
 
 <table id="orchestration_core_problems_comparison" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 2. How orchestration approaches compare in terms of the core orchestration problems</caption>
+<caption class="title">Table 3. How orchestration approaches compare in terms of the core orchestration problems</caption>
 
 <colgroup>
 
@@ -8756,13 +8756,13 @@ strategies: e.g., ASG instance refresh.</p></td>
 
 <p class="tableblock">Set up worker nodes, define a template, and the orchestrator schedules containers on the worker nodes. Multiple
 
-deployment strategies: e.g., rolling, canary, blue-green.<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="13-footnotes.html#_footnotedef_18" title="View footnote.">18</a>]</sup></p></td>
+deployment strategies: e.g., rolling, canary, blue-green.<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="13-footnotes.html#_footnotedef_17" title="View footnote.">17</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Strong support</strong></span></p>
 
 <p class="tableblock">Upload a deployment package and let the orchestration tool run it whenever it is triggered. Multiple deployment
 
-strategies: e.g., blue-green, canary, traffic shifting.<sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="13-footnotes.html#_footnotedef_19" title="View footnote.">19</a>]</sup></p></td>
+strategies: e.g., blue-green, canary, traffic shifting.<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="13-footnotes.html#_footnotedef_18" title="View footnote.">18</a>]</sup></p></td>
 
 </tr>
 
@@ -8834,7 +8834,7 @@ strategies: e.g., blue-green, canary, traffic shifting.<sup class="footnote">[<a
 
 <p class="tableblock">E.g., AWS Lambda handles scaling for you, including scale to zero, without you having to think about it at
 
-all.<sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="13-footnotes.html#_footnotedef_20" title="View footnote.">20</a>]</sup></p></td>
+all.<sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="13-footnotes.html#_footnotedef_19" title="View footnote.">19</a>]</sup></p></td>
 
 </tr>
 
@@ -8854,7 +8854,7 @@ all.<sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="13-foo
 
 <p class="tableblock">E.g., Kubernetes replaces nodes that crash or pods that fail any one of a variety of health
 
-checks.<sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="13-footnotes.html#_footnotedef_21" title="View footnote.">21</a>]</sup></p></td>
+checks.<sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="13-footnotes.html#_footnotedef_20" title="View footnote.">20</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Strong support</strong></span></p>
 
@@ -8962,13 +8962,13 @@ secrets from AWS Secrets Manager</a>.</p></td>
 
 <p class="tableblock">E.g., use a Kubernetes Service to expose your app on a private IP within the cluster, and then discover IPs
 
-using environment variables or DNS.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="13-footnotes.html#_footnotedef_22" title="View footnote.">22</a>]</sup></p></td>
+using environment variables or DNS.<sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="13-footnotes.html#_footnotedef_21" title="View footnote.">21</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Strong support</strong></span></p>
 
 <p class="tableblock">E.g., Lambda functions can trigger other Lambda functions either directly via API calls or indirectly via
 
-events.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-footnotes.html#_footnotedef_23" title="View footnote.">23</a>]</sup></p></td>
+events.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="13-footnotes.html#_footnotedef_22" title="View footnote.">22</a>]</sup></p></td>
 
 </tr>
 
@@ -8982,7 +8982,7 @@ events.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Supported</strong></span></p>
 
-<p class="tableblock"><em>Ephemeral</em> disks are typically supported, but <em>permanent disks</em> have to be managed manually.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup></p></td>
+<p class="tableblock"><em>Ephemeral</em> disks are typically supported, but <em>permanent disks</em> have to be managed manually.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-footnotes.html#_footnotedef_23" title="View footnote.">23</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Strong support</strong></span></p>
 
@@ -9008,7 +9008,7 @@ events.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-
 
 that they varied across a number of other dimensions, such as speed, ease of learning, and so on.
 
-<a href="04.html#orchestration_attributes_comparison">Table 3</a> shows how the different orchestration approaches compare across these
+<a href="04.html#orchestration_attributes_comparison">Table 4</a> shows how the different orchestration approaches compare across these
 
 dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</em>:</p>
 
@@ -9016,7 +9016,7 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <table id="orchestration_attributes_comparison" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 3. How orchestration approaches compare in terms of core orchestration attributes</caption>
+<caption class="title">Table 4. How orchestration approaches compare in terms of core orchestration attributes</caption>
 
 <colgroup>
 
@@ -9080,7 +9080,7 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Weak</strong></span></p>
 
-<p class="tableblock">You have to maintain the servers, the OS and tools on each server, and the orchestration tool itself.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-footnotes.html#_footnotedef_25" title="View footnote.">25</a>]</sup></p></td>
+<p class="tableblock">You have to maintain the servers, the OS and tools on each server, and the orchestration tool itself.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="yellow-background"><strong>Moderate</strong></span></p>
 
@@ -9090,7 +9090,7 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <p class="tableblock">You have to maintain the control plane, worker nodes, the OS and tools in each Docker image, and the orchestration tool
 
-itself.<sup class="footnote">[<a id="_footnoteref_26" class="footnote" href="13-footnotes.html#_footnotedef_26" title="View footnote.">26</a>]</sup></p></td>
+itself.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-footnotes.html#_footnotedef_25" title="View footnote.">25</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very strong</strong></span></p>
 
@@ -9140,7 +9140,7 @@ to learn (a few weeks).</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very strong</strong></span></p>
 
-<p class="tableblock">It&#8217;s very common to run serverless apps in your local dev environment.<sup class="footnote">[<a id="_footnoteref_27" class="footnote" href="13-footnotes.html#_footnotedef_27" title="View footnote.">27</a>]</sup></p></td>
+<p class="tableblock">It&#8217;s very common to run serverless apps in your local dev environment.<sup class="footnote">[<a id="_footnoteref_26" class="footnote" href="13-footnotes.html#_footnotedef_26" title="View footnote.">26</a>]</sup></p></td>
 
 </tr>
 
@@ -9180,7 +9180,7 @@ maturity.</p></td>
 
 <p class="tableblock">Full access to the servers and no extra layers of abstraction makes debugging easier, but mutable infrastructure
 
-practices make debugging harder.<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup></p></td>
+practices make debugging harder.<sup class="footnote">[<a id="_footnoteref_27" class="footnote" href="13-footnotes.html#_footnotedef_27" title="View footnote.">27</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very strong</strong></span></p>
 
@@ -9188,7 +9188,7 @@ practices make debugging harder.<sup class="footnote">[<a id="_footnoteref_28" c
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Weak</strong></span></p>
 
-<p class="tableblock">Full access to the servers, sometimes full access to the containers<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup>, and immutable container images make debugging easier, but multiple layers of abstraction, and
+<p class="tableblock">Full access to the servers, sometimes full access to the containers<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup>, and immutable container images make debugging easier, but multiple layers of abstraction, and
 
 the complexity of orchestration tools make debugging challenging.</p></td>
 
@@ -9216,7 +9216,7 @@ the complexity of orchestration tools make debugging challenging.</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Weak</strong></span></p>
 
-<p class="tableblock">Limits on runtimes and numerous hoops to jump through for long-running connections.<sup class="footnote">[<a id="_footnoteref_30" class="footnote" href="13-footnotes.html#_footnotedef_30" title="View footnote.">30</a>]</sup></p></td>
+<p class="tableblock">Limits on runtimes and numerous hoops to jump through for long-running connections.<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup></p></td>
 
 </tr>
 
@@ -9254,9 +9254,9 @@ challenging.</p></td>
 
 <div class="paragraph">
 
-<p>I hope that next time you need to deploy an app, you can use <a href="04.html#orchestration_core_problems_comparison">Table 2</a> and
+<p>I hope that next time you need to deploy an app, you can use <a href="04.html#orchestration_core_problems_comparison">Table 3</a> and
 
-<a href="04.html#orchestration_attributes_comparison">Table 3</a> to pick the right tool for the job.</p>
+<a href="04.html#orchestration_attributes_comparison">Table 4</a> to pick the right tool for the job.</p>
 
 </div>
 
@@ -9371,7 +9371,7 @@ the focus of the next blog post, <a href="05.html#how_to_version_build_test">Par
 
 <div id="footer-text">
 
-Last updated 2024-05-27 15:56:22 -0400
+Last updated 2024-05-28 14:56:24 -0400
 
 </div>
 
