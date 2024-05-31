@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "function" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/lambda"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
   name = "lambda-sample"         
 
@@ -20,7 +20,7 @@ module "function" {
 }
 
 module "gateway" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/api-gateway"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
 
   name               = "lambda-sample"              
   function_arn       = module.function.function_arn 

@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "repo" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/ecr-repo"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/ecr-repo"
 
   name = "sample-app"
 }

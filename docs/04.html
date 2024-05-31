@@ -1572,7 +1572,7 @@ looks like in practice.</p>
 
 <div class="paragraph">
 
-<p>As a reminder, you can find all the code examples in the blog post series&#8217;s <a href="https://github.com/brikis98/fundamentals-of-devops-code">sample
+<p>As a reminder, you can find all the code examples in the blog post series&#8217;s <a href="https://github.com/brikis98/devops-book">sample
 
 code repo in GitHub</a>.</p>
 
@@ -1648,7 +1648,7 @@ contents shown in <a href="04.html#example_ansible_ec2_instances_variables">Exam
 
 <div id="example_ansible_ec2_instances_variables" class="exampleblock">
 
-<div class="title">Example 26. Ansible playbook to create multiple EC2 instances (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/create_ec2_instances_playbook.yml">ch3/ansible/create_ec2_instances_playbook.yml</a></em>)</div>
+<div class="title">Example 26. Ansible playbook to create multiple EC2 instances (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/create_ec2_instances_playbook.yml">ch3/ansible/create_ec2_instances_playbook.yml</a></em>)</div>
 
 <div class="content">
 
@@ -1862,7 +1862,7 @@ such as the <em>sample-app-vars.yml</em> file shown in <a href="04.html#example_
 
 <div id="example_ansible_sample_app_variables_file" class="exampleblock">
 
-<div class="title">Example 27. Variables file to create EC2 instances for the sample app (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/sample-app-vars.yml">ch3/ansible/sample-app-vars.yml</a></em>)</div>
+<div class="title">Example 27. Variables file to create EC2 instances for the sample app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/sample-app-vars.yml">ch3/ansible/sample-app-vars.yml</a></em>)</div>
 
 <div class="content">
 
@@ -1942,7 +1942,7 @@ to discover your servers automatically.</p>
 
 <div id="example_ansible_inventory_plugin_multiple_servers" class="exampleblock">
 
-<div class="title">Example 28. Inventory plugin to discover EC2 instances automatically (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/inventory.aws_ec2.yml">ch3/ansible/inventory.aws_ec2.yml</a></em>)</div>
+<div class="title">Example 28. Inventory plugin to discover EC2 instances automatically (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/inventory.aws_ec2.yml">ch3/ansible/inventory.aws_ec2.yml</a></em>)</div>
 
 <div class="content">
 
@@ -1988,7 +1988,7 @@ the <em>group_vars</em> folder. So that will be <em>group_vars/sample_app_instan
 
 <div id="example_ansible_group_vars_multiple_servers" class="exampleblock">
 
-<div class="title">Example 29. Configure group variables for your sample app servers (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/group_vars/sample_app_instances.yml">ch3/ansible/group_vars/sample_app_instances.yml</a></em>)</div>
+<div class="title">Example 29. Configure group variables for your sample app servers (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/group_vars/sample_app_instances.yml">ch3/ansible/group_vars/sample_app_instances.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2024,7 +2024,7 @@ can use a playbook to configure the servers in this group to run the Node.js sam
 
 <div id="example_ansible_configure_sample_app_playbook_multiple_servers" class="exampleblock">
 
-<div class="title">Example 30. A playbook for configuring the servers to run the Node.js sample app (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/configure_sample_app_playbook.yml">ch3/ansible/configure_sample_app_playbook.yml</a></em>)</div>
+<div class="title">Example 30. A playbook for configuring the servers to run the Node.js sample app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/configure_sample_app_playbook.yml">ch3/ansible/configure_sample_app_playbook.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2134,7 +2134,7 @@ rather than as the root user.</p>
 
 <div id="example_ansible_ec2_instances_roles_nodejs_app" class="exampleblock">
 
-<div class="title">Example 31. The tasks of the nodejs-app role (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/nodejs-app/tasks/main.yml">ch3/ansible/roles/nodejs-app/tasks/main.yml</a></em>)</div>
+<div class="title">Example 31. The tasks of the nodejs-app role (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/nodejs-app/tasks/main.yml">ch3/ansible/roles/nodejs-app/tasks/main.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2302,7 +2302,7 @@ it has features designed specifically for Node.js apps. To use these features, c
 
 <div id="example_ansible_pm2_config" class="exampleblock">
 
-<div class="title">Example 32. PM2 configuration file (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/sample-app/files/app.config.js">ch3/ansible/roles/sample-app/files/app.config.js</a></em>)</div>
+<div class="title">Example 32. PM2 configuration file (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/sample-app/files/app.config.js">ch3/ansible/roles/sample-app/files/app.config.js</a></em>)</div>
 
 <div class="content">
 
@@ -2390,7 +2390,7 @@ production mode rather than development mode.</p>
 
 <div id="example_ansible_role_sample_app_tasks" class="exampleblock">
 
-<div class="title">Example 33. The sample-app role&#8217;s tasks (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/sample-app/tasks/main.yml">ch3/ansible/roles/sample-app/tasks/main.yml</a></em>)</div>
+<div class="title">Example 33. The sample-app role&#8217;s tasks (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/sample-app/tasks/main.yml">ch3/ansible/roles/sample-app/tasks/main.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2576,7 +2576,7 @@ new variables file, <em>nginx-vars.yml</em>, with the contents shown in <a href=
 
 <div id="example_ansible_nginx_vars_file" class="exampleblock">
 
-<div class="title">Example 34. Variables file to create an EC2 instance for nginx (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/nginx-vars.yml">ch3/ansible/nginx-vars.yml</a></em>)</div>
+<div class="title">Example 34. Variables file to create an EC2 instance for nginx (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/nginx-vars.yml">ch3/ansible/nginx-vars.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2628,7 +2628,7 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div id="example_ansible_group_vars_nginx" class="exampleblock">
 
-<div class="title">Example 35. Configure group variables for your Nginx servers (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/group_vars/nginx_instances.yml">ch3/ansible/group_vars/nginx_instances.yml</a></em>)</div>
+<div class="title">Example 35. Configure group variables for your Nginx servers (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/group_vars/nginx_instances.yml">ch3/ansible/group_vars/nginx_instances.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2660,7 +2660,7 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div id="example_ansible_ec2_for_nginx_role" class="exampleblock">
 
-<div class="title">Example 36. Use a role to configure the EC2 instance with Nginx (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/configure_nginx_playbook.yml">ch3/ansible/configure_nginx_playbook.yml</a></em>)</div>
+<div class="title">Example 36. Use a role to configure the EC2 instance with Nginx (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/configure_nginx_playbook.yml">ch3/ansible/configure_nginx_playbook.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2754,7 +2754,7 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div id="example_ansible_nginx_config_template" class="exampleblock">
 
-<div class="title">Example 37. Nginx configuration file template (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/nginx/templates/nginx.conf.j2">ch3/ansible/roles/nginx/templates/nginx.conf.j2</a></em>)</div>
+<div class="title">Example 37. Nginx configuration file template (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/nginx/templates/nginx.conf.j2">ch3/ansible/roles/nginx/templates/nginx.conf.j2</a></em>)</div>
 
 <div class="content">
 
@@ -2910,7 +2910,7 @@ you deployed to run the sample app.</p>
 
 <div id="example_ansible_nginx_task" class="exampleblock">
 
-<div class="title">Example 38. Nginx role tasks (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/nginx/tasks/main.yml">ch3/ansible/roles/nginx/tasks/main.yml</a></em>)</div>
+<div class="title">Example 38. Nginx role tasks (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/nginx/tasks/main.yml">ch3/ansible/roles/nginx/tasks/main.yml</a></em>)</div>
 
 <div class="content">
 
@@ -3058,7 +3058,7 @@ the <code>serial</code> parameter to <em>configure_sample_app_playbook.yml</em>,
 
 <div id="example_ansible_ec2_instances_serial" class="exampleblock">
 
-<div class="title">Example 39. Use the serial parameter to enable rolling deployment (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/configure_sample_app_playbook.yml">ch3/ansible/configure_sample_app_playbook.yml</a></em>)</div>
+<div class="title">Example 39. Use the serial parameter to enable rolling deployment (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/configure_sample_app_playbook.yml">ch3/ansible/configure_sample_app_playbook.yml</a></em>)</div>
 
 <div class="content">
 
@@ -3124,7 +3124,7 @@ update.</p>
 
 <div id="example_ansible_ec2_updated_response" class="exampleblock">
 
-<div class="title">Example 40. Update the app to respond with the text "Fundamentals of DevOps!" (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/ansible/roles/sample-app/files/app.js">ch3/ansible/roles/sample-app/files/app.js</a></em>)</div>
+<div class="title">Example 40. Update the app to respond with the text "Fundamentals of DevOps!" (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/sample-app/files/app.js">ch3/ansible/roles/sample-app/files/app.js</a></em>)</div>
 
 <div class="content">
 
@@ -3456,7 +3456,7 @@ orchestration section of this blog post into the <em>ch3/packer</em> folder:</p>
 
 <div id="example_packer_template_security_updates" class="exampleblock">
 
-<div class="title">Example 41. Update the Packer template to use PM2 as a process supervisor and create <code>app-user</code> (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/packer/sample-app.pkr.hcl">ch3/packer/sample-app.pkr.hcl</a></em>)</div>
+<div class="title">Example 41. Update the Packer template to use PM2 as a process supervisor and create <code>app-user</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/packer/sample-app.pkr.hcl">ch3/packer/sample-app.pkr.hcl</a></em>)</div>
 
 <div class="content">
 
@@ -3652,7 +3652,7 @@ crashes.</p>
 
 <p>Let&#8217;s use a reusable module (as introduced in <a href="03.html#opentofu_reusable_module">Section 2.2.4.3</a>) called <code>asg</code> from this blog post series&#8217;s
 
-<a href="https://github.com/brikis98/fundamentals-of-devops-code">sample code repo</a> to deploy an ASG. You can find the module in the <em>ch3/tofu/modules/asg</em>
+<a href="https://github.com/brikis98/devops-book">sample code repo</a> to deploy an ASG. You can find the module in the <em>ch3/tofu/modules/asg</em>
 
 folder. This is a simple module that creates three main resources:</p>
 
@@ -3760,7 +3760,7 @@ $ cd ch3/tofu/live/asg-sample</pre>
 
 <div id="sample_app_asg_main_initial" class="exampleblock">
 
-<div class="title">Example 42. Configure the <code>asg</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
+<div class="title">Example 42. Configure the <code>asg</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -3778,7 +3778,7 @@ $ cd ch3/tofu/live/asg-sample</pre>
 
 module &quot;asg&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/asg&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
 
 
 
@@ -3888,7 +3888,7 @@ Packer template in the previous section.</p>
 
 <div id="sample_app_asg_user_data" class="exampleblock">
 
-<div class="title">Example 43. The user data script for each EC2 instance, which uses PM2 to start the sample-app (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/user-data.sh">ch3/tofu/live/asg-sample/user-data.sh</a></em>)</div>
+<div class="title">Example 43. The user data script for each EC2 instance, which uses PM2 to start the sample-app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/user-data.sh">ch3/tofu/live/asg-sample/user-data.sh</a></em>)</div>
 
 <div class="content">
 
@@ -4202,7 +4202,7 @@ should suffice for our purposes in this blog post.</p>
 
 <div id="sample_app_asg_main_alb" class="exampleblock">
 
-<div class="title">Example 44. Configure the <code>alb</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
+<div class="title">Example 44. Configure the <code>alb</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -4212,7 +4212,7 @@ should suffice for our purposes in this blog post.</p>
 
 <pre class="CodeRay highlight"><code data-lang="terraform">module &quot;alb&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/alb&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/alb&quot;
 
 
 
@@ -4286,7 +4286,7 @@ of the <code>asg</code> module, and update it with one parameter, as shown in <a
 
 <div id="sample_app_asg_main_target_group" class="exampleblock">
 
-<div class="title">Example 45. Configure the <code>asg</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
+<div class="title">Example 45. Configure the <code>asg</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -4296,7 +4296,7 @@ of the <code>asg</code> module, and update it with one parameter, as shown in <a
 
 <pre class="CodeRay highlight"><code data-lang="terraform">module &quot;asg&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/asg&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
 
 
 
@@ -4366,7 +4366,7 @@ detect both hardware and software issues.</p>
 
 <div id="example_asg_output" class="exampleblock">
 
-<div class="title">Example 46. Output the ALB domain name (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/outputs.tf">ch3/tofu/live/asg-sample/outputs.tf</a></em>)</div>
+<div class="title">Example 46. Output the ALB domain name (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/outputs.tf">ch3/tofu/live/asg-sample/outputs.tf</a></em>)</div>
 
 <div class="content">
 
@@ -4466,7 +4466,7 @@ instance refresh in the <code>asg</code> module:</p>
 
 <div id="sample_app_asg_main_instance_refresh" class="exampleblock">
 
-<div class="title">Example 47. Enable instance refresh for the ASG (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
+<div class="title">Example 47. Enable instance refresh for the ASG (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/asg-sample/main.tf">ch3/tofu/live/asg-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -4476,7 +4476,7 @@ instance refresh in the <code>asg</code> module:</p>
 
 <pre class="CodeRay highlight"><code data-lang="terraform">module &quot;asg&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/asg&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
 
 
 
@@ -5414,7 +5414,7 @@ section into the <em>docker</em> folder:</p>
 
 <div id="example_dockerfile" class="exampleblock">
 
-<div class="title">Example 49. Dockerfile for the Node.js sample-app (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/docker/Dockerfile">ch3/docker/Dockerfile</a></em>)</div>
+<div class="title">Example 49. Dockerfile for the Node.js sample-app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/docker/Dockerfile">ch3/docker/Dockerfile</a></em>)</div>
 
 <div class="content">
 
@@ -5940,7 +5940,7 @@ $ cd ch3/kubernetes</pre>
 
 <div id="example_kubernetes_deployment_yaml" class="exampleblock">
 
-<div class="title">Example 50. The YAML for a Kubernetes Deployment (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/kubernetes/sample-app-deployment.yml">ch3/kubernetes/sample-app-deployment.yml</a></em>)</div>
+<div class="title">Example 50. The YAML for a Kubernetes Deployment (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/kubernetes/sample-app-deployment.yml">ch3/kubernetes/sample-app-deployment.yml</a></em>)</div>
 
 <div class="content">
 
@@ -6314,7 +6314,7 @@ should put in a file called <em>sample-app-service.yml</em>:</p>
 
 <div id="example_kubernetes_service_yaml" class="exampleblock">
 
-<div class="title">Example 51. The YAML for a Kubernetes Service (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/kubernetes/sample-app-service.yml">ch3/kubernetes/sample-app-service.yml</a></em>)</div>
+<div class="title">Example 51. The YAML for a Kubernetes Service (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/kubernetes/sample-app-service.yml">ch3/kubernetes/sample-app-service.yml</a></em>)</div>
 
 <div class="content">
 
@@ -6532,7 +6532,7 @@ code shown in <a href="04.html#example_kubernetes_deployment_update">Example 52<
 
 <div id="example_kubernetes_deployment_update" class="exampleblock">
 
-<div class="title">Example 52. The YAML for doing rolling updates (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/kubernetes/sample-app-deployment.yml">ch3/kubernetes/sample-app-deployment.yml</a></em>)</div>
+<div class="title">Example 52. The YAML for doing rolling updates (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/kubernetes/sample-app-deployment.yml">ch3/kubernetes/sample-app-deployment.yml</a></em>)</div>
 
 <div class="content">
 
@@ -6942,7 +6942,7 @@ $ cd ch3/tofu/live/eks-sample</pre>
 
 <div id="example_kubernetes_tofu_module" class="exampleblock">
 
-<div class="title">Example 55. Configure the <code>eks-cluster</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/eks-sample/main.tf">ch3/tofu/live/eks-sample/main.tf</a></em>)</div>
+<div class="title">Example 55. Configure the <code>eks-cluster</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/eks-sample/main.tf">ch3/tofu/live/eks-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -6960,7 +6960,7 @@ $ cd ch3/tofu/live/eks-sample</pre>
 
 module &quot;cluster&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/eks-cluster&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/eks-cluster&quot;
 
 
 
@@ -7202,7 +7202,7 @@ $ cd ch3/tofu/live/ecr-sample</pre>
 
 <div id="example_ecr_tofu_module" class="exampleblock">
 
-<div class="title">Example 56. Configure the <code>ecr-repo</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/ecr-sample/main.tf">ch3/tofu/live/ecr-sample/main.tf</a></em>)</div>
+<div class="title">Example 56. Configure the <code>ecr-repo</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/ecr-sample/main.tf">ch3/tofu/live/ecr-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -7220,7 +7220,7 @@ $ cd ch3/tofu/live/ecr-sample</pre>
 
 module &quot;repo&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/ecr-repo&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/ecr-repo&quot;
 
 
 
@@ -7250,7 +7250,7 @@ module &quot;repo&quot; {
 
 <div id="example_ecr_tofu_module_outputs" class="exampleblock">
 
-<div class="title">Example 57. The <code>ecr-sample</code> module output variables (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/ecr-sample/outputs.tf">ch3/tofu/live/ecr-sample/outputs.tf</a></em>)</div>
+<div class="title">Example 57. The <code>ecr-sample</code> module output variables (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/ecr-sample/outputs.tf">ch3/tofu/live/ecr-sample/outputs.tf</a></em>)</div>
 
 <div class="content">
 
@@ -8050,7 +8050,7 @@ $ cd ch3/tofu/live/lambda-sample</pre>
 
 <div id="example_lambda_function" class="exampleblock">
 
-<div class="title">Example 59. Configure the <code>lambda</code> module (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/lambda-sample/main.tf">ch3/tofu/live/lambda-sample/main.tf</a></em>)</div>
+<div class="title">Example 59. Configure the <code>lambda</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/lambda-sample/main.tf">ch3/tofu/live/lambda-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -8068,7 +8068,7 @@ $ cd ch3/tofu/live/lambda-sample</pre>
 
 module &quot;function&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/lambda&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/lambda&quot;
 
 
 
@@ -8188,7 +8188,7 @@ handler, as shown in <a href="04.html#example_lambda_node_src">Example 60</a>:</
 
 <div id="example_lambda_node_src" class="exampleblock">
 
-<div class="title">Example 60. The handler code in index.js (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/lambda-sample/src/index.js">ch3/tofu/live/lambda-sample/src/index.js</a></em>)</div>
+<div class="title">Example 60. The handler code in index.js (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/lambda-sample/src/index.js">ch3/tofu/live/lambda-sample/src/index.js</a></em>)</div>
 
 <div class="content">
 
@@ -8342,7 +8342,7 @@ a version of API Gateway designed for simple HTTP APIs, that knows how to trigge
 
 <div id="example_lambda_api_gateway" class="exampleblock">
 
-<div class="title">Example 61. Configure the <code>api-gateway</code> module to trigger the Lambda function (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/lambda-sample/main.tf">ch3/tofu/live/lambda-sample/main.tf</a></em>)</div>
+<div class="title">Example 61. Configure the <code>api-gateway</code> module to trigger the Lambda function (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/lambda-sample/main.tf">ch3/tofu/live/lambda-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -8352,7 +8352,7 @@ a version of API Gateway designed for simple HTTP APIs, that knows how to trigge
 
 <pre class="CodeRay highlight"><code data-lang="terraform">module &quot;gateway&quot; {
 
-  source = &quot;github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/api-gateway&quot;
+  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway&quot;
 
 
 
@@ -8414,7 +8414,7 @@ an HTTP <code>GET</code> to the <code>/</code> path to as the only route.</p>
 
 <div id="example_lambda_outputs" class="exampleblock">
 
-<div class="title">Example 62. The <code>lambda-sample</code> module&#8217;s outputs (<em><a href="https://github.com/brikis98/fundamentals-of-devops-code/blob/main/ch3/tofu/live/lambda-sample/outputs.tf">ch3/tofu/live/lambda-sample/outputs.tf</a></em>)</div>
+<div class="title">Example 62. The <code>lambda-sample</code> module&#8217;s outputs (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/tofu/live/lambda-sample/outputs.tf">ch3/tofu/live/lambda-sample/outputs.tf</a></em>)</div>
 
 <div class="content">
 
@@ -9371,7 +9371,7 @@ the focus of the next blog post, <a href="05.html#how_to_version_build_test">Par
 
 <div id="footer-text">
 
-Last updated 2024-05-28 14:56:24 -0400
+Last updated 2024-05-31 11:34:28 -0400
 
 </div>
 

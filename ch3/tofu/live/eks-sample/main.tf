@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "cluster" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/eks-cluster"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/eks-cluster"
 
   name        = "eks-sample"        
   eks_version = "1.29"              

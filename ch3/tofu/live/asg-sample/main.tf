@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "asg" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/asg"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
 
   name = "sample-app-asg"                                   
 
@@ -27,7 +27,7 @@ module "asg" {
 }
 
 module "alb" {
-  source = "github.com/brikis98/fundamentals-of-devops-code//ch3/tofu/modules/alb"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/alb"
 
   name                  = "sample-app-alb" 
   alb_http_port         = 80               
