@@ -921,19 +921,13 @@ table ul {
           <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#preface" class="nav-link">Introduction</a>
 </li>
 
-<li class="nav-item"><a href="#_why_i_wrote_this_series" class="nav-link">Why I Wrote This Series</a></li>
-
-<li class="nav-item"><a href="#_where_devops_came_from" class="nav-link">Where DevOps Came From</a>
-
-<ul class="nav nav-pills flex-column">
-
 <li class="nav-item"><a href="#world_class_delivery" class="nav-link">What World-Class Software Delivery Looks Like</a></li>
 
+<li class="nav-item"><a href="#_why_i_wrote_this_series" class="nav-link">Why I Wrote This Series</a></li>
+
+<li class="nav-item"><a href="#_where_devops_came_from" class="nav-link">Where DevOps Came From</a></li>
+
 <li class="nav-item"><a href="#box_of_snakes" class="nav-link">Watch Out for Snakes</a></li>
-
-</ul>
-
-</li>
 
 <li class="nav-item"><a href="#_who_should_read_this_series" class="nav-link">Who Should Read This Series</a></li>
 
@@ -945,7 +939,13 @@ table ul {
 
 <li class="nav-item"><a href="#_what_you_wont_find_in_this_series" class="nav-link">What You Won&#8217;t Find in This Series</a></li>
 
-<li class="nav-item"><a href="#code_examples" class="nav-link">Open Source Code Examples</a></li>
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#code_examples" class="nav-link">Open Source Code Examples</a>
+
+<ul class="nav nav-pills flex-column">
 
 <li class="nav-item"><a href="#_opinionated_code_examples" class="nav-link">Opinionated Code Examples</a></li>
 
@@ -1084,6 +1084,154 @@ including:</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>Adopting modern DevOps and software delivery practices can allow your company to move faster, be more resilient, and
+
+more secure. However, the vast majority of developers have never seen this first hand. If you&#8217;re one of them, you&#8217;ll
+
+be astonished by what it&#8217;s like to have world-class software delivery.</p>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="world_class_delivery">What World-Class Software Delivery Looks Like</h2>
+
+<div class="paragraph">
+
+<p>If you haven&#8217;t experienced it yourself, the gap between companies with world-class software delivery processes and
+
+everyone else can be hard to fathom. It&#8217;s not a 1.1x or 1.5x improvement: it&#8217;s 10x or 100x—or more.
+
+For example, research on software delivery performance from 2017 found that, when compared to low performers, the high
+
+performers have:<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="13-footnotes.html#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>46 times more frequent code deployments</p>
+
+</li>
+
+<li>
+
+<p>440 times faster lead time from commit to deploy</p>
+
+</li>
+
+<li>
+
+<p>170 times faster mean time to recover from downtime</p>
+
+</li>
+
+<li>
+
+<p>5 times lower change failure rate (1/5 as likely for a change to fail)</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>These are <em>staggering</em> differences. To put that into perspective, we&#8217;re talking the difference between:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Deploying once every two weeks vs many times per day.</p>
+
+</li>
+
+<li>
+
+<p>Deployment processes that take 36 hours vs 5 minutes.</p>
+
+</li>
+
+<li>
+
+<p>Outages that last 12 hours vs 4 minutes.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>It&#8217;s almost a meme that developers who leave companies with world-class software delivery processes, such
+
+as Google, Facebook, or Amazon, complain bitterly about how much they miss the infrastructure and tooling. That&#8217;s
+
+because they are used to a world where:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>They can deploy any time they want, and it&#8217;s common to deploy <em>thousands of times per day</em>.</p>
+
+</li>
+
+<li>
+
+<p>Deployments can happen in <em>minutes</em>, and they are 100% automated.</p>
+
+</li>
+
+<li>
+
+<p>Problems can be detected in <em>seconds</em>, often before there is any user-visible impact.</p>
+
+</li>
+
+<li>
+
+<p>Outages can be resolved in <em>minutes</em>, sometimes automatically, without having to page anyone.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>What do the equivalent numbers look like at your organization?</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you&#8217;re not even in the ballpark, don&#8217;t fret. The first thing you need to know is that it&#8217;s possible to achieve these
+
+results. All you need is the right guidance. Which brings us to why I wrote this blog post series.</p>
+
+</div>
+
+</div>
+
 <div class="sect2">
 
 <h2 id="_why_i_wrote_this_series">Why I Wrote This Series</h2>
@@ -1150,13 +1298,15 @@ dozens of times per day, with far fewer issues and outages, and that allowed the
 
 <div class="paragraph">
 
-<p>Today, we might call this a "DevOps transformation," though back then, the term "DevOps" had just appeared on the scene,
+<p>Today, we might call this a "DevOps transformation" (though back then, the term "DevOps" had just appeared on the
 
-so we didn&#8217;t call it that. To get there, we had to go through a lot of pain and outages. The honest truth is that we
+scene, so we didn&#8217;t call it that), and to get there, we had to go through a lot of pain and outages. The honest truth
 
-didn&#8217;t know what we didn&#8217;t know. We had to seek out best practices from all over the industry, learning about trunk
+is that we didn&#8217;t know what we didn&#8217;t know. We had to seek out best practices from all over the industry, learning
 
-based development from one company, canary deployments from another, feature toggles from another, and so on.</p>
+about trunk based development from one company, canary deployments from another, feature toggles from another, and so
+
+on.</p>
 
 </div>
 
@@ -1296,123 +1446,9 @@ for this blog post series, I&#8217;m going to define DevOps as a methodology wit
 
 <div class="paragraph">
 
-<p>So that&#8217;s the goal, but what does it look like if you succeed? One of the realizations I&#8217;ve had is that not only do
+<p>You already heard LinkedIn&#8217;s DevOps transformation saved the company, but they are not the only ones. Nordstrom found
 
-many developers not know how to implement a good software delivery process, they don&#8217;t even know what a good process
-
-looks like, let alone a world-class one.</p>
-
-</div>
-
-<div class="sect3">
-
-<h3 id="world_class_delivery">What World-Class Software Delivery Looks Like</h3>
-
-<div class="paragraph">
-
-<p>If you&#8217;ve never had the opportunity to work somewhere that really nails the software delivery process, you might be
-
-astounded by the difference. It&#8217;s not a little better, or a small bump, or a 10% improvement. It&#8217;s 10x or 100x—or more.
-
-For example, research on software delivery performance from 2017 found that, when compared to low performers, the high
-
-performers have:<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="13-footnotes.html#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
-
-</div>
-
-<div class="ulist">
-
-<ul>
-
-<li>
-
-<p>46 times more frequent code deployments</p>
-
-</li>
-
-<li>
-
-<p>440 times faster lead time from commit to deploy</p>
-
-</li>
-
-<li>
-
-<p>170 times faster mean time to recover from downtime</p>
-
-</li>
-
-<li>
-
-<p>5 times lower change failure rate (1/5 as likely for a change to fail)</p>
-
-</li>
-
-</ul>
-
-</div>
-
-<div class="paragraph">
-
-<p>Those are <em>staggering</em> differences. To put that into perspective, we&#8217;re talking the difference between deploying once every
-
-two weeks vs many times per day; deployment processes that take 36 hours vs 5 minutes; outages that last 12 hours vs 4
-
-minutes. It&#8217;s almost a meme that developers who leave companies with world-class software delivery processes, such
-
-as Google, Facebook, or Amazon, complain bitterly about how much they miss the infrastructure and tooling. That&#8217;s
-
-because they are used to a world where:</p>
-
-</div>
-
-<div class="ulist">
-
-<ul>
-
-<li>
-
-<p>They can deploy any time they want, and it&#8217;s not uncommon to deploy <em>thousands of times per day</em>.</p>
-
-</li>
-
-<li>
-
-<p>Deployments can happen in <em>minutes</em>, and they are 100% automated.</p>
-
-</li>
-
-<li>
-
-<p>Problems can be detected in <em>seconds</em>, often before there is any user-visible impact.</p>
-
-</li>
-
-<li>
-
-<p>Outages can be resolved in <em>minutes</em>, sometimes automatically, without having to page anyone.</p>
-
-</li>
-
-</ul>
-
-</div>
-
-<div class="paragraph">
-
-<p>What do the equivalent numbers look like at your organization? If you&#8217;re not even in the ballpark, don&#8217;t fret. These
-
-sorts of results aren&#8217;t easy, but they are achievable. Thousands of companies have undergone DevOps transformations,
-
-and the results can be astounding.</p>
-
-</div>
-
-<div class="paragraph">
-
-<p>You already heard how Project Inversion saved LinkedIn, but they are not the only ones. Nordstrom found that
-
-after applying DevOps practices to its organization, it was able to increase the number of features it delivered
+that after applying DevOps practices to its organization, it was able to increase the number of features it delivered
 
 per month by 100%, reduce defects by 50%, reduce <em>lead times</em> (the time from coming up with an idea to running code in
 
@@ -1428,19 +1464,11 @@ outages.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="13-
 
 </div>
 
-<div class="paragraph">
-
-<p>In short, adopting modern DevOps techniques and practices can make software delivery vastly more efficient, and
-
-companies with more efficient software delivery move faster, are more resilient, and more secure.</p>
-
 </div>
 
-</div>
+<div class="sect2">
 
-<div class="sect3">
-
-<h3 id="box_of_snakes">Watch Out for Snakes</h3>
+<h2 id="box_of_snakes">Watch Out for Snakes</h2>
 
 <div class="paragraph">
 
@@ -1577,8 +1605,6 @@ where you always feel confident that you can figure it out.</p>
 <div class="paragraph">
 
 <p>So stick with it. And watch out for those snakes.</p>
-
-</div>
 
 </div>
 
@@ -2590,9 +2616,11 @@ surface level.</p>
 
 </div>
 
-<div class="sect3">
+</div>
 
-<h3 id="code_examples">Open Source Code Examples</h3>
+<div class="sect2">
+
+<h2 id="code_examples">Open Source Code Examples</h2>
 
 <div class="paragraph">
 
@@ -2665,8 +2693,6 @@ are mostly written in Bash, so to run them, you need either a computer with Unix
 Windows, you can use the <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a> or
 
 <a href="https://www.cygwin.com/">Cygwin</a>.</p>
-
-</div>
 
 </div>
 
