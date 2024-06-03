@@ -1046,7 +1046,7 @@ a company this way—what&#8217;s sometimes called <em>ClickOps</em>—it quickl
 
 improvements, and if they ever go on vacation, everything grinds to a halt (and you don&#8217;t even dare consider
 
-what would happen if they left the company or got hit by a bus).<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="13-footnotes.html#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
+what would happen if they left the company or got hit by a bus).<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="13-footnotes.html#_footnotedef_10" title="View footnote.">10</a>]</sup></p>
 
 </dd>
 
@@ -1324,15 +1324,15 @@ categories of IaC tools, starting with ad hoc scripts.</p>
 
 <div class="paragraph">
 
-<p>Since most of the examples in this blog post series use AWS (as discussed in <a href="02.html#deploy_an_app_using_iaas">Section 1.4.2</a>), you&#8217;ll need
+<p>Since most of the examples in this blog post series use AWS (as discussed in <a href="02.html#deploy_an_app_using_iaas">Section 1.2.5</a>), you&#8217;ll need
 
 to authenticate to AWS on the command line. This requires using an <em>access key</em>, which you can create by heading over
 
 to the <a href="https://console.aws.amazon.com/iam/">IAM Console</a>, clicking Users, and clicking on the IAM user you created
 
-in <a href="02.html#deploy_an_app_using_iaas">Section 1.4.2</a>. Next, click on the "Security credentials" tab, scroll down to the "Access keys"
+in <a href="02.html#deploy_an_app_using_iaas">Section 1.2.5</a>. Next, click on the "Security credentials" tab, scroll down to the "Access keys"
 
-section, and click "Create access key" as shown in <a href="03.html#iam_user_access_keys">Figure 10</a>:</p>
+section, and click "Create access key" as shown in <a href="03.html#iam_user_access_keys">Figure 19</a>:</p>
 
 </div>
 
@@ -1344,7 +1344,7 @@ section, and click "Create access key" as shown in <a href="03.html#iam_user_acc
 
 </div>
 
-<div class="title">Figure 10. Create an access key for your IAM user.</div>
+<div class="title">Figure 19. Create an access key for your IAM user.</div>
 
 </div>
 
@@ -1782,7 +1782,7 @@ quite a few drawbacks in terms of using them to manage infrastructure, as discus
 
 clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in
 
-<a href="03.html#ec2_terminate_instance_instructions">Figure 11</a>. This ensures that your account doesn&#8217;t start accumulating any unwanted
+<a href="03.html#ec2_terminate_instance_instructions">Figure 20</a>. This ensures that your account doesn&#8217;t start accumulating any unwanted
 
 charges.</p>
 
@@ -1796,7 +1796,7 @@ charges.</p>
 
 </div>
 
-<div class="title">Figure 11. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
+<div class="title">Figure 20. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
 
 </div>
 
@@ -2648,7 +2648,7 @@ Having this standardized structure makes it easier to navigate and understand an
 
 standardized role folder structure you&#8217;ll need for this simple example. Copy the Node.js sample app you saw earlier in
 
-in <a href="02.html#example_run_sample_app_locally">Section 1.1.1</a> into <em>files/app.js</em>:</p>
+in <a href="02.html#example_run_sample_app_locally">Section 1.2.1</a> into <em>files/app.js</em>:</p>
 
 </div>
 
@@ -2866,7 +2866,7 @@ changes locally.</p>
 
 <a href="https://console.aws.amazon.com/ec2/home">EC2 Console</a> (look for the instance ID the playbook writes to the log),
 
-clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 9</a>.
+clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 18</a>.
 
 This ensures that your account doesn&#8217;t start accumulating any unwanted charges.</p>
 
@@ -3116,13 +3116,13 @@ of your servers.</p>
 
 </div>
 
-<div class="title">Figure 12. The two main types of images: VMs, on the left, and containers, on the right. VMs virtualize the hardware, whereas containers virtualize only user space.</div>
+<div class="title">Figure 21. The two main types of images: VMs, on the left, and containers, on the right. VMs virtualize the hardware, whereas containers virtualize only user space.</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="03.html#vm_versus_container">Figure 12</a>, there are two broad categories of tools for working with images:</p>
+<p>As shown in <a href="03.html#vm_versus_container">Figure 21</a>, there are two broad categories of tools for working with images:</p>
 
 </div>
 
@@ -3158,7 +3158,7 @@ and startup time. You can define VM images as code using tools such as Packer an
 
 <dd>
 
-<p>A <em>container</em> emulates the user space of an OS.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="13-footnotes.html#_footnotedef_9" title="View footnote.">9</a>]</sup> You run a <em>container engine</em>, such as Docker or cri-o, to create isolated processes, memory, mount
+<p>A <em>container</em> emulates the user space of an OS.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="13-footnotes.html#_footnotedef_11" title="View footnote.">11</a>]</sup> You run a <em>container engine</em>, such as Docker or cri-o, to create isolated processes, memory, mount
 
 points, and networking.</p>
 
@@ -3172,7 +3172,7 @@ computer, a QA server, a production server, etc.). The drawback is that all of t
 
 server share that server&#8217;s OS kernel and hardware, so it&#8217;s much more difficult to achieve the level of isolation and
 
-security you get with a VM.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="13-footnotes.html#_footnotedef_10" title="View footnote.">10</a>]</sup> However, because the kernel
+security you get with a VM.<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="13-footnotes.html#_footnotedef_12" title="View footnote.">12</a>]</sup> However, because the kernel
 
 and hardware are shared, your containers can boot up in milliseconds and have virtually no CPU or memory overhead. You
 
@@ -3852,7 +3852,7 @@ into regions. An <em>AWS region</em> is a separate geographic area, such as <cod
 
 <code>ap-southeast-2</code> (Sydney). Within each region, there are multiple isolated datacenters known as <em>Availability
 
-Zones</em> (AZs), such as <code>us-east-2a</code>, <code>us-east-2b</code>, and so on.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="13-footnotes.html#_footnotedef_11" title="View footnote.">11</a>]</sup> There are
+Zones</em> (AZs), such as <code>us-east-2a</code>, <code>us-east-2b</code>, and so on.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="13-footnotes.html#_footnotedef_13" title="View footnote.">13</a>]</sup> There are
 
 many other settings you can configure on this provider, but for now, let&#8217;s keep it simple.</p>
 
@@ -5672,7 +5672,7 @@ following sections show three common combinations I&#8217;ve seen work well at a
 
 topology (i.e., virtual private clouds [VPCs], subnets, route tables), data stores (e.g., MySQL, Redis), load balancers,
 
-and servers. You then use Ansible to deploy your apps on top of those servers, as depicted in <a href="03.html#tofu_and_ansible">Figure 13</a>.</p>
+and servers. You then use Ansible to deploy your apps on top of those servers, as depicted in <a href="03.html#tofu_and_ansible">Figure 22</a>.</p>
 
 </div>
 
@@ -5684,7 +5684,7 @@ and servers. You then use Ansible to deploy your apps on top of those servers, a
 
 </div>
 
-<div class="title">Figure 13. OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers.</div>
+<div class="title">Figure 22. OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers.</div>
 
 </div>
 
@@ -5712,7 +5712,7 @@ as your codebase, infrastructure, and team grow, maintenance and debugging can b
 
 with these VM images and the rest of your infrastructure, including the network topology (i.e., VPCs, subnets, route
 
-tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in <a href="03.html#tofu_and_packer">Figure 14</a>.</p>
+tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in <a href="03.html#tofu_and_packer">Figure 23</a>.</p>
 
 </div>
 
@@ -5724,7 +5724,7 @@ tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in
 
 </div>
 
-<div class="title">Figure 14. OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers.</div>
+<div class="title">Figure 23. OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers.</div>
 
 </div>
 
@@ -5770,7 +5770,7 @@ network topology (i.e., VPCs, subnets, route tables), data stores (e.g., MySQL, 
 
 when the cluster of servers boots up, it forms a Kubernetes cluster that you use to run and manage your Dockerized
 
-applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_docker">Figure 15</a>.</p>
+applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_docker">Figure 24</a>.</p>
 
 </div>
 
@@ -5782,7 +5782,7 @@ applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_do
 
 </div>
 
-<div class="title">Figure 15. OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers.</div>
+<div class="title">Figure 24. OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers.</div>
 
 </div>
 
@@ -5991,7 +5991,7 @@ roll out changes without downtime? All of these topics are the focus of the next
 
 <div id="footer-text">
 
-Last updated 2024-05-31 16:43:42 -0400
+Last updated 2024-06-03 16:46:22 -0400
 
 </div>
 

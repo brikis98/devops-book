@@ -12,7 +12,7 @@
 
 <meta name="generator" content="Asciidoctor 2.0.16">
 
-<title>Part 1. How to Deploy Your App</title>
+<title>Part 1. An Introduction to DevOps and Software Delivery</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 
 <style>
@@ -918,42 +918,58 @@ table ul {
     <div class="col-sm-4">
       <nav id="toc-dynamic" class="sticky-top vh-100" style="overflow: scroll; padding-top: 25px; padding-bottom: 25px;">
           <a href="index.html" class="h6 text-decoration-none">Fundamentals of DevOps and Software Delivery</a>
-          <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#how_to_deploy_your_app" class="nav-link">1. How to Deploy Your App</a>
+          <ul class="nav nav-pills flex-column"><li class="nav-item"><a href="#how_to_deploy_your_app" class="nav-link">1. An Introduction to DevOps and Software Delivery</a>
 </li>
 
-<li class="nav-item"><a href="#_deploying_an_app_on_your_own_computer" class="nav-link">1.1. Deploying an App on Your Own Computer</a>
+<li class="nav-item"><a href="#world_class_delivery" class="nav-link">1.1. A primer on DevOps</a>
 
 <ul class="nav nav-pills flex-column">
 
-<li class="nav-item"><a href="#example_run_sample_app_locally" class="nav-link">1.1.1. Example: Run the Sample App Locally</a></li>
+<li class="nav-item"><a href="#_where_devops_came_from" class="nav-link">1.1.1. Where DevOps Came From</a></li>
 
-<li class="nav-item"><a href="#_exposing_an_app_on_your_computer_to_users_not_recommended" class="nav-link">1.1.2. Exposing an App on Your Computer to Users (Not Recommended)</a></li>
+<li class="nav-item"><a href="#_the_evolution_of_devops" class="nav-link">1.1.2. The Evolution of DevOps</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_stage_1" class="nav-link">Stage 1</a></li>
+
+<li class="nav-item"><a href="#_stage_2" class="nav-link">Stage 2</a></li>
+
+<li class="nav-item"><a href="#_stage_3" class="nav-link">Stage 3</a></li>
+
+<li class="nav-item"><a href="#_adopting_devops_practices" class="nav-link">Adopting DevOps practices</a></li>
 
 </ul>
 
 </li>
 
-<li class="nav-item"><a href="#_deploying_an_app_on_a_server" class="nav-link">1.2. Deploying an App on a Server</a></li>
+</ul>
 
-<li class="nav-item"><a href="#_deploying_on_prem_versus_in_the_cloud" class="nav-link">1.3. Deploying On Prem Versus in the Cloud</a>
+</li>
+
+<li class="nav-item"><a href="#_an_introduction_to_deploying_apps" class="nav-link">1.2. An Introduction to Deploying Apps</a>
 
 <ul class="nav nav-pills flex-column">
 
-<li class="nav-item"><a href="#_when_to_go_with_the_cloud" class="nav-link">1.3.1. When to Go with the Cloud</a></li>
+<li class="nav-item"><a href="#example_run_sample_app_locally" class="nav-link">1.2.1. Example: Run the Sample App Locally</a></li>
 
-<li class="nav-item"><a href="#_when_to_go_with_on_prem" class="nav-link">1.3.2. When to Go with On-Prem</a></li>
+<li class="nav-item"><a href="#_deploying_an_app_on_a_server" class="nav-link">1.2.2. Deploying an App on a Server</a></li>
 
-<li class="nav-item"><a href="#_when_to_go_with_hybrid" class="nav-link">1.3.3. When to Go with Hybrid</a></li>
+<li class="nav-item"><a href="#_deploying_on_prem_versus_in_the_cloud" class="nav-link">1.2.3. Deploying On Prem Versus in the Cloud</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_when_to_go_with_the_cloud" class="nav-link">When to Go with the Cloud</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_on_prem" class="nav-link">When to Go with On-Prem</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_hybrid" class="nav-link">When to Go with Hybrid</a></li>
 
 </ul>
 
 </li>
 
-<li class="nav-item"><a href="#_deploying_using_paas_versus_iaas" class="nav-link">1.4. Deploying Using PaaS Versus IaaS</a>
-
-<ul class="nav nav-pills flex-column">
-
-<li class="nav-item"><a href="#_deploying_an_app_using_paas" class="nav-link">1.4.1. Deploying an App Using PaaS</a>
+<li class="nav-item"><a href="#_deploying_an_app_using_paas" class="nav-link">1.2.4. Deploying An App Using PaaS</a>
 
 <ul class="nav nav-pills flex-column">
 
@@ -965,7 +981,7 @@ table ul {
 
 </li>
 
-<li class="nav-item"><a href="#deploy_an_app_using_iaas" class="nav-link">1.4.2. Deploying an App Using IaaS</a>
+<li class="nav-item"><a href="#deploy_an_app_using_iaas" class="nav-link">1.2.5. Deploying an App Using IaaS</a>
 
 <ul class="nav nav-pills flex-column">
 
@@ -977,15 +993,23 @@ table ul {
 
 </li>
 
-<li class="nav-item"><a href="#_when_to_go_with_paas" class="nav-link">1.4.3. When to Go with PaaS</a></li>
+<li class="nav-item"><a href="#_comparing_paas_and_iaas" class="nav-link">1.2.6. Comparing PaaS and IaaS</a>
 
-<li class="nav-item"><a href="#_when_to_go_with_iaas" class="nav-link">1.4.4. When to Go with IaaS</a></li>
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_when_to_go_with_paas" class="nav-link">When to Go with PaaS</a></li>
+
+<li class="nav-item"><a href="#_when_to_go_with_iaas" class="nav-link">When to Go with IaaS</a></li>
 
 </ul>
 
 </li>
 
-<li class="nav-item"><a href="#_conclusion" class="nav-link">1.5. Conclusion</a></li>
+</ul>
+
+</li>
+
+<li class="nav-item"><a href="#_conclusion" class="nav-link">1.3. Conclusion</a></li>
 
 </ul>
 
@@ -996,15 +1020,15 @@ table ul {
 <div id="content">
 <div class="sect1">
 
-<h1 id="how_to_deploy_your_app">Part 1. How to Deploy Your App</h1>
+<h1 id="how_to_deploy_your_app">Part 1. An Introduction to DevOps and Software Delivery</h1>
 
 <div class="sectionbody">
 
 <div class="paragraph">
 
-<p>In the <a href="index.html#preface">introduction to the blog post series</a>, you learned where DevOps came from, and what world-class
+<p>In the <a href="index.html#preface">introduction to the blog post series</a>, you heard about how DevOps consists of dozens of different
 
-software delivery can look like. But really, almost all software delivery starts like this:</p>
+concepts, but really, it almost always starts like this:</p>
 
 </div>
 
@@ -1068,63 +1092,31 @@ others you didn&#8217;t even think to ask—and help you figure out the answers,
 
 <div class="paragraph">
 
-<p>In this first blog post of the blog post series, let&#8217;s start with just one simple step: learn how to
+<p>The first part of the blog post is a short primer on DevOps. Don&#8217;t worry, this isn&#8217;t another
 
-<em>deploy</em> your app somewhere. That is, for now, you&#8217;ll focus on just one question—how to run an app on some computer
+high-level document about culture and values: that stuff matters, but you&#8217;ve probably ready it a million times on
 
-that users can access—and you can ignore all the other questions until later in this blog post series.</p>
+Wikipedia already. Instead, what you&#8217;ll find here are the startling real-world numbers on why DevOps matters, the
 
-</div>
+background on where DevOps comes from, and a step-by-step walkthrough of the concrete architectures and software
 
-<div class="paragraph">
-
-<p>There are quite a few different options for deploying apps. This blog post will walk you through the
-
-most common ones:</p>
-
-</div>
-
-<div class="ulist">
-
-<ul>
-
-<li>
-
-<p>Deploying an app on your own computer</p>
-
-</li>
-
-<li>
-
-<p>Deploying an app on a server</p>
-
-</li>
-
-<li>
-
-<p>Deploying on prem vs in the cloud</p>
-
-</li>
-
-<li>
-
-<p>Deploying using Platform as a Service (PaaS) vs Infrastructure as a Service (IaaS)</p>
-
-</li>
-
-</ul>
+delivery processes used in modern DevOps, and how they evolve at various company stages.</p>
 
 </div>
 
 <div class="paragraph">
 
-<p>Along the way, you&#8217;ll work through examples where you deploy the same app multiple different ways: on your own computer,
+<p>The second part of the blog post will have you diving into these architectures and processes, starting
 
-on fly.io (a popular PaaS), and on AWS (a popular IaaS). This will allow you to see how the different options
+with the very first step: deploying an app. There are quite a few different options for deploying apps, so this
 
-compare across a variety of dimensions (e.g., ease-of-use, security, control, debugging, etc.), so that you can pick
+post will walk you through the most common ones. Along the way, you&#8217;ll work through examples
 
-the right tool for your use cases.</p>
+where you deploy the same app multiple different ways: on your own computer, on fly.io (a popular PaaS), and on AWS (a
+
+popular IaaS). This will allow you to see how the different options compare across a variety of dimensions (e.g.,
+
+ease-of-use, security, control, debugging, etc.), so that you can pick the right tool for your use cases.</p>
 
 </div>
 
@@ -1136,7 +1128,1479 @@ the right tool for your use cases.</p>
 
 <div class="sect2">
 
-<h2 id="_deploying_an_app_on_your_own_computer">Deploying an App on Your Own Computer</h2>
+<h2 id="world_class_delivery">A primer on DevOps</h2>
+
+<div class="paragraph">
+
+<p>The vast majority of developers have never had the opportunity to see what world-class software delivery looks like
+
+first hand. If you&#8217;re one of them, you&#8217;ll be astonished by the gap between companies with world-class software delivery
+
+processes and everyone else. It&#8217;s not a 1.1x or 1.5x improvement: it&#8217;s 10x or 100x—or more.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p><a href="02.html#dora_metrics_elite_vs_low">Table 2</a> shows the four key <a href="https://dora.dev/guides/dora-metrics-four-keys/"><em>DevOps Research and
+
+Assessment (DORA) metrics</em></a>, which are a quick way to assess the performance of a software development team, and the
+
+difference between elite performers and low performers at these metrics, based on data from the
+
+<a href="https://cloud.google.com/devops/state-of-devops">2023 State of DevOps Report</a>:<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="13-footnotes.html#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+
+</div>
+
+<table id="dora_metrics_elite_vs_low" class="tableblock frame-all grid-all stretch">
+
+<caption class="title">Table 2. Comparing performance on DORA metrics for elite vs low performers based on the 2023 State of DevOps Report</caption>
+
+<colgroup>
+
+<col style="width: 16.6666%;">
+
+<col style="width: 66.6666%;">
+
+<col style="width: 16.6668%;">
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th class="tableblock halign-left valign-top">Metric</th>
+
+<th class="tableblock halign-left valign-top">Description</th>
+
+<th class="tableblock halign-left valign-top">Elite vs low performers</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment frequency</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">How often you deploy to production</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">~10-200x more often</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lead time</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long it takes a change to go from committed to deployed</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">~10-200x faster</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change failure rate</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">How often deployments cause failures that need immediate remediation</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">~13x lower</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recovery time</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long it takes to recover from a failed deployment</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">~700-4000x times faster</p></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="paragraph">
+
+<p>These are <em>staggering</em> differences. To put that into perspective, we&#8217;re talking the difference between:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Deploying once per month vs many times per day.</p>
+
+</li>
+
+<li>
+
+<p>Deployment processes that take 36 hours vs 5 minutes.</p>
+
+</li>
+
+<li>
+
+<p>Two out of three deployments causing problems vs one out of twenty.</p>
+
+</li>
+
+<li>
+
+<p>Outages that last 24 hours vs 2 minutes.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>It&#8217;s almost a meme that developers who leave companies with world-class software delivery processes, such
+
+as Google, Facebook, or Amazon, complain bitterly about how much they miss the infrastructure and tooling. That&#8217;s
+
+because they are used to a world where:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>They can deploy any time they want, and it&#8217;s common to deploy <em>thousands of times per day</em>.</p>
+
+</li>
+
+<li>
+
+<p>Deployments can happen in <em>minutes</em>, and they are 100% automated.</p>
+
+</li>
+
+<li>
+
+<p>Problems can be detected in <em>seconds</em>, often before there is any user-visible impact.</p>
+
+</li>
+
+<li>
+
+<p>Outages can be resolved in <em>minutes</em>, sometimes automatically, without having to page anyone.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>What do the equivalent numbers look like at your organization?</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you&#8217;re not even in the ballpark, don&#8217;t fret. The first thing you need to know is that it&#8217;s possible to achieve these
+
+results. In fact, there are many ways to achieve these sorts of results, and each of those world-class companies does it
+
+a bit differently. That said, they also have a lot in common, and the DevOps movement is an attempt to capture some of
+
+these best practices.</p>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_where_devops_came_from">Where DevOps Came From</h3>
+
+<div class="paragraph">
+
+<p>In the not-so-distant past, if you wanted to build a software company, you also needed to manage a lot of hardware. You
+
+would set up cabinets and racks, load them up with servers, hook up wiring, install cooling, build redundant power
+
+systems, and so on. It made sense to have one team, typically called Developers (“Devs”), dedicated to writing the
+
+software, and a separate team, typically called Operations (“Ops”), dedicated to managing this hardware.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The typical Dev team would build an application and "toss it over the wall" to the Ops team. It was then up to Ops to
+
+figure out the rest of software delivery: that is, to figure out how to deploy, run, and maintain that application.
+
+Most of this was done manually. In part, that was unavoidable, because much of the work had to do with physically
+
+hooking up hardware (e.g., racking servers, hooking up network cables). But even the work Ops did in software, such as
+
+installing the application and its dependencies, was often done by manually executing commands on a server.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This works well for a while, but as the company grows, you eventually run into problems: releases are manual, slow, and
+
+error-prone; this leads to frequent outages and downtime; the Ops team, tired from their pagers going off at 3 a.m.
+
+after every release, reduce the release cadence even further; but now each release is even bigger, and that only leads
+
+to more problems; teams begin blaming one another; silos form; the company grinds to a halt.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Nowadays, a profound shift is taking place. Instead of managing their own datacenters, many companies are moving to
+
+the cloud, taking advantage of services such as Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform
+
+(GCP). Instead of investing heavily in hardware, many Ops teams are spending all their time working on software, using
+
+tools such as OpenTofu, Ansible, Docker, and Kubernetes. Instead of racking servers and plugging in network
+
+cables, many sysadmins are writing code.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>As a result, both Dev and Ops teams spend most of their time working on software, and the distinction between the two
+
+teams is blurring. It might still make sense to have a separate Dev team responsible for the application code and an Ops
+
+team responsible for the operational code, but it&#8217;s clear that Dev and Ops need to work more closely together. This is
+
+where the <em>DevOps movement</em> comes from.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>DevOps isn&#8217;t the name of a team or a job title or a particular technology (though you&#8217;ll see it used for all three).
+
+Instead, it&#8217;s a set of processes, ideas, and techniques. Everyone has a slightly different definition of DevOps, but
+
+for this blog post series, I&#8217;m going to define DevOps as a methodology with the following goal:</p>
+
+</div>
+
+<div class="quoteblock">
+
+<blockquote>
+
+<div class="paragraph">
+
+<p>The goal of DevOps is to make software delivery vastly more efficient.</p>
+
+</div>
+
+</blockquote>
+
+</div>
+
+<div class="paragraph">
+
+<p>You heard in the <a href="index.html#preface">Preface</a> how LinkedIn&#8217;s DevOps transformation saved the company, but they are not the only ones.
+
+Nordstrom found that after applying DevOps practices to its organization, it was able to increase the number of
+
+features it delivered per month by 100%, reduce defects by 50%, reduce <em>lead times</em> (the time from coming up with an
+
+idea to running code in production) by 60%, and reduce the number of production incidents by 60% to 90%. After HP&#8217;s
+
+LaserJet Firmware division began using DevOps practices, the amount of time its developers spent on developing new
+
+features went from 5% to 40%, and overall development costs were reduced by 40%. Etsy used DevOps practices to go from
+
+stressful, infrequent deployments that caused numerous outages to deploying 25 to 50 times per day, with far fewer
+
+outages.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="13-footnotes.html#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+
+</div>
+
+<div class="paragraph">
+
+<p>So how does DevOps produce these sorts of results? As mentioned in the <a href="index.html#preface">Preface</a>, DevOps isn&#8217;t any one thing, but
+
+rather, it consists of dozens of different tools and techniques, all of which have to be adapted to your company&#8217;s
+
+particular needs. So if you want to understand DevOps at a high level, you need to understand how the architecture and
+
+processes evolve at a typical company.</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_the_evolution_of_devops">The Evolution of DevOps</h3>
+
+<div class="paragraph">
+
+<p>While writing my first book, <em><a href="https://www.hello-startup.net/">Hello, Startup</a></em>, I interviewed early employees from some
+
+of the most successful companies of the last 20 years, including Google, Facebook, LinkedIn, Twitter, GitHub, Stripe,
+
+Instagram, Pinterest, and many others. One thing that struck me is that the architecture and software delivery
+
+processes at just about every software company evolve along very similar lines. There are of course individual
+
+differences here and there, but there are far more similarities than differences, and the broad shape of the evolution
+
+tends to repeat again and again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>In this section, I&#8217;m going to share this evolutionary process. I&#8217;ve broken it down into three high-level stages, each
+
+of which consists of three steps. This is, of course, a vast simplification: in reality, this is more of a continuum
+
+than discrete steps, and the steps don&#8217;t always happen in the exact order listed here. Nevertheless, I hope this is
+
+a helpful mental model of how DevOps typically evolves within a company.</p>
+
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Note</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Lossy compression</div>
+
+<div class="paragraph">
+
+<p>Think of these stages as a compressed guide to the typical way architecture and software delivery processes evolve in a
+
+company, but be aware that, in the effort to compress this information, some of the variation inevitably gets lost.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you&#8217;re new to DevOps and software delivery, you may be unfamiliar with some of the terms used here. Don&#8217;t panic. The
+
+idea here is to start with a top-down overview—a bit like a high level map—to help you understand what the various
+
+ingredients are and how they fit together. As you go through this blog post series, you&#8217;ll zoom in on each of these
+
+ingredients, study it in detail, and get to try most of them out with real examples. You can then zoom back out and
+
+revisit this high-level map at any time to see the big picture, and get your bearings again.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Let&#8217;s get started with stage 1.</p>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_stage_1">Stage 1</h4>
+
+<div class="paragraph">
+
+<p>This is where most software projects start, including new startups, new initiatives at existing companies, and most
+
+side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:</p>
+
+</div>
+
+<div id="evolution_diagram_1" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-1.png" alt="Step 1 architecture: a single server">
+
+</div>
+
+<div class="title">Figure 1. Step 1 architecture: a single server</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Single server</dt>
+
+<dd>
+
+<p>Everything runs on a single server (you&#8217;ll see an example of this later in this blog post).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">ClickOps</dt>
+
+<dd>
+
+<p>You manage all of your infrastructure and deployments manually.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>As traffic grows, you move on to step 2, shown in <a href="02.html#evolution_diagram_2">Figure 2</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_2" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-2.png" alt="Step 2 architecture: standalone database">
+
+</div>
+
+<div class="title">Figure 2. Step 2 architecture: standalone database</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Standalone database</dt>
+
+<dd>
+
+<p>As your database increasingly becomes the bottleneck, you break it out onto a separate server
+
+(<a href="10.html#how_to_store_data">Part 9</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Vertical scaling</dt>
+
+<dd>
+
+<p>To handle more traffic, you use servers and databases with more CPU and RAM.</p>
+
+</dd>
+
+<dt class="hdlist1">Monitoring</dt>
+
+<dd>
+
+<p>To get better visibility into your systems, you set up basic monitoring (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>As traffic continues to grow, you move on to step 3, shown in <a href="02.html#evolution_diagram_3">Figure 3</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_3" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-3.png" alt="Step 3 architecture: multiple servers, load balancer, and networking">
+
+</div>
+
+<div class="title">Figure 3. Step 3 architecture: multiple servers, load balancer, and networking</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Multiple servers</dt>
+
+<dd>
+
+<p>As traffic increases further, a single server is no longer enough, so you run your app across multiple servers
+
+(<a href="04.html#how_to_deploy_many_apps">Part 3</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Load balancing</dt>
+
+<dd>
+
+<p>You distribute traffic across the servers using a load balancer (<a href="04.html#how_to_deploy_many_apps">Part 3</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Networking</dt>
+
+<dd>
+
+<p>To protect your servers, you put them into private networks (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Horizontal scaling</dt>
+
+<dd>
+
+<p>To handle more traffic, you increase the number of servers.</p>
+
+</dd>
+
+<dt class="hdlist1">Automated testing for apps</dt>
+
+<dd>
+
+<p>To reduce bugs and outages, you set up automated tests for your apps (<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Continuous integration</dt>
+
+<dd>
+
+<p>To run automated tests automatically, you set up continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Most software projects never need to make it past stage 1. If you&#8217;re one of them, don&#8217;t fret: this is actually a good
+
+thing. Stage 1 is simple. It&#8217;s fast to learn and easy to set up. It&#8217;s fun to work with. If you&#8217;re forced into the
+
+subsequent stages, it&#8217;s because you&#8217;re facing new problems that require more complex architectures and processes to
+
+solve, and this additional complexity has a considerable cost. If you aren&#8217;t facing those problems, then you can, and
+
+should, avoid that cost.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>That said, if your company or user base keeps growing, you may have to move on to stage 2.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_stage_2">Stage 2</h4>
+
+<div class="paragraph">
+
+<p>The second stage of evolution typically applies to larger, more established companies and software that has larger user
+
+bases and more complexities. It starts with step 4, shown in <a href="02.html#evolution_diagram_4">Figure 4</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_4" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-4.png" alt="Step 4 architecture: caching for data stores and static content">
+
+</div>
+
+<div class="title">Figure 4. Step 4 architecture: caching for data stores and static content</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Caching for data stores</dt>
+
+<dd>
+
+<p>Your database continues to be a bottleneck, so you add read replicas and caches (<a href="10.html#how_to_store_data">Part 9</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Caching for static content</dt>
+
+<dd>
+
+<p>As traffic continues to grow, you add content distribution network (CDN) to cache content that doesn&#8217;t change often
+
+(<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Data management</dt>
+
+<dd>
+
+<p>You set up scheduled backups and schema migrations for your data stores (<a href="10.html#how_to_store_data">Part 9</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>At this point, your team size is often the real problem, so you have to move on top step 5, shown in
+
+<a href="02.html#evolution_diagram_5">Figure 5</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_5" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-5.png" alt="Step 5 architecture: multiple environments">
+
+</div>
+
+<div class="title">Figure 5. Step 5 architecture: multiple environments</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Multiple environments</dt>
+
+<dd>
+
+<p>To help teams do better testing, you set up multiple environments (e.g., dev, stage, prod), each of which has a
+
+full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Infrastructure as code</dt>
+
+<dd>
+
+<p>You can&#8217;t maintain so many environments manually, so you start to manage your infrastructure as code
+
+(<a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Access controls</dt>
+
+<dd>
+
+<p>To keep the environment secure, you lock down authentication, authorization, and secrets
+
+(<a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>As your teams keep growing, to be able to keep moving quickly, you will need to update your architecture and processes
+
+to step 6, as shown in <a href="02.html#evolution_diagram_6">Figure 6</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_6" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-6.png" alt="Step 6 architecture: microservices">
+
+</div>
+
+<div class="title">Figure 6. Step 6 architecture: microservices</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Microservices</dt>
+
+<dd>
+
+<p>To allow teams to work more independently, you break up your monolith into multiple microservices, usually each
+
+with its own data store (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Continuous delivery</dt>
+
+<dd>
+
+<p>To make deployments faster and more reliable, you set up continuous delivery (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Stage 2 represents a significant step up in terms of complexity: your architecture has more moving parts, your
+
+processes are more complicated, and you most likely need a dedicated infrastructure team to manage all of this. For a
+
+small percentage of companies, even this isn&#8217;t enough, and they are forced to move on to stage 3.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_stage_3">Stage 3</h4>
+
+<div class="paragraph">
+
+<p>The third stage of evolution only applies to large enterprises with massive user bases. It starts with step 7, shown
+
+in <a href="02.html#evolution_diagram_7">Figure 7</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_7" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-7.png" alt="Step 7 architecture: service mesh and hardening">
+
+</div>
+
+<div class="title">Figure 7. Step 7 architecture: service mesh and hardening</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Service mesh</dt>
+
+<dd>
+
+<p>As the number of microservices and the need for them to communicate with each other grows, you begin using a
+
+service mesh (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Hardening</dt>
+
+<dd>
+
+<p>To meet various compliance standards (e.g., NIST, CIS, PCI), you work on server and network hardening
+
+(<a href="07.html#how_to_set_up_networking">Part 6</a>, <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Observability</dt>
+
+<dd>
+
+<p>To get even more visibility into your systems, you set up advanced monitoring tools (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Large companies produce a lot of data, and the need to analyze and leverage this data leads to step 8, shown in
+
+<a href="02.html#evolution_diagram_8">Figure 8</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_8" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-8.png" alt="Step 8 architecture: analytics tools and event bus">
+
+</div>
+
+<div class="title">Figure 8. Step 8 architecture: analytics tools and event bus</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Analytics tools</dt>
+
+<dd>
+
+<p>To be able to process your company&#8217;s data, you set up data warehouses, data lakes, machine learning platforms, etc.
+
+(<a href="10.html#how_to_store_data">Part 9</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Event bus</dt>
+
+<dd>
+
+<p>With even more microservice communication and more data to move around, you set up an event bus and move to an
+
+event-driven architecture (<a href="10.html#how_to_store_data">Part 9</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Automated testing for infrastructure</dt>
+
+<dd>
+
+<p>To reduce bugs and outages, you set up automated tests for infrastructure (<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Deployment strategies</dt>
+
+<dd>
+
+<p>To make deployments even faster and more reliable, you set up canary, blue-green, and feature toggles deployments
+
+(<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Finally, as your user base and employee base keeps growing, you move on top step 9, shown in <a href="02.html#evolution_diagram_9">Figure 9</a>:</p>
+
+</div>
+
+<div id="evolution_diagram_9" class="imageblock">
+
+<div class="content">
+
+<img src="images/ch1/architecture-evolution-9.png" alt="Step 9 architecture: multiple data centers and accounts">
+
+</div>
+
+<div class="title">Figure 9. Step 9 architecture: multiple data centers and accounts</div>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Architecture</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Multiple data centers</dt>
+
+<dd>
+
+<p>To handle a global user base, you set up multiple data centers around the world (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Multiple accounts</dt>
+
+<dd>
+
+<p>To handle a larger employee base, you isolate different teams and products in separate accounts
+
+(<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</dd>
+
+<dt class="hdlist1">Advanced networking</dt>
+
+<dd>
+
+<p>You set up advanced networking to connect all your data centers and accounts together (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+<dt class="hdlist1">Processes</dt>
+
+<dd>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Internal developer platform</dt>
+
+<dd>
+
+<p>To help boost developer productivity, while ensuring all the new accounts are secure, you set up an internal developer
+
+platform, account baselines, and an account factory (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>The companies in stage 3 face the toughest problems and have to deal with the most complexity: global deployments,
+
+thousands of developers, millions of customers. Even the architecture you see in stage 3 is still a simplification
+
+compared to what the top 0.1% of companies face, but if that&#8217;s where you&#8217;re at, you&#8217;ll need more than this introductory
+
+blog post series!</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>So now that you&#8217;ve seen the three stages, let&#8217;s talk about how to adopt these DevOps practices.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_adopting_devops_practices">Adopting DevOps practices</h4>
+
+<div class="paragraph">
+
+<p>As you read through the three stages, the idea is to match your company to one of the stages, and to pursue the
+
+architecture and processes in that stage. What you <em>don&#8217;t</em> want to do is to immediately jump to the end, and use the
+
+architecture and processes of the largest and most elite companies. Let&#8217;s be honest here: your company isn&#8217;t Google
+
+(unless it is, in which case, congrats, you are an exceptionally rare outlier); you don&#8217;t have the same scale, you
+
+don&#8217;t have the same problems to solve, and therefore, the same solutions won&#8217;t work for you. Not only will
+
+those solutions not work for you, they will be actively harmful. Every time I see a 3-person startup adopting a
+
+microservices, event-driven architecture with a service mesh, I just shake my head: you&#8217;re paying a massive cost to
+
+solve problems you don&#8217;t have.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #1</div>
+
+<div class="paragraph">
+
+<p>Adopt the architecture and software delivery processes that are appropriate for your stage of company.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Even if you are a massive company, you still shouldn&#8217;t try to adopt every DevOps practice all at once.
+
+One of the most important lessons I&#8217;ve learned in my career is that most large software projects fail. Whereas roughly
+
+3 out of 4 small IT projects (less than $1 million) are completed successfully, only 1 out of 10 large
+
+projects (greater than $10 million) are completed on time and on budget, and more than one-third of large projects are
+
+never completed at all.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="13-footnotes.html#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+
+</div>
+
+<div class="paragraph">
+
+<p>This is why I get worried when I see the CEO or CTO of a large company give marching orders that everything
+
+must be migrated to the cloud, the old datacenters must be shut down, and that everyone will "do DevOps" (whatever that
+
+means), all within six months. I&#8217;m not exaggerating when I say that I&#8217;ve seen this pattern several dozen times, and
+
+without exception, <em>every single one of these initiatives has failed</em>. Inevitably, two to three years later, every one
+
+of these companies is still working on the migration, the old datacenter is still running, and no one can tell whether
+
+they are really doing DevOps or not.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you want to successfully adopt DevOps, or if you want to succeed at any other type of migration project, the only
+
+sane way to do it is incrementally. The key to <em>incrementalism</em> is not just splitting up the work into a series of small
+
+steps but splitting up the work in such a way that every step brings its own value—even if the later steps never
+
+happen.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>To understand why this is so important, consider the opposite, <em>false incrementalism</em>.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="13-footnotes.html#_footnotedef_4" title="View footnote.">4</a>]</sup>
+
+Suppose that you do a huge migration project, broken up into the following steps:</p>
+
+</div>
+
+<div class="olist arabic">
+
+<ol class="arabic">
+
+<li>
+
+<p>Redesign the user interface.</p>
+
+</li>
+
+<li>
+
+<p>Rewrite the backend.</p>
+
+</li>
+
+<li>
+
+<p>Migrate the data.</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>You complete the first step, but you can&#8217;t launch it, because it relies on the new backend in the second step. So,
+
+next, you rewrite the backend, but you can&#8217;t launch that either, until you migrate the data in the third step. It&#8217;s
+
+only when you complete all three steps that you get any value from this work. This is false incrementalism: you&#8217;ve
+
+split the work into smaller steps, but you only get value when all the steps are completed, which is a huge risk.
+
+Why? Because conditions change all the time, and there&#8217;s always a chance the project gets paused or cancelled or
+
+modified part way through, before you&#8217;ve completed all the steps, and if that happens, you get the worst possible
+
+outcome: you&#8217;ve had to invest a bunch of time and money, but you will get nothing in return.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>What you want instead is for each part of the project to deliver some value so that even if the entire project doesn&#8217;t
+
+finish, no matter what step you got to, it was still worth doing. The best way to accomplish this is
+
+to focus on solving one, small, concrete problem at a time. For example, instead of trying to do a "big bang"
+
+migration to the cloud, try to identify one, small, specific app or team that is struggling, and work to migrate just
+
+them. Or instead of trying to do a "big bang" move to "DevOps," try to identify a single, small, concrete
+
+problem (e.g., outages during deployment) and put in place a solution for that specific problem (e.g., automate the
+
+deployment steps).</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you can get a quick win by fixing one real, concrete problem right away, and making one team successful, you&#8217;ll
+
+begin to build momentum. This will allow you to go for another quick win, and another one after that. And if you can
+
+keep repeating this process—delivering value early and often—you&#8217;ll be far more likely to succeed at the larger
+
+migration effort. But even if the larger migration doesn&#8217;t work out, at least one team is more successful now and one
+
+deployment process works better, so it&#8217;s still worth the investment.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #2</div>
+
+<div class="paragraph">
+
+<p>Adopt DevOps incrementally, as a series of small steps, where each step is valuable by itself.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now that you have a basic background on DevOps, and you&#8217;ve seen how DevOps evolves, let&#8217;s head back to the very
+
+first step, and learn how to deploy a single app.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<h2 id="_an_introduction_to_deploying_apps">An Introduction to Deploying Apps</h2>
+
+<div class="paragraph">
+
+<p>As you saw in the previous section, the first step is to run your app on a single server. How do you run
+
+an app? What&#8217;s a server? What type of server should you use? These are the questions we&#8217;ll address in this section.</p>
+
+</div>
 
 <div class="paragraph">
 
@@ -1352,11 +2816,19 @@ Listening on port 8080</pre>
 
 </div>
 
+<div class="paragraph">
+
+<p>That&#8217;s a great start, but if you want to expose your app to users, you&#8217;ll need to run it on a server, as discussed in
+
+the next section.</p>
+
+</div>
+
 </div>
 
 <div class="sect3">
 
-<h3 id="_exposing_an_app_on_your_computer_to_users_not_recommended">Exposing an App on Your Computer to Users (Not Recommended)</h3>
+<h3 id="_deploying_an_app_on_a_server">Deploying an App on a Server</h3>
 
 <div class="paragraph">
 
@@ -1374,7 +2846,7 @@ any real network interface. In other words, when you&#8217;re running an app on 
 
 <div class="paragraph">
 
-<p>This is by design, and for the most part, a good thing. In fact, this leads to an important rule:<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="13-footnotes.html#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+<p>This is by design, and for the most part, a good thing. In fact, this leads to an important rule:<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
 
 </div>
 
@@ -1392,7 +2864,7 @@ any real network interface. In other words, when you&#8217;re running an app on 
 
 <td class="content">
 
-<div class="title">Key takeaway #1</div>
+<div class="title">Key takeaway #3</div>
 
 <div class="paragraph">
 
@@ -1410,25 +2882,11 @@ any real network interface. In other words, when you&#8217;re running an app on 
 
 <div class="paragraph">
 
-<p>Instead, if you&#8217;re going to expose your app to the outside world, you should run it on a <em>server</em>, as
+<p>Instead, if you&#8217;re going to expose your app to the outside world, you should run it on a server. A <em>server</em> is a
 
-described in the next section.</p>
+computer specifically designed for running apps and exposing those apps to the outside world. There are many
 
-</div>
-
-</div>
-
-</div>
-
-<div class="sect2">
-
-<h2 id="_deploying_an_app_on_a_server">Deploying an App on a Server</h2>
-
-<div class="paragraph">
-
-<p>A <em>server</em> is a computer specifically designed for running apps and exposing those apps to the outside world. There are
-
-many differences between a server and a personal computer, including the following:</p>
+differences between a server and a personal computer, including the following:</p>
 
 </div>
 
@@ -1582,9 +3040,9 @@ apps the right way: on a server.</p>
 
 </div>
 
-<div class="sect2">
+<div class="sect3">
 
-<h2 id="_deploying_on_prem_versus_in_the_cloud">Deploying On Prem Versus in the Cloud</h2>
+<h3 id="_deploying_on_prem_versus_in_the_cloud">Deploying On Prem Versus in the Cloud</h3>
 
 <div class="paragraph">
 
@@ -1634,7 +3092,7 @@ teams from outside Amazon as well. The result was the launch of Amazon Web Servi
 
 computing platform</em> (<em>cloud</em> for short), which allowed you to rent servers from Amazon using a software
 
-interface.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="13-footnotes.html#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+interface.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="13-footnotes.html#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
 
 </div>
 
@@ -1660,9 +3118,9 @@ stores, machine learning systems, natural language processing, edge computing, a
 
 </div>
 
-<div class="sect3">
+<div class="sect4">
 
-<h3 id="_when_to_go_with_the_cloud">When to Go with the Cloud</h3>
+<h4 id="_when_to_go_with_the_cloud">When to Go with the Cloud</h4>
 
 <div class="paragraph">
 
@@ -1830,7 +3288,7 @@ already way ahead of where you could get to today with on-prem, but that lead wi
 
 <td class="content">
 
-<div class="title">Key takeaway #2</div>
+<div class="title">Key takeaway #4</div>
 
 <div class="paragraph">
 
@@ -1862,9 +3320,9 @@ companies are establishing a presence in the cloud as well, often preferring it 
 
 </div>
 
-<div class="sect3">
+<div class="sect4">
 
-<h3 id="_when_to_go_with_on_prem">When to Go with On-Prem</h3>
+<h4 id="_when_to_go_with_on_prem">When to Go with On-Prem</h4>
 
 <div class="paragraph">
 
@@ -1906,7 +3364,7 @@ is if your company is large enough that you can afford to buy and manage your ow
 
 handle a lot of traffic, but that traffic is fairly steady and predictable. In that case, you aren&#8217;t benefiting as
 
-much from the elasticity of the cloud, and may find it cheaper to run things on prem.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup> One final example is if you need access to very specific hardware (e.g.,
+much from the elasticity of the cloud, and may find it cheaper to run things on prem.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="13-footnotes.html#_footnotedef_7" title="View footnote.">7</a>]</sup> One final example is if you need access to very specific hardware (e.g.,
 
 certain types of CPUs, GPUs, or hard-drives), you can&#8217;t always get that in the cloud, and may have to buy it yourself.</p>
 
@@ -1938,9 +3396,9 @@ next.</p>
 
 </div>
 
-<div class="sect3">
+<div class="sect4">
 
-<h3 id="_when_to_go_with_hybrid">When to Go with Hybrid</h3>
+<h4 id="_when_to_go_with_hybrid">When to Go with Hybrid</h4>
 
 <div class="paragraph">
 
@@ -2032,9 +3490,9 @@ series will use the cloud.</p>
 
 </div>
 
-<div class="sect2">
+<div class="sect3">
 
-<h2 id="_deploying_using_paas_versus_iaas">Deploying Using PaaS Versus IaaS</h2>
+<h3 id="_deploying_an_app_using_paas">Deploying An App Using PaaS</h3>
 
 <div class="paragraph">
 
@@ -2054,7 +3512,7 @@ operations, such as installing the app and its dependencies, setting up database
 
 <p>About a year later, in 2007, a company called Heroku came out with one of the first <em>Platform as a Service (PaaS)</em>
 
-offerings.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="13-footnotes.html#_footnotedef_6" title="View footnote.">6</a>]</sup> The
+offerings.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="13-footnotes.html#_footnotedef_8" title="View footnote.">8</a>]</sup> The
 
 key difference with PaaS is that the focus is on higher level primitives: not just the underlying infrastructure (i.e.,
 
@@ -2078,15 +3536,11 @@ process.</p>
 
 <div class="paragraph">
 
-<p>The best way to get a feel for the difference is to try it out. You&#8217;ll try out a PaaS in the next section and an IaaS
+<p>The best way to get a feel for the difference is to try it out. You&#8217;ll try out a PaaS in this section and an IaaS
 
-in the section after that.</p>
+in the next section.</p>
 
 </div>
-
-<div class="sect3">
-
-<h3 id="_deploying_an_app_using_paas">Deploying an App Using PaaS</h3>
 
 <div class="paragraph">
 
@@ -2650,7 +4104,7 @@ you can use the search bar at the top of the AWS Console to find services such a
 
 Create User button. Enter a name for the user, and make sure "Provide user access to the AWS Management Console" is
 
-selected, as shown in <a href="02.html#create_iam_user">Figure 1</a> (note that AWS occasionally makes changes to its web console, so what you
+selected, as shown in <a href="02.html#create_iam_user">Figure 10</a> (note that AWS occasionally makes changes to its web console, so what you
 
 see may look slightly different from the screenshots in this blog post series).</p>
 
@@ -2664,7 +4118,7 @@ see may look slightly different from the screenshots in this blog post series).<
 
 </div>
 
-<div class="title">Figure 1. Use the AWS Console to create a new IAM user.</div>
+<div class="title">Figure 10. Use the AWS Console to create a new IAM user.</div>
 
 </div>
 
@@ -2688,7 +4142,7 @@ into your AWS account, which are known as <em>Managed Policies</em>.</p>
 
 and add the <code>AdministratorAccess</code> Managed Policy to your IAM user (search for it, and click the checkbox next to it),
 
-as shown in <a href="02.html#managed_policies">Figure 2</a>.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="13-footnotes.html#_footnotedef_7" title="View footnote.">7</a>]</sup></p>
+as shown in <a href="02.html#managed_policies">Figure 11</a>.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="13-footnotes.html#_footnotedef_9" title="View footnote.">9</a>]</sup></p>
 
 </div>
 
@@ -2700,7 +4154,7 @@ as shown in <a href="02.html#managed_policies">Figure 2</a>.<sup class="footnote
 
 </div>
 
-<div class="title">Figure 2. Add the <code>AdministratorAccess</code> Managed IAM Policy to your new IAM user.</div>
+<div class="title">Figure 11. Add the <code>AdministratorAccess</code> Managed IAM Policy to your new IAM user.</div>
 
 </div>
 
@@ -2708,7 +4162,7 @@ as shown in <a href="02.html#managed_policies">Figure 2</a>.<sup class="footnote
 
 <p>Click Next again and then the "Create user" button. AWS will show you the security credentials for that
 
-user, which consist of (a) a sign-in URL, (b) the user name, and (c) the console password, as shown in <a href="02.html#aws_creds">Figure 3</a>.
+user, which consist of (a) a sign-in URL, (b) the user name, and (c) the console password, as shown in <a href="02.html#aws_creds">Figure 12</a>.
 
 Save all three of these immediately in a secure password manager (e.g., 1Password), especially the console password, as
 
@@ -2724,7 +4178,7 @@ it will <em>never</em> be shown again.</p>
 
 </div>
 
-<div class="title">Figure 3. Store your AWS credentials somewhere secure. Never share them with anyone.</div>
+<div class="title">Figure 12. Store your AWS credentials somewhere secure. Never share them with anyone.</div>
 
 </div>
 
@@ -2748,7 +4202,7 @@ the AWS <em>Elastic Compute Cloud (EC2)</em> service, which lets you launch serv
 
 an orange button in the middle of the page). This will take you to a page where you configure your EC2 instance, as
 
-shown in <a href="02.html#ec2_name_ami">Figure 4</a>.</p>
+shown in <a href="02.html#ec2_name_ami">Figure 13</a>.</p>
 
 </div>
 
@@ -2760,7 +4214,7 @@ shown in <a href="02.html#ec2_name_ami">Figure 4</a>.</p>
 
 </div>
 
-<div class="title">Figure 4. Configure the name and AMI to use for your EC2 instance.</div>
+<div class="title">Figure 13. Configure the name and AMI to use for your EC2 instance.</div>
 
 </div>
 
@@ -2772,7 +4226,7 @@ Image or <em>AMI</em>), which is a topic we&#8217;ll come back to in <a href="03
 
 with the default, which should be Amazon Linux. Below that, you&#8217;ll need to configure the instance type and key pair,
 
-as shown in <a href="02.html#ec2_instance_type_key_pair">Figure 5</a>.</p>
+as shown in <a href="02.html#ec2_instance_type_key_pair">Figure 14</a>.</p>
 
 </div>
 
@@ -2784,7 +4238,7 @@ as shown in <a href="02.html#ec2_instance_type_key_pair">Figure 5</a>.</p>
 
 </div>
 
-<div class="title">Figure 5. Configure the instance type and key pair to use for your EC2 instance.</div>
+<div class="title">Figure 14. Configure the instance type and key pair to use for your EC2 instance.</div>
 
 </div>
 
@@ -2798,7 +4252,7 @@ have. For this quick test, you can use the default, which should be <code>t2.mic
 
 topic you&#8217;ll learn more about in <a href="07.html#how_to_set_up_networking">Part 6</a>. You&#8217;re not going to be using SSH for this example, so
 
-select "Proceed without a key pair." Scroll down to the network settings, as shown in <a href="02.html#ec2_network_settings">Figure 6</a>.</p>
+select "Proceed without a key pair." Scroll down to the network settings, as shown in <a href="02.html#ec2_network_settings">Figure 15</a>.</p>
 
 </div>
 
@@ -2810,7 +4264,7 @@ select "Proceed without a key pair." Scroll down to the network settings, as sho
 
 </div>
 
-<div class="title">Figure 6. Configure the network settings for your EC2 instance.</div>
+<div class="title">Figure 15. Configure the network settings for your EC2 instance.</div>
 
 </div>
 
@@ -2818,7 +4272,7 @@ select "Proceed without a key pair." Scroll down to the network settings, as sho
 
 <p>You&#8217;ll learn about  networking in <a href="07.html#how_to_set_up_networking">Part 6</a>. For now, you can leave most of these settings at their
 
-defaults: the Network should pick your Default VPC (in <a href="02.html#ec2_network_settings">Figure 6</a>, my Default VPC has the ID
+defaults: the Network should pick your Default VPC (in <a href="02.html#ec2_network_settings">Figure 15</a>, my Default VPC has the ID
 
 <code>vpc-deb90eb6</code>, but your ID will be different), the Subnet should be "No preference," and Auto-assign public IP should
 
@@ -2826,7 +4280,7 @@ be "Enable." The only thing you should change is the Firewall (security groups) 
 
 security group" radio button, disabling the "Allow SSH traffic from" setting, and enabling the "Allow HTTP traffic
 
-from the internet" setting, as shown in <a href="02.html#ec2_network_settings">Figure 6</a>. By default, EC2 instances have firewalls,
+from the internet" setting, as shown in <a href="02.html#ec2_network_settings">Figure 15</a>. By default, EC2 instances have firewalls,
 
 called <em>security groups</em>, that don&#8217;t allow any network traffic in our out. Allowing HTTP traffic tells the security
 
@@ -2838,7 +4292,7 @@ World!"</p>
 
 <div class="paragraph">
 
-<p>Next, open up the "Advanced details" section, and scroll down to "User data," as shown in <a href="02.html#ec2_user_data">Figure 7</a>.</p>
+<p>Next, open up the "Advanced details" section, and scroll down to "User data," as shown in <a href="02.html#ec2_user_data">Figure 16</a>.</p>
 
 </div>
 
@@ -2850,7 +4304,7 @@ World!"</p>
 
 </div>
 
-<div class="title">Figure 7. Configure user data for your EC2 instance.</div>
+<div class="title">Figure 16. Configure user data for your EC2 instance.</div>
 
 </div>
 
@@ -2996,13 +4450,13 @@ exit.</p>
 
 <div class="paragraph">
 
-<p>The approach shown here with user data has a number of drawbacks, as explained in <a href="02.html#example_problems">Table 2</a>:</p>
+<p>The approach shown here with user data has a number of drawbacks, as explained in <a href="02.html#example_problems">Table 3</a>:</p>
 
 </div>
 
 <table id="example_problems" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 2. Problems with the simplified example</caption>
+<caption class="title">Table 3. Problems with the simplified example</caption>
 
 <colgroup>
 
@@ -3114,7 +4568,7 @@ instance state go from "Pending" to "Running"), which typically takes 1-2 minute
 
 and in a drawer that pops up at the bottom of the page, you should see more details about your EC2 instance, including
 
-its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 8</a>.</p>
+its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 17</a>.</p>
 
 </div>
 
@@ -3126,7 +4580,7 @@ its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 8</a
 
 </div>
 
-<div class="title">Figure 8. Find the public IP address for your EC2 instance.</div>
+<div class="title">Figure 17. Find the public IP address for your EC2 instance.</div>
 
 </div>
 
@@ -3222,7 +4676,7 @@ this compare to the monitoring you get out-of-the-box with Fly.io?</p>
 
 <p>When you&#8217;re done experimenting with AWS, you should undeploy your app by selecting your EC2 instance, clicking
 
-"Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 9</a>.
+"Instance state," and choosing "Terminate instance" in the drop down, as shown in <a href="02.html#ec2_terminate_instance">Figure 18</a>.
 
 This ensures that your account doesn&#8217;t start accumulating any unwanted charges.</p>
 
@@ -3236,7 +4690,7 @@ This ensures that your account doesn&#8217;t start accumulating any unwanted cha
 
 </div>
 
-<div class="title">Figure 9. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
+<div class="title">Figure 18. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
 
 </div>
 
@@ -3262,6 +4716,14 @@ meet a much wider set of requirements; but for those very same reasons, it&#8217
 
 </div>
 
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_comparing_paas_and_iaas">Comparing PaaS and IaaS</h3>
+
 <div class="paragraph">
 
 <p>Now that you&#8217;ve seen both IaaS and PaaS in action, the question is, when should you use one or the other? This is the
@@ -3270,13 +4732,9 @@ topic of the next two sections.</p>
 
 </div>
 
-</div>
+<div class="sect4">
 
-</div>
-
-<div class="sect3">
-
-<h3 id="_when_to_go_with_paas">When to Go with PaaS</h3>
+<h4 id="_when_to_go_with_paas">When to Go with PaaS</h4>
 
 <div class="paragraph">
 
@@ -3298,7 +4756,7 @@ topic of the next two sections.</p>
 
 <td class="content">
 
-<div class="title">Key takeaway #3</div>
+<div class="title">Key takeaway #5</div>
 
 <div class="paragraph">
 
@@ -3420,9 +4878,9 @@ your requirements, as discussed in the next section.</p>
 
 </div>
 
-<div class="sect3">
+<div class="sect4">
 
-<h3 id="_when_to_go_with_iaas">When to Go with IaaS</h3>
+<h4 id="_when_to_go_with_iaas">When to Go with IaaS</h4>
 
 <div class="paragraph">
 
@@ -3518,7 +4976,7 @@ of the underlying systems can make it hard to meet certain security and complian
 
 <td class="content">
 
-<div class="title">Key takeaway #4</div>
+<div class="title">Key takeaway #6</div>
 
 <div class="paragraph">
 
@@ -3538,19 +4996,37 @@ of the underlying systems can make it hard to meet certain security and complian
 
 </div>
 
+</div>
+
 <div class="sect2">
 
 <h2 id="_conclusion">Conclusion</h2>
 
 <div class="paragraph">
 
-<p>You now know the basics of deploying your app. Here are the 4 key takeaways from this chapter:</p>
+<p>You now know the basics of deploying your app. Here are the 6 key takeaways from this chapter:</p>
 
 </div>
 
 <div class="dlist">
 
 <dl>
+
+<dt class="hdlist1">Adopt the architecture and software delivery processes that are appropriate for your stage of company</dt>
+
+<dd>
+
+<p>Always pick the right tools for the job.</p>
+
+</dd>
+
+<dt class="hdlist1">Adopt DevOps incrementally, as a series of small steps, where each step is valuable by itself</dt>
+
+<dd>
+
+<p>Avoid big bang migrations and false incrementalism, where you only get value after all steps have been completed.</p>
+
+</dd>
 
 <dt class="hdlist1">You should <em>never</em> expose apps running on a <em>personal computer</em> to the outside world</dt>
 
@@ -3653,7 +5129,7 @@ blog post, <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
 
 <div id="footer-text">
 
-Last updated 2024-05-31 16:43:42 -0400
+Last updated 2024-06-03 16:46:22 -0400
 
 </div>
 

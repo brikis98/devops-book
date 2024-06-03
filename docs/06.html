@@ -941,7 +941,7 @@ table ul {
 
 </li>
 
-<li class="nav-item"><a href="#_example_set_up_automated_tests_for_your_app_code_with_github_actions" class="nav-link">5.1.4. Example: Set Up Automated Tests for Your App Code with GitHub Actions</a></li>
+<li class="nav-item"><a href="#_example_run_automated_tests_for_apps_in_github_actions" class="nav-link">5.1.4. Example: Run Automated Tests for Apps in GitHub Actions</a></li>
 
 <li class="nav-item"><a href="#_machine_user_credentials_and_automatically_provisioned_credentials" class="nav-link">5.1.5. Machine User Credentials and Automatically-Provisioned Credentials</a>
 
@@ -955,9 +955,9 @@ table ul {
 
 </li>
 
-<li class="nav-item"><a href="#_example_configure_oidc_for_use_with_automated_tests_in_github_actions" class="nav-link">5.1.6. Example: Configure OIDC for Use with Automated Tests in GitHub Actions</a></li>
+<li class="nav-item"><a href="#_example_configure_oidc_with_aws_and_github_actions" class="nav-link">5.1.6. Example: Configure OIDC with AWS and GitHub Actions</a></li>
 
-<li class="nav-item"><a href="#_example_set_up_automated_ttests_for_infrastructure_code_with_github_actions" class="nav-link">5.1.7. Example: Set Up Automated tTests for Infrastructure Code with GitHub Actions</a></li>
+<li class="nav-item"><a href="#_example_run_automated_tests_for_infrastructure_in_github_actions" class="nav-link">5.1.7. Example: Run Automated Tests for Infrastructure in GitHub Actions</a></li>
 
 </ul>
 
@@ -1076,7 +1076,7 @@ the same time, you need to find a way to prevent constant bugs and breakages fro
 
 <dd>
 
-<p>Getting a codebase working is great, but as you may remember from the <a href="index.html#preface">Introduction</a>, code isn&#8217;t done until
+<p>Getting a codebase working is great, but as you may remember from the <a href="index.html#preface">Preface</a>, code isn&#8217;t done until
 
 it&#8217;s generating value for your users and your company, which means you need a way to <em>release</em> the changes in your
 
@@ -1096,7 +1096,7 @@ put these ingredients together. To do this, you will first learn about continuou
 
 delivery (CD). The combination of the two, CI/CD, is a central part of the SDLC of all the companies you read about in
 
-<a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a> that have world-class software delivery practices.</p>
+<a href="02.html#world_class_delivery">Section 1.1</a> that have world-class software delivery practices.</p>
 
 </div>
 
@@ -1120,7 +1120,7 @@ delivery (CD). The combination of the two, CI/CD, is a central part of the SDLC 
 
 <p>Imagine you&#8217;re responsible for building the International Space Station (ISS), which consists of dozens of components,
 
-as shown in <a href="06.html#iss">Figure 33</a>.</p>
+as shown in <a href="06.html#iss">Figure 42</a>.</p>
 
 </div>
 
@@ -1132,7 +1132,7 @@ as shown in <a href="06.html#iss">Figure 33</a>.</p>
 
 </div>
 
-<div class="title">Figure 33. International Space Station <sup class="footnote">[<a id="_footnoteref_34" class="footnote" href="13-footnotes.html#_footnotedef_34" title="View footnote.">34</a>]</sup></div>
+<div class="title">Figure 42. International Space Station <sup class="footnote">[<a id="_footnoteref_36" class="footnote" href="13-footnotes.html#_footnotedef_36" title="View footnote.">36</a>]</sup></div>
 
 </div>
 
@@ -1200,7 +1200,7 @@ work in totally isolated <em>feature branches</em> in their version control syst
 
 the very last minute, when a release rolls around, they try to merge all the feature branches together. This process is
 
-known as <em>late integration</em>, and it often leads to disaster, as shown in <a href="06.html#late_integration">Figure 34</a>.</p>
+known as <em>late integration</em>, and it often leads to disaster, as shown in <a href="06.html#late_integration">Figure 43</a>.</p>
 
 </div>
 
@@ -1212,7 +1212,7 @@ known as <em>late integration</em>, and it often leads to disaster, as shown in 
 
 </div>
 
-<div class="title">Figure 34. The huge merge conflicts that you get as a result of late integration</div>
+<div class="title">Figure 43. The huge merge conflicts that you get as a result of late integration</div>
 
 </div>
 
@@ -1300,13 +1300,13 @@ part of Project Inversion, which was essential for scaling the company from roug
 
 Facebook uses trunk-based development for thousands of
 
-developers.<sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup> Google uses
+developers.<sup class="footnote">[<a id="_footnoteref_37" class="footnote" href="13-footnotes.html#_footnotedef_37" title="View footnote.">37</a>]</sup> Google uses
 
 trunk-based development for tens of thousands of developers, and has shown it can scale to 2+ billion lines of code,
 
 86TB of source data, and around 40,000 commits per
 
-day.<sup class="footnote">[<a id="_footnoteref_36" class="footnote" href="13-footnotes.html#_footnotedef_36" title="View footnote.">36</a>]</sup></p>
+day.<sup class="footnote">[<a id="_footnoteref_38" class="footnote" href="13-footnotes.html#_footnotedef_38" title="View footnote.">38</a>]</sup></p>
 
 </div>
 
@@ -1586,7 +1586,7 @@ changes that jeopardize your ability to deploy at any time.</p>
 
 <div class="paragraph">
 
-<p>In <a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a>, you saw that companies with world-class software delivery processes are able to deploy
+<p>In <a href="02.html#world_class_delivery">Section 1.1</a>, you saw that companies with world-class software delivery processes are able to deploy
 
 thousands of times per day. Continuous integration—including a CI server and thorough automated test suite—is one of
 
@@ -1668,7 +1668,7 @@ basis.</p>
 
 many commits, without ever risking breaking the build or releasing unfinished work to users. For example, let&#8217;s say you
 
-have hundreds of modules in your codebase that use Library X, as shown in <a href="06.html#branch_by_abstraction_step_1">Figure 35</a>:</p>
+have hundreds of modules in your codebase that use Library X, as shown in <a href="06.html#branch_by_abstraction_step_1">Figure 44</a>:</p>
 
 </div>
 
@@ -1680,7 +1680,7 @@ have hundreds of modules in your codebase that use Library X, as shown in <a hre
 
 </div>
 
-<div class="title">Figure 35. Library X is used across many modules in your codebase</div>
+<div class="title">Figure 44. Library X is used across many modules in your codebase</div>
 
 </div>
 
@@ -1706,7 +1706,7 @@ interface, a protocol, a class, etc. The important thing is that (a) the abstrac
 
 hood, so there is no change in behavior and (b) it creates a layer of indirection between your modules and Library X,
 
-as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 36</a>:</p>
+as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 45</a>:</p>
 
 </div>
 
@@ -1718,7 +1718,7 @@ as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 36</a>:</p>
 
 </div>
 
-<div class="title">Figure 36. Introduce an abstraction between your modules and Library X</div>
+<div class="title">Figure 45. Introduce an abstraction between your modules and Library X</div>
 
 </div>
 
@@ -1734,7 +1734,7 @@ using the abstraction, and you could even add an automated test that fails if an
 
 <div class="paragraph">
 
-<p>At this point, you can start replacing Library X with Library Y, as shown in <a href="06.html#branch_by_abstraction_step_3">Figure 37</a>:</p>
+<p>At this point, you can start replacing Library X with Library Y, as shown in <a href="06.html#branch_by_abstraction_step_3">Figure 46</a>:</p>
 
 </div>
 
@@ -1746,7 +1746,7 @@ using the abstraction, and you could even add an automated test that fails if an
 
 </div>
 
-<div class="title">Figure 37. Start to incrementally update your modules to use Library Y</div>
+<div class="title">Figure 46. Start to incrementally update your modules to use Library Y</div>
 
 </div>
 
@@ -1758,7 +1758,7 @@ minimize merge conflicts. You could also update your abstraction code to ensure 
 
 get Library Y under the hood by default. Eventually, when you&#8217;re done updating all module usages, you can remove
 
-Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">Figure 38</a>:</p>
+Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">Figure 47</a>:</p>
 
 </div>
 
@@ -1770,7 +1770,7 @@ Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">F
 
 </div>
 
-<div class="title">Figure 38. After you&#8217;ve updated all module usages, you can remove Library X</div>
+<div class="title">Figure 47. After you&#8217;ve updated all module usages, you can remove Library X</div>
 
 </div>
 
@@ -1962,7 +1962,7 @@ number of others later in this blog post, in the continuous delivery section.</p
 
 <div class="sect3">
 
-<h3 id="_example_set_up_automated_tests_for_your_app_code_with_github_actions">Example: Set Up Automated Tests for Your App Code with GitHub Actions</h3>
+<h3 id="_example_run_automated_tests_for_apps_in_github_actions">Example: Run Automated Tests for Apps in GitHub Actions</h3>
 
 <div class="admonitionblock note">
 
@@ -2176,7 +2176,7 @@ jobs.</p>
 
 configuration (2 CPUs and 7GB of RAM, as of 2024) and a software configuration that has Ubuntu and a bunch of
 
-commonly used software engineering tools (including Node.js) pre-installed.<sup class="footnote">[<a id="_footnoteref_37" class="footnote" href="13-footnotes.html#_footnotedef_37" title="View footnote.">37</a>]</sup></p>
+commonly used software engineering tools (including Node.js) pre-installed.<sup class="footnote">[<a id="_footnoteref_39" class="footnote" href="13-footnotes.html#_footnotedef_39" title="View footnote.">39</a>]</sup></p>
 
 </li>
 
@@ -2314,7 +2314,7 @@ $ git push origin test-workflow</pre>
 
 your browser, fill out a title and description, and click "Create pull request." You should get a page that looks
 
-something like <a href="06.html#pull_request_tests">Figure 39</a>:</p>
+something like <a href="06.html#pull_request_tests">Figure 48</a>:</p>
 
 </div>
 
@@ -2326,7 +2326,7 @@ something like <a href="06.html#pull_request_tests">Figure 39</a>:</p>
 
 </div>
 
-<div class="title">Figure 39. Automated tests running in a pull request</div>
+<div class="title">Figure 48. Automated tests running in a pull request</div>
 
 </div>
 
@@ -2336,7 +2336,7 @@ something like <a href="06.html#pull_request_tests">Figure 39</a>:</p>
 
 there&#8217;s an error. Click the Details link to the right of the workflow to see what went wrong. You should get a page
 
-that looks like <a href="06.html#gh_actions_test_failure">Figure 40</a>:</p>
+that looks like <a href="06.html#gh_actions_test_failure">Figure 49</a>:</p>
 
 </div>
 
@@ -2348,7 +2348,7 @@ that looks like <a href="06.html#gh_actions_test_failure">Figure 40</a>:</p>
 
 </div>
 
-<div class="title">Figure 40. Looking into the cause of the test failure</div>
+<div class="title">Figure 49. Looking into the cause of the test failure</div>
 
 </div>
 
@@ -2404,7 +2404,7 @@ $ git push origin test-workflow</pre>
 
 <p>This will automatically update your open PR, and automatically re-run your tests. After a few seconds, if you go back
 
-to your browser and look at the PR, you should see the tests passing, as shown in <a href="06.html#gh_actions_test_passing">Figure 41</a>:</p>
+to your browser and look at the PR, you should see the tests passing, as shown in <a href="06.html#gh_actions_test_passing">Figure 50</a>:</p>
 
 </div>
 
@@ -2416,7 +2416,7 @@ to your browser and look at the PR, you should see the tests passing, as shown i
 
 </div>
 
-<div class="title">Figure 41. The automated tests should now be passing</div>
+<div class="title">Figure 50. The automated tests should now be passing</div>
 
 </div>
 
@@ -2746,13 +2746,13 @@ roles, subject to certain conditions: e.g., you can only use this IAM role from 
 
 </div>
 
-<div class="title">Figure 42. With OIDC, you configure AWS to trust an IdP such as GitHub, which allows that IdP to exchange an OIDC token for short-lived AWS credentials</div>
+<div class="title">Figure 51. With OIDC, you configure AWS to trust an IdP such as GitHub, which allows that IdP to exchange an OIDC token for short-lived AWS credentials</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>Once you&#8217;ve set that up, <a href="06.html#oidc_github_diagram">Figure 42</a> shows the workflow for using OIDC to authenticate from GitHub to
+<p>Once you&#8217;ve set that up, <a href="06.html#oidc_github_diagram">Figure 51</a> shows the workflow for using OIDC to authenticate from GitHub to
 
 AWS:</p>
 
@@ -2824,7 +2824,7 @@ AWS credentials to authenticate to AWS and make changes in your AWS account.</p>
 
 <div class="sect3">
 
-<h3 id="_example_configure_oidc_for_use_with_automated_tests_in_github_actions">Example: Configure OIDC for Use with Automated Tests in GitHub Actions</h3>
+<h3 id="_example_configure_oidc_with_aws_and_github_actions">Example: Configure OIDC with AWS and GitHub Actions</h3>
 
 <div class="paragraph">
 
@@ -3164,7 +3164,7 @@ code.</p>
 
 <div class="sect3">
 
-<h3 id="_example_set_up_automated_ttests_for_infrastructure_code_with_github_actions">Example: Set Up Automated tTests for Infrastructure Code with GitHub Actions</h3>
+<h3 id="_example_run_automated_tests_for_infrastructure_in_github_actions">Example: Run Automated Tests for Infrastructure in GitHub Actions</h3>
 
 <div class="paragraph">
 
@@ -3526,7 +3526,7 @@ the <code>lambda-sample</code> module, which is useful for deployment, but not s
 
 <p>Add, commit, and push all the changes to the <code>opentofu-tests</code> branch, and then open a pull request. You should see
 
-something similar to <a href="06.html#gh_actions_tests_tofu">Figure 43</a>:</p>
+something similar to <a href="06.html#gh_actions_tests_tofu">Figure 52</a>:</p>
 
 </div>
 
@@ -3538,7 +3538,7 @@ something similar to <a href="06.html#gh_actions_tests_tofu">Figure 43</a>:</p>
 
 </div>
 
-<div class="title">Figure 43. A PR showing the sample app unit tests, Terrascan, and OpenTofu tests running</div>
+<div class="title">Figure 52. A PR showing the sample app unit tests, Terrascan, and OpenTofu tests running</div>
 
 </div>
 
@@ -3828,13 +3828,13 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 </div>
 
-<div class="title">Figure 44. Downtime deployment</div>
+<div class="title">Figure 53. Downtime deployment</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_downtime">Figure 44</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_downtime">Figure 53</a>:</p>
 
 </div>
 
@@ -4010,13 +4010,13 @@ old versions of the app.</p>
 
 </div>
 
-<div class="title">Figure 45. Rolling deployment without replacement</div>
+<div class="title">Figure 54. Rolling deployment without replacement</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_rolling_without_replacement">Figure 45</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_rolling_without_replacement">Figure 54</a>:</p>
 
 </div>
 
@@ -4182,13 +4182,13 @@ be persisted across the deployment.</p>
 
 </div>
 
-<div class="title">Figure 46. Rolling deployment with replacement</div>
+<div class="title">Figure 55. Rolling deployment with replacement</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_rolling_with_replacement">Figure 46</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_rolling_with_replacement">Figure 55</a>:</p>
 
 </div>
 
@@ -4208,7 +4208,7 @@ network-attached hard-drives.</p>
 
 <p>You disconnect one v1 replica from the load balancer, shut down the server, and move its hard drive to a new v2
 
-server (since it&#8217;s a network-attached hard-drive, you do the move through software).<sup class="footnote">[<a id="_footnoteref_38" class="footnote" href="13-footnotes.html#_footnotedef_38" title="View footnote.">38</a>]</sup> Once that new v2 server starts passing health checks, the load balancer starts sending traffic
+server (since it&#8217;s a network-attached hard-drive, you do the move through software).<sup class="footnote">[<a id="_footnoteref_40" class="footnote" href="13-footnotes.html#_footnotedef_40" title="View footnote.">40</a>]</sup> Once that new v2 server starts passing health checks, the load balancer starts sending traffic
 
 to it.</p>
 
@@ -4360,13 +4360,13 @@ instantaneously switch all traffic from the old version (blue) to the new versio
 
 </div>
 
-<div class="title">Figure 47. Blue-green deployment</div>
+<div class="title">Figure 56. Blue-green deployment</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_blue_green">Figure 47</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_blue_green">Figure 56</a>:</p>
 
 </div>
 
@@ -4538,13 +4538,13 @@ problems, you roll back the deployment before it can cause more damage.</p>
 
 </div>
 
-<div class="title">Figure 48. Canary deployment</div>
+<div class="title">Figure 57. Canary deployment</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 48</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 57</a>:</p>
 
 </div>
 
@@ -4698,13 +4698,13 @@ with other strategies, such as rolling deployment or blue-green deployment.</p>
 
 </div>
 
-<div class="title">Figure 49. Feature toggle deployment</div>
+<div class="title">Figure 58. Feature toggle deployment</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 48</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 57</a>:</p>
 
 </div>
 
@@ -4764,7 +4764,7 @@ at once. With feature toggles, the deployment and release steps are now separate
 
 considerably less risky. This is another one of the key ingredients that makes it possible for the companies with
 
-world-class software delivery processes mentioned in <a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a> to deploy thousands of times per day.</p>
+world-class software delivery processes mentioned in <a href="02.html#world_class_delivery">Section 1.1</a> to deploy thousands of times per day.</p>
 
 </dd>
 
@@ -4782,7 +4782,7 @@ disable that feature toggle to turn the feature off. In many cases, this gives y
 
 much faster than having to write and deploy new code. It&#8217;s one of the big reasons the companies mentioned in
 
-<a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a> can recover from downtime 170 times faster. If you&#8217;re paged at 3AM because of an outage,
+<a href="02.html#world_class_delivery">Section 1.1</a> can recover from downtime 170 times faster. If you&#8217;re paged at 3AM because of an outage,
 
 the ability to disable the feature causing the outage in a few clicks, so you can all go back to sleep and put in a
 
@@ -4834,7 +4834,7 @@ the new feature increase engagement? Downloads? Purchases? Referrals? This is ju
 
 control and experimental groups: as long as (a) you randomly assign users to buckets, (b) the only difference between
 
-the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_39" class="footnote" href="13-footnotes.html#_footnotedef_39" title="View footnote.">39</a>]</sup> then you can be reasonably confident that any difference in metrics between the
+the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_41" class="footnote" href="13-footnotes.html#_footnotedef_41" title="View footnote.">41</a>]</sup> then you can be reasonably confident that any difference in metrics between the
 
 buckets is due to the new feature. In other words, you are using data to establish a causal relationship!</p>
 
@@ -4844,7 +4844,7 @@ buckets is due to the new feature. In other words, you are using data to establi
 
 (i.e., you can show users different versions of the product, and you have sufficient traffic to generate statistically
 
-significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_40" class="footnote" href="13-footnotes.html#_footnotedef_40" title="View footnote.">40</a>]</sup></p>
+significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_42" class="footnote" href="13-footnotes.html#_footnotedef_42" title="View footnote.">42</a>]</sup></p>
 
 </div>
 
@@ -4970,13 +4970,13 @@ production (you&#8217;ll learn more about multiple environments in <a href="09.h
 
 </div>
 
-<div class="title">Figure 50. Promotion deployment</div>
+<div class="title">Figure 59. Promotion deployment</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="06.html#deployment_strategy_promotion">Figure 50</a>:</p>
+<p>As shown in <a href="06.html#deployment_strategy_promotion">Figure 59</a>:</p>
 
 </div>
 
@@ -5394,7 +5394,7 @@ the <code>lambda-sample</code> module:</p>
 
 </div>
 
-<div class="title">Figure 51. The steps of a typical deployment pipeline (left) and the example technologies you&#8217;ll use (right)</div>
+<div class="title">Figure 60. The steps of a typical deployment pipeline (left) and the example technologies you&#8217;ll use (right)</div>
 
 </div>
 
@@ -5672,7 +5672,7 @@ the following reasons:</p>
 
 <p>It&#8217;s designed for 99.999999999% durability and 99.99% availability, which means you don&#8217;t need to worry too much
 
-about data loss or outages.<sup class="footnote">[<a id="_footnoteref_41" class="footnote" href="13-footnotes.html#_footnotedef_41" title="View footnote.">41</a>]</sup></p>
+about data loss or outages.<sup class="footnote">[<a id="_footnoteref_43" class="footnote" href="13-footnotes.html#_footnotedef_43" title="View footnote.">43</a>]</sup></p>
 
 </li>
 
@@ -5698,7 +5698,7 @@ if something goes wrong.</p>
 
 <li>
 
-<p>It&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_42" class="footnote" href="13-footnotes.html#_footnotedef_42" title="View footnote.">42</a>]</sup></p>
+<p>It&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_44" class="footnote" href="13-footnotes.html#_footnotedef_44" title="View footnote.">44</a>]</sup></p>
 
 </li>
 
@@ -5762,7 +5762,7 @@ key-value store. It supports strongly consistent reads and conditional writes, w
 
 for a distributed lock system. Moreover, it&#8217;s completely managed, so you don&#8217;t have any infrastructure to run yourself,
 
-and it&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_43" class="footnote" href="13-footnotes.html#_footnotedef_43" title="View footnote.">43</a>]</sup></p>
+and it&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_45" class="footnote" href="13-footnotes.html#_footnotedef_45" title="View footnote.">45</a>]</sup></p>
 
 </div>
 
@@ -6522,7 +6522,7 @@ will do the following:</p>
 
 <div class="paragraph">
 
-<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_44" class="footnote" href="13-footnotes.html#_footnotedef_44" title="View footnote.">44</a>]</sup> It&#8217;s missing several important aspects, including:</p>
+<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_46" class="footnote" href="13-footnotes.html#_footnotedef_46" title="View footnote.">46</a>]</sup> It&#8217;s missing several important aspects, including:</p>
 
 </div>
 
@@ -7034,7 +7034,7 @@ $ git push origin main</pre>
 
 <p>Commit both of these changes, push them to the <code>deployment-pipeline-test</code> branch, open a pull request, and you should see
 
-a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">Figure 52</a>:</p>
+a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">Figure 61</a>:</p>
 
 </div>
 
@@ -7046,7 +7046,7 @@ a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">F
 
 </div>
 
-<div class="title">Figure 52. The deployment pipeline running in a GitHub PR</div>
+<div class="title">Figure 61. The deployment pipeline running in a GitHub PR</div>
 
 </div>
 
@@ -7092,7 +7092,7 @@ a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">F
 
 <p>When everything has finished, the PR should automatically be updated with a comment that shows the <code>plan</code> output, as
 
-shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 53</a>:</p>
+shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 62</a>:</p>
 
 </div>
 
@@ -7104,7 +7104,7 @@ shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 53<
 
 </div>
 
-<div class="title">Figure 53. After opening the PR, the deployment pipeline will add a comment with the <code>plan</code> output</div>
+<div class="title">Figure 62. After opening the PR, the deployment pipeline will add a comment with the <code>plan</code> output</div>
 
 </div>
 
@@ -7114,7 +7114,7 @@ shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 53<
 
 the <code>apply</code> workflow, and after a minute or two, it should post a comment with the <code>apply</code> output, as shown in
 
-<a href="06.html#github_pr_deployment_pipeline_apply_comment">Figure 54</a>:</p>
+<a href="06.html#github_pr_deployment_pipeline_apply_comment">Figure 63</a>:</p>
 
 </div>
 
@@ -7126,7 +7126,7 @@ the <code>apply</code> workflow, and after a minute or two, it should post a com
 
 </div>
 
-<div class="title">Figure 54. After merging the PR, the deployment pipeline will add a comment with the <code>apply</code> output</div>
+<div class="title">Figure 63. After merging the PR, the deployment pipeline will add a comment with the <code>apply</code> output</div>
 
 </div>
 
@@ -7276,7 +7276,7 @@ button, that you get a CD pipeline that is fast, reliable, and sustainable; that
 
 reproducible; that all the steps are fully captured as code; that you can achieve world-class results like the
 
-companies mentioned in <a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a>, who are able to deploy thousands of times per day.</p>
+companies mentioned in <a href="02.html#world_class_delivery">Section 1.1</a>, who are able to deploy thousands of times per day.</p>
 
 </div>
 
@@ -7332,7 +7332,7 @@ deployment servers are a terrifying combination of (a) access to powerful, sensi
 
 every developer in your company, and (c) designed to execute arbitrary code. This is why deployment servers are
 
-particularly tempting targets for malicious actors.<sup class="footnote">[<a id="_footnoteref_45" class="footnote" href="13-footnotes.html#_footnotedef_45" title="View footnote.">45</a>]</sup></p>
+particularly tempting targets for malicious actors.<sup class="footnote">[<a id="_footnoteref_47" class="footnote" href="13-footnotes.html#_footnotedef_47" title="View footnote.">47</a>]</sup></p>
 
 <div class="paragraph">
 
@@ -7456,7 +7456,7 @@ folders (e.g., search team members can only make changes in the <em>search</em> 
 
 workflow definitions themselves, so only a trusted set of admins can update them, and only with PR approval from at
 
-least one other admin.<sup class="footnote">[<a id="_footnoteref_46" class="footnote" href="13-footnotes.html#_footnotedef_46" title="View footnote.">46</a>]</sup></p>
+least one other admin.<sup class="footnote">[<a id="_footnoteref_48" class="footnote" href="13-footnotes.html#_footnotedef_48" title="View footnote.">48</a>]</sup></p>
 
 </dd>
 
@@ -7534,7 +7534,7 @@ automations.</p>
 
 <p>Virtually every company that has a world-class software delivery process, as the ones you heard about in
 
-<a href="index.html#world_class_delivery">What World-Class Software Delivery Looks Like</a>, relies heavily on CI/CD to allow them to go fast. This is one of the surprising realizations
+<a href="02.html#world_class_delivery">Section 1.1</a>, relies heavily on CI/CD to allow them to go fast. This is one of the surprising realizations
 
 of real-world systems: <em>agility requires safety</em>. With cars, speed limits are determined not by the limits
 
@@ -7621,7 +7621,7 @@ VPN, SSH, DNS, and more.</p>
 
 <div id="footer-text">
 
-Last updated 2024-05-31 16:43:42 -0400
+Last updated 2024-06-03 16:46:22 -0400
 
 </div>
 
