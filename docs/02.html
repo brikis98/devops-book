@@ -1028,7 +1028,7 @@ table ul {
 
 <p>In the <a href="index.html#preface">introduction to the blog post series</a>, you heard about how DevOps consists of dozens of different
 
-concepts, but really, it almost always starts like this:</p>
+concepts, but it almost always starts with just one question:</p>
 
 </div>
 
@@ -1096,11 +1096,11 @@ others you didn&#8217;t even think to ask—and help you figure out the answers,
 
 high-level document about culture and values: that stuff matters, but you&#8217;ve probably ready it a million times on
 
-Wikipedia already. Instead, what you&#8217;ll find here are the startling real-world numbers on why DevOps matters, the
+Wikipedia already. Instead, what you&#8217;ll find here are the startling real-world numbers on why DevOps matters and a
 
-background on where DevOps comes from, and a step-by-step walkthrough of the concrete architectures and software
+step-by-step walkthrough of the concrete architectures and software delivery processes used in modern DevOps, and how
 
-delivery processes used in modern DevOps, and how they evolve at various company stages.</p>
+they evolve through the various stages of a company.</p>
 
 </div>
 
@@ -1112,11 +1112,13 @@ with the very first step: deploying an app. There are quite a few different opti
 
 post will walk you through the most common ones. Along the way, you&#8217;ll work through examples
 
-where you deploy the same app multiple different ways: on your own computer, on fly.io (a popular PaaS), and on AWS (a
+where you deploy the same app multiple different ways: on your own computer, on fly.io (a popular Platform as a
 
-popular IaaS). This will allow you to see how the different options compare across a variety of dimensions (e.g.,
+Service provider), and on AWS (a popular Infrastructure as a Service provider). This will allow you to see how the
 
-ease-of-use, security, control, debugging, etc.), so that you can pick the right tool for your use cases.</p>
+different options compare across a variety of dimensions (e.g., ease-of-use, security, control, debugging, etc.), so
+
+that you can pick the right tool for your use cases.</p>
 
 </div>
 
@@ -1418,6 +1420,158 @@ for this blog post series, I&#8217;m going to define DevOps as a methodology wit
 
 <div class="paragraph">
 
+<p>The move to the cloud and the DevOps mindset represent a profound shift across all aspects of software delivery, as
+
+shown in <a href="02.html#devops_shift">Table 3</a>:</p>
+
+</div>
+
+<table id="devops_shift" class="tableblock frame-all grid-all stretch">
+
+<caption class="title">Table 3. The shift in mindset with the cloud and DevOps</caption>
+
+<colgroup>
+
+<col style="width: 20%;">
+
+<col style="width: 40%;">
+
+<col style="width: 40%;">
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th class="tableblock halign-left valign-top"></th>
+
+<th class="tableblock halign-left valign-top">Before</th>
+
+<th class="tableblock halign-left valign-top">After</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Teams</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devs write code, "toss it over the wall" to Ops</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devs &amp; Ops work together on cross-functional teams</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Servers</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dedicated physical servers</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic virtual servers</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connectivity</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Static IPs</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dynamic IPs, service discovery</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Physical, strong perimeter, high trust interior</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Virtual, end-to-end, zero trust</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Infrastructure provisioning</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Infrastructure as Code (IaC) tools</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server configuration</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration management tools</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testing</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automated testing</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployments</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automated</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment cadence</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weeks or months</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many times per day</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change process</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change request tickets</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Self-service</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change cadence</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weeks or months</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minutes</p></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="paragraph">
+
 <p>You heard in the <a href="index.html#preface">Preface</a> how LinkedIn&#8217;s DevOps transformation saved the company, but they are not the only ones.
 
 Nordstrom found that after applying DevOps practices to its organization, it was able to increase the number of
@@ -1550,11 +1704,11 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-1.png" alt="Step 1 architecture: a single server">
+<img src="images/ch1/architecture-evolution-1.png" alt="Step 1">
 
 </div>
 
-<div class="title">Figure 1. Step 1 architecture: a single server</div>
+<div class="title">Figure 1. Step 1</div>
 
 </div>
 
@@ -1592,11 +1746,11 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-2.png" alt="Step 2 architecture: standalone database">
+<img src="images/ch1/architecture-evolution-2.png" alt="Step 2">
 
 </div>
 
-<div class="title">Figure 2. Step 2 architecture: standalone database</div>
+<div class="title">Figure 2. Step 2</div>
 
 </div>
 
@@ -1628,7 +1782,7 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 <dd>
 
-<p>To reduce bugs and outages, you set up automated tests for your apps (<a href="05.html#how_to_version_build_test">Part 4</a>) and
+<p>To reduce bugs and outages, you set up automated tests (<a href="05.html#how_to_version_build_test">Part 4</a>) and
 
 continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
@@ -1648,11 +1802,11 @@ continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-3.png" alt="Step 3 architecture: multiple servers, load balancer, and networking">
+<img src="images/ch1/architecture-evolution-3.png" alt="Step 3">
 
 </div>
 
-<div class="title">Figure 3. Step 3 architecture: multiple servers, load balancer, and networking</div>
+<div class="title">Figure 3. Step 3</div>
 
 </div>
 
@@ -1744,11 +1898,11 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-4.png" alt="Step 4 architecture: caching for data stores and static content">
+<img src="images/ch1/architecture-evolution-4.png" alt="Step 4">
 
 </div>
 
-<div class="title">Figure 4. Step 4 architecture: caching for data stores and static content</div>
+<div class="title">Figure 4. Step 4</div>
 
 </div>
 
@@ -1780,7 +1934,7 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <div class="paragraph">
 
-<p>At this point, your team size is often the real problem, so you have to move on top step 5, shown in
+<p>At this point, your team size is often the real problem, so you have to move onto step 5, shown in
 
 <a href="02.html#evolution_diagram_5">Figure 5</a>:</p>
 
@@ -1790,11 +1944,11 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-5.png" alt="Step 5 architecture: multiple environments">
+<img src="images/ch1/architecture-evolution-5.png" alt="Step 5">
 
 </div>
 
-<div class="title">Figure 5. Step 5 architecture: multiple environments</div>
+<div class="title">Figure 5. Step 5</div>
 
 </div>
 
@@ -1818,7 +1972,7 @@ full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_tea
 
 <dd>
 
-<p>To keep the environment secure, you lock down authentication, authorization, and secrets
+<p>To keep all the new environments secure, you lock down authentication, authorization, and secrets management
 
 (<a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
 
@@ -1848,11 +2002,11 @@ to step 6, as shown in <a href="02.html#evolution_diagram_6">Figure 6</a>:</p>
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-6.png" alt="Step 6 architecture: microservices">
+<img src="images/ch1/architecture-evolution-6.png" alt="Step 6">
 
 </div>
 
-<div class="title">Figure 6. Step 6 architecture: microservices</div>
+<div class="title">Figure 6. Step 6</div>
 
 </div>
 
@@ -1910,11 +2064,11 @@ in <a href="02.html#evolution_diagram_7">Figure 7</a>:</p>
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-7.png" alt="Step 7 architecture: service mesh and hardening">
+<img src="images/ch1/architecture-evolution-7.png" alt="Step 7">
 
 </div>
 
-<div class="title">Figure 7. Step 7 architecture: service mesh and hardening</div>
+<div class="title">Figure 7. Step 7</div>
 
 </div>
 
@@ -1956,7 +2110,7 @@ automatically communicate with each other (<a href="07.html#how_to_set_up_networ
 
 <p>To help manage a large number of microservices, you start using service mesh tools, which give you a unified
 
-solution for four items above (observability, service, discovery, hardening), as well as load balancing, traffic
+solution for the items above (observability, service, discovery, hardening), as well as load balancing, traffic
 
 control, error handling, and so on (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
@@ -1978,11 +2132,11 @@ control, error handling, and so on (<a href="07.html#how_to_set_up_networking">P
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-8.png" alt="Step 8 architecture: analytics tools and event bus">
+<img src="images/ch1/architecture-evolution-8.png" alt="Step 8">
 
 </div>
 
-<div class="title">Figure 8. Step 8 architecture: analytics tools and event bus</div>
+<div class="title">Figure 8. Step 8</div>
 
 </div>
 
@@ -2034,11 +2188,11 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <div class="content">
 
-<img src="images/ch1/architecture-evolution-9.png" alt="Step 9 architecture: multiple data centers and accounts">
+<img src="images/ch1/architecture-evolution-9.png" alt="Step 9">
 
 </div>
 
-<div class="title">Figure 9. Step 9 architecture: multiple data centers and accounts</div>
+<div class="title">Figure 9. Step 9</div>
 
 </div>
 
@@ -2122,11 +2276,11 @@ architecture and processes of the largest and most elite companies. Let&#8217;s 
 
 don&#8217;t have the same problems to solve, and therefore, the same solutions won&#8217;t work for you. Not only will
 
-those solutions not work for you, they will be actively harmful. Every time I see a 3-person startup adopting a
+those solutions not work for you, they will be actively harmful. Every time I see a 3-person startup running an
 
-microservices, event-driven architecture with a service mesh, I just shake my head: you&#8217;re paying a massive cost to
+architecture with 12 microservices, a service mesh, and an event bus, I just shake my head: you&#8217;re paying a massive
 
-solve problems you don&#8217;t have.</p>
+cost to solve problems you don&#8217;t have.</p>
 
 </div>
 
@@ -2580,13 +2734,11 @@ configured on every computer to point back to the <em>loopback</em> network inte
 
 any real network interface. In other words, when you&#8217;re running an app on your computer locally, it typically can
 
-<em>only</em> be accessed from your own computer, and not from the outside world.</p>
+<em>only</em> be accessed from your own computer, and not from the outside world. This is by design, and for the most part, a
 
-</div>
+good thing, as the way you run apps on a personal computer for development and testing is <em>not</em> the way you should run
 
-<div class="paragraph">
-
-<p>This is by design, and for the most part, a good thing. In fact, this leads to an important rule:<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
+them when you want to expose them to outsiders.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
 
 </div>
 
@@ -3010,7 +3162,9 @@ already way ahead of where you could get to today with on-prem, but that lead wi
 
 <div class="paragraph">
 
-<p>With all these advantages, here&#8217;s a general rule on using the cloud:</p>
+<p>The cloud is more or less the de facto option for all new startups that launch today. The vast majority of existing
+
+companies are establishing a presence in the cloud as well, often preferring it for all new development.</p>
 
 </div>
 
@@ -3041,14 +3195,6 @@ already way ahead of where you could get to today with on-prem, but that lead wi
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>The cloud is more or less the de facto option for all new startups that launch today. The vast majority of existing
-
-companies are establishing a presence in the cloud as well, often preferring it for all new development.</p>
 
 </div>
 
@@ -4190,13 +4336,13 @@ exit.</p>
 
 <div class="paragraph">
 
-<p>The approach shown here with user data has a number of drawbacks, as explained in <a href="02.html#example_problems">Table 3</a>:</p>
+<p>The approach shown here with user data has a number of drawbacks, as explained in <a href="02.html#example_problems">Table 4</a>:</p>
 
 </div>
 
 <table id="example_problems" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 3. Problems with the simplified example</caption>
+<caption class="title">Table 4. Problems with the simplified example</caption>
 
 <colgroup>
 
@@ -4478,7 +4624,15 @@ topic of the next two sections.</p>
 
 <div class="paragraph">
 
-<p>This may seem like a strange thing to say in a blog post series about DevOps and software delivery, but here&#8217;s my take:</p>
+<p>Your customers don&#8217;t care what kind of CI / CD pipeline you have, or if you are running a fancy Kubernetes cluster, or
+
+if you&#8217;re on the newest NoSQL database. All that matters is that you can create a product that meets your customers'
+
+needs. Every single thing you do that isn&#8217;t absolutely required to create that product is wasteful. This may seem like
+
+a strange thing to say in a blog post series about DevOps and software delivery, but if you can create a great product
+
+without having to invest much in DevOps and software delivery, <em>that&#8217;s a good thing</em>.</p>
 
 </div>
 
@@ -4516,25 +4670,15 @@ requirements.</p>
 
 <div class="paragraph">
 
-<p>Your customers don&#8217;t care what kind of CI / CD pipeline you have, or if you are running a fancy Kubernetes cluster, or
+<p>If you can find someone else who can take care of software delivery for you, and still meet your requirements, you
 
-if you&#8217;re on the newest NoSQL database. All that
+should take advantage of that as much as possible. And that&#8217;s precisely what a good PaaS offers: out-of-the-box
 
-matters is that you can deliver a product that meets your customers' needs. Every single thing you do that isn&#8217;t
+software delivery. If you can find a PaaS that meets your requirements, then you should use it, stick with it for as
 
-absolutely required to deliver that product is wasteful. So if you can find someone else who can take care of software
+long as you can, and avoid moving to an IaaS and investing in recreating all those software delivery pieces until you
 
-delivery for you, and still meet your requirements, you should take advantage of that as much as possible.</p>
-
-</div>
-
-<div class="paragraph">
-
-<p>And that&#8217;s precisely what a good PaaS offers: out-of-the-box software delivery. If you can find a PaaS that meets your
-
-requirements, then you should use it, stick with it for as long as you can, and avoid moving to an IaaS and investing in
-
-recreating all those software delivery pieces until you absolutely have to.</p>
+absolutely have to.</p>
 
 </div>
 
@@ -4698,7 +4842,9 @@ of the underlying systems can make it hard to meet certain security and complian
 
 <div class="paragraph">
 
-<p>The trade-offs between PaaS and IaaS can be summarized in a simple, general rule:</p>
+<p>You go with IaaS whenever you need more control, more performance, and/or more security. If your company gets big
+
+enough, one or more of these needs will likely push you from PaaS to IaaS—it&#8217;s the price of success.</p>
 
 </div>
 

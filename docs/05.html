@@ -3036,7 +3036,7 @@ this is also the place where a lot of the CI / CD integration will happen.</p>
 
 <div class="paragraph">
 
-<p>The single most important best practice with version control is the following:</p>
+<p>The single most important best practice with version control is: use it.</p>
 
 </div>
 
@@ -3586,9 +3586,11 @@ it.</p>
 
 <p>Most software projects use a <em>build system</em> to automate important operations, such as compiling the code, downloading
 
-dependencies, packaging the app for deployment, running automated tests, and so on. The build system serves the
+dependencies, packaging the app for deployment, running automated tests, and so on. The build system serves two
 
-following key role in software projects:</p>
+audiences: the developers on your team, who run the build steps as part of local development, and various
+
+scripts, which run the build steps as part of automating your software delivery process.</p>
 
 </div>
 
@@ -4138,43 +4140,9 @@ you&#8217;ll typically depend on a specific version of that code.</p>
 
 else to solve certain problems for you, instead of having to solve everything yourself from scratch (and maintain it
 
-all). If you want to maximize that leverage, then here&#8217;s a key rule:</p>
+all). If you want to maximize that leverage, make sure to never copy &amp; paste dependencies into your codebase. If you
 
-</div>
-
-<div class="admonitionblock tip">
-
-<table>
-
-<tr>
-
-<td class="icon">
-
-<div class="title">Tip</div>
-
-</td>
-
-<td class="content">
-
-<div class="title">Key takeaway #3</div>
-
-<div class="paragraph">
-
-<p>Use a dependency management tool to pull in dependencies—not copy &amp; paste.</p>
-
-</div>
-
-</td>
-
-</tr>
-
-</table>
-
-</div>
-
-<div class="paragraph">
-
-<p>Why not copy &amp; paste? If you copy &amp; paste a dependency, you run into a variety of problems:</p>
+copy &amp; paste a dependency, you run into a variety of problems:</p>
 
 </div>
 
@@ -4253,6 +4221,36 @@ tools built in, and the way they typically work is you define your dependencies 
 including the version of the dependency you&#8217;re using, and the dependency management tool is then responsible for
 
 downloading that dependency, plus any transitive dependencies, and making it available to your code.</p>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Key takeaway #3</div>
+
+<div class="paragraph">
+
+<p>Use a dependency management tool to pull in dependencies—not copy &amp; paste.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
 
 </div>
 
@@ -4682,7 +4680,21 @@ and pissed off all of your coworkers. So you&#8217;re afraid—of your own codeb
 
 code</em> works the way you expect it to. The main reason to write automated tests is not that tests prove the
 
-correctness of your code (they don&#8217;t) or that you&#8217;ll catch all bugs with tests (you won&#8217;t), but the following:</p>
+correctness of your code (they don&#8217;t) or that you&#8217;ll catch all bugs with tests (you won&#8217;t), but that a good suite of
+
+automated tests gives you the confidence to make changes quickly.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>The key word is <em>confidence</em>: tests provide a psychological benefit as much as a technical one. If you have a good test
+
+suite, you don&#8217;t have to keep the state of the whole program in your head. You don&#8217;t have to worry about breaking other
+
+people&#8217;s code. You don&#8217;t have to repeat the same boring, error-prone manual testing over and over again. You just run a
+
+single test command and get rapid feedback on whether things are working.</p>
 
 </div>
 
@@ -4713,18 +4725,6 @@ correctness of your code (they don&#8217;t) or that you&#8217;ll catch all bugs 
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>The key word is <em>confidence</em>: tests provide a psychological benefit as much as a technical one. If you have a good test
-
-suite, you don&#8217;t have to keep the state of the whole program in your head. You don&#8217;t have to worry about breaking other
-
-people&#8217;s code. You don&#8217;t have to repeat the same boring, error-prone manual testing over and over again. You just run a
-
-single test command and get rapid feedback on whether things are working.</p>
 
 </div>
 
@@ -6828,13 +6828,13 @@ expected.</p>
 
 <p>The answer is: a mix of all of them! Each type of test has different types of errors they can catch, plus different
 
-strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weaknesses">Table 6</a>:</p>
+strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weaknesses">Table 7</a>:</p>
 
 </div>
 
 <table id="test_strengths_weaknesses" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 6. A comparison of different types of automated tests</caption>
+<caption class="title">Table 7. A comparison of different types of automated tests</caption>
 
 <colgroup>
 

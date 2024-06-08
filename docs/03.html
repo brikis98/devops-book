@@ -1936,7 +1936,9 @@ provide APIs that are more concise for accomplishing common infrastructure tasks
 
 <div class="paragraph">
 
-<p>Here&#8217;s a general rule with ad hoc scripts:</p>
+<p>Ad hoc scripts have always been, and will always be, a big part of software delivery. They are the glue and duct tape
+
+of the DevOps world. However, they are not the best choice as a primary tool for managing infrastructure as code.</p>
 
 </div>
 
@@ -3038,12 +3040,6 @@ replace them regularly.</p>
 
 </div>
 
-<div class="paragraph">
-
-<p>Here&#8217;s the general rule on configuration management tools:</p>
-
-</div>
-
 <div class="admonitionblock tip">
 
 <table>
@@ -3590,7 +3586,17 @@ result, the code tends to be fairly short.</p>
 
 <div class="paragraph">
 
-<p>You can summarize this as follows:</p>
+<p>Note that the different server templating tools have slightly different purposes. Packer is typically used to create
+
+images that you run directly on top of production servers, such as an AMI that you run in your production AWS account.
+
+Vagrant is typically used to create images that you run on your development computers, such as a VirtualBox image that
+
+you run on your Mac or Windows laptop. Docker is typically used to create images of individual applications. You can
+
+run the Docker images on production or development computers, as long as some other tool has configured that computer
+
+with the Docker Engine.</p>
 
 </div>
 
@@ -3621,22 +3627,6 @@ result, the code tends to be fairly short.</p>
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>Note that the different server templating tools have slightly different purposes. Packer is typically used to create
-
-images that you run directly on top of production servers, such as an AMI that you run in your production AWS account.
-
-Vagrant is typically used to create images that you run on your development computers, such as a VirtualBox image that
-
-you run on your Mac or Windows laptop. Docker is typically used to create images of individual applications. You can
-
-run the Docker images on production or development computers, as long as some other tool has configured that computer
-
-with the Docker Engine.</p>
 
 </div>
 
@@ -5576,7 +5566,17 @@ considerably more, and the more complex the infrastructure you&#8217;re managing
 
 <div class="paragraph">
 
-<p>This can be summarized as follows:</p>
+<p>Provisioning tools should be your go-to option for managing infrastructure. In fact these days, many provisioning tools
+
+can be used to not only manage traditional infrastructure (e.g., servers), but many other aspects of software delivery
+
+as well. For example, you can use OpenTofu to manage your version control system (e.g., using the
+
+<a href="https://github.com/integrations/terraform-provider-github">GitHub provider</a>), metrics and dashboards (e.g., using
+
+the <a href="https://github.com/grafana/terraform-provider-grafana">Grafana provider</a>), and your on-call rotation (e.g., using
+
+the <a href="https://github.com/PagerDuty/terraform-provider-pagerduty">PagerDuty provider</a>), tying them all together with code.</p>
 
 </div>
 
@@ -5610,6 +5610,14 @@ considerably more, and the more complex the infrastructure you&#8217;re managing
 
 </div>
 
+<div class="paragraph">
+
+<p>Although I&#8217;ve been comparing IaC tools this entire blog post, the reality is that you&#8217;ll probably need
+
+to use multiple IaC tools together, as discussed in the next section.</p>
+
+</div>
+
 </div>
 
 </div>
@@ -5620,7 +5628,11 @@ considerably more, and the more complex the infrastructure you&#8217;re managing
 
 <div class="paragraph">
 
-<p>Although I&#8217;ve been comparing IaC tools this entire blog post, here&#8217;s the reality:</p>
+<p>Each of the tools you&#8217;ve seen in this blog post has strengths and weaknesses. No one of them
+
+can do it all, so for most real-world scenarios, you&#8217;ll need to use several different tools, and it&#8217;s your job to pick
+
+the right tool(s) for the job.</p>
 
 </div>
 
@@ -5656,9 +5668,7 @@ considerably more, and the more complex the infrastructure you&#8217;re managing
 
 <div class="paragraph">
 
-<p>Each of the tools you&#8217;ve seen has strengths and weaknesses, so it&#8217;s your job to pick the right tools for the job. The
-
-following sections show three common combinations I&#8217;ve seen work well at a number of companies.</p>
+<p>The following sections show three common combinations I&#8217;ve seen work well at a number of companies.</p>
 
 </div>
 
