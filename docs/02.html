@@ -1562,14 +1562,6 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Single server</dt>
 
 <dd>
@@ -1578,31 +1570,11 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">ClickOps</dt>
 
 <dd>
 
 <p>You manage all of your infrastructure and deployments manually.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -1632,14 +1604,6 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Standalone database</dt>
 
 <dd>
@@ -1650,39 +1614,23 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
+<dt class="hdlist1">Version control</dt>
 
 <dd>
 
-<div class="dlist">
+<p>As your team grows, you use a version control system to collaborate on your code and track all changes
 
-<dl>
-
-<dt class="hdlist1">Vertical scaling</dt>
-
-<dd>
-
-<p>To handle more traffic, you use servers and databases with more CPU and RAM.</p>
+(<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
 
 </dd>
 
-<dt class="hdlist1">Monitoring</dt>
+<dt class="hdlist1">Continuous integration</dt>
 
 <dd>
 
-<p>To get better visibility into your systems, you set up basic monitoring (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
+<p>To reduce bugs and outages, you set up automated tests for your apps (<a href="05.html#how_to_version_build_test">Part 4</a>) and
 
-</dd>
-
-</dl>
-
-</div>
+continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 </dd>
 
@@ -1707,14 +1655,6 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 <div class="title">Figure 3. Step 3 architecture: multiple servers, load balancer, and networking</div>
 
 </div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
 
 <div class="dlist">
 
@@ -1746,47 +1686,19 @@ side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:<
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
+<dt class="hdlist1">Data management</dt>
 
 <dd>
 
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Horizontal scaling</dt>
-
-<dd>
-
-<p>To handle more traffic, you increase the number of servers.</p>
+<p>You set up scheduled backups and schema migrations for your data stores (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 
 </dd>
 
-<dt class="hdlist1">Automated testing for apps</dt>
+<dt class="hdlist1">Monitoring</dt>
 
 <dd>
 
-<p>To reduce bugs and outages, you set up automated tests for your apps (<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
-
-</dd>
-
-<dt class="hdlist1">Continuous integration</dt>
-
-<dd>
-
-<p>To run automated tests automatically, you set up continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
+<p>To get better visibility into your systems, you set up basic monitoring (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
 
 </dd>
 
@@ -1844,14 +1756,6 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Caching for data stores</dt>
 
 <dd>
@@ -1867,34 +1771,6 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 <p>As traffic continues to grow, you add content distribution network (CDN) to cache content that doesn&#8217;t change often
 
 (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Data management</dt>
-
-<dd>
-
-<p>You set up scheduled backups and schema migrations for your data stores (<a href="10.html#how_to_store_data">Part 9</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -1926,49 +1802,19 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Multiple environments</dt>
 
 <dd>
 
 <p>To help teams do better testing, you set up multiple environments (e.g., dev, stage, prod), each of which has a
 
-full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Infrastructure as code</dt>
-
-<dd>
-
-<p>You can&#8217;t maintain so many environments manually, so you start to manage your infrastructure as code
+full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).
 
 (<a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>).</p>
 
 </dd>
 
-<dt class="hdlist1">Access controls</dt>
+<dt class="hdlist1">Authentication and secrets</dt>
 
 <dd>
 
@@ -1978,9 +1824,11 @@ full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_tea
 
 </dd>
 
-</dl>
+<dt class="hdlist1">Continuous delivery</dt>
 
-</div>
+<dd>
+
+<p>To make deployments faster and more reliable, you set up continuous delivery (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 </dd>
 
@@ -2012,14 +1860,6 @@ to step 6, as shown in <a href="02.html#evolution_diagram_6">Figure 6</a>:</p>
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Microservices</dt>
 
 <dd>
@@ -2030,31 +1870,11 @@ with its own data store (<a href="09.html#how_to_work_with_multiple_teams">Part 
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
+<dt class="hdlist1">Infrastructure as code</dt>
 
 <dd>
 
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Continuous delivery</dt>
-
-<dd>
-
-<p>To make deployments faster and more reliable, you set up continuous delivery (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
+<p>You can&#8217;t maintain so many environments manually, so you start to manage your infrastructure as code</p>
 
 </dd>
 
@@ -2102,21 +1922,21 @@ in <a href="02.html#evolution_diagram_7">Figure 7</a>:</p>
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
+<dt class="hdlist1">Observability</dt>
 
 <dd>
 
-<div class="dlist">
+<p>To get even more visibility into your systems, you set up tracing and observability tools (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
 
-<dl>
+</dd>
 
-<dt class="hdlist1">Service mesh</dt>
+<dt class="hdlist1">Service discovery</dt>
 
 <dd>
 
-<p>As the number of microservices and the need for them to communicate with each other grows, you begin using a
+<p>As the number of microservices increases, you set up a service discovery system to help them dynamically and
 
-service mesh (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+automatically communicate with each other (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
 </dd>
 
@@ -2130,31 +1950,15 @@ service mesh (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
+<dt class="hdlist1">Microservice mesh</dt>
 
 <dd>
 
-<div class="dlist">
+<p>To help manage a large number of microservices, you start using service mesh tools, which give you a unified
 
-<dl>
+solution for four items above (observability, service, discovery, hardening), as well as load balancing, traffic
 
-<dt class="hdlist1">Observability</dt>
-
-<dd>
-
-<p>To get even more visibility into your systems, you set up advanced monitoring tools (<a href="11.html#how_to_monitor_your_systems">Part 10</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
+control, error handling, and so on (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
 </dd>
 
@@ -2186,21 +1990,13 @@ service mesh (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
 <dl>
 
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Analytics tools</dt>
 
 <dd>
 
-<p>To be able to process your company&#8217;s data, you set up data warehouses, data lakes, machine learning platforms, etc.
+<p>To be able to process and analyze your company&#8217;s data, you set up data warehouses, data lakes, machine learning
 
-(<a href="10.html#how_to_store_data">Part 9</a>).</p>
+platforms, etc. (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 
 </dd>
 
@@ -2214,41 +2010,13 @@ event-driven architecture (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
+<dt class="hdlist1">Feature toggles</dt>
 
 <dd>
 
-<div class="dlist">
+<p>To make deployments even faster and more reliable, you set up advanced employment strategies such feature toggles and
 
-<dl>
-
-<dt class="hdlist1">Automated testing for infrastructure</dt>
-
-<dd>
-
-<p>To reduce bugs and outages, you set up automated tests for infrastructure (<a href="05.html#how_to_version_build_test">Part 4</a>).</p>
-
-</dd>
-
-<dt class="hdlist1">Deployment strategies</dt>
-
-<dd>
-
-<p>To make deployments even faster and more reliable, you set up canary, blue-green, and feature toggles deployments
-
-(<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
+canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 </dd>
 
@@ -2273,14 +2041,6 @@ event-driven architecture (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 <div class="title">Figure 9. Step 9 architecture: multiple data centers and accounts</div>
 
 </div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Architecture</dt>
-
-<dd>
 
 <div class="dlist">
 
@@ -2312,20 +2072,6 @@ event-driven architecture (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 
 </dd>
 
-</dl>
-
-</div>
-
-</dd>
-
-<dt class="hdlist1">Processes</dt>
-
-<dd>
-
-<div class="dlist">
-
-<dl>
-
 <dt class="hdlist1">Internal developer platform</dt>
 
 <dd>
@@ -2333,12 +2079,6 @@ event-driven architecture (<a href="10.html#how_to_store_data">Part 9</a>).</p>
 <p>To help boost developer productivity, while ensuring all the new accounts are secure, you set up an internal developer
 
 platform, account baselines, and an account factory (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
