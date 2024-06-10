@@ -1234,7 +1234,11 @@ days or weeks to stabilize, turning the release process into a long, drawn-out n
 
 <p>A better approach, as described in option #2, is <em>continuous integration (CI)</em>, which is software development practice
 
-with the following key property:</p>
+where every developer on your team merges their work together on a very regular basis: typically daily or multiple
+
+times per day. The key benefit of CI is that it exposes problems with your work earlier in the process, before you&#8217;ve
+
+gone too far in the wrong direction, and allows you to make improvements incrementally.</p>
 
 </div>
 
@@ -1256,7 +1260,7 @@ with the following key property:</p>
 
 <div class="paragraph">
 
-<p>All developers merge all their work together on a regular basis: typically daily or multiple times per day.</p>
+<p>Ensure all developers merge all their work together on a regular basis: typically daily or multiple times per day.</p>
 
 </div>
 
@@ -1265,14 +1269,6 @@ with the following key property:</p>
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>The key benefit of CI is that it exposes problems with your work earlier in the process, before you&#8217;ve
-
-gone too far in the wrong direction, and allows you to make improvements incrementally.</p>
 
 </div>
 
@@ -1616,7 +1612,9 @@ the build or accidentally releasing unfinished features to users?</p>
 
 <div class="paragraph">
 
-<p>There are two approaches that you can use to resolve this:</p>
+<p>There are two approaches that you can use to resolve this: branch by abstraction and feature toggles. These two
+
+techniques are the focus of the next two sections.</p>
 
 </div>
 
@@ -1649,12 +1647,6 @@ basis.</p>
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>What are branch by abstraction and feature toggles? These two techniques are the focus of the next two sections.</p>
 
 </div>
 
@@ -2586,7 +2578,9 @@ that user account if they need to update the credentials or permissions.</p>
 
 <div class="paragraph">
 
-<p>So if you can&#8217;t use the credentials of a real user, what do you do? These days, there are two main options:</p>
+<p>So if you can&#8217;t use the credentials of a real user, what do you do? These days, there are two main options: machine
+
+user credentials and automatically-provisioned credentials. These are the topics of the next two sections.</p>
 
 </div>
 
@@ -2619,14 +2613,6 @@ automations.</p>
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>What are machine user credentials or automatically-provisioned credentials? These are the topics of the next two
-
-sections.</p>
 
 </div>
 
@@ -3620,9 +3606,17 @@ topic of the next section.</p>
 
 <div class="paragraph">
 
-<p><em>Continuous delivery (CD)</em> is a software development practice which is software development practice with the following
+<p><em>Continuous delivery (CD)</em> is a software development practice which is software development practice where you ensure
 
-key property:</p>
+that you can deploy to production at any time in a manner that is fast, reliable, and sustainable. You could choose to
+
+deploy daily, several times a day, thousands of times per day, or even after every single commit that passes the
+
+automated tests; this last approach is known as <em>continuous deployment</em>. But the key with CD is not how often you
+
+deploy, but to ensure that the frequency of deployment is purely a business decision—not something limited by your
+
+technology.</p>
 
 </div>
 
@@ -3644,7 +3638,7 @@ key property:</p>
 
 <div class="paragraph">
 
-<p>You can deploy to production at any time in a manner that is fast, reliable, and sustainable.</p>
+<p>Ensure you can deploy to production at any time in a manner that is fast, reliable, and sustainable.</p>
 
 </div>
 
@@ -3653,18 +3647,6 @@ key property:</p>
 </tr>
 
 </table>
-
-</div>
-
-<div class="paragraph">
-
-<p>You could choose to deploy daily, several times a day, thousands of times per day, or even after every single commit
-
-that passes the automated tests; this last approach is known as <em>continuous deployment</em>. But the key with CD is not how
-
-often you deploy, but to ensure that the frequency of deployment is purely a business decision—not something limited by
-
-your technology.</p>
 
 </div>
 
@@ -7494,7 +7476,7 @@ the use of CI/CD, allowing your team to work and collaborate as per the 5 key ta
 
 <li>
 
-<p>All developers merge all their work together on a regular basis: typically daily or multiple times per day.</p>
+<p>Ensure all developers merge all their work together on a regular basis: typically daily or multiple times per day.</p>
 
 </li>
 
@@ -7522,7 +7504,7 @@ automations.</p>
 
 <li>
 
-<p>You can deploy to production at any time in a manner that is fast, reliable, and sustainable.</p>
+<p>Ensure you can deploy to production at any time in a manner that is fast, reliable, and sustainable.</p>
 
 </li>
 

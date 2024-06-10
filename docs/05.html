@@ -5508,7 +5508,7 @@ what you expect. The fix for this issue shown in <a href="05.html#example_revers
 
 <div class="paragraph">
 
-<p>Re-run the tests to see if the fix worked:</p>
+<p>How can you be sure that this fix works? Re-run the tests!</p>
 
 </div>
 
@@ -5534,7 +5534,13 @@ what you expect. The fix for this issue shown in <a href="05.html#example_revers
 
 <div class="paragraph">
 
-<p>That reveals one of the big wins with automated testing:</p>
+<p>This is a good example of the typical way you write code when you have a good suite of automated test to lean on:
+
+you make a change, you re-run the tests, you make another change, you rerun the tests again, and so on, adding new tests
+
+as necessary. With each iteration, your test suite gradually improves, you build more and more confidence in your
+
+code, and you can go faster and faster.</p>
 
 </div>
 
@@ -5576,7 +5582,7 @@ tests, make another change, re-run the tests, and so on.</p>
 
 And this not only helps you fix the bug with whitespace faster, but now you also have a <em>regression test</em> in place that
 
-will prevent that bug from coming back. This is also a massive boost to productivity, but one that&#8217;s harder to see:</p>
+will prevent that bug from coming back. This is a <em>massive</em> boost to productivity that often gets overlooked.</p>
 
 </div>
 
@@ -6890,21 +6896,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Syntax errors</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -6912,21 +6918,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type errors</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -6934,21 +6940,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Compliance errors</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -6956,21 +6962,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unit functionality</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="yellow-background"><strong>Partial</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Partial"></span> <strong>Partial</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -6978,21 +6984,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interaction of units</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -7000,21 +7006,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">System functionality</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -7022,21 +7028,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Functionality under load</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>No</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="No"></span> <strong>No</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Yes</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Yes"></span> <strong>Yes</strong></p></td>
 
 </tr>
 
@@ -7044,21 +7050,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Speed</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very fast</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very fast"></span> <strong>Very fast</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very fast</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very fast"></span> <strong>Very fast</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very fast</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very fast"></span> <strong>Very fast</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Fast</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Fast"></span> <strong>Fast</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Fast</strong></span>/<span class="teal-background"><strong>Moderate</strong></span> <sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Fast"></span> <strong>Fast</strong> <sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="yellow-background"><strong>Slow</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Slow"></span> <strong>Slow</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very slow</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very slow"></span> <strong>Very slow</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very slow</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very slow"></span> <strong>Very slow</strong></p></td>
 
 </tr>
 
@@ -7066,21 +7072,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stability</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very stable</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very stable"></span> <strong>Very stable</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very stable</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very stable"></span> <strong>Very stable</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very stable</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very stable"></span> <strong>Very stable</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Stable</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Stable"></span> <strong>Stable</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Stable</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Stable"></span> <strong>Stable</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="yellow-background"><strong>Flaky</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Flaky"></span> <strong>Flaky</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very flaky</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very flaky"></span> <strong>Very flaky</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very flaky</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very flaky"></span> <strong>Very flaky</strong></p></td>
 
 </tr>
 
@@ -7088,21 +7094,21 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ease of use</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Easy</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Easy"></span> <strong>Easy</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="lime-background"><strong>Very easy</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Easy"></span> <strong>Easy</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Easy</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Easy"></span> <strong>Easy</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="aqua-background"><strong>Easy</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Easy"></span> <strong>Easy</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="teal-background"><strong>Moderate</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Moderate"></span> <strong>Moderate</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="yellow-background"><strong>Hard</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Hard"></span> <strong>Hard</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very hard</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very hard"></span> <strong>Very hard</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red-background"><strong>Very hard</strong></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Very hard"></span> <strong>Very hard</strong></p></td>
 
 </tr>
 
