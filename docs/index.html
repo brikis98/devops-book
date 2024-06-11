@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.22">
 
 <title>Fundamentals of DevOps and Software Delivery</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -169,13 +169,13 @@ ul,ol{margin-left:1.5em}
 
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
 
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-
-ul.square{list-style-type:square}
-
 ul.circle{list-style-type:circle}
 
 ul.disc{list-style-type:disc}
+
+ul.square{list-style-type:square}
+
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 
@@ -281,7 +281,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
 
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 
@@ -324,6 +324,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 
 body.toc2{padding-left:15em;padding-right:0}
+
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 
@@ -387,7 +389,9 @@ details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblo
 
 details{margin-left:1.25rem}
 
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+
+details>summary::-webkit-details-marker{display:none}
 
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 
@@ -415,19 +419,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
 
-.exampleblock>.content>:first-child{margin-top:0}
-
-.exampleblock>.content>:last-child{margin-bottom:0}
-
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-
-.sidebarblock>:first-child{margin-top:0}
-
-.sidebarblock>:last-child{margin-bottom:0}
 
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 
@@ -471,11 +469,9 @@ table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-heig
 
 table.linenotable td.code{padding-left:.75em}
 
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 
@@ -549,7 +545,7 @@ table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-lef
 
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 
 th.halign-left,td.halign-left{text-align:left}
 
@@ -581,13 +577,15 @@ dl dd{margin-left:1.125em}
 
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 
 ul.unstyled,ol.unstyled{margin-left:0}
+
+li>p:empty:only-child::before{content:"";display:inline-block}
 
 ul.checklist>li>p:first-child{margin-left:-1em}
 
@@ -659,7 +657,7 @@ sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:sup
 
 sup.footnote a,sup.footnoteref a{text-decoration:none}
 
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 
@@ -672,10 +670,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-
-.gist .file-data>table td.line-data{width:99%}
 
 div.unbreakable{page-break-inside:avoid}
 
@@ -789,7 +783,7 @@ h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 
 p{margin-bottom:1.25rem}
 
@@ -2344,7 +2338,7 @@ computer (if you are new to Git, check out the Git tutorial in <a href="05.html#
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code>$ git clone https://github.com/brikis98/devops-book.git</code></pre>
+<pre class="highlight"><code>$ git clone https://github.com/brikis98/devops-book.git</code></pre>
 
 </div>
 
@@ -2579,7 +2573,7 @@ to <a href="02.html#how_to_deploy_your_app">Part 1</a> to learn the basics of de
 
 <div id="footer-text">
 
-Last updated 2024-06-03 16:46:22 -0400
+Last updated 2024-06-11 13:58:45 -0400
 
 </div>
 

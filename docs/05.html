@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.22">
 
 <title>Part 4. How to Version, Build, and Test Your Code</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -169,13 +169,13 @@ ul,ol{margin-left:1.5em}
 
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
 
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-
-ul.square{list-style-type:square}
-
 ul.circle{list-style-type:circle}
 
 ul.disc{list-style-type:disc}
+
+ul.square{list-style-type:square}
+
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 
@@ -281,7 +281,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
 
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 
@@ -324,6 +324,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 
 body.toc2{padding-left:15em;padding-right:0}
+
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 
@@ -387,7 +389,9 @@ details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblo
 
 details{margin-left:1.25rem}
 
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+
+details>summary::-webkit-details-marker{display:none}
 
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 
@@ -415,19 +419,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
 
-.exampleblock>.content>:first-child{margin-top:0}
-
-.exampleblock>.content>:last-child{margin-bottom:0}
-
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-
-.sidebarblock>:first-child{margin-top:0}
-
-.sidebarblock>:last-child{margin-bottom:0}
 
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 
@@ -471,11 +469,9 @@ table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-heig
 
 table.linenotable td.code{padding-left:.75em}
 
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 
@@ -549,7 +545,7 @@ table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-lef
 
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 
 th.halign-left,td.halign-left{text-align:left}
 
@@ -581,13 +577,15 @@ dl dd{margin-left:1.125em}
 
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 
 ul.unstyled,ol.unstyled{margin-left:0}
+
+li>p:empty:only-child::before{content:"";display:inline-block}
 
 ul.checklist>li>p:first-child{margin-left:-1em}
 
@@ -659,7 +657,7 @@ sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:sup
 
 sup.footnote a,sup.footnoteref a{text-decoration:none}
 
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 
@@ -672,10 +670,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-
-.gist .file-data>table td.line-data{width:99%}
 
 div.unbreakable{page-break-inside:avoid}
 
@@ -789,7 +783,7 @@ h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 
 p{margin-bottom:1.25rem}
 
@@ -2354,7 +2348,7 @@ shown in <a href="05.html#example_gitignore">Example 63</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="gitignore"># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-gitignore" data-lang="gitignore"># <b class="conum">(1)</b>
 
 *.tfstate
 
@@ -3508,9 +3502,9 @@ bypass most other security protections you have in place.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="bash">$ git config user.name &quot;Any name you want&quot;
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git config user.name "Any name you want"
 
-$ git config user.email &quot;Any email you want&quot;</code></pre>
+$ git config user.email "Any email you want"</code></pre>
 
 </div>
 
@@ -3764,17 +3758,17 @@ file that looks similar to <a href="05.html#example_npm_package_json">Example 65
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">{
+<pre class="highlight"><code class="language-json" data-lang="json">{
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>name</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-app</span><span style="color:#710">&quot;</span></span>,
+  "name": "sample-app",
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>version</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0.0</span><span style="color:#710">&quot;</span></span>,
+  "version": "1.0.0",
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>description</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sample app for the book 'Fundamentals of DevOps and Software Delivery'</span><span style="color:#710">&quot;</span></span>,
+  "description": "Sample app for the book 'Fundamentals of DevOps and Software Delivery'",
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>scripts</span><span style="color:#404">&quot;</span></span>: {
+  "scripts": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>test</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">echo </span><span style="color:#b0b">\&quot;</span><span style="color:#D20">Error: no test specified</span><span style="color:#b0b">\&quot;</span><span style="color:#D20"> &amp;&amp; exit 1</span><span style="color:#710">&quot;</span></span>
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
 
   }
 
@@ -3822,9 +3816,9 @@ automated testing.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">  <span style="color:#606"><span style="color:#404">&quot;</span><span>scripts</span><span style="color:#404">&quot;</span></span>: {
+<pre class="highlight"><code class="language-json" data-lang="json">  "scripts": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>start</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node app.js</span><span style="color:#710">&quot;</span></span>,
+    "start": "node app.js",
 
   },</code></pre>
 
@@ -3920,7 +3914,7 @@ use a relatively complicated <code>docker buildx</code> command. This is a great
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="dockerfile">FROM node:21.7
+<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">FROM node:21.7
 
 
 
@@ -3946,7 +3940,7 @@ USER node
 
 # <b class="conum">(2)</b>
 
-CMD [&quot;npm&quot;, &quot;start&quot;]</code></pre>
+CMD ["npm", "start"]</code></pre>
 
 </div>
 
@@ -4002,11 +3996,11 @@ app—which you will later in this blog post—the only thing you&#8217;ll need 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">  <span style="color:#606"><span style="color:#404">&quot;</span><span>scripts</span><span style="color:#404">&quot;</span></span>: {
+<pre class="highlight"><code class="language-json" data-lang="json">  "scripts": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>start</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node app.js</span><span style="color:#710">&quot;</span></span>,
+    "start": "node app.js",
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>dockerize</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker buildx build --platform=linux/amd64,linux/arm64 -t sample-app:$(npm pkg get version | tr -d '</span><span style="color:#b0b">\&quot;</span><span style="color:#D20">') .</span><span style="color:#710">&quot;</span></span>,
+    "dockerize": "docker buildx build --platform=linux/amd64,linux/arm64 -t sample-app:$(npm pkg get version | tr -d '\"') .",
 
   },</code></pre>
 
@@ -4306,9 +4300,9 @@ you can run:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">  <span style="color:#606"><span style="color:#404">&quot;</span><span>dependencies</span><span style="color:#404">&quot;</span></span>: {
+<pre class="highlight"><code class="language-json" data-lang="json">  "dependencies": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>express</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">^4.19.2</span><span style="color:#710">&quot;</span></span>
+    "express": "^4.19.2"
 
   }</code></pre>
 
@@ -4388,19 +4382,19 @@ build output is exactly the same every time. You&#8217;ll see an example of this
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const express = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">express</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const express = require('express');
 
 
 
 const app = express();
 
-const port = <span style="color:#00D">8080</span>;
+const port = 8080;
 
 
 
-app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>, (req, res) =&gt; {
+app.get('/', (req, res) =&gt; {
 
-  res.send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#710">'</span></span>);
+  res.send('Hello, World!');
 
 });
 
@@ -4408,7 +4402,7 @@ app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:
 
 app.listen(port, () =&gt; {
 
-  console.log(<span style="color:#F00;background-color:#FAA">`</span>Example app listening on port <span style="color:#369;font-weight:bold">$</span>{port}<span style="color:#F00;background-color:#FAA">`</span>);
+  console.log(`Example app listening on port ${port}`);
 
 });</code></pre>
 
@@ -4448,7 +4442,7 @@ install dependencies, as shown in <a href="05.html#example_express_docker">Examp
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="dockerfile">FROM node:21.7
+<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile">FROM node:21.7
 
 
 
@@ -4482,7 +4476,7 @@ USER node
 
 
 
-CMD [&quot;npm&quot;, &quot;start&quot;]</code></pre>
+CMD ["npm", "start"]</code></pre>
 
 </div>
 
@@ -4900,19 +4894,19 @@ I don&#8217;t want to add more legacy code to this world, so that means it&#8217
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const express = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">express</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const express = require('express');
 
 
 
 const app = express();
 
-const port = <span style="color:#00D">8080</span>;
+const port = 8080;
 
 
 
-app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>, (req, res) =&gt; {
+app.get('/', (req, res) =&gt; {
 
-  res.send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#710">'</span></span>);
+  res.send('Hello, World!');
 
 });
 
@@ -4920,7 +4914,7 @@ app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:
 
 app.listen(port, () =&gt; {
 
-  console.log(<span style="color:#F00;background-color:#FAA">`</span>Example app listening on port <span style="color:#369;font-weight:bold">$</span>{port}<span style="color:#F00;background-color:#FAA">`</span>);
+  console.log(`Example app listening on port ${port}`);
 
 });</code></pre>
 
@@ -4970,17 +4964,17 @@ testing, let&#8217;s start with a very simple example: a unit test. To create a 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">// <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// <b class="conum">(1)</b>
 
-<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">reverseWords</span>(str) {
+function reverseWords(str) {
 
-  <span style="color:#080;font-weight:bold">return</span> str
+  return str
 
-    .split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>)
+    .split(' ')
 
     .reverse()
 
-    .join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>);
+    .join(' ');
 
 }
 
@@ -4988,15 +4982,15 @@ testing, let&#8217;s start with a very simple example: a unit test. To create a 
 
 // <b class="conum">(2)</b>
 
-<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">reverseCharacters</span>(str) {
+function reverseCharacters(str) {
 
-  <span style="color:#080;font-weight:bold">return</span> str
+  return str
 
-    .split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)
+    .split('')
 
     .reverse()
 
-    .join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>);
+    .join('');
 
 }
 
@@ -5174,19 +5168,19 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">{
+<pre class="highlight"><code class="language-json" data-lang="json">{
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>dependencies</span><span style="color:#404">&quot;</span></span>: {
+  "dependencies": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>express</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">^4.19.2</span><span style="color:#710">&quot;</span></span>
+    "express": "^4.19.2"
 
   },
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>devDependencies</span><span style="color:#404">&quot;</span></span>: {
+  "devDependencies": {
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>jest</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">^29.7.0</span><span style="color:#710">&quot;</span></span>,
+    "jest": "^29.7.0",
 
-    <span style="color:#606"><span style="color:#404">&quot;</span><span>supertest</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">^7.0.0</span><span style="color:#710">&quot;</span></span>
+    "supertest": "^7.0.0"
 
   }
 
@@ -5216,9 +5210,9 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json"><span style="color:#606"><span style="color:#404">&quot;</span><span>scripts</span><span style="color:#404">&quot;</span></span>: {
+<pre class="highlight"><code class="language-json" data-lang="json">"scripts": {
 
-  <span style="color:#606"><span style="color:#404">&quot;</span><span>test</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jest --verbose</span><span style="color:#710">&quot;</span></span>
+  "test": "jest --verbose"
 
 }</code></pre>
 
@@ -5248,17 +5242,17 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const reverse = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./reverse</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const reverse = require('./reverse');
 
 
 
-describe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test reverseWords</span><span style="color:#710">'</span></span>, () =&gt; {                   // <b class="conum">(1)</b>
+describe('test reverseWords', () =&gt; {                   // <b class="conum">(1)</b>
 
-  test(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello world =&gt; world hello</span><span style="color:#710">'</span></span>, () =&gt; {            // <b class="conum">(2)</b>
+  test('hello world =&gt; world hello', () =&gt; {            // <b class="conum">(2)</b>
 
-    const result = reverse.reverseWords(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello world</span><span style="color:#710">'</span></span>); // <b class="conum">(3)</b>
+    const result = reverse.reverseWords('hello world'); // <b class="conum">(3)</b>
 
-    expect(result).toBe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">world hello</span><span style="color:#710">'</span></span>);                 // <b class="conum">(4)</b>
+    expect(result).toBe('world hello');                 // <b class="conum">(4)</b>
 
   });
 
@@ -5378,11 +5372,11 @@ Ran all test suites.</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">  test(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">trailing whitespace   =&gt; whitespace trailing</span><span style="color:#710">'</span></span>, () =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">  test('trailing whitespace   =&gt; whitespace trailing', () =&gt; {
 
-    const result = reverse.reverseWords(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">trailing whitespace   </span><span style="color:#710">'</span></span>);
+    const result = reverse.reverseWords('trailing whitespace   ');
 
-    expect(result).toBe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">whitespace trailing</span><span style="color:#710">'</span></span>);
+    expect(result).toBe('whitespace trailing');
 
   });</code></pre>
 
@@ -5470,17 +5464,17 @@ what you expect. The fix for this issue shown in <a href="05.html#example_revers
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript"><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">reverseWords</span>(str) {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">function reverseWords(str) {
 
-  <span style="color:#080;font-weight:bold">return</span> str
+  return str
 
     .trim() // <b class="conum">(1)</b>
 
-    .split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>)
+    .split(' ')
 
     .reverse()
 
-    .join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>);
+    .join(' ');
 
 }</code></pre>
 
@@ -5642,7 +5636,7 @@ measure code coverage, add the <code>--coverage</code> flag to the <code>test</c
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">    <span style="color:#606"><span style="color:#404">&quot;</span><span>test</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jest --verbose --coverage</span><span style="color:#710">&quot;</span></span></code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">    "test": "jest --verbose --coverage"</code></pre>
 
 </div>
 
@@ -5778,13 +5772,13 @@ test for <code>reverseCharacters</code>, as shown in <a href="05.html#example_re
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">describe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test reverseCharacters</span><span style="color:#710">'</span></span>, () =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">describe('test reverseCharacters', () =&gt; {
 
-  test(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">abcd =&gt; dcba</span><span style="color:#710">'</span></span>, () =&gt; {
+  test('abcd =&gt; dcba', () =&gt; {
 
-    const result = reverse.reverseCharacters(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">abcd</span><span style="color:#710">'</span></span>);
+    const result = reverse.reverseCharacters('abcd');
 
-    expect(result).toBe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">dcba</span><span style="color:#710">'</span></span>);
+    expect(result).toBe('dcba');
 
   });
 
@@ -5878,7 +5872,7 @@ errors due to trying to listen on the same port.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const express = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">express</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const express = require('express');
 
 
 
@@ -5886,9 +5880,9 @@ const app = express();
 
 
 
-app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>, (req, res) =&gt; {
+app.get('/', (req, res) =&gt; {
 
-  res.send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#710">'</span></span>);
+  res.send('Hello, World!');
 
 });
 
@@ -5922,17 +5916,17 @@ module.exports = app;</code></pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const app = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./app</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const app = require('./app');
 
 
 
-const port = <span style="color:#00D">8080</span>;
+const port = 8080;
 
 
 
 app.listen(port, () =&gt; {
 
-  console.log(<span style="color:#F00;background-color:#FAA">`</span>Example app listening on port <span style="color:#369;font-weight:bold">$</span>{port}<span style="color:#F00;background-color:#FAA">`</span>);
+  console.log(`Example app listening on port ${port}`);
 
 });</code></pre>
 
@@ -5962,7 +5956,7 @@ app.listen(port, () =&gt; {
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="json">    <span style="color:#606"><span style="color:#404">&quot;</span><span>start</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node server.js</span><span style="color:#710">&quot;</span></span>,</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">    "start": "node server.js",</code></pre>
 
 </div>
 
@@ -5988,21 +5982,21 @@ app.listen(port, () =&gt; {
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">const request = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">supertest</span><span style="color:#710">'</span></span>);
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">const request = require('supertest');
 
-const app = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./app</span><span style="color:#710">'</span></span>);                     // <b class="conum">(1)</b>
+const app = require('./app');                     // <b class="conum">(1)</b>
 
 
 
-describe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test the app</span><span style="color:#710">'</span></span>, () =&gt; {
+describe('Test the app', () =&gt; {
 
-  test(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Get / should return Hello, World!</span><span style="color:#710">'</span></span>, async () =&gt; {
+  test('Get / should return Hello, World!', async () =&gt; {
 
-    const response = await request(app).get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>); // <b class="conum">(2)</b>
+    const response = await request(app).get('/'); // <b class="conum">(2)</b>
 
-    expect(response.statusCode).toBe(<span style="color:#00D">200</span>);        // <b class="conum">(3)</b>
+    expect(response.statusCode).toBe(200);        // <b class="conum">(3)</b>
 
-    expect(response.text).toBe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#710">'</span></span>);  // <b class="conum">(4)</b>
+    expect(response.text).toBe('Hello, World!');  // <b class="conum">(4)</b>
 
   });
 
@@ -6298,9 +6292,9 @@ called <em>terrascan.toml</em>, with the contents shown in <a href="05.html#terr
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="toml">[severity]
+<pre class="highlight"><code class="language-toml" data-lang="toml">[severity]
 
-level = &quot;high&quot;</code></pre>
+level = "high"</code></pre>
 
 </div>
 
@@ -6458,13 +6452,13 @@ by adding its Rule ID to the <code>skip-rules</code> section of your Terrascan c
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="toml">[rules]
+<pre class="highlight"><code class="language-toml" data-lang="toml">[rules]
 
     skip-rules = [
 
         # We are not passing any secrets to Lambda via env vars
 
-        &quot;AC_AWS_0483&quot;
+        "AC_AWS_0483"
 
     ]</code></pre>
 
@@ -6556,9 +6550,9 @@ $ cp -r ../devops-book/ch4/tofu/modules/test-endpoint ch4/tofu/modules</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform"># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-terraform" data-lang="terraform"># <b class="conum">(1)</b>
 
-run &quot;deploy&quot; {
+run "deploy" {
 
   command = apply
 
@@ -6568,7 +6562,7 @@ run &quot;deploy&quot; {
 
 # <b class="conum">(2)</b>
 
-run &quot;validate&quot; {
+run "validate" {
 
   command = apply
 
@@ -6578,7 +6572,7 @@ run &quot;validate&quot; {
 
   module {
 
-    source = &quot;../../modules/test-endpoint&quot;
+    source = "../../modules/test-endpoint"
 
   }
 
@@ -6600,7 +6594,7 @@ run &quot;validate&quot; {
 
     condition     = data.http.test_endpoint.status_code == 200
 
-    error_message = &quot;Website responded with HTTP status ${data.http.test_endpoint.status_code}&quot;
+    error_message = "Website responded with HTTP status ${data.http.test_endpoint.status_code}"
 
   }
 
@@ -6610,9 +6604,9 @@ run &quot;validate&quot; {
 
   assert {
 
-    condition     = data.http.test_endpoint.response_body == &quot;Hello, World!&quot;
+    condition     = data.http.test_endpoint.response_body == "Hello, World!"
 
-    error_message = &quot;Website responded with body ${data.http.test_endpoint.response_body}&quot;
+    error_message = "Website responded with body ${data.http.test_endpoint.response_body}"
 
   }
 
@@ -7673,7 +7667,7 @@ next blog post, <a href="06.html#how_to_set_up_ci_cd">Part 5</a>.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-03 16:46:22 -0400
+Last updated 2024-06-11 13:58:45 -0400
 
 </div>
 

@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.22">
 
 <title>Part 5. How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -169,13 +169,13 @@ ul,ol{margin-left:1.5em}
 
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
 
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-
-ul.square{list-style-type:square}
-
 ul.circle{list-style-type:circle}
 
 ul.disc{list-style-type:disc}
+
+ul.square{list-style-type:square}
+
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 
@@ -281,7 +281,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
 
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 
@@ -324,6 +324,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 
 body.toc2{padding-left:15em;padding-right:0}
+
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 
@@ -387,7 +389,9 @@ details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblo
 
 details{margin-left:1.25rem}
 
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+
+details>summary::-webkit-details-marker{display:none}
 
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 
@@ -415,19 +419,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
 
-.exampleblock>.content>:first-child{margin-top:0}
-
-.exampleblock>.content>:last-child{margin-bottom:0}
-
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-
-.sidebarblock>:first-child{margin-top:0}
-
-.sidebarblock>:last-child{margin-bottom:0}
 
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 
@@ -471,11 +469,9 @@ table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-heig
 
 table.linenotable td.code{padding-left:.75em}
 
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 
@@ -549,7 +545,7 @@ table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-lef
 
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 
 th.halign-left,td.halign-left{text-align:left}
 
@@ -581,13 +577,15 @@ dl dd{margin-left:1.125em}
 
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 
 ul.unstyled,ol.unstyled{margin-left:0}
+
+li>p:empty:only-child::before{content:"";display:inline-block}
 
 ul.checklist>li>p:first-child{margin-left:-1em}
 
@@ -659,7 +657,7 @@ sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:sup
 
 sup.footnote a,sup.footnoteref a{text-decoration:none}
 
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 
@@ -672,10 +670,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-
-.gist .file-data>table td.line-data{width:99%}
 
 div.unbreakable{page-break-inside:avoid}
 
@@ -789,7 +783,7 @@ h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 
 p{margin-bottom:1.25rem}
 
@@ -1810,15 +1804,15 @@ don&#8217;t need to actually make these code changes; this is just for demonstra
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">app.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>, (req, res) =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">app.get('/', (req, res) =&gt; {
 
-  <span style="color:#080;font-weight:bold">if</span> (lookupFeatureToggle(req, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HOME_PAGE_FLAVOR</span><span style="color:#710">&quot;</span></span>) === <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v2</span><span style="color:#710">&quot;</span></span>) { // <b class="conum">(1)</b>
+  if (lookupFeatureToggle(req, "HOME_PAGE_FLAVOR") === "v2") { // <b class="conum">(1)</b>
 
     res.send(newFancyHomepage());                              // <b class="conum">(2)</b>
 
-  } <span style="color:#080;font-weight:bold">else</span> {
+  } else {
 
-    res.send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, World!</span><span style="color:#710">'</span></span>);                                 // <b class="conum">(3)</b>
+    res.send('Hello, World!');                                 // <b class="conum">(3)</b>
 
   }
 
@@ -2080,41 +2074,41 @@ $ cd .github/workflows</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Sample App Tests</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Sample App Tests
 
 
 
-<span style="color:#606">on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">push                                  </span></span># <b class="conum">(1)</b>
+on: push                                  # <b class="conum">(1)</b>
 
 
 
-<span style="color:#606">jobs</span>:                                     # <b class="conum">(2)</b>
+jobs:                                     # <b class="conum">(2)</b>
 
-  <span style="color:#606">sample_app_tests</span>:                       # <b class="conum">(3)</b>
+  sample_app_tests:                       # <b class="conum">(3)</b>
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Run Tests Using Jest</span><span style="color:#710">&quot;</span></span>
+    name: "Run Tests Using Jest"
 
-    <span style="color:#606">runs-on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ubuntu-latest                </span></span># <b class="conum">(4)</b>
+    runs-on: ubuntu-latest                # <b class="conum">(4)</b>
 
-    <span style="color:#606">steps</span>:
+    steps:
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: actions/checkout@v2         </span></span># <b class="conum">(5)</b>
-
-
-
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install dependencies        </span></span># <b class="conum">(6)</b>
-
-        <span style="color:#606">working-directory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch5/sample-app</span></span>
-
-        <span style="color:#606">run</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">npm install</span></span>
+      - uses: actions/checkout@v2         # <b class="conum">(5)</b>
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Run tests                   </span></span># <b class="conum">(7)</b>
+      - name: Install dependencies        # <b class="conum">(6)</b>
 
-        <span style="color:#606">working-directory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch5/sample-app</span></span>
+        working-directory: ch5/sample-app
 
-        <span style="color:#606">run</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">npm test</span></span></code></pre>
+        run: npm install
+
+
+
+      - name: Run tests                   # <b class="conum">(7)</b>
+
+        working-directory: ch5/sample-app
+
+        run: npm test</code></pre>
 
 </div>
 
@@ -2270,7 +2264,7 @@ $ git push origin main</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">res.send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#710">'</span></span>);</code></pre>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">res.send('Fundamentals of DevOps!');</code></pre>
 
 </div>
 
@@ -2362,7 +2356,7 @@ that looks like <a href="06.html#gh_actions_test_failure">Figure 49</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">expect(response.text).toBe(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#710">'</span></span>);</code></pre>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">expect(response.text).toBe('Fundamentals of DevOps!');</code></pre>
 
 </div>
 
@@ -2884,21 +2878,21 @@ $ cd ch5/tofu/live/ci-cd-permissions</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;oidc_provider&quot; {
+module "oidc_provider" {
 
-  source = &quot;github.com/brikis98/devops-book//ch5/tofu/modules/github-aws-oidc&quot;
+  source = "github.com/brikis98/devops-book//ch5/tofu/modules/github-aws-oidc"
 
 
 
-  provider_url = &quot;https://token.actions.githubusercontent.com&quot; # <b class="conum">(1)</b>
+  provider_url = "https://token.actions.githubusercontent.com" # <b class="conum">(1)</b>
 
 }</code></pre>
 
@@ -2958,13 +2952,13 @@ several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;iam_roles&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "iam_roles" {
 
-  source = &quot;github.com/brikis98/devops-book//ch5/tofu/modules/gh-actions-iam-roles&quot;
+  source = "github.com/brikis98/devops-book//ch5/tofu/modules/gh-actions-iam-roles"
 
 
 
-  name              = &quot;lambda-sample&quot;                           # <b class="conum">(1)</b>
+  name              = "lambda-sample"                           # <b class="conum">(1)</b>
 
   oidc_provider_arn = module.oidc_provider.oidc_provider_arn    # <b class="conum">(2)</b>
 
@@ -2976,9 +2970,9 @@ several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_
 
   # TODO: fill in your own repo name here!
 
-  github_repo      = &quot;brikis98/fundamentals-of-devops-examples&quot; # <b class="conum">(4)</b>
+  github_repo      = "brikis98/fundamentals-of-devops-examples" # <b class="conum">(4)</b>
 
-  lambda_base_name = &quot;lambda-sample&quot;                            # <b class="conum">(5)</b>
+  lambda_base_name = "lambda-sample"                            # <b class="conum">(5)</b>
 
 }</code></pre>
 
@@ -3074,7 +3068,7 @@ not anything else.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;lambda_test_role_arn&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "lambda_test_role_arn" {
 
   value = module.iam_roles.lambda_test_role_arn
 
@@ -3210,13 +3204,13 @@ contents shown in <a href="06.html#tofu_lambda_variables">Example 95</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">variable &quot;name&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">variable "name" {
 
-  description = &quot;The base name for the function and all other resources&quot;
+  description = "The base name for the function and all other resources"
 
   type        = string
 
-  default     = &quot;lambda-sample&quot;
+  default     = "lambda-sample"
 
 }</code></pre>
 
@@ -3254,7 +3248,7 @@ but by exposing this input variable, you&#8217;ll be able to override the value 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;function&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "function" {
 
 
 
@@ -3266,7 +3260,7 @@ but by exposing this input variable, you&#8217;ll be able to override the value 
 
 }
 
-module &quot;gateway&quot; {
+module "gateway" {
 
 
 
@@ -3304,43 +3298,43 @@ module &quot;gateway&quot; {
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Infrastructure Tests</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Infrastructure Tests
 
 
 
-<span style="color:#606">on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">push</span></span>
+on: push
 
 
 
-<span style="color:#606">jobs</span>:
+jobs:
 
-  <span style="color:#606">terrascan</span>:
+  terrascan:
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Run Terrascan</span><span style="color:#710">&quot;</span></span>
+    name: "Run Terrascan"
 
-    <span style="color:#606">runs-on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ubuntu-latest</span></span>
+    runs-on: ubuntu-latest
 
-    <span style="color:#606">steps</span>:
+    steps:
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: actions/checkout@v2</span></span>
+      - uses: actions/checkout@v2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Run Terrascan</span></span>
+      - name: Run Terrascan
 
-        <span style="color:#606">uses</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tenable/terrascan-action@main</span></span>
+        uses: tenable/terrascan-action@main
 
-        <span style="color:#606">with</span>:
+        with:
 
-          <span style="color:#606">iac_type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'terraform'</span></span>
+          iac_type: 'terraform'
 
-          <span style="color:#606">iac_dir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'ch5/tofu/live/lambda-sample'</span></span>
+          iac_dir: 'ch5/tofu/live/lambda-sample'
 
-          <span style="color:#606">verbose</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+          verbose: true
 
-          <span style="color:#606">non_recursive</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+          non_recursive: true
 
-          <span style="color:#606">config_path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'ch5/tofu/live/lambda-sample/terrascan.toml'</span></span></code></pre>
+          config_path: 'ch5/tofu/live/lambda-sample/terrascan.toml'</code></pre>
 
 </div>
 
@@ -3376,55 +3370,55 @@ source workflow to install and run Terrascan, passing it the same parameters as 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">  <span style="color:#606">opentofu_test</span>:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">  opentofu_test:
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Run OpenTofu tests</span><span style="color:#710">&quot;</span></span>
+    name: "Run OpenTofu tests"
 
-    <span style="color:#606">runs-on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ubuntu-latest</span></span>
+    runs-on: ubuntu-latest
 
-    <span style="color:#606">permissions</span>:                                                                # <b class="conum">(1)</b>
+    permissions:                                                                # <b class="conum">(1)</b>
 
-      <span style="color:#606">id-token</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">write</span></span>
+      id-token: write
 
-      <span style="color:#606">contents</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">read</span></span>
+      contents: read
 
-    <span style="color:#606">steps</span>:
+    steps:
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: actions/checkout@v2</span></span>
-
-
-
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: aws-actions/configure-aws-credentials@v3                          </span></span># <b class="conum">(2)</b>
-
-        <span style="color:#606">with</span>:
-
-          <span style="color:#777"># TODO: fill in your IAM role ARN!</span>
-
-          <span style="color:#606">role-to-assume</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">arn:aws:iam::111111111111:role/lambda-sample-tests    </span></span># <b class="conum">(3)</b>
-
-          <span style="color:#606">role-session-name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tests-${{ github.run_number }}-${{ github.actor }} </span></span># <b class="conum">(4)</b>
-
-          <span style="color:#606">aws-region</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+      - uses: actions/checkout@v2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: opentofu/setup-opentofu@v1                                        </span></span># <b class="conum">(5)</b>
+      - uses: aws-actions/configure-aws-credentials@v3                          # <b class="conum">(2)</b>
+
+        with:
+
+          # TODO: fill in your IAM role ARN!
+
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-tests    # <b class="conum">(3)</b>
+
+          role-session-name: tests-${{ github.run_number }}-${{ github.actor }} # <b class="conum">(4)</b>
+
+          aws-region: us-east-2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Tofu Test</span></span>
+      - uses: opentofu/setup-opentofu@v1                                        # <b class="conum">(5)</b>
 
-        <span style="color:#606">env</span>:
 
-          <span style="color:#606">TF_VAR_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">lambda-sample-${{ github.run_id }}                       </span></span># <b class="conum">(6)</b>
 
-        <span style="color:#606">working-directory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch5/tofu/live/lambda-sample</span></span>
+      - name: Tofu Test
 
-        <span style="color:#606">run</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">|</span></span>                                                                  # <b class="conum">(7)</b>
+        env:
 
-          <span style="color:#F00;background-color:#FAA">tofu init -backend=false -input=false</span>
+          TF_VAR_name: lambda-sample-${{ github.run_id }}                       # <b class="conum">(6)</b>
 
-          <span style="color:#F00;background-color:#FAA">tofu test -verbose</span></code></pre>
+        working-directory: ch5/tofu/live/lambda-sample
+
+        run: |                                                                  # <b class="conum">(7)</b>
+
+          tofu init -backend=false -input=false
+
+          tofu test -verbose</code></pre>
 
 </div>
 
@@ -5804,23 +5798,23 @@ $ cd ch5/tofu/live/tofu-state</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;state&quot; {
+module "state" {
 
-  source = &quot;github.com/brikis98/devops-book//ch5/tofu/modules/state-bucket&quot;
+  source = "github.com/brikis98/devops-book//ch5/tofu/modules/state-bucket"
 
 
 
   # TODO: fill in your own bucket name!
 
-  name = &quot;fundamentals-of-devops-tofu-state&quot;
+  name = "fundamentals-of-devops-tofu-state"
 
 }</code></pre>
 
@@ -5884,23 +5878,23 @@ update your OpenTofu modules with a <code>backend</code> configuration. As a fir
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">terraform {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">terraform {
 
-  backend &quot;s3&quot; {
+  backend "s3" {
 
     # TODO: fill in your own bucket name here!
 
-    bucket         = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(1)</b>
+    bucket         = "fundamentals-of-devops-tofu-state" # <b class="conum">(1)</b>
 
-    key            = &quot;ch5/tofu/live/tofu-state&quot;          # <b class="conum">(2)</b>
+    key            = "ch5/tofu/live/tofu-state"          # <b class="conum">(2)</b>
 
-    region         = &quot;us-east-2&quot;                         # <b class="conum">(3)</b>
+    region         = "us-east-2"                         # <b class="conum">(3)</b>
 
     encrypt        = true                                # <b class="conum">(4)</b>
 
     # TODO: fill in your own DynamoDB table name here!
 
-    dynamodb_table = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(5)</b>
+    dynamodb_table = "fundamentals-of-devops-tofu-state" # <b class="conum">(5)</b>
 
   }
 
@@ -6048,23 +6042,23 @@ to handle concurrent access.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">terraform {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">terraform {
 
-  backend &quot;s3&quot; {
+  backend "s3" {
 
     # TODO: fill in your own bucket name here!
 
-    bucket         = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(1)</b>
+    bucket         = "fundamentals-of-devops-tofu-state" # <b class="conum">(1)</b>
 
-    key            = &quot;ch5/tofu/live/lambda-sample&quot;       # <b class="conum">(2)</b>
+    key            = "ch5/tofu/live/lambda-sample"       # <b class="conum">(2)</b>
 
-    region         = &quot;us-east-2&quot;
+    region         = "us-east-2"
 
     encrypt        = true
 
     # TODO: fill in your own DynamoDB table name here!
 
-    dynamodb_table = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(3)</b>
+    dynamodb_table = "fundamentals-of-devops-tofu-state" # <b class="conum">(3)</b>
 
   }
 
@@ -6264,7 +6258,7 @@ creating IAM roles for both <code>plan</code> and <code>apply</code>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;iam_roles&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "iam_roles" {
 
 
 
@@ -6280,9 +6274,9 @@ creating IAM roles for both <code>plan</code> and <code>apply</code>:</p>
 
   # TODO: fill in your own bucket and table name here!
 
-  tofu_state_bucket         = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(3)</b>
+  tofu_state_bucket         = "fundamentals-of-devops-tofu-state" # <b class="conum">(3)</b>
 
-  tofu_state_dynamodb_table = &quot;fundamentals-of-devops-tofu-state&quot; # <b class="conum">(4)</b>
+  tofu_state_dynamodb_table = "fundamentals-of-devops-tofu-state" # <b class="conum">(4)</b>
 
 }</code></pre>
 
@@ -6358,7 +6352,7 @@ The <code>plan</code> role will get read-only access to this table; the <code>ap
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;lambda_deploy_plan_role_arn&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "lambda_deploy_plan_role_arn" {
 
   value = module.iam_roles.lambda_deploy_plan_role_arn
 
@@ -6366,7 +6360,7 @@ The <code>plan</code> role will get read-only access to this table; the <code>ap
 
 
 
-output &quot;lambda_deploy_apply_role_arn&quot; {
+output "lambda_deploy_apply_role_arn" {
 
   value = module.iam_roles.lambda_deploy_apply_role_arn
 
@@ -6582,91 +6576,91 @@ the contents shown in <a href="06.html#tofu_plan_workflow">Example 104</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Tofu Plan</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Tofu Plan
 
 
 
-<span style="color:#606">on</span>:
+on:
 
-  <span style="color:#606">pull_request</span>: # <b class="conum">(1)</b>
+  pull_request: # <b class="conum">(1)</b>
 
-    <span style="color:#606">branches</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;main&quot;]</span></span>
+    branches: ["main"]
 
-    <span style="color:#606">paths</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;ch5/tofu/live/lambda-sample/**&quot;]</span></span>
-
-
-
-<span style="color:#606">jobs</span>:
-
-  <span style="color:#606">plan</span>:
-
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Tofu Plan</span><span style="color:#710">&quot;</span></span>
-
-    <span style="color:#606">runs-on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ubuntu-latest</span></span>
-
-    <span style="color:#606">permissions</span>:
-
-      <span style="color:#606">pull-requests</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">write </span></span># <b class="conum">(2)</b>
-
-      <span style="color:#606">id-token</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">write</span></span>
-
-      <span style="color:#606">contents</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">read</span></span>
-
-    <span style="color:#606">steps</span>:
-
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: actions/checkout@v2</span></span>
+    paths: ["ch5/tofu/live/lambda-sample/**"]
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: aws-actions/configure-aws-credentials@v3</span></span>
+jobs:
 
-        <span style="color:#606">with</span>:
+  plan:
 
-          <span style="color:#777"># TODO: fill in your IAM role ARN!</span>
+    name: "Tofu Plan"
 
-          <span style="color:#606">role-to-assume</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">arn:aws:iam::111111111111:role/lambda-sample-plan </span></span># <b class="conum">(3)</b>
+    runs-on: ubuntu-latest
 
-          <span style="color:#606">role-session-name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">plan-${{ github.run_number }}-${{ github.actor }}</span></span>
+    permissions:
 
-          <span style="color:#606">aws-region</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+      pull-requests: write # <b class="conum">(2)</b>
+
+      id-token: write
+
+      contents: read
+
+    steps:
+
+      - uses: actions/checkout@v2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: opentofu/setup-opentofu@v1</span></span>
+      - uses: aws-actions/configure-aws-credentials@v3
+
+        with:
+
+          # TODO: fill in your IAM role ARN!
+
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-plan # <b class="conum">(3)</b>
+
+          role-session-name: plan-${{ github.run_number }}-${{ github.actor }}
+
+          aws-region: us-east-2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: tofu plan </span></span># <b class="conum">(4)</b>
+      - uses: opentofu/setup-opentofu@v1
 
-        <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">plan</span></span>
 
-        <span style="color:#606">working-directory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch5/tofu/live/lambda-sample</span></span>
 
-        <span style="color:#606">run</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">|</span><span style="color:#D20">
+      - name: tofu plan # <b class="conum">(4)</b>
+
+        id: plan
+
+        working-directory: ch5/tofu/live/lambda-sample
+
+        run: |
 
           tofu init -no-color -input=false
 
-          tofu plan -no-color -input=false -lock=false</span></span>
+          tofu plan -no-color -input=false -lock=false
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: peter-evans/create-or-update-comment@v4 </span></span># <b class="conum">(5)</b>
+      - uses: peter-evans/create-or-update-comment@v4 # <b class="conum">(5)</b>
 
-        <span style="color:#606">if</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">always()</span></span>
+        if: always()
 
-        <span style="color:#606">env</span>:
+        env:
 
-          <span style="color:#606">RESULT_EMOJI</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">${{ steps.plan.outcome == 'success' &amp;&amp; '✅' || '⚠️' }}</span></span>
+          RESULT_EMOJI: ${{ steps.plan.outcome == 'success' &amp;&amp; '✅' || '⚠️' }}
 
-        <span style="color:#606">with</span>:
+        with:
 
-          <span style="color:#606">issue-number</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">${{ github.event.pull_request.number }}</span></span>
+          issue-number: ${{ github.event.pull_request.number }}
 
-          <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">|</span><span style="color:#D20">
+          body: |
 
             ## ${{ env.RESULT_EMOJI }} `tofu plan` output
 
-            ```${{ steps.plan.outputs.stdout }}```</span></span></code></pre>
+            ```${{ steps.plan.outputs.stdout }}```</code></pre>
 
 </div>
 
@@ -6754,97 +6748,97 @@ contents shown in <a href="06.html#tofu_apply_workflow">Example 105</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Tofu Apply</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Tofu Apply
 
-<span style="color:#606">on</span>:
+on:
 
-  <span style="color:#606">push</span>: # <b class="conum">(1)</b>
+  push: # <b class="conum">(1)</b>
 
-    <span style="color:#606">branches</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;main&quot;]</span></span>
+    branches: ["main"]
 
-    <span style="color:#606">paths</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;ch5/tofu/live/lambda-sample/**&quot;]</span></span>
+    paths: ["ch5/tofu/live/lambda-sample/**"]
 
-<span style="color:#606">jobs</span>:
+jobs:
 
-  <span style="color:#606">apply</span>:
+  apply:
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Tofu Apply</span><span style="color:#710">&quot;</span></span>
+    name: "Tofu Apply"
 
-    <span style="color:#606">runs-on</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ubuntu-latest</span></span>
+    runs-on: ubuntu-latest
 
-    <span style="color:#606">permissions</span>:
+    permissions:
 
-      <span style="color:#606">pull-requests</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">write</span></span>
+      pull-requests: write
 
-      <span style="color:#606">id-token</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">write</span></span>
+      id-token: write
 
-      <span style="color:#606">contents</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">read</span></span>
+      contents: read
 
-    <span style="color:#606">steps</span>:
+    steps:
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: actions/checkout@v2</span></span>
-
-
-
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: aws-actions/configure-aws-credentials@v3</span></span>
-
-        <span style="color:#606">with</span>:
-
-          <span style="color:#777"># TODO: fill in your IAM role ARN!</span>
-
-          <span style="color:#606">role-to-assume</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">arn:aws:iam::111111111111:role/lambda-sample-apply </span></span># <b class="conum">(2)</b>
-
-          <span style="color:#606">role-session-name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">apply-${{ github.run_number }}-${{ github.actor }}</span></span>
-
-          <span style="color:#606">aws-region</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+      - uses: actions/checkout@v2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: opentofu/setup-opentofu@v1</span></span>
+      - uses: aws-actions/configure-aws-credentials@v3
+
+        with:
+
+          # TODO: fill in your IAM role ARN!
+
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-apply # <b class="conum">(2)</b>
+
+          role-session-name: apply-${{ github.run_number }}-${{ github.actor }}
+
+          aws-region: us-east-2
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: tofu apply </span></span># <b class="conum">(3)</b>
+      - uses: opentofu/setup-opentofu@v1
 
-        <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">apply</span></span>
 
-        <span style="color:#606">working-directory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch5/tofu/live/lambda-sample</span></span>
 
-        <span style="color:#606">run</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">|</span><span style="color:#D20">
+      - name: tofu apply # <b class="conum">(3)</b>
+
+        id: apply
+
+        working-directory: ch5/tofu/live/lambda-sample
+
+        run: |
 
           tofu init -no-color -input=false
 
-          tofu apply -no-color -input=false -lock-timeout=60m -auto-approve</span></span>
+          tofu apply -no-color -input=false -lock-timeout=60m -auto-approve
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: jwalton/gh-find-current-pr@master </span></span># <b class="conum">(4)</b>
+      - uses: jwalton/gh-find-current-pr@master # <b class="conum">(4)</b>
 
-        <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">find_pr</span></span>
+        id: find_pr
 
-        <span style="color:#606">with</span>:
+        with:
 
-          <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">all</span></span>
+          state: all
 
 
 
-      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">uses: peter-evans/create-or-update-comment@v4 </span></span># <b class="conum">(5)</b>
+      - uses: peter-evans/create-or-update-comment@v4 # <b class="conum">(5)</b>
 
-        <span style="color:#606">if</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">steps.find_pr.outputs.number</span></span>
+        if: steps.find_pr.outputs.number
 
-        <span style="color:#606">env</span>:
+        env:
 
-          <span style="color:#606">RESULT_EMOJI</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">${{ steps.apply.outcome == 'success' &amp;&amp; '✅' || '⚠️' }}</span></span>
+          RESULT_EMOJI: ${{ steps.apply.outcome == 'success' &amp;&amp; '✅' || '⚠️' }}
 
-        <span style="color:#606">with</span>:
+        with:
 
-          <span style="color:#606">issue-number</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">${{ steps.find_pr.outputs.number }}</span></span>
+          issue-number: ${{ steps.find_pr.outputs.number }}
 
-          <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">|</span><span style="color:#D20">
+          body: |
 
             ## ${{ env.RESULT_EMOJI }} `tofu apply` output
 
-            ```${{ steps.apply.outputs.stdout }}```</span></span></code></pre>
+            ```${{ steps.apply.outputs.stdout }}```</code></pre>
 
 </div>
 
@@ -6964,9 +6958,9 @@ $ git push origin main</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
 
-  callback(<span style="color:#069">null</span>, {<span style="color:#606">statusCode</span>: <span style="color:#00D">200</span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#710">&quot;</span></span>});
+  callback(null, {statusCode: 200, body: "Fundamentals of DevOps!"});
 
 };</code></pre>
 
@@ -6996,11 +6990,11 @@ $ git push origin main</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">  assert {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">  assert {
 
-    condition     = data.http.test_endpoint.response_body == &quot;Fundamentals of DevOps!&quot;
+    condition     = data.http.test_endpoint.response_body == "Fundamentals of DevOps!"
 
-    error_message = &quot;Website responded with body ${data.http.test_endpoint.response_body}&quot;
+    error_message = "Website responded with body ${data.http.test_endpoint.response_body}"
 
   }</code></pre>
 
@@ -7603,7 +7597,7 @@ VPN, SSH, DNS, and more.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-03 16:46:22 -0400
+Last updated 2024-06-11 13:58:45 -0400
 
 </div>
 

@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.22">
 
 <title>Part 3. How to Deploy Many Apps: Orchestration, VMs, Containers, and Serverless</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -169,13 +169,13 @@ ul,ol{margin-left:1.5em}
 
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
 
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-
-ul.square{list-style-type:square}
-
 ul.circle{list-style-type:circle}
 
 ul.disc{list-style-type:disc}
+
+ul.square{list-style-type:square}
+
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 
@@ -281,7 +281,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
 
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 
@@ -324,6 +324,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 
 body.toc2{padding-left:15em;padding-right:0}
+
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 
@@ -387,7 +389,9 @@ details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblo
 
 details{margin-left:1.25rem}
 
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+
+details>summary::-webkit-details-marker{display:none}
 
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 
@@ -415,19 +419,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
 
-.exampleblock>.content>:first-child{margin-top:0}
-
-.exampleblock>.content>:last-child{margin-bottom:0}
-
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-
-.sidebarblock>:first-child{margin-top:0}
-
-.sidebarblock>:last-child{margin-bottom:0}
 
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 
@@ -471,11 +469,9 @@ table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-heig
 
 table.linenotable td.code{padding-left:.75em}
 
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 
@@ -549,7 +545,7 @@ table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-lef
 
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 
 th.halign-left,td.halign-left{text-align:left}
 
@@ -581,13 +577,15 @@ dl dd{margin-left:1.125em}
 
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 
 ul.unstyled,ol.unstyled{margin-left:0}
+
+li>p:empty:only-child::before{content:"";display:inline-block}
 
 ul.checklist>li>p:first-child{margin-left:-1em}
 
@@ -659,7 +657,7 @@ sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:sup
 
 sup.footnote a,sup.footnoteref a{text-decoration:none}
 
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 
@@ -672,10 +670,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-
-.gist .file-data>table td.line-data{width:99%}
 
 div.unbreakable{page-break-inside:avoid}
 
@@ -789,7 +783,7 @@ h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 
 p{margin-bottom:1.25rem}
 
@@ -1760,11 +1754,11 @@ such as the <em>sample-app-vars.yml</em> file shown in <a href="04.html#example_
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">num_instances</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">num_instances: 3
 
-<span style="color:#606">base_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample_app_instances</span></span>
+base_name: sample_app_instances
 
-<span style="color:#606">http_port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8080</span></span></code></pre>
+http_port: 8080</code></pre>
 
 </div>
 
@@ -1844,17 +1838,17 @@ to discover your servers automatically.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">plugin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">amazon.aws.aws_ec2</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">plugin: amazon.aws.aws_ec2
 
-<span style="color:#606">regions</span>:
+regions:
 
-  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+  - us-east-2
 
-<span style="color:#606">keyed_groups</span>:
+keyed_groups:
 
-  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">key: tags.Ansible</span></span>
+  - key: tags.Ansible
 
-<span style="color:#606">leading_separator</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">''</span></span></code></pre>
+leading_separator: ''</code></pre>
 
 </div>
 
@@ -1890,11 +1884,11 @@ the <em>group_vars</em> folder. So that will be <em>group_vars/sample_app_instan
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">ansible_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ec2-user</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">ansible_user: ec2-user
 
-<span style="color:#606">ansible_ssh_private_key_file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch3.key</span></span>
+ansible_ssh_private_key_file: ansible-ch3.key
 
-<span style="color:#606">ansible_host_key_checking</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span></code></pre>
+ansible_host_key_checking: false</code></pre>
 
 </div>
 
@@ -1926,21 +1920,21 @@ can use a playbook to configure the servers in this group to run the Node.js sam
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure servers to run the sample-app</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Configure servers to run the sample-app
 
-  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample_app_instances </span></span># <b class="conum">(1)</b>
+  hosts: sample_app_instances # <b class="conum">(1)</b>
 
-  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  gather_facts: true
 
-  <span style="color:#606">become</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  become: true
 
-  <span style="color:#606">roles</span>:
+  roles:
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">role: nodejs-app        </span></span># <b class="conum">(2)</b>
+    - role: nodejs-app        # <b class="conum">(2)</b>
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">role: sample-app        </span></span># <b class="conum">(3)</b>
+    - role: sample-app        # <b class="conum">(3)</b>
 
-      <span style="color:#606">become_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app-user   </span></span># <b class="conum">(4)</b></code></pre>
+      become_user: app-user   # <b class="conum">(4)</b></code></pre>
 
 </div>
 
@@ -2036,43 +2030,43 @@ rather than as the root user.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Add Node packages to yum </span></span># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Add Node packages to yum # <b class="conum">(1)</b>
 
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -</span></span>
-
-
-
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install Node.js</span></span>
-
-  <span style="color:#606">yum</span>:
-
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nodejs</span></span>
+  shell: curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create app user          </span></span># <b class="conum">(2)</b>
+- name: Install Node.js
 
-  <span style="color:#606">user</span>:
+  yum:
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app-user</span></span>
-
-
-
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install pm2              </span></span># <b class="conum">(3)</b>
-
-  <span style="color:#606">npm</span>:
-
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pm2</span></span>
-
-    <span style="color:#606">version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">latest</span></span>
-
-    <span style="color:#606">global</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+    name: nodejs
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure pm2 to run at startup as the app user</span></span>
+- name: Create app user          # <b class="conum">(2)</b>
 
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">eval &quot;$(sudo su app-user bash -c 'pm2 startup' | tail -n1)&quot;</span></span></code></pre>
+  user:
+
+    name: app-user
+
+
+
+- name: Install pm2              # <b class="conum">(3)</b>
+
+  npm:
+
+    name: pm2
+
+    version: latest
+
+    global: true
+
+
+
+- name: Configure pm2 to run at startup as the app user
+
+  shell: eval "$(sudo su app-user bash -c 'pm2 startup' | tail -n1)"</code></pre>
 
 </div>
 
@@ -2210,21 +2204,21 @@ it has features designed specifically for Node.js apps. To use these features, c
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">module.exports = {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">module.exports = {
 
-  <span style="color:#606">apps</span> : [{
+  apps : [{
 
-    <span style="color:#606">name</span>   : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-app</span><span style="color:#710">&quot;</span></span>,
+    name   : "sample-app",
 
-    <span style="color:#606">script</span> : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">./app.js</span><span style="color:#710">&quot;</span></span>,       // <b class="conum">(1)</b>
+    script : "./app.js",       // <b class="conum">(1)</b>
 
-    <span style="color:#606">exec_mode</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cluster</span><span style="color:#710">&quot;</span></span>,      // <b class="conum">(2)</b>
+    exec_mode: "cluster",      // <b class="conum">(2)</b>
 
-    <span style="color:#606">instances</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">max</span><span style="color:#710">&quot;</span></span>,          // <b class="conum">(3)</b>
+    instances: "max",          // <b class="conum">(3)</b>
 
-    <span style="color:#606">env</span>: {
+    env: {
 
-      <span style="color:#606"><span style="color:#404">&quot;</span><span>NODE_ENV</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">production</span><span style="color:#710">&quot;</span></span> // <b class="conum">(4)</b>
+      "NODE_ENV": "production" // <b class="conum">(4)</b>
 
     }
 
@@ -2298,29 +2292,29 @@ production mode rather than development mode.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Copy sample app                          </span></span># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Copy sample app                          # <b class="conum">(1)</b>
 
-  <span style="color:#606">copy</span>:
+  copy:
 
-    <span style="color:#606">src</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">./</span></span>
+    src: ./
 
-    <span style="color:#606">dest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/home/app-user/</span></span>
-
-
-
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Start sample app using pm2               </span></span># <b class="conum">(2)</b>
-
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pm2 start app.config.js</span></span>
-
-  <span style="color:#606">args</span>:
-
-    <span style="color:#606">chdir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/home/app-user/</span></span>
+    dest: /home/app-user/
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Save pm2 app list so it survives reboot  </span></span># <b class="conum">(3)</b>
+- name: Start sample app using pm2               # <b class="conum">(2)</b>
 
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pm2 save</span></span></code></pre>
+  shell: pm2 start app.config.js
+
+  args:
+
+    chdir: /home/app-user/
+
+
+
+- name: Save pm2 app list so it survives reboot  # <b class="conum">(3)</b>
+
+  shell: pm2 save</code></pre>
 
 </div>
 
@@ -2482,11 +2476,11 @@ new variables file, <em>nginx-vars.yml</em>, with the contents shown in <a href=
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">num_instances</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">num_instances: 1
 
-<span style="color:#606">base_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx_instances</span></span>
+base_name: nginx_instances
 
-<span style="color:#606">http_port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">80</span></span></code></pre>
+http_port: 80</code></pre>
 
 </div>
 
@@ -2538,11 +2532,11 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">ansible_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ec2-user</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">ansible_user: ec2-user
 
-<span style="color:#606">ansible_ssh_private_key_file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch3.key</span></span>
+ansible_ssh_private_key_file: ansible-ch3.key
 
-<span style="color:#606">ansible_host_key_checking</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span></code></pre>
+ansible_host_key_checking: false</code></pre>
 
 </div>
 
@@ -2570,17 +2564,17 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure servers to run nginx</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Configure servers to run nginx
 
-  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx_instances </span></span># <b class="conum">(1)</b>
+  hosts: nginx_instances # <b class="conum">(1)</b>
 
-  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  gather_facts: true
 
-  <span style="color:#606">become</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  become: true
 
-  <span style="color:#606">roles</span>:
+  roles:
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">role: nginx        </span></span># <b class="conum">(2)</b></code></pre>
+    - role: nginx        # <b class="conum">(2)</b></code></pre>
 
 </div>
 
@@ -2664,7 +2658,7 @@ creating <em>group_vars/nginx_instances.yml</em> with the contents shown in <a h
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="nginx">user nginx;
+<pre class="highlight"><code class="language-nginx" data-lang="nginx">user nginx;
 
 worker_processes auto;
 
@@ -2684,11 +2678,11 @@ events {
 
 http {
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
 
-                      '$status $body_bytes_sent &quot;$http_referer&quot; '
+                      '$status $body_bytes_sent "$http_referer" '
 
-                      '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+                      '"$http_user_agent" "$http_x_forwarded_for"';
 
 
 
@@ -2818,33 +2812,33 @@ you deployed to run the sample app.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install Nginx              </span></span># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Install Nginx              # <b class="conum">(1)</b>
 
-  <span style="color:#606">yum</span>:
+  yum:
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx</span></span>
-
-
-
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Copy Nginx config          </span></span># <b class="conum">(2)</b>
-
-  <span style="color:#606">template</span>:
-
-    <span style="color:#606">src</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx.conf.j2</span></span>
-
-    <span style="color:#606">dest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/etc/nginx/nginx.conf</span></span>
+    name: nginx
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Start Nginx                </span></span># <b class="conum">(3)</b>
+- name: Copy Nginx config          # <b class="conum">(2)</b>
 
-  <span style="color:#606">systemd_service</span>:
+  template:
 
-    <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">started</span></span>
+    src: nginx.conf.j2
 
-    <span style="color:#606">enabled</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+    dest: /etc/nginx/nginx.conf
 
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx</span></span></code></pre>
+
+
+- name: Start Nginx                # <b class="conum">(3)</b>
+
+  systemd_service:
+
+    state: started
+
+    enabled: true
+
+    name: nginx</code></pre>
 
 </div>
 
@@ -2966,17 +2960,17 @@ the <code>serial</code> parameter to <em>configure_sample_app_playbook.yml</em>,
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure servers to run the sample-app</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Configure servers to run the sample-app
 
 
 
-  <span style="color:#777"># ... (other params omitted for clarity) ...</span>
+  # ... (other params omitted for clarity) ...
 
 
 
-  <span style="color:#606">serial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1               </span></span># <b class="conum">(1)</b>
+  serial: 1               # <b class="conum">(1)</b>
 
-  <span style="color:#606">max_fail_percentage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30 </span></span># <b class="conum">(2)</b></code></pre>
+  max_fail_percentage: 30 # <b class="conum">(2)</b></code></pre>
 
 </div>
 
@@ -3032,7 +3026,7 @@ update.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">  res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>);</code></pre>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">  res.end('Fundamentals of DevOps!\n');</code></pre>
 
 </div>
 
@@ -3354,45 +3348,45 @@ orchestration section of this blog post into the <em>ch3/packer</em> folder:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="hcl">build {
+<pre class="highlight"><code class="language-hcl" data-lang="hcl">build {
 
   sources = [
 
-    &quot;source.amazon-ebs.amazon_linux&quot;
+    "source.amazon-ebs.amazon_linux"
 
   ]
 
 
 
-  provisioner &quot;file&quot; {                                                   # <b class="conum">(1)</b>
+  provisioner "file" {                                                   # <b class="conum">(1)</b>
 
-    sources     = [&quot;app.js&quot;, &quot;app.config.js&quot;]
+    sources     = ["app.js", "app.config.js"]
 
-    destination = &quot;/tmp/&quot;
+    destination = "/tmp/"
 
   }
 
 
 
-  provisioner &quot;shell&quot; {
+  provisioner "shell" {
 
     inline = [
 
-      &quot;curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -&quot;,
+      "curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -",
 
-      &quot;sudo yum install -y nodejs&quot;,
+      "sudo yum install -y nodejs",
 
-      &quot;sudo adduser app-user&quot;,                                           # <b class="conum">(2)</b>
+      "sudo adduser app-user",                                           # <b class="conum">(2)</b>
 
-      &quot;sudo mv /tmp/app.js /tmp/app.config.js /home/app-user/&quot;,          # <b class="conum">(3)</b>
+      "sudo mv /tmp/app.js /tmp/app.config.js /home/app-user/",          # <b class="conum">(3)</b>
 
-      &quot;sudo npm install pm2@latest -g&quot;,                                  # <b class="conum">(4)</b>
+      "sudo npm install pm2@latest -g",                                  # <b class="conum">(4)</b>
 
-      &quot;eval \&quot;$(sudo su app-user bash -c 'pm2 startup' | tail -n1)\&quot;&quot;    # <b class="conum">(5)</b>
+      "eval \"$(sudo su app-user bash -c 'pm2 startup' | tail -n1)\""    # <b class="conum">(5)</b>
 
     ]
 
-    pause_before = &quot;30s&quot;
+    pause_before = "30s"
 
   }
 
@@ -3658,35 +3652,35 @@ $ cd ch3/tofu/live/asg-sample</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;asg&quot; {
+module "asg" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
 
 
 
-  name = &quot;sample-app-asg&quot;                                   # <b class="conum">(1)</b>
+  name = "sample-app-asg"                                   # <b class="conum">(1)</b>
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id        = &quot;ami-0f5b3d9c244e6026d&quot;                   # <b class="conum">(2)</b>
+  ami_id        = "ami-0f5b3d9c244e6026d"                   # <b class="conum">(2)</b>
 
-  user_data     = filebase64(&quot;${path.module}/user-data.sh&quot;) # <b class="conum">(3)</b>
+  user_data     = filebase64("${path.module}/user-data.sh") # <b class="conum">(3)</b>
 
   app_http_port = 8080                                      # <b class="conum">(4)</b>
 
 
 
-  instance_type    = &quot;t2.micro&quot;                             # <b class="conum">(5)</b>
+  instance_type    = "t2.micro"                             # <b class="conum">(5)</b>
 
   min_size         = 1                                      # <b class="conum">(6)</b>
 
@@ -3786,7 +3780,7 @@ Packer template in the previous section.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+<pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 
 
@@ -4098,19 +4092,19 @@ should suffice for our purposes in this blog post.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;alb&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "alb" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/alb&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/alb"
 
 
 
-  name                  = &quot;sample-app-alb&quot; # <b class="conum">(1)</b>
+  name                  = "sample-app-alb" # <b class="conum">(1)</b>
 
   alb_http_port         = 80               # <b class="conum">(2)</b>
 
   app_http_port         = 8080             # <b class="conum">(3)</b>
 
-  app_health_check_path = &quot;/&quot;              # <b class="conum">(4)</b>
+  app_health_check_path = "/"              # <b class="conum">(4)</b>
 
 }</code></pre>
 
@@ -4182,9 +4176,9 @@ of the <code>asg</code> module, and update it with one parameter, as shown in <a
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;asg&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "asg" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
 
 
 
@@ -4262,7 +4256,7 @@ detect both hardware and software issues.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;alb_dns_name&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "alb_dns_name" {
 
   value = module.alb.alb_dns_name
 
@@ -4362,9 +4356,9 @@ instance refresh in the <code>asg</code> module:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;asg&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "asg" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/asg&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
 
 
 
@@ -4458,7 +4452,7 @@ For example, update <em>app.js</em> in the <em>packer</em> folder to respond wit
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>);</code></pre>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">res.end('Fundamentals of DevOps!\n');</code></pre>
 
 </div>
 
@@ -5302,7 +5296,7 @@ $ cd ch3/docker</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="dockerfile"># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile"># <b class="conum">(1)</b>
 
 FROM node:21.7
 
@@ -5334,7 +5328,7 @@ USER node
 
 # <b class="conum">(6)</b>
 
-CMD [&quot;node&quot;, &quot;app.js&quot;]</code></pre>
+CMD ["node", "app.js"]</code></pre>
 
 </div>
 
@@ -5828,49 +5822,49 @@ $ cd ch3/kubernetes</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">apps/v1</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
 
-<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Deployment                  </span></span># <b class="conum">(1)</b>
+kind: Deployment                  # <b class="conum">(1)</b>
 
-<span style="color:#606">metadata</span>:                         # <b class="conum">(2)</b>
+metadata:                         # <b class="conum">(2)</b>
 
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-deployment</span></span>
+  name: sample-app-deployment
 
-<span style="color:#606">spec</span>:
+spec:
 
-  <span style="color:#606">replicas</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3                     </span></span># <b class="conum">(3)</b>
+  replicas: 3                     # <b class="conum">(3)</b>
 
-  <span style="color:#606">template</span>:                       # <b class="conum">(4)</b>
+  template:                       # <b class="conum">(4)</b>
 
-    <span style="color:#606">metadata</span>:                     # <b class="conum">(5)</b>
+    metadata:                     # <b class="conum">(5)</b>
 
-      <span style="color:#606">labels</span>:
+      labels:
 
-        <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-pods</span></span>
+        app: sample-app-pods
 
-    <span style="color:#606">spec</span>:
+    spec:
 
-      <span style="color:#606">containers</span>:                 # <b class="conum">(6)</b>
+      containers:                 # <b class="conum">(6)</b>
 
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sample-app        </span></span># <b class="conum">(7)</b>
+        - name: sample-app        # <b class="conum">(7)</b>
 
-          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app:v1    </span></span># <b class="conum">(8)</b>
+          image: sample-app:v1    # <b class="conum">(8)</b>
 
-          <span style="color:#606">ports</span>:
+          ports:
 
-            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">containerPort: 8080 </span></span># <b class="conum">(9)</b>
+            - containerPort: 8080 # <b class="conum">(9)</b>
 
-          <span style="color:#606">env</span>:                    # <b class="conum">(10)</b>
+          env:                    # <b class="conum">(10)</b>
 
-            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: NODE_ENV</span></span>
+            - name: NODE_ENV
 
-              <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">production</span></span>
+              value: production
 
-  <span style="color:#606">selector</span>:                       # <b class="conum">(11)</b>
+  selector:                       # <b class="conum">(11)</b>
 
-    <span style="color:#606">matchLabels</span>:
+    matchLabels:
 
-      <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-pods</span></span></code></pre>
+      app: sample-app-pods</code></pre>
 
 </div>
 
@@ -6202,29 +6196,29 @@ should put in a file called <em>sample-app-service.yml</em>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v1
 
-<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Service                    </span></span># <b class="conum">(1)</b>
+kind: Service                    # <b class="conum">(1)</b>
 
-<span style="color:#606">metadata</span>:                        # <b class="conum">(2)</b>
+metadata:                        # <b class="conum">(2)</b>
 
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-loadbalancer</span></span>
+  name: sample-app-loadbalancer
 
-<span style="color:#606">spec</span>:
+spec:
 
-  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">LoadBalancer             </span></span># <b class="conum">(3)</b>
+  type: LoadBalancer             # <b class="conum">(3)</b>
 
-  <span style="color:#606">selector</span>:
+  selector:
 
-    <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-pods         </span></span># <b class="conum">(4)</b>
+    app: sample-app-pods         # <b class="conum">(4)</b>
 
-  <span style="color:#606">ports</span>:
+  ports:
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">protocol: TCP</span></span>
+    - protocol: TCP
 
-      <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">80                   </span></span># <b class="conum">(5)</b>
+      port: 80                   # <b class="conum">(5)</b>
 
-      <span style="color:#606">targetPort</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8080           </span></span># <b class="conum">(6)</b></code></pre>
+      targetPort: 8080           # <b class="conum">(6)</b></code></pre>
 
 </div>
 
@@ -6420,23 +6414,23 @@ code shown in <a href="04.html#example_kubernetes_deployment_update">Example 51<
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">spec</span>:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">spec:
 
 
 
-  <span style="color:#777"># (... other params omitted for clarity ...)</span>
+  # (... other params omitted for clarity ...)
 
 
 
-  <span style="color:#606">strategy</span>:
+  strategy:
 
-    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RollingUpdate</span></span>
+    type: RollingUpdate
 
-    <span style="color:#606">rollingUpdate</span>:
+    rollingUpdate:
 
-      <span style="color:#606">maxSurge</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3</span></span>
+      maxSurge: 3
 
-      <span style="color:#606">maxUnavailable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span></code></pre>
+      maxUnavailable: 0</code></pre>
 
 </div>
 
@@ -6484,7 +6478,7 @@ deployment.apps/sample-app-deployment configured</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">res.end(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#D20">\n</span><span style="color:#710">'</span></span>)</code></pre>
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">res.end('Fundamentals of DevOps!\n')</code></pre>
 
 </div>
 
@@ -6536,21 +6530,21 @@ from <code>sample-app:v1</code> to <code>sample-app:v2</code>, as shown in <a hr
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">spec</span>:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">spec:
 
 
 
-  <span style="color:#777"># (... other params omitted for clarity ...)</span>
+  # (... other params omitted for clarity ...)
 
 
 
-    <span style="color:#606">spec</span>:
+    spec:
 
-      <span style="color:#606">containers</span>:
+      containers:
 
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sample-app</span></span>
+        - name: sample-app
 
-          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app:v2</span></span></code></pre>
+          image: sample-app:v2</code></pre>
 
 </div>
 
@@ -6830,27 +6824,27 @@ $ cd ch3/tofu/live/eks-sample</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;cluster&quot; {
+module "cluster" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/eks-cluster&quot;
-
-
-
-  name        = &quot;eks-sample&quot;        # <b class="conum">(1)</b>
-
-  eks_version = &quot;1.29&quot;              # <b class="conum">(2)</b>
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/eks-cluster"
 
 
 
-  instance_type        = &quot;t2.micro&quot; # <b class="conum">(3)</b>
+  name        = "eks-sample"        # <b class="conum">(1)</b>
+
+  eks_version = "1.29"              # <b class="conum">(2)</b>
+
+
+
+  instance_type        = "t2.micro" # <b class="conum">(3)</b>
 
   min_worker_nodes     = 1          # <b class="conum">(4)</b>
 
@@ -7088,21 +7082,21 @@ $ cd ch3/tofu/live/ecr-sample</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;repo&quot; {
+module "repo" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/ecr-repo&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/ecr-repo"
 
 
 
-  name = &quot;sample-app&quot;
+  name = "sample-app"
 
 }</code></pre>
 
@@ -7136,11 +7130,11 @@ module &quot;repo&quot; {
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;registry_url&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "registry_url" {
 
   value       = module.repo.registry_url
 
-  description = &quot;URL of the ECR repo&quot;
+  description = "URL of the ECR repo"
 
 }</code></pre>
 
@@ -7376,21 +7370,21 @@ make to the YAML you used to deploy locally is to switch the <code>image</code> 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">spec</span>:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">spec:
 
 
 
-  <span style="color:#777"># (... other params omitted for clarity ...)</span>
+  # (... other params omitted for clarity ...)
 
 
 
-    <span style="color:#606">spec</span>:
+    spec:
 
-      <span style="color:#606">containers</span>:
+      containers:
 
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sample-app</span></span>
+        - name: sample-app
 
-          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">&lt;YOUR_ECR_REPO_URL&gt;:v3</span></span></code></pre>
+          image: &lt;YOUR_ECR_REPO_URL&gt;:v3</code></pre>
 
 </div>
 
@@ -7960,29 +7954,29 @@ $ cd ch3/tofu/live/lambda-sample</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;function&quot; {
+module "function" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/lambda&quot;
-
-
-
-  name = &quot;lambda-sample&quot;         # <b class="conum">(1)</b>
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
 
 
-  src_dir = &quot;${path.module}/src&quot; # <b class="conum">(2)</b>
+  name = "lambda-sample"         # <b class="conum">(1)</b>
 
-  runtime = &quot;nodejs20.x&quot;         # <b class="conum">(3)</b>
 
-  handler = &quot;index.handler&quot;      # <b class="conum">(4)</b>
+
+  src_dir = "${path.module}/src" # <b class="conum">(2)</b>
+
+  runtime = "nodejs20.x"         # <b class="conum">(3)</b>
+
+  handler = "index.handler"      # <b class="conum">(4)</b>
 
 
 
@@ -7994,7 +7988,7 @@ module &quot;function&quot; {
 
   environment_variables = {      # <b class="conum">(7)</b>
 
-    NODE_ENV = &quot;production&quot;
+    NODE_ENV = "production"
 
   }
 
@@ -8096,9 +8090,9 @@ handler, as shown in <a href="04.html#example_lambda_node_src">Example 59</a>:</
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
 
-  callback(<span style="color:#069">null</span>, {<span style="color:#606">statusCode</span>: <span style="color:#00D">200</span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, World!</span><span style="color:#710">&quot;</span></span>});
+  callback(null, {statusCode: 200, body: "Hello, World!"});
 
 };</code></pre>
 
@@ -8250,17 +8244,17 @@ a version of API Gateway designed for simple HTTP APIs, that knows how to trigge
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;gateway&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "gateway" {
 
-  source = &quot;github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway&quot;
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
 
 
 
-  name               = &quot;lambda-sample&quot;              # <b class="conum">(1)</b>
+  name               = "lambda-sample"              # <b class="conum">(1)</b>
 
   function_arn       = module.function.function_arn # <b class="conum">(2)</b>
 
-  api_gateway_routes = [&quot;GET /&quot;]                    # <b class="conum">(3)</b>
+  api_gateway_routes = ["GET /"]                    # <b class="conum">(3)</b>
 
 }</code></pre>
 
@@ -8324,7 +8318,7 @@ an HTTP <code>GET</code> to the <code>/</code> path to as the only route.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;api_endpoint&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "api_endpoint" {
 
   value = module.gateway.api_endpoint
 
@@ -8428,9 +8422,9 @@ deployment package, all new requests will start executing the code in that deplo
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">exports.handler = (event, context, callback) =&gt; {
 
-  callback(<span style="color:#069">null</span>, {<span style="color:#606">statusCode</span>: <span style="color:#00D">200</span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fundamentals of DevOps!</span><span style="color:#710">&quot;</span></span>});
+  callback(null, {statusCode: 200, body: "Fundamentals of DevOps!"});
 
 };</code></pre>
 
@@ -9439,7 +9433,7 @@ the focus of the next blog post, <a href="05.html#how_to_version_build_test">Par
 
 <div id="footer-text">
 
-Last updated 2024-06-03 16:46:22 -0400
+Last updated 2024-06-11 13:58:45 -0400
 
 </div>
 

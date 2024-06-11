@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.22">
 
 <title>Part 2. How to Manage Your Infrastructure as Code</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -169,13 +169,13 @@ ul,ol{margin-left:1.5em}
 
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
 
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-
-ul.square{list-style-type:square}
-
 ul.circle{list-style-type:circle}
 
 ul.disc{list-style-type:disc}
+
+ul.square{list-style-type:square}
+
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 
@@ -281,7 +281,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
 
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 
@@ -324,6 +324,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 
 body.toc2{padding-left:15em;padding-right:0}
+
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 
@@ -387,7 +389,9 @@ details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblo
 
 details{margin-left:1.25rem}
 
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+
+details>summary::-webkit-details-marker{display:none}
 
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 
@@ -415,19 +419,13 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
 
-.exampleblock>.content>:first-child{margin-top:0}
-
-.exampleblock>.content>:last-child{margin-bottom:0}
-
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-
-.sidebarblock>:first-child{margin-top:0}
-
-.sidebarblock>:last-child{margin-bottom:0}
 
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 
@@ -471,11 +469,9 @@ table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-heig
 
 table.linenotable td.code{padding-left:.75em}
 
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 
@@ -549,7 +545,7 @@ table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-lef
 
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 
 th.halign-left,td.halign-left{text-align:left}
 
@@ -581,13 +577,15 @@ dl dd{margin-left:1.125em}
 
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 
 ul.unstyled,ol.unstyled{margin-left:0}
+
+li>p:empty:only-child::before{content:"";display:inline-block}
 
 ul.checklist>li>p:first-child{margin-left:-1em}
 
@@ -659,7 +657,7 @@ sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:sup
 
 sup.footnote a,sup.footnoteref a{text-decoration:none}
 
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 
@@ -672,10 +670,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-
-.gist .file-data>table td.line-data{width:99%}
 
 div.unbreakable{page-break-inside:avoid}
 
@@ -789,7 +783,7 @@ h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
 
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 
 p{margin-bottom:1.25rem}
 
@@ -1492,7 +1486,7 @@ $ cd ch2/bash</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+<pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 
 
@@ -1500,11 +1494,11 @@ set -e
 
 
 
-export AWS_DEFAULT_REGION=&quot;us-east-2&quot;
+export AWS_DEFAULT_REGION="us-east-2"
 
-SCRIPT_DIR=&quot;$(cd &quot;$(dirname &quot;${BASH_SOURCE[0]}&quot;)&quot; &amp;&amp; pwd)&quot;
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &amp;&amp; pwd)"
 
-user_data=$(cat &quot;$SCRIPT_DIR/../../ch/ec2-user-data-script/user-data.sh&quot;)
+user_data=$(cat "$SCRIPT_DIR/../../ch/ec2-user-data-script/user-data.sh")
 
 
 
@@ -1512,9 +1506,9 @@ user_data=$(cat &quot;$SCRIPT_DIR/../../ch/ec2-user-data-script/user-data.sh&quo
 
 security_group_id=$(aws ec2 create-security-group \
 
-  --group-name &quot;sample-app&quot; \
+  --group-name "sample-app" \
 
-  --description &quot;Allow HTTP traffic into the sample app&quot; \
+  --description "Allow HTTP traffic into the sample app" \
 
   --output text \
 
@@ -1526,13 +1520,13 @@ security_group_id=$(aws ec2 create-security-group \
 
 aws ec2 authorize-security-group-ingress \
 
-  --group-id &quot;$security_group_id&quot; \
+  --group-id "$security_group_id" \
 
   --protocol tcp \
 
   --port 80 \
 
-  --cidr &quot;0.0.0.0/0&quot; &gt; /dev/null
+  --cidr "0.0.0.0/0" &gt; /dev/null
 
 
 
@@ -1540,13 +1534,13 @@ aws ec2 authorize-security-group-ingress \
 
 instance_id=$(aws ec2 run-instances \
 
-  --image-id &quot;ami-0900fe555666598a2&quot; \
+  --image-id "ami-0900fe555666598a2" \
 
-  --instance-type &quot;t2.micro&quot; \
+  --instance-type "t2.micro" \
 
-  --security-group-ids &quot;$security_group_id&quot; \
+  --security-group-ids "$security_group_id" \
 
-  --user-data &quot;$user_data&quot; \
+  --user-data "$user_data" \
 
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=sample-app}]' \
 
@@ -1558,7 +1552,7 @@ instance_id=$(aws ec2 run-instances \
 
 public_ip=$(aws ec2 describe-instances \
 
-  --instance-ids &quot;$instance_id&quot; \
+  --instance-ids "$instance_id" \
 
   --output text \
 
@@ -1568,11 +1562,11 @@ public_ip=$(aws ec2 describe-instances \
 
 # <b class="conum">(4)</b>
 
-echo &quot;Instance ID = $instance_id&quot;
+echo "Instance ID = $instance_id"
 
-echo &quot;Security Group ID = $security_group_id&quot;
+echo "Security Group ID = $security_group_id"
 
-echo &quot;Public IP = $public_ip&quot;</code></pre>
+echo "Public IP = $public_ip"</code></pre>
 
 </div>
 
@@ -2070,75 +2064,75 @@ shown in <a href="03.html#example_ansible_playbook_deploy_ec2">Example 5</a>:</p
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Deploy an EC2 instance in AWS</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Deploy an EC2 instance in AWS
 
-  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">localhost</span></span>
+  hosts: localhost
 
-  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">no</span></span>
+  gather_facts: no
 
-  <span style="color:#606">environment</span>:
+  environment:
 
-    <span style="color:#606">AWS_REGION</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+    AWS_REGION: us-east-2
 
-  <span style="color:#606">tasks</span>:    
+  tasks:    
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create security group                      </span></span># <b class="conum">(1)</b>
+    - name: Create security group                      # <b class="conum">(1)</b>
 
-      <span style="color:#606">amazon.aws.ec2_security_group</span>:
+      amazon.aws.ec2_security_group:
 
-        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-ansible </span></span>
+        name: sample-app-ansible 
 
-        <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Allow HTTP and SSH traffic</span></span>
+        description: Allow HTTP and SSH traffic
 
-        <span style="color:#606">rules</span>:
+        rules:
 
-          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">proto: tcp</span></span>
+          - proto: tcp
 
-            <span style="color:#606">ports</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[8080]</span></span>
+            ports: [8080]
 
-            <span style="color:#606">cidr_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0/0</span></span>
+            cidr_ip: 0.0.0.0/0
 
-          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">proto: tcp</span></span>
+          - proto: tcp
 
-            <span style="color:#606">ports</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[22]</span></span>
+            ports: [22]
 
-            <span style="color:#606">cidr_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0/0</span></span>
+            cidr_ip: 0.0.0.0/0
 
-      <span style="color:#606">register</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">aws_security_group</span></span>
-
-
-
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create a new EC2 key pair                  </span></span># <b class="conum">(2)</b>
-
-      <span style="color:#606">amazon.aws.ec2_key</span>:
-
-        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2</span></span>
-
-        <span style="color:#606">file_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2.key                     </span></span># <b class="conum">(3)</b>
-
-      <span style="color:#606">no_log</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
-
-      <span style="color:#606">register</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">aws_ec2_key_pair</span></span>
+      register: aws_security_group
 
 
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Create EC2 instance with Amazon Linux 2003 </span></span># <b class="conum">(4)</b>
+    - name: Create a new EC2 key pair                  # <b class="conum">(2)</b>
 
-      <span style="color:#606">amazon.aws.ec2_instance</span>:
+      amazon.aws.ec2_key:
 
-        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app-ansible</span></span>
+        name: ansible-ch2
 
-        <span style="color:#606">key_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ aws_ec2_key_pair.key.name }}</span><span style="color:#710">&quot;</span></span>
+        file_name: ansible-ch2.key                     # <b class="conum">(3)</b>
 
-        <span style="color:#606">instance_type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">t2.micro</span></span>
+      no_log: true
 
-        <span style="color:#606">security_group</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{{ aws_security_group.group_id }}</span><span style="color:#710">&quot;</span></span>
+      register: aws_ec2_key_pair
 
-        <span style="color:#606">image_id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ami-0900fe555666598a2</span></span>
 
-        <span style="color:#606">tags</span>:
 
-          <span style="color:#606">Ansible</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch2_instances                       </span></span># <b class="conum">(5)</b></code></pre>
+    - name: Create EC2 instance with Amazon Linux 2003 # <b class="conum">(4)</b>
+
+      amazon.aws.ec2_instance:
+
+        name: sample-app-ansible
+
+        key_name: "{{ aws_ec2_key_pair.key.name }}"
+
+        instance_type: t2.micro
+
+        security_group: "{{ aws_security_group.group_id }}"
+
+        image_id: ami-0900fe555666598a2
+
+        tags:
+
+          Ansible: ch2_instances                       # <b class="conum">(5)</b></code></pre>
 
 </div>
 
@@ -2304,23 +2298,23 @@ you can put the IP addresses of those servers in an <em>inventory file</em>, as 
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">webservers</span>:
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">webservers:
 
-  <span style="color:#606">hosts</span>:
+  hosts:
 
-    <span style="color:#606">10.16.10.1</span>:
+    10.16.10.1:
 
-    <span style="color:#606">10.16.10.2</span>:
+    10.16.10.2:
 
-<span style="color:#606">dbservers</span>:
+dbservers:
 
-  <span style="color:#606">hosts</span>:
+  hosts:
 
-    <span style="color:#606">10.16.20.1</span>:
+    10.16.20.1:
 
-    <span style="color:#606">10.16.20.2</span>:
+    10.16.20.2:
 
-    <span style="color:#606">10.16.20.3</span>:</code></pre>
+    10.16.20.3:</code></pre>
 
 </div>
 
@@ -2360,17 +2354,17 @@ an EC2 instance in AWS in the previous section, you can use the <code>aws_ec2</c
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">plugin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">amazon.aws.aws_ec2</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">plugin: amazon.aws.aws_ec2
 
-<span style="color:#606">regions</span>:
+regions:
 
-  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">us-east-2</span></span>
+  - us-east-2
 
-<span style="color:#606">keyed_groups</span>:
+keyed_groups:
 
-  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">key: tags.Ansible </span></span># <b class="conum">(1)</b>
+  - key: tags.Ansible # <b class="conum">(1)</b>
 
-<span style="color:#606">leading_separator</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'' </span></span># <b class="conum">(2)</b></code></pre>
+leading_separator: '' # <b class="conum">(2)</b></code></pre>
 
 </div>
 
@@ -2432,11 +2426,11 @@ create a file in <em>group_vars/ch2_instances.yml</em> with the contents shown i
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">ansible_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ec2-user                        </span></span># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">ansible_user: ec2-user                        # <b class="conum">(1)</b>
 
-<span style="color:#606">ansible_ssh_private_key_file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ansible-ch2.key </span></span># <b class="conum">(2)</b>
+ansible_ssh_private_key_file: ansible-ch2.key # <b class="conum">(2)</b>
 
-<span style="color:#606">ansible_host_key_checking</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false              </span></span># <b class="conum">(3)</b></code></pre>
+ansible_host_key_checking: false              # <b class="conum">(3)</b></code></pre>
 
 </div>
 
@@ -2502,17 +2496,17 @@ Node.js sample app. Create a file called <em>configure_sample_app_playbook.yml</
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Configure the EC2 instance to run a sample app</span></span>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Configure the EC2 instance to run a sample app
 
-  <span style="color:#606">hosts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ch2_instances </span></span># <b class="conum">(1)</b>
+  hosts: ch2_instances # <b class="conum">(1)</b>
 
-  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  gather_facts: true
 
-  <span style="color:#606">become</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+  become: true
 
-  <span style="color:#606">roles</span>:
+  roles:
 
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample-app       </span></span># <b class="conum">(2)</b></code></pre>
+    - sample-app       # <b class="conum">(2)</b></code></pre>
 
 </div>
 
@@ -2680,33 +2674,33 @@ in <a href="02.html#example_run_sample_app_locally">Section 1.2.1</a> into <em>f
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Add Node packages to yum  </span></span># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- name: Add Node packages to yum  # <b class="conum">(1)</b>
 
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -</span></span>
-
-
-
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Install Node.js</span></span>
-
-  <span style="color:#606">yum</span>:
-
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nodejs</span></span>
+  shell: curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Copy sample app           </span></span># <b class="conum">(2)</b>
+- name: Install Node.js
 
-  <span style="color:#606">copy</span>:
+  yum:
 
-    <span style="color:#606">src</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app.js</span></span>
-
-    <span style="color:#606">dest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">app.js</span></span>
+    name: nodejs
 
 
 
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Start sample app          </span></span># <b class="conum">(3)</b>
+- name: Copy sample app           # <b class="conum">(2)</b>
 
-  <span style="color:#606">shell</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nohup node app.js &amp;</span></span></code></pre>
+  copy:
+
+    src: app.js
+
+    dest: app.js
+
+
+
+- name: Start sample app          # <b class="conum">(3)</b>
+
+  shell: nohup node app.js &amp;</code></pre>
 
 </div>
 
@@ -3226,15 +3220,15 @@ $ cd ch2/packer</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="hcl">packer {
+<pre class="highlight"><code class="language-hcl" data-lang="hcl">packer {
 
   required_plugins {
 
     amazon = {
 
-      version = &quot;&gt;= 1.3.1&quot;
+      version = "&gt;= 1.3.1"
 
-      source  = &quot;github.com/hashicorp/amazon&quot;
+      source  = "github.com/hashicorp/amazon"
 
     }
 
@@ -3246,19 +3240,19 @@ $ cd ch2/packer</pre>
 
 
 
-source &quot;amazon-ebs&quot; &quot;amazon_linux&quot; {                  # <b class="conum">(1)</b>
+source "amazon-ebs" "amazon_linux" {                  # <b class="conum">(1)</b>
 
-  ami_name        = &quot;sample-app-packer-${uuidv4()}&quot;
+  ami_name        = "sample-app-packer-${uuidv4()}"
 
-  ami_description = &quot;Amazon Linux 2023 AMI with a Node.js sample app.&quot;
+  ami_description = "Amazon Linux 2023 AMI with a Node.js sample app."
 
-  instance_type   = &quot;t2.micro&quot;
+  instance_type   = "t2.micro"
 
-  region          = &quot;us-east-2&quot;
+  region          = "us-east-2"
 
-  source_ami      = &quot;ami-0900fe555666598a2&quot;
+  source_ami      = "ami-0900fe555666598a2"
 
-  ssh_username    = &quot;ec2-user&quot;
+  ssh_username    = "ec2-user"
 
 }
 
@@ -3266,31 +3260,31 @@ source &quot;amazon-ebs&quot; &quot;amazon_linux&quot; {                  # <b c
 
 build {                                               # <b class="conum">(2)</b>
 
-  sources = [&quot;source.amazon-ebs.amazon_linux&quot;]
+  sources = ["source.amazon-ebs.amazon_linux"]
 
 
 
-  provisioner &quot;file&quot; {                                # <b class="conum">(3)</b>
+  provisioner "file" {                                # <b class="conum">(3)</b>
 
-    source      = &quot;app.js&quot;
+    source      = "app.js"
 
-    destination = &quot;/home/ec2-user/app.js&quot;
+    destination = "/home/ec2-user/app.js"
 
   }
 
 
 
-  provisioner &quot;shell&quot; {                               # <b class="conum">(4)</b>
+  provisioner "shell" {                               # <b class="conum">(4)</b>
 
     inline = [
 
-      &quot;curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -&quot;,
+      "curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -",
 
-      &quot;sudo yum install -y nodejs&quot;
+      "sudo yum install -y nodejs"
 
     ]
 
-    pause_before = &quot;30s&quot;
+    pause_before = "30s"
 
   }
 
@@ -3756,29 +3750,29 @@ $ cd ch2/tofu/ec2-instance</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {                                               # <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {                                               # <b class="conum">(1)</b>
 
-  region = &quot;us-east-2&quot;
-
-}
-
-
-
-resource &quot;aws_security_group&quot; &quot;sample_app&quot; {                   # <b class="conum">(2)</b>
-
-  name        = &quot;sample-app-tofu&quot;
-
-  description = &quot;Allow HTTP traffic into the sample app&quot;
+  region = "us-east-2"
 
 }
 
 
 
-resource &quot;aws_security_group_rule&quot; &quot;allow_http_inbound&quot; {      # <b class="conum">(3)</b>
+resource "aws_security_group" "sample_app" {                   # <b class="conum">(2)</b>
 
-  type              = &quot;ingress&quot;
+  name        = "sample-app-tofu"
 
-  protocol          = &quot;tcp&quot;
+  description = "Allow HTTP traffic into the sample app"
+
+}
+
+
+
+resource "aws_security_group_rule" "allow_http_inbound" {      # <b class="conum">(3)</b>
+
+  type              = "ingress"
+
+  protocol          = "tcp"
 
   from_port         = 8080
 
@@ -3786,27 +3780,27 @@ resource &quot;aws_security_group_rule&quot; &quot;allow_http_inbound&quot; {   
 
   security_group_id = aws_security_group.sample_app.id
 
-  cidr_blocks       = [&quot;0.0.0.0/0&quot;]
+  cidr_blocks       = ["0.0.0.0/0"]
 
 }
 
 
 
-resource &quot;aws_instance&quot; &quot;sample_app&quot; {                         # <b class="conum">(4)</b>
+resource "aws_instance" "sample_app" {                         # <b class="conum">(4)</b>
 
   ami                    = var.ami_id                          # <b class="conum">(5)</b>
 
-  instance_type          = &quot;t2.micro&quot;
+  instance_type          = "t2.micro"
 
   vpc_security_group_ids = [aws_security_group.sample_app.id]
 
-  user_data              = file(&quot;${path.module}/user-data.sh&quot;) # <b class="conum">(6)</b>
+  user_data              = file("${path.module}/user-data.sh") # <b class="conum">(6)</b>
 
 
 
   tags = {
 
-    Name = &quot;sample-app-tofu&quot;
+    Name = "sample-app-tofu"
 
   }
 
@@ -3860,7 +3854,7 @@ as follows:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">resource &quot;&lt;PROVIDER&gt;_&lt;TYPE&gt;&quot; &quot;&lt;NAME&gt;&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">resource "&lt;PROVIDER&gt;_&lt;TYPE&gt;" "&lt;NAME&gt;" {
 
   [CONFIG ...]
 
@@ -3946,9 +3940,9 @@ in <em>variables.tf</em>, as shown in <a href="03.html#example_tofu_ec2_variable
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">variable &quot;ami_id&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">variable "ami_id" {
 
-  description = &quot;The ID of the AMI to run.&quot;
+  description = "The ID of the AMI to run."
 
   type        = string
 
@@ -3988,7 +3982,7 @@ namely, the AMI you built from the Packer template in the previous section.</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="bash">#!/usr/bin/env bash
+<pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
 nohup node /home/ec2-user/app.js &amp;</code></pre>
 
@@ -4026,9 +4020,9 @@ script does is start the sample app. This is a more idiomatic way to use user da
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="bash">output &quot;instance_id&quot; {
+<pre class="highlight"><code class="language-bash" data-lang="bash">output "instance_id" {
 
-  description = &quot;The ID of the EC2 instance&quot;
+  description = "The ID of the EC2 instance"
 
   value       = aws_instance.sample_app.id
 
@@ -4036,9 +4030,9 @@ script does is start the sample app. This is a more idiomatic way to use user da
 
 
 
-output &quot;security_group_id&quot; {
+output "security_group_id" {
 
-  description = &quot;The ID of the security group&quot;
+  description = "The ID of the security group"
 
   value       = aws_security_group.sample_app.id
 
@@ -4046,9 +4040,9 @@ output &quot;security_group_id&quot; {
 
 
 
-output &quot;public_ip&quot; {
+output "public_ip" {
 
-  description = &quot;The public IP of the EC2 instance&quot;
+  description = "The public IP of the EC2 instance"
 
   value       = aws_instance.sample_app.public_ip
 
@@ -4194,7 +4188,7 @@ $ tofu apply</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="hcl">ami_id = &quot;ami-0ee5157dd67ca79fc&quot;</code></pre>
+<pre class="highlight"><code class="language-hcl" data-lang="hcl">ami_id = "ami-0ee5157dd67ca79fc"</code></pre>
 
 </div>
 
@@ -4424,7 +4418,7 @@ configuration, such as adding a new <code>Test</code> tag with the value "update
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">resource &quot;aws_instance&quot; &quot;sample_app&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">resource "aws_instance" "sample_app" {
 
 
 
@@ -4434,9 +4428,9 @@ configuration, such as adding a new <code>Test</code> tag with the value "update
 
   tags = {
 
-    Name = &quot;sample-app-tofu&quot;
+    Name = "sample-app-tofu"
 
-    Test = &quot;update&quot;
+    Test = "update"
 
   }
 
@@ -4830,15 +4824,15 @@ $ cd ch2/tofu/live/sample-app</pre>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "sample_app_1" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 }</code></pre>
 
@@ -4908,29 +4902,29 @@ But the beauty of code reuse is that you can use the module multiple times, as s
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "sample_app_1" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 }
 
 
 
-module &quot;sample_app_2&quot; {
+module "sample_app_2" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 }</code></pre>
 
@@ -4986,9 +4980,9 @@ introduce a <code>name</code> input variable in <code>modules/ec2-instance/varia
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">variable &quot;name&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">variable "name" {
 
-  description = &quot;The base name for the instance and all other resources&quot;
+  description = "The base name for the instance and all other resources"
 
   type        = string
 
@@ -5022,17 +5016,17 @@ in <a href="03.html#example_tofu_ec2_module_use_name">Example 21</a>:</p>
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">resource &quot;aws_security_group&quot; &quot;sample_app&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">resource "aws_security_group" "sample_app" {
 
   name        = var.name
 
-  description = &quot;Allow HTTP traffic into ${var.name}&quot;
+  description = "Allow HTTP traffic into ${var.name}"
 
 }
 
 
 
-resource &quot;aws_instance&quot; &quot;sample_app&quot; {
+resource "aws_instance" "sample_app" {
 
 
 
@@ -5074,37 +5068,37 @@ blocks, as shown in <a href="03.html#example_tofu_ec2_module_usage_name">Example
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "sample_app_1" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 
 
-  name = &quot;sample-app-tofu-1&quot;
+  name = "sample-app-tofu-1"
 
 }
 
 
 
-module &quot;sample_app_2&quot; {
+module "sample_app_2" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 
 
-  name = &quot;sample-app-tofu-2&quot;
+  name = "sample-app-tofu-2"
 
 }</code></pre>
 
@@ -5150,45 +5144,45 @@ to a different AWS account, and so on. All you need to do is to move the <code>p
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">provider &quot;aws&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">provider "aws" {
 
-  region = &quot;us-east-2&quot;
-
-}
-
-
-
-module &quot;sample_app_1&quot; {
-
-  source = &quot;../../modules/ec2-instance&quot;
-
-
-
-  # TODO: fill in with your own AMI ID!
-
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
-
-
-
-  name = &quot;sample-app-tofu-1&quot;
+  region = "us-east-2"
 
 }
 
 
 
-module &quot;sample_app_2&quot; {
+module "sample_app_1" {
 
-  source = &quot;../../modules/ec2-instance&quot;
+  source = "../../modules/ec2-instance"
 
 
 
   # TODO: fill in with your own AMI ID!
 
-  ami_id = &quot;ami-09a9ad4735def0515&quot;
+  ami_id = "ami-09a9ad4735def0515"
 
 
 
-  name = &quot;sample-app-tofu-2&quot;
+  name = "sample-app-tofu-1"
+
+}
+
+
+
+module "sample_app_2" {
+
+  source = "../../modules/ec2-instance"
+
+
+
+  # TODO: fill in with your own AMI ID!
+
+  ami_id = "ami-09a9ad4735def0515"
+
+
+
+  name = "sample-app-tofu-2"
 
 }</code></pre>
 
@@ -5218,7 +5212,7 @@ module &quot;sample_app_2&quot; {
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">output &quot;sample_app_1_public_ip&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">output "sample_app_1_public_ip" {
 
   value = module.sample_app_1.public_ip
 
@@ -5226,7 +5220,7 @@ module &quot;sample_app_2&quot; {
 
 
 
-output &quot;sample_app_2_public_ip&quot; {
+output "sample_app_2_public_ip" {
 
   value = module.sample_app_2.public_ip
 
@@ -5234,7 +5228,7 @@ output &quot;sample_app_2_public_ip&quot; {
 
 
 
-output &quot;sample_app_1_instance_id&quot; {
+output "sample_app_1_instance_id" {
 
   value = module.sample_app_1.instance_id
 
@@ -5242,7 +5236,7 @@ output &quot;sample_app_1_instance_id&quot; {
 
 
 
-output &quot;sample_app_2_instance_id&quot; {
+output "sample_app_2_instance_id" {
 
   value = module.sample_app_2.instance_id
 
@@ -5324,9 +5318,9 @@ series&#8217;s sample code repo by updating the <code>source</code> URLs as show
 
 <div class="content">
 
-<pre class="CodeRay highlight"><code data-lang="terraform">module &quot;sample_app_1&quot; {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "sample_app_1" {
 
-  source = &quot;github.com/brikis98/devops-book//ch2/tofu/modules/ec2-instance&quot;
+  source = "github.com/brikis98/devops-book//ch2/tofu/modules/ec2-instance"
 
 
 
@@ -6001,7 +5995,7 @@ roll out changes without downtime? All of these topics are the focus of the next
 
 <div id="footer-text">
 
-Last updated 2024-06-03 16:46:22 -0400
+Last updated 2024-06-11 13:58:45 -0400
 
 </div>
 
