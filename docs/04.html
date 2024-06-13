@@ -955,17 +955,19 @@ table ul {
 
 <li class="nav-item"><a href="#example_docker_crash_course" class="nav-link">3.4.1. Example: A Crash Course on Docker</a></li>
 
-<li class="nav-item"><a href="#example_kubernetes" class="nav-link">3.4.2. Example: Deploy a Dockerized App with Kubernetes</a></li>
+<li class="nav-item"><a href="#_example_create_a_docker_image_for_a_node_js_app" class="nav-link">3.4.2. Example: Create a Docker Image for a Node.js app</a></li>
 
-<li class="nav-item"><a href="#_example_deploy_a_load_balancer_with_kubernetes" class="nav-link">3.4.3. Example: Deploy a Load Balancer with Kubernetes</a></li>
+<li class="nav-item"><a href="#example_kubernetes" class="nav-link">3.4.3. Example: Deploy a Dockerized App with Kubernetes</a></li>
 
-<li class="nav-item"><a href="#_example_roll_out_updates_with_kubernetes" class="nav-link">3.4.4. Example: Roll Out Updates with Kubernetes</a></li>
+<li class="nav-item"><a href="#_example_deploy_a_load_balancer_with_kubernetes" class="nav-link">3.4.4. Example: Deploy a Load Balancer with Kubernetes</a></li>
 
-<li class="nav-item"><a href="#example_docker_kubernetes_aws" class="nav-link">3.4.5. Example: Deploy a Kubernetes Cluster in AWS Using EKS</a></li>
+<li class="nav-item"><a href="#_example_roll_out_updates_with_kubernetes" class="nav-link">3.4.5. Example: Roll Out Updates with Kubernetes</a></li>
 
-<li class="nav-item"><a href="#_example_push_a_docker_image_to_ecr" class="nav-link">3.4.6. Example: Push a Docker Image to ECR</a></li>
+<li class="nav-item"><a href="#example_docker_kubernetes_aws" class="nav-link">3.4.6. Example: Deploy a Kubernetes Cluster in AWS Using EKS</a></li>
 
-<li class="nav-item"><a href="#_example_deploy_a_dockerized_app_into_an_eks_cluster" class="nav-link">3.4.7. Example: Deploy a Dockerized App into an EKS Cluster</a></li>
+<li class="nav-item"><a href="#_example_push_a_docker_image_to_ecr" class="nav-link">3.4.7. Example: Push a Docker Image to ECR</a></li>
+
+<li class="nav-item"><a href="#_example_deploy_a_dockerized_app_into_an_eks_cluster" class="nav-link">3.4.8. Example: Deploy a Dockerized App into an EKS Cluster</a></li>
 
 </ul>
 
@@ -1078,13 +1080,27 @@ there that do it for you: these are called <em>orchestration tools</em>.</p>
 
 <div class="paragraph">
 
-<p>If you search around, you&#8217;ll quickly find that there are many orchestration tools out there, including Kubernetes,
+<p>If you search around, you&#8217;ll quickly find that there are many orchestration tools out there, including
 
-EKS, GKE, AKS, OpenShift, EC2, ECS, Marathon/Mesos, Nomad, AWS Lambda, Google Cloud Functions, Azure Serverless,
+<a href="https://kubernetes.io/">Kubernetes</a>, <a href="https://aws.amazon.com/eks/">EKS</a>,
 
-Capistrano, Ansible, and many others. It seems like there&#8217;s a new, hot orchestration tool nearly every day. How do you
+<a href="https://cloud.google.com/kubernetes-engine?hl=en">GKE</a>,
 
-keep track of them all? Which one should you use? How do these tools compare?</p>
+<a href="https://azure.microsoft.com/en-us/products/kubernetes-service">AKS</a>,
+
+<a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a>, <a href="https://aws.amazon.com/ec2/">EC2</a>,
+
+<a href="https://aws.amazon.com/ecs/">ECS</a>, <a href="https://mesosphere.github.io/marathon/">Marathon</a> /
+
+<a href="https://mesos.apache.org/documentation/latest/docker-containerizer/">Mesos</a>, <a href="https://www.nomadproject.io/">Nomad</a>,
+
+<a href="https://aws.amazon.com/lambda/">AWS Lambda</a>, <a href="https://cloud.google.com/functions?hl=en">Google Cloud Functions</a>,
+
+<a href="https://azure.microsoft.com/en-us/solutions/serverless">Azure Serverless</a>, <a href="https://capistranorb.com/">Capistrano</a>,
+
+<a href="https://www.ansible.com/">Ansible</a>, and many others. It seems like there&#8217;s a new, hot orchestration tool nearly every
+
+day. How do you keep track of them all? Which one should you use? How do these tools compare?</p>
 
 </div>
 
@@ -1266,9 +1282,7 @@ efficiently as possible.</p>
 
 <dd>
 
-<p>Sometimes, if there is a problem when rolling out an update, you need a way to roll back all replicas to a previous
-
-version.</p>
+<p>If there is a problem when rolling out an update, you need a way to roll back all replicas to a previous version.</p>
 
 </dd>
 
@@ -1664,7 +1678,7 @@ Git tutorial in <a href="05.html#how_to_version_build_test">Part 4</a>):</p>
 
 <div class="content">
 
-<pre>$ git clone {code_samples_repo_clone_url}</pre>
+<pre class="highlight"><code>$ git clone https://github.com/brikis98/devops-book.git</code></pre>
 
 </div>
 
@@ -1992,7 +2006,7 @@ rather than as the root user.</p>
 
 <div class="paragraph">
 
-<p>Create just a single file and folder for the <code>nodejs-app</code> role, <em>tasks/main.yml</em>:</p>
+<p>Create just a single file and folder for the <code>nodejs-app</code> role, <em>roles/nodejs-app/tasks/main.yml</em>:</p>
 
 </div>
 
@@ -2002,13 +2016,11 @@ rather than as the root user.</p>
 
 <pre>roles
 
-  ├── nodejs-app
+  └── nodejs-app
 
-  │   └── tasks
+      └── tasks
 
-  │       └── main.yml
-
-  └── sample-app</pre>
+          └── main.yml</pre>
 
 </div>
 
@@ -2186,11 +2198,13 @@ You&#8217;ll see other types of auto healing later in this post.</p>
 
 <a href="https://smarden.org/runit/">runit</a>, and <a href="https://systemd.io/">systemd</a>, with systemd as the one you&#8217;re likely to use in
 
-most situations, as it&#8217;s built into most Linux distributions these days. However, I picked PM2 for this example because
+most situations, as it&#8217;s built into most Linux distributions these days. You&#8217;ll see an example of how to use systemd
 
-it has features designed specifically for Node.js apps. To use these features, create a configuration file called
+later in this blog post. For this example, I picked PM2 because it has features designed specifically
 
-<em>app.config.js</em>, as shown in <a href="04.html#example_ansible_pm2_config">Example 31</a>:</p>
+for Node.js apps. To use these features, create a configuration file called <em>app.config.js</em>, as shown in
+
+<a href="04.html#example_ansible_pm2_config">Example 31</a>:</p>
 
 </div>
 
@@ -2736,11 +2750,11 @@ http {
 
 <div class="paragraph">
 
-<p>Most of this file is standard
+<p>Most of this file is standard (boilerplate) Nginx configuration—check out the
 
-<a href="https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/">Nginx configuration</a>, but
+<a href="https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/">Nginx documentation</a> if
 
-there are a few items that you should take note of:</p>
+you&#8217;re curious to understand what it does—so I&#8217;ll just point out a few items to focus on:</p>
 
 </div>
 
@@ -3018,7 +3032,7 @@ update.</p>
 
 <div id="example_ansible_ec2_updated_response" class="exampleblock">
 
-<div class="title">Example 39. Update the app to respond with the text "Fundamentals of DevOps!" (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch3/ansible/roles/sample-app/files/app.js">ch3/ansible/roles/sample-app/files/app.js</a></em>)</div>
+<div class="title">Example 39. Update the app to respond with the text "Fundamentals of DevOps!" (<em>ch3/ansible/roles/sample-app/files/app.js</em>)</div>
 
 <div class="content">
 
@@ -3188,7 +3202,7 @@ servers.</p>
 
 servers are all virtual servers, so you can spin up new ones and tear down old ones in minutes. That said, you can also
 
-use virtualization on-prem with tools from VMWare, Citrix, Microsoft Hyper-V, and son. We&#8217;ll take a look at a VM
+use virtualization on-prem with tools from VMWare, Citrix, Microsoft Hyper-V, and so on. We&#8217;ll take a look at a VM
 
 orchestration example using AWS, but be aware that the basic techniques here apply to most VM orchestration tools,
 
@@ -3430,7 +3444,7 @@ the home folder of <code>app-user</code>, doesn&#8217;t exist until a later step
 
 <li>
 
-<p>Copy <em>app.js</em> and <em>app.config.js</em> from the <em>/tmp</em> folder to the home folder of <code>app-user</code>.</p>
+<p>Move <em>app.js</em> and <em>app.config.js</em> from the <em>/tmp</em> folder to the home folder of <code>app-user</code>.</p>
 
 </li>
 
@@ -3492,7 +3506,11 @@ single EC2 instance. The goal now is to see VM orchestration at play, which mean
 
 sometimes called a <em>cluster</em>. Most cloud providers offer a native way to run VMs across a cluster: for example, AWS
 
-offers <em>Auto Scaling Groups (ASG)</em>, GCP offers <em>Managed Instance Groups</em>, and Azure offers <em>Scale Sets</em>. For this
+offers <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html"><em>Auto Scaling Groups (ASG)</em></a>, GCP
+
+offers <a href="https://cloud.google.com/compute/docs/instance-groups"><em>Managed Instance Groups</em></a>, and Azure offers
+
+<a href="https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview"><em>Scale Sets</em></a>. For this
 
 example, you&#8217;ll be using an AWS ASG, as that offers a number of nice features:</p>
 
@@ -3506,7 +3524,7 @@ example, you&#8217;ll be using an AWS ASG, as that offers a number of nice featu
 
 <dd>
 
-<p>ASGs make it easy to launch multiple instances and manually resize the cluster at any time.</p>
+<p>ASGs make it easy to launch multiple instances and manually resize the cluster.</p>
 
 </dd>
 
@@ -3534,7 +3552,7 @@ crashes.</p>
 
 <div class="paragraph">
 
-<p>Let&#8217;s use a reusable OpenTOfu module called <code>asg</code> from this blog post series&#8217;s
+<p>Let&#8217;s use a reusable OpenTofu module called <code>asg</code> from this blog post series&#8217;s
 
 <a href="https://github.com/brikis98/devops-book">sample code repo</a> to deploy an ASG. You can find the module in the <em>ch3/tofu/modules/asg</em>
 
@@ -3860,9 +3878,9 @@ single endpoint to hit. This requires deploying a load balancer, as described in
 
 <div class="paragraph">
 
-<p>In the server orchestration section, you deployed your own load balancer using Nginx. This was a very simplified
+<p>In the server orchestration section, you deployed your own load balancer using Nginx. This is a simplified
 
-deployment that worked fine for an example, but had a number of drawbacks if you tried to use it for production apps:</p>
+deployment that works fine for an example, but has a number of drawbacks if you try to use it for production apps:</p>
 
 </div>
 
@@ -3982,7 +4000,7 @@ servers.</p>
 
 <p>AWS load balancers are hardened against a variety of attacks, including meeting the requirements of a
 
-variety of security standards (e.g., SOC 2, ISO 27001, HIPAA, PCI, FedRAMP) out-of-the-box.<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="13-footnotes.html#_footnotedef_14" title="View footnote.">14</a>]</sup></p>
+variety of security standards (e.g., SOC 2, ISO 27001, HIPAA, PCI, FedRAMP) out-of-the-box.<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="13-footnotes.html#_footnotedef_15" title="View footnote.">15</a>]</sup></p>
 
 </dd>
 
@@ -4008,7 +4026,7 @@ actually several types of AWS load balancers to choose from; the one that&#8217;
 
 is the <a href="https://aws.amazon.com/elasticloadbalancing/application-load-balancer/"><em>Application Load Balancer (ALB)</em></a>. The
 
-ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure 25</a>:</p>
+ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure 24</a>:</p>
 
 </div>
 
@@ -4020,7 +4038,7 @@ ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure
 
 </div>
 
-<div class="title">Figure 25. An ALB consists of listeners, listener rules, and target groups.</div>
+<div class="title">Figure 24. An ALB consists of listeners, listener rules, and target groups.</div>
 
 </div>
 
@@ -4040,9 +4058,9 @@ ALB consists of several parts, as shown in <a href="04.html#alb_overview">Figure
 
 <dd>
 
-<p>Specify how which requests that come into a listener to route to which target group based on rules that match on
+<p>Specify which requests that come into a listener to route to which target group based on rules that match on request
 
-paths (e.g., <code>/foo</code> and <code>/bar</code>), hostnames (e.g., <code>foo.example.com</code> and <code>bar.example.com</code>), and so on.</p>
+parameters such as the path (e.g., <code>/foo</code> and <code>/bar</code>) and hostname (e.g., <code>foo.example.com</code> and <code>bar.example.com</code>).</p>
 
 </dd>
 
@@ -4092,7 +4110,21 @@ should suffice for our purposes in this blog post.</p>
 
 <div class="content">
 
-<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "alb" {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "asg" {
+
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
+
+
+
+  # ... (other params omitted) ...
+
+
+
+}
+
+
+
+module "alb" {
 
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/alb"
 
@@ -4118,7 +4150,7 @@ should suffice for our purposes in this blog post.</p>
 
 <div class="paragraph">
 
-<p>The preceding code sets the following parameters:</p>
+<p>The preceding code sets the following parameters on the <code>alb</code> module:</p>
 
 </div>
 
@@ -4550,7 +4582,7 @@ AWS will kick off the instance refresh process in the background. If you go to t
 
 Groups in the left nav, find your ASG, and click the "Instance refresh" tab, you should be able to see the instance
 
-refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 26</a>.</p>
+refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 25</a>.</p>
 
 </div>
 
@@ -4562,7 +4594,7 @@ refresh in progress, as shown in <a href="04.html#asg_instance_refresh">Figure 2
 
 </div>
 
-<div class="title">Figure 26. Using the EC2 console to see an ASG instance refresh in progress</div>
+<div class="title">Figure 25. Using the EC2 console to see an ASG instance refresh in progress</div>
 
 </div>
 
@@ -4794,7 +4826,7 @@ old containers.</p>
 
 <div class="paragraph">
 
-<p>Although containers have been around for decades<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="13-footnotes.html#_footnotedef_15" title="View footnote.">15</a>]</sup>, container orchestration started to explode in popularity
+<p>Although containers have been around for decades<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="13-footnotes.html#_footnotedef_16" title="View footnote.">16</a>]</sup>, container orchestration started to explode in popularity
 
 around 2013, with the emergence of Docker, a tool for building, running, and sharing containers, and
 
@@ -4828,7 +4860,7 @@ faster: you can expect 10-20 minutes for VMs, but just 1-5 minutes for container
 
 should run which containers, using bin packing algorithms to use the available resources as efficiently as
 
-possible.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="13-footnotes.html#_footnotedef_16" title="View footnote.">16</a>]</sup></p>
+possible.<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="13-footnotes.html#_footnotedef_17" title="View footnote.">17</a>]</sup></p>
 
 </dd>
 
@@ -5240,11 +5272,29 @@ Hello, World!</pre>
 
 <div class="paragraph">
 
-<p>Let&#8217;s now see how a container can be used to run a web app: in particular, the Node.js sample app you&#8217;ve been using
+<p>Hit Ctrl-D once more to exit the container and get back to your host OS.</p>
 
-throughout this blog post series. Hit Ctrl-D to exit the container, and back on your host OS, create a
+</div>
 
-new folder called <em>docker</em>:</p>
+<div class="paragraph">
+
+<p>Now that you&#8217;ve seen the basics of Docker, let&#8217;s look at what it takes to create your own Docker images, and use them
+
+to run web apps.</p>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+<h3 id="_example_create_a_docker_image_for_a_node_js_app">Example: Create a Docker Image for a Node.js app</h3>
+
+<div class="paragraph">
+
+<p>Let&#8217;s see how a container can be used to run a web app: in particular, the Node.js sample app you&#8217;ve been using
+
+throughout this blog post series. Create a new folder called <em>docker</em>:</p>
 
 </div>
 
@@ -5296,7 +5346,7 @@ $ cd ch3/docker</pre>
 
 <div class="content">
 
-<pre class="highlight"><code class="language-dockerfile" data-lang="dockerfile"># <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-docker" data-lang="docker"># <b class="conum">(1)</b>
 
 FROM node:21.7
 
@@ -5596,17 +5646,9 @@ automatically clean up when you exit the container.</p>
 
 <p>Kubernetes is a container orchestration tool, which means it&#8217;s a platform for running and managing containers
 
-on your servers, including scheduling (picking which servers should run a given container workload), auto healing
+on your servers, including scheduling, auto healing, auto scaling, load balancing, and much more. Under the hood,
 
-(automatically redeploying containers that failed), auto scaling (scaling the number of containers up and down in
-
-response to load), load balancing (distributing traffic across containers), and much more.</p>
-
-</div>
-
-<div class="paragraph">
-
-<p>Under the hood, Kubernetes consists of two main pieces, as shown in <a href="04.html#kubernetes_architecture">Figure 27</a>:</p>
+Kubernetes consists of two main pieces, as shown in <a href="04.html#kubernetes_architecture">Figure 26</a>:</p>
 
 </div>
 
@@ -5618,7 +5660,7 @@ response to load), load balancing (distributing traffic across containers), and 
 
 </div>
 
-<div class="title">Figure 27. The Kubernetes architecture consists of a control plane and worker nodes</div>
+<div class="title">Figure 26. The Kubernetes architecture consists of a control plane and worker nodes</div>
 
 </div>
 
@@ -5672,7 +5714,7 @@ the ability to fire up a Kubernetes cluster locally with just a few clicks.</p>
 
 <p>If you open Docker Desktop&#8217;s preferences on your computer, you should see Kubernetes in the nav, as shown in
 
-<a href="04.html#docker_desktop_k8s">Figure 28</a>.</p>
+<a href="04.html#docker_desktop_k8s">Figure 27</a>.</p>
 
 </div>
 
@@ -5684,7 +5726,7 @@ the ability to fire up a Kubernetes cluster locally with just a few clicks.</p>
 
 </div>
 
-<div class="title">Figure 28. Enable Kubernetes on Docker Desktop.</div>
+<div class="title">Figure 27. Enable Kubernetes on Docker Desktop.</div>
 
 </div>
 
@@ -6254,7 +6296,7 @@ Service to "sample-app-loadbalancer."</p>
 
 <li>
 
-<p>Configure the Service to be a load balancer.<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="13-footnotes.html#_footnotedef_17" title="View footnote.">17</a>]</sup> Under the hood, depending on what sort of Kubernetes cluster you&#8217;re running, and how you configure
+<p>Configure the Service to be a load balancer.<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="13-footnotes.html#_footnotedef_18" title="View footnote.">18</a>]</sup> Under the hood, depending on what sort of Kubernetes cluster you&#8217;re running, and how you configure
 
 that cluster, the actual type of load balancer you get will be different: for example, if you run this code in AWS,
 
@@ -6638,7 +6680,7 @@ Fundamentals of DevOps!</pre>
 
 <td class="content">
 
-<div class="title">Get your hands dirty: other ways to interact with Kubernetes</div>
+<div class="title">Get your hands dirty</div>
 
 <div class="paragraph">
 
@@ -7294,7 +7336,7 @@ ECR repo that you got from the <code>registry_url</code> output:</p>
 
 CLI, making sure to replace the last argument with the registry URL of your own ECR repo that you got from the
 
-<code>registry_url</code> output::</p>
+<code>registry_url</code> output:</p>
 
 </div>
 
@@ -7450,9 +7492,9 @@ sample-app-deployment-59f5c6cd66-pmjns   1/1     Running   0          1m</pre>
 
 <pre>NAME                     TYPE          EXTERNAL-IP                     PORT(S)
 
-kubernetes               ClusterIP     &lt;none&gt;                          443/TCP
+kubernetes               ClusterIP     &lt;none&gt;                          443
 
-sample-app-loadbalancer  LoadBalancer  xx.us-east-2.elb.amazonaws.com  80:3225/TCP</pre>
+sample-app-loadbalancer  LoadBalancer  xx.us-east-2.elb.amazonaws.com  80:3225</pre>
 
 </div>
 
@@ -7460,7 +7502,7 @@ sample-app-loadbalancer  LoadBalancer  xx.us-east-2.elb.amazonaws.com  80:3225/T
 
 <div class="paragraph">
 
-<p>If you look at the <code>EXTERNAL-IP</code> for <code>sample-app-loadbalancer</code>, you should see the domain name of an AWS ELB! Open this
+<p>If you look at the <code>EXTERNAL-IP</code> for <code>sample-app-loadbalancer</code>, you should see the domain name of an AWS ELB. Open this
 
 URL up in a web browser or using <code>curl</code>:</p>
 
@@ -7742,7 +7784,7 @@ extremely quickly onto any server that has spare resources. That said, most of t
 
 cloud providers, but they do pass some of those cost savings down to the end-user too, offering serverless at
 
-incredibly low prices.<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="13-footnotes.html#_footnotedef_18" title="View footnote.">18</a>]</sup></p>
+incredibly low prices.<sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="13-footnotes.html#_footnotedef_19" title="View footnote.">19</a>]</sup></p>
 
 </dd>
 
@@ -7766,21 +7808,83 @@ most serverless providers can <em>scale to zero</em>, which means you pay nothin
 
 <div class="paragraph">
 
-<p>While FaaS has some major benefits, it also typically comes with a number of limitations: for example, there are
+<p>While FaaS has some major benefits, it also typically comes with a number of limitations:</p>
 
-often limits on deployment package size, how long your functions can run for, disk usage, event payload size, response
+</div>
 
-payload size, maximum concurrency, lack of SSH access (for debugging), and so on. Also, serverless often struggles with
+<div class="dlist">
 
-<em>cold starts</em>, where on the first run, or the first run after a period of idleness, the serverless provider needs
+<dl>
 
-to download your deployment package and run it, which can take up to several seconds, which for some use cases, such as
+<dt class="hdlist1">Size limits</dt>
 
-responding to live HTTP requests, is unacceptably slow. FaaS also struggles with use cases that require long-running
+<dd>
 
-connections, such as database connection pools or WebSockets: there are solutions, but they are typically considerably
+<p>There are usually limits on deployment package size, event payload size, and response payload size.</p>
 
-more complicated than using long-running connections with other orchestration approaches.</p>
+</dd>
+
+<dt class="hdlist1">Time limits</dt>
+
+<dd>
+
+<p>There is usually a maximum amount of time that your functions can run for (e.g., 15 minutes with AWS Lambda).</p>
+
+</dd>
+
+<dt class="hdlist1">Disk space</dt>
+
+<dd>
+
+<p>You typically only have a small amount of storage available locally, and it&#8217;s usually ephemeral, so you can&#8217;t store
+
+anything permanent on it.</p>
+
+</dd>
+
+<dt class="hdlist1">Performance</dt>
+
+<dd>
+
+<p>Since the servers are hidden from you, you have very little control over the hardware that you&#8217;re using, which can
+
+make performance tuning difficult.</p>
+
+</dd>
+
+<dt class="hdlist1">Debugging</dt>
+
+<dd>
+
+<p>You usually can&#8217;t connect to the servers directly (e.g. via SSH), which can make debugging difficult.</p>
+
+</dd>
+
+<dt class="hdlist1">Cold starts</dt>
+
+<dd>
+
+<p>Serverless often struggles with <em>cold starts</em>, where on the first run, or the first run after a period of idleness,
+
+the serverless provider needs to download your deployment package and run it, which can take up to several seconds.
+
+For some use cases, such as responding to live HTTP requests, a delay of several seconds is unacceptably slow.</p>
+
+</dd>
+
+<dt class="hdlist1">Long-running connections</dt>
+
+<dd>
+
+<p>Use cases such as database connection pools and WebSockets are typically more complicated with FaaS. For example,
+
+with AWS Lambda, if you want a database connection pool, you have to run an entirely separate service called the
+
+<a href="https://aws.amazon.com/rds/proxy/">Amazon RDS Proxy</a>.</p>
+
+</dd>
+
+</dl>
 
 </div>
 
@@ -7962,12 +8066,6 @@ $ cd ch3/tofu/live/lambda-sample</pre>
 
 
 
-module "function" {
-
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
-
-
-
   name = "lambda-sample"         # <b class="conum">(1)</b>
 
 
@@ -7991,6 +8089,12 @@ module "function" {
     NODE_ENV = "production"
 
   }
+
+
+
+  # ... (other params omitted) ...
+
+
 
 }</code></pre>
 
@@ -8028,9 +8132,11 @@ up into a deployment package. <a href="04.html#example_lambda_node_src">Example 
 
 <li>
 
-<p><code>runtime</code>: The runtime used by this function. AWS Lambda supports runtimes such as Node.js, Python, Java, Ruby,
+<p><code>runtime</code>: The runtime used by this function. AWS Lambda supports
 
-and .NET, as well as the ability to create custom runtimes for all other languages.<sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="13-footnotes.html#_footnotedef_19" title="View footnote.">19</a>]</sup></p>
+<a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">several different runtimes</a>, including Node.js,
+
+Python, Java, Ruby, and .NET, as well as the ability to create custom runtimes for all other languages.</p>
 
 </li>
 
@@ -8136,7 +8242,7 @@ $ tofu apply</pre>
 
 <a href="https://console.aws.amazon.com/lambda/home">Lambda console</a> in your browser, click on the function called
 
-"sample-app-lambda," and you should see your function and the handler code, as shown in <a href="04.html#lambda_console">Figure 29</a>:</p>
+"sample-app-lambda," and you should see your function and the handler code, as shown in <a href="04.html#lambda_console">Figure 28</a>:</p>
 
 </div>
 
@@ -8148,7 +8254,7 @@ $ tofu apply</pre>
 
 </div>
 
-<div class="title">Figure 29. The Lambda console shows your newly created function</div>
+<div class="title">Figure 28. The Lambda console shows your newly created function</div>
 
 </div>
 
@@ -8160,7 +8266,7 @@ blue Test button. The console will pop up a box where you can enter test data in
 
 as the <code>event</code> object; leave everything at its default value and and click the Invoke button. That should run your
 
-function and show you log output that looks similar to <a href="04.html#lambda_test_event">Figure 30</a>:</p>
+function and show you log output that looks similar to <a href="04.html#lambda_test_event">Figure 29</a>:</p>
 
 </div>
 
@@ -8172,7 +8278,7 @@ function and show you log output that looks similar to <a href="04.html#lambda_t
 
 </div>
 
-<div class="title">Figure 30. The output from manually triggering the Lambda function with a test event</div>
+<div class="title">Figure 29. The output from manually triggering the Lambda function with a test event</div>
 
 </div>
 
@@ -8214,11 +8320,11 @@ event-driven systems and background processing jobs.</p>
 
 <p>You can also configure AWS to trigger a Lambda function each time you receive an HTTP request in
 
-<a href="https://aws.amazon.com/api-gateway/">API Gateway</a>, which is a managed service for creating APIs. You can use API Gateway
+<a href="https://aws.amazon.com/api-gateway/">API Gateway</a>, which is a managed service you can use to expose an entrypoint for
 
-to expose an entrypoint for your apps, managing routing, authentication, throttling, and so on. You can also
+your apps, managing routing, authentication, throttling, and so on. You can also use API Gateway to create serverless
 
-use API Gateway to create serverless web apps.</p>
+web apps.</p>
 
 </div>
 
@@ -8244,7 +8350,21 @@ a version of API Gateway designed for simple HTTP APIs, that knows how to trigge
 
 <div class="content">
 
-<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "gateway" {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "function" {
+
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
+
+
+
+  # ... (other params omitted) ...
+
+
+
+}
+
+
+
+module "gateway" {
 
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
 
@@ -8386,7 +8506,9 @@ api_endpoint = "https://iome6ldq7i.execute-api.us-east-2.amazonaws.com"</pre>
 
 your Lambda function! As load goes up and down, AWS will automatically scale your Lambda functions up and down, and
 
-API Gateway will automatically distribute traffic across these functions.</p>
+API Gateway will automatically distribute traffic across these functions. And when there&#8217;s no load, your Lambda
+
+function will automatically scale to zero, so it won&#8217;t cost you a cent.</p>
 
 </div>
 
@@ -8478,7 +8600,7 @@ in <a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <td class="content">
 
-<div class="title">Get your hands dirty: other tools for serverless web apps</div>
+<div class="title">Get your hands dirty</div>
 
 <div class="paragraph">
 
@@ -8550,7 +8672,7 @@ ensures that your account doesn&#8217;t start accumulating any unwanted charges.
 
 <p>You&#8217;ve now seen the most common approaches to orchestration: server orchestration, VM orchestration, container
 
-orchestration, and serverless orchestration. <a href="04.html#orchestration_core_problems_comparison">Table 5</a> shows how these orchestration
+orchestration, and serverless orchestration. <a href="04.html#orchestration_core_problems_comparison">Table 6</a> shows how these orchestration
 
 approaches compare in their ability to solve the core orchestration problems introduced in the beginning of the
 
@@ -8596,7 +8718,7 @@ variation within a category inevitably gets lost.</p>
 
 <table id="orchestration_core_problems_comparison" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 5. How orchestration approaches compare in terms of the core orchestration problems</caption>
+<caption class="title">Table 6. How orchestration approaches compare in terms of the core orchestration problems</caption>
 
 <colgroup>
 
@@ -8688,7 +8810,11 @@ variation within a category inevitably gets lost.</p>
 
 <p class="tableblock"><strong>Strong support</strong></p>
 
-<p class="tableblock">Multiple strategies: e.g., blue-green, canary, traffic shifting.<sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="13-footnotes.html#_footnotedef_21" title="View footnote.">21</a>]</sup></p></td>
+<p class="tableblock">Multiple strategies: e.g.,
+
+<a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html">Lambda
+
+supports blue-green, canary, traffic shifting</a>.</p></td>
 
 </tr>
 
@@ -8784,7 +8910,7 @@ variation within a category inevitably gets lost.</p>
 
 <p class="tableblock">E.g., AWS Lambda handles scaling for you, including scale to zero, without you having to think about it at
 
-all.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="13-footnotes.html#_footnotedef_22" title="View footnote.">22</a>]</sup></p></td>
+all.<sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="13-footnotes.html#_footnotedef_21" title="View footnote.">21</a>]</sup></p></td>
 
 </tr>
 
@@ -8808,9 +8934,9 @@ all.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="13-foo
 
 <p class="tableblock"><strong>Supported</strong></p>
 
-<p class="tableblock">E.g., Kubernetes replaces nodes that crash or pods that fail any one of a variety of health
+<p class="tableblock">E.g., Kubernetes automatically replaces nodes that crash or pods that fail any one of a variety of health checks (known
 
-checks.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-footnotes.html#_footnotedef_23" title="View footnote.">23</a>]</sup></p></td>
+as <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">probes</a>).</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Strong support"></span></p>
 
@@ -8948,9 +9074,11 @@ secrets from AWS Secrets Manager</a>.</p></td>
 
 <p class="tableblock"><strong>Strong support</strong></p>
 
-<p class="tableblock">E.g., Use a Kubernetes Service to expose your app on a private IP within the cluster, and then discover IPs
+<p class="tableblock">E.g., Use a Kubernetes Service to expose your app on a private IP within the cluster, and then
 
-using environment variables or DNS.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup></p></td>
+<a href="https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services">discover IPs using environment
+
+variables or DNS</a>.</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Strong support"></span></p>
 
@@ -8958,7 +9086,7 @@ using environment variables or DNS.<sup class="footnote">[<a id="_footnoteref_24
 
 <p class="tableblock">E.g., Lambda functions can trigger other Lambda functions either directly via API calls or indirectly via
 
-events.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-footnotes.html#_footnotedef_25" title="View footnote.">25</a>]</sup></p></td>
+events.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="13-footnotes.html#_footnotedef_22" title="View footnote.">22</a>]</sup></p></td>
 
 </tr>
 
@@ -8976,7 +9104,7 @@ events.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-
 
 <p class="tableblock"><strong>Supported</strong></p>
 
-<p class="tableblock"><em>Ephemeral</em> disks are typically supported, but <em>permanent disks</em> have to be managed manually.<sup class="footnote">[<a id="_footnoteref_26" class="footnote" href="13-footnotes.html#_footnotedef_26" title="View footnote.">26</a>]</sup></p></td>
+<p class="tableblock"><em>Ephemeral</em> disks are typically supported, but <em>permanent disks</em> have to be managed manually.<sup class="footnote">[<a id="_footnoteref_23" class="footnote" href="13-footnotes.html#_footnotedef_23" title="View footnote.">23</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Strong support"></span></p>
 
@@ -9006,7 +9134,7 @@ events.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-
 
 that they varied across a number of other dimensions, such as speed, ease of learning, and so on.
 
-<a href="04.html#orchestration_attributes_comparison">Table 6</a> shows how the different orchestration approaches compare across these
+<a href="04.html#orchestration_attributes_comparison">Table 7</a> shows how the different orchestration approaches compare across these
 
 dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</em>:</p>
 
@@ -9014,7 +9142,7 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <table id="orchestration_attributes_comparison" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 6. How orchestration approaches compare in terms of core orchestration attributes</caption>
+<caption class="title">Table 7. How orchestration approaches compare in terms of core orchestration attributes</caption>
 
 <colgroup>
 
@@ -9054,11 +9182,11 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deployment speed</p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Moderate"></span></p>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Weak"></span></p>
 
-<p class="tableblock"><strong>Moderate</strong></p>
+<p class="tableblock"><strong>Weak</strong></p>
 
-<p class="tableblock">Simple code changes: 1-5 minutes. Major dependency or OS upgrades: 5-60 minutes.</p></td>
+<p class="tableblock">Simple code changes: 5-30 minutes. Major dependency or OS upgrades: 30-60 minutes.</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Moderate"></span></p>
 
@@ -9088,7 +9216,9 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <p class="tableblock"><strong>Weak</strong></p>
 
-<p class="tableblock">You have to maintain the servers, the OS and tools on each server, and the orchestration tool itself.<sup class="footnote">[<a id="_footnoteref_27" class="footnote" href="13-footnotes.html#_footnotedef_27" title="View footnote.">27</a>]</sup></p></td>
+<p class="tableblock">You have to maintain the servers, the OS and tools on each server, and the orchestration tool itself (e.g., Chef
+
+servers and agents).</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Moderate"></span></p>
 
@@ -9100,9 +9230,9 @@ dimensions, which I&#8217;ll refer to as the <em>core orchestration attributes</
 
 <p class="tableblock"><strong>Weak</strong></p>
 
-<p class="tableblock">You have to maintain the control plane, worker nodes, the OS and tools in each Docker image, and the orchestration tool
+<p class="tableblock">You have to maintain the servers, the OS and tools on each server and Docker image, and the orchestration tool itself
 
-itself.<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup></p></td>
+(e.g., quarterly Kubernetes upgrades).</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very strong"></span></p>
 
@@ -9170,7 +9300,7 @@ to learn (a few weeks).</p></td>
 
 <p class="tableblock"><strong>Very strong</strong></p>
 
-<p class="tableblock">It&#8217;s very common to run serverless apps in your local dev environment.<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup></p></td>
+<p class="tableblock">It&#8217;s very common to run serverless apps in your local dev environment.</p></td>
 
 </tr>
 
@@ -9220,7 +9350,7 @@ maturity.</p></td>
 
 <p class="tableblock">Full access to the servers and no extra layers of abstraction makes debugging easier, but mutable infrastructure
 
-practices make debugging harder.<sup class="footnote">[<a id="_footnoteref_30" class="footnote" href="13-footnotes.html#_footnotedef_30" title="View footnote.">30</a>]</sup></p></td>
+practices (and configuration drift) make debugging harder.</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-4-of-4.png" alt="Very strong"></span></p>
 
@@ -9232,9 +9362,9 @@ practices make debugging harder.<sup class="footnote">[<a id="_footnoteref_30" c
 
 <p class="tableblock"><strong>Weak</strong></p>
 
-<p class="tableblock">Full access to the servers, sometimes full access to the containers<sup class="footnote">[<a id="_footnoteref_31" class="footnote" href="13-footnotes.html#_footnotedef_31" title="View footnote.">31</a>]</sup>, and immutable container images make debugging easier, but multiple layers of abstraction, and
+<p class="tableblock">Full access to the servers and immutable container images make debugging easier, but multiple layers of abstraction,
 
-the complexity of orchestration tools make debugging challenging.</p></td>
+and the complexity of orchestration tools make debugging challenging.</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-1-of-4.png" alt="Weak"></span></p>
 
@@ -9270,7 +9400,7 @@ the complexity of orchestration tools make debugging challenging.</p></td>
 
 <p class="tableblock"><strong>Weak</strong></p>
 
-<p class="tableblock">Limits on runtimes and numerous hoops to jump through for long-running connections.<sup class="footnote">[<a id="_footnoteref_32" class="footnote" href="13-footnotes.html#_footnotedef_32" title="View footnote.">32</a>]</sup></p></td>
+<p class="tableblock">Limits on runtimes and numerous hoops to jump through for long-running connections.</p></td>
 
 </tr>
 
@@ -9316,9 +9446,9 @@ challenging.</p></td>
 
 <div class="paragraph">
 
-<p>I hope that next time you need to deploy an app, you can use <a href="04.html#orchestration_core_problems_comparison">Table 5</a> and
+<p>I hope that next time you need to deploy an app, you can use <a href="04.html#orchestration_core_problems_comparison">Table 6</a> and
 
-<a href="04.html#orchestration_attributes_comparison">Table 6</a> to pick the right tool for the job.</p>
+<a href="04.html#orchestration_attributes_comparison">Table 7</a> to pick the right tool for the job.</p>
 
 </div>
 
@@ -9433,7 +9563,7 @@ the focus of the next blog post, <a href="05.html#how_to_version_build_test">Par
 
 <div id="footer-text">
 
-Last updated 2024-06-11 13:58:45 -0400
+Last updated 2024-06-11 16:19:51 -0400
 
 </div>
 

@@ -1114,7 +1114,7 @@ delivery (CD). The combination of the two, CI/CD, is a central part of the SDLC 
 
 <p>Imagine you&#8217;re responsible for building the International Space Station (ISS), which consists of dozens of components,
 
-as shown in <a href="06.html#iss">Figure 42</a>.</p>
+as shown in <a href="06.html#iss">Figure 41</a>.</p>
 
 </div>
 
@@ -1126,7 +1126,7 @@ as shown in <a href="06.html#iss">Figure 42</a>.</p>
 
 </div>
 
-<div class="title">Figure 42. International Space Station <sup class="footnote">[<a id="_footnoteref_36" class="footnote" href="13-footnotes.html#_footnotedef_36" title="View footnote.">36</a>]</sup></div>
+<div class="title">Figure 41. International Space Station <sup class="footnote">[<a id="_footnoteref_27" class="footnote" href="13-footnotes.html#_footnotedef_27" title="View footnote.">27</a>]</sup></div>
 
 </div>
 
@@ -1194,7 +1194,7 @@ work in totally isolated <em>feature branches</em> in their version control syst
 
 the very last minute, when a release rolls around, they try to merge all the feature branches together. This process is
 
-known as <em>late integration</em>, and it often leads to disaster, as shown in <a href="06.html#late_integration">Figure 43</a>.</p>
+known as <em>late integration</em>, and it often leads to disaster, as shown in <a href="06.html#late_integration">Figure 42</a>.</p>
 
 </div>
 
@@ -1206,7 +1206,7 @@ known as <em>late integration</em>, and it often leads to disaster, as shown in 
 
 </div>
 
-<div class="title">Figure 43. The huge merge conflicts that you get as a result of late integration</div>
+<div class="title">Figure 42. The huge merge conflicts that you get as a result of late integration</div>
 
 </div>
 
@@ -1288,15 +1288,13 @@ that it might be the only way to scale. LinkedIn moved off of feature branches a
 
 part of Project Inversion, which was essential for scaling the company from roughly 100 developers to over 1,000.
 
-Facebook uses trunk-based development for thousands of
+<a href="https://engineering.fb.com/2018/11/21/developer-tools/predictive-test-selection/">Facebook uses trunk-based development</a>
 
-developers.<sup class="footnote">[<a id="_footnoteref_37" class="footnote" href="13-footnotes.html#_footnotedef_37" title="View footnote.">37</a>]</sup> Google uses
+for thousands of developers. Google uses trunk-based development for tens of thousands of developers, and has shown it
 
-trunk-based development for tens of thousands of developers, and has shown it can scale to 2+ billion lines of code,
+can scale to <a href="https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/">2+
 
-86TB of source data, and around 40,000 commits per
-
-day.<sup class="footnote">[<a id="_footnoteref_38" class="footnote" href="13-footnotes.html#_footnotedef_38" title="View footnote.">38</a>]</sup></p>
+billion lines of code, 86TB of source data, and around 40,000 commits per day</a>.</p>
 
 </div>
 
@@ -1654,7 +1652,7 @@ basis.</p>
 
 many commits, without ever risking breaking the build or releasing unfinished work to users. For example, let&#8217;s say you
 
-have hundreds of modules in your codebase that use Library X, as shown in <a href="06.html#branch_by_abstraction_step_1">Figure 44</a>:</p>
+have hundreds of modules in your codebase that use Library X, as shown in <a href="06.html#branch_by_abstraction_step_1">Figure 43</a>:</p>
 
 </div>
 
@@ -1666,7 +1664,7 @@ have hundreds of modules in your codebase that use Library X, as shown in <a hre
 
 </div>
 
-<div class="title">Figure 44. Library X is used across many modules in your codebase</div>
+<div class="title">Figure 43. Library X is used across many modules in your codebase</div>
 
 </div>
 
@@ -1692,7 +1690,7 @@ interface, a protocol, a class, etc. The important thing is that (a) the abstrac
 
 hood, so there is no change in behavior and (b) it creates a layer of indirection between your modules and Library X,
 
-as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 45</a>:</p>
+as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 44</a>:</p>
 
 </div>
 
@@ -1704,7 +1702,7 @@ as shown in <a href="06.html#branch_by_abstraction_step_2">Figure 45</a>:</p>
 
 </div>
 
-<div class="title">Figure 45. Introduce an abstraction between your modules and Library X</div>
+<div class="title">Figure 44. Introduce an abstraction between your modules and Library X</div>
 
 </div>
 
@@ -1720,7 +1718,7 @@ using the abstraction, and you could even add an automated test that fails if an
 
 <div class="paragraph">
 
-<p>At this point, you can start replacing Library X with Library Y, as shown in <a href="06.html#branch_by_abstraction_step_3">Figure 46</a>:</p>
+<p>At this point, you can start replacing Library X with Library Y, as shown in <a href="06.html#branch_by_abstraction_step_3">Figure 45</a>:</p>
 
 </div>
 
@@ -1732,7 +1730,7 @@ using the abstraction, and you could even add an automated test that fails if an
 
 </div>
 
-<div class="title">Figure 46. Start to incrementally update your modules to use Library Y</div>
+<div class="title">Figure 45. Start to incrementally update your modules to use Library Y</div>
 
 </div>
 
@@ -1744,7 +1742,7 @@ minimize merge conflicts. You could also update your abstraction code to ensure 
 
 get Library Y under the hood by default. Eventually, when you&#8217;re done updating all module usages, you can remove
 
-Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">Figure 47</a>:</p>
+Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">Figure 46</a>:</p>
 
 </div>
 
@@ -1756,7 +1754,7 @@ Library X entirely, as shown in <a href="06.html#branch_by_abstraction_step_4">F
 
 </div>
 
-<div class="title">Figure 47. After you&#8217;ve updated all module usages, you can remove Library X</div>
+<div class="title">Figure 46. After you&#8217;ve updated all module usages, you can remove Library X</div>
 
 </div>
 
@@ -1788,7 +1786,7 @@ you&#8217;ve been using throughout this blog post series, and to update it to re
 
 interesting than the "Hello, World!" text. However, it&#8217;s going to take you several months to implement this new home
 
-page. The idea with a feature toggle is to add a conditional to your code as shown in <a href="06.html#feature_toggle_example">Example 88</a> (you
+page. The idea with a feature toggle is to add a conditional to your code as shown in <a href="06.html#feature_toggle_example">Example 89</a> (you
 
 don&#8217;t need to actually make these code changes; this is just for demonstration purposes):</p>
 
@@ -1796,7 +1794,7 @@ don&#8217;t need to actually make these code changes; this is just for demonstra
 
 <div id="feature_toggle_example" class="exampleblock">
 
-<div class="title">Example 88. An example of using a feature toggle to pick between the new home page and the original "Hello, World!" text (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/sample-app-feature-toggle/app.js">ch5/sample-app/app.js</a></em>)</div>
+<div class="title">Example 89. An example of using a feature toggle to pick between the new home page and the original "Hello, World!" text (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/sample-app-feature-toggle/app.js">ch5/sample-app/app.js</a></em>)</div>
 
 <div class="content">
 
@@ -2060,13 +2058,13 @@ $ cd .github/workflows</pre>
 
 <p>Inside the <em>.github/workflows</em> folder, create a file called <em>app-tests.yml</em>, with the contents shown in
 
-<a href="06.html#gh_actions_workflow_run_app_tests">Example 89</a>:</p>
+<a href="06.html#gh_actions_workflow_run_app_tests">Example 90</a>:</p>
 
 </div>
 
 <div id="gh_actions_workflow_run_app_tests" class="exampleblock">
 
-<div class="title">Example 89. A GitHub Actions workflow to run the sample app automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/app-tests.yml">.github/workflows/app-tests.yml</a></em>)</div>
+<div class="title">Example 90. A GitHub Actions workflow to run the sample app automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/app-tests.yml">.github/workflows/app-tests.yml</a></em>)</div>
 
 <div class="content">
 
@@ -2162,7 +2160,7 @@ jobs.</p>
 
 configuration (2 CPUs and 7GB of RAM, as of 2024) and a software configuration that has Ubuntu and a bunch of
 
-commonly used software engineering tools (including Node.js) pre-installed.<sup class="footnote">[<a id="_footnoteref_39" class="footnote" href="13-footnotes.html#_footnotedef_39" title="View footnote.">39</a>]</sup></p>
+commonly used software engineering tools (including Node.js) pre-installed.<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup></p>
 
 </li>
 
@@ -2250,13 +2248,13 @@ $ git push origin main</pre>
 
 <p>Make a change to the sample app to intentionally return some text other than "Hello, World!", as shown in
 
-<a href="06.html#sample_app_alternate_text">Example 90</a>:</p>
+<a href="06.html#sample_app_alternate_text">Example 91</a>:</p>
 
 </div>
 
 <div id="sample_app_alternate_text" class="exampleblock">
 
-<div class="title">Example 90. Change the sample app to return a different response (<em>ch5/sample-app/app.js</em>)</div>
+<div class="title">Example 91. Change the sample app to return a different response (<em>ch5/sample-app/app.js</em>)</div>
 
 <div class="content">
 
@@ -2300,7 +2298,7 @@ $ git push origin test-workflow</pre>
 
 your browser, fill out a title and description, and click "Create pull request." You should get a page that looks
 
-something like <a href="06.html#pull_request_tests">Figure 48</a>:</p>
+something like <a href="06.html#pull_request_tests">Figure 47</a>:</p>
 
 </div>
 
@@ -2312,7 +2310,7 @@ something like <a href="06.html#pull_request_tests">Figure 48</a>:</p>
 
 </div>
 
-<div class="title">Figure 48. Automated tests running in a pull request</div>
+<div class="title">Figure 47. Automated tests running in a pull request</div>
 
 </div>
 
@@ -2322,7 +2320,7 @@ something like <a href="06.html#pull_request_tests">Figure 48</a>:</p>
 
 there&#8217;s an error. Click the Details link to the right of the workflow to see what went wrong. You should get a page
 
-that looks like <a href="06.html#gh_actions_test_failure">Figure 49</a>:</p>
+that looks like <a href="06.html#gh_actions_test_failure">Figure 48</a>:</p>
 
 </div>
 
@@ -2334,7 +2332,7 @@ that looks like <a href="06.html#gh_actions_test_failure">Figure 49</a>:</p>
 
 </div>
 
-<div class="title">Figure 49. Looking into the cause of the test failure</div>
+<div class="title">Figure 48. Looking into the cause of the test failure</div>
 
 </div>
 
@@ -2342,13 +2340,13 @@ that looks like <a href="06.html#gh_actions_test_failure">Figure 49</a>:</p>
 
 <p>Aha! The automated test is still expecting the response text to be "Hello, World!" To fix this issue, update
 
-<em>app.test.js</em> to expect "Fundamentals of DevOps!" as a response, as shown in <a href="06.html#sample_app_test_update">Example 91</a>:</p>
+<em>app.test.js</em> to expect "Fundamentals of DevOps!" as a response, as shown in <a href="06.html#sample_app_test_update">Example 92</a>:</p>
 
 </div>
 
 <div id="sample_app_test_update" class="exampleblock">
 
-<div class="title">Example 91. Updated the automated test to expect the new response text (<em>ch5/sample-app/app.test.js</em>)</div>
+<div class="title">Example 92. Updated the automated test to expect the new response text (<em>ch5/sample-app/app.test.js</em>)</div>
 
 <div class="content">
 
@@ -2390,7 +2388,7 @@ $ git push origin test-workflow</pre>
 
 <p>This will automatically update your open PR, and automatically re-run your tests. After a few seconds, if you go back
 
-to your browser and look at the PR, you should see the tests passing, as shown in <a href="06.html#gh_actions_test_passing">Figure 50</a>:</p>
+to your browser and look at the PR, you should see the tests passing, as shown in <a href="06.html#gh_actions_test_passing">Figure 49</a>:</p>
 
 </div>
 
@@ -2402,7 +2400,7 @@ to your browser and look at the PR, you should see the tests passing, as shown i
 
 </div>
 
-<div class="title">Figure 50. The automated tests should now be passing</div>
+<div class="title">Figure 49. The automated tests should now be passing</div>
 
 </div>
 
@@ -2718,6 +2716,14 @@ roles, subject to certain conditions: e.g., you can only use this IAM role from 
 
 </div>
 
+<div class="paragraph">
+
+<p>Once you&#8217;ve set that up, <a href="06.html#oidc_github_diagram">Figure 50</a> shows the workflow for using OIDC to authenticate from GitHub to
+
+AWS:</p>
+
+</div>
+
 <div id="oidc_github_diagram" class="imageblock">
 
 <div class="content">
@@ -2726,15 +2732,13 @@ roles, subject to certain conditions: e.g., you can only use this IAM role from 
 
 </div>
 
-<div class="title">Figure 51. With OIDC, you configure AWS to trust an IdP such as GitHub, which allows that IdP to exchange an OIDC token for short-lived AWS credentials</div>
+<div class="title">Figure 50. With OIDC, you configure AWS to trust an IdP such as GitHub, which allows that IdP to exchange an OIDC token for short-lived AWS credentials</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>Once you&#8217;ve set that up, <a href="06.html#oidc_github_diagram">Figure 51</a> shows the workflow for using OIDC to authenticate from GitHub to
-
-AWS:</p>
+<p>Here are the steps in the workflow:</p>
 
 </div>
 
@@ -2798,6 +2802,12 @@ AWS credentials to authenticate to AWS and make changes in your AWS account.</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>Since OIDC is a more secure option than machine user credentials, let&#8217;s try it out in the next section.</p>
+
+</div>
+
 </div>
 
 </div>
@@ -2808,13 +2818,11 @@ AWS credentials to authenticate to AWS and make changes in your AWS account.</p>
 
 <div class="paragraph">
 
-<p>Since OIDC is a more secure option than machine user credentials, let&#8217;s try it out. You&#8217;re going to set up an OIDC
+<p>Let&#8217;s set up an OIDC provider and IAM roles so that the automated tests you wrote for the <code>lambda-sample</code> OpenTofu
 
-provider and IAM roles so that the automated tests you wrote for the <code>lambda-sample</code> OpenTofu module in
+module in <a href="05.html#how_to_version_build_test">Part 4</a> can authenticate to AWS from GitHub Actions. The first step is to set up the
 
-<a href="05.html#how_to_version_build_test">Part 4</a> can authenticate to AWS from GitHub Actions. The first step is to set up the OIDC
-
-provider. The blog post series&#8217;s <a href="https://github.com/brikis98/devops-book">sample code repo</a> includes an OpenTofu module called
+OIDC provider. The blog post series&#8217;s <a href="https://github.com/brikis98/devops-book">sample code repo</a> includes an OpenTofu module called
 
 <code>github-aws-oidc</code> in the <em>ch5/tofu/modules/github-aws-oidc</em> folder that you can use to configure GitHub as an OIDC
 
@@ -2864,13 +2872,13 @@ $ cd ch5/tofu/live/ci-cd-permissions</pre>
 
 <div class="paragraph">
 
-<p>In the <em>ci-cd-permissions</em> folder, create <em>main.tf</em> with the initial contents shown in <a href="06.html#tofu_oidc_provider">Example 92</a>:</p>
+<p>In the <em>ci-cd-permissions</em> folder, create <em>main.tf</em> with the initial contents shown in <a href="06.html#tofu_oidc_provider">Example 93</a>:</p>
 
 </div>
 
 <div id="tofu_oidc_provider" class="exampleblock">
 
-<div class="title">Example 92. Configure the <code>github-aws-oidc</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
+<div class="title">Example 93. Configure the <code>github-aws-oidc</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -2936,7 +2944,7 @@ OIDC) for testing. The blog post series&#8217;s sample code repo has a module fo
 
 <code>gh-actions-iam-roles</code>, it lives in the <em>ch5/tofu/modules/gh-actions-iam-roles</em> folder, and it knows how to create
 
-several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_role_tests">Example 93</a> shows how to update your
+several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_role_tests">Example 94</a> shows how to update your
 
 <code>ci-cd-permissions</code> module to make use of the <code>gh-actions-iam-roles</code> module:</p>
 
@@ -2944,7 +2952,7 @@ several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_
 
 <div id="tofu_oidc_iam_role_tests" class="exampleblock">
 
-<div class="title">Example 93. Configure the <code>gh-actions-iam-roles</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
+<div class="title">Example 94. Configure the <code>gh-actions-iam-roles</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -3054,13 +3062,13 @@ not anything else.</p>
 
 <p>You should also create a file called <em>outputs.tf</em> that outputs the testing IAM role ARN, as shown in
 
-<a href="06.html#tofu_oidc_iam_role_outputs">Example 94</a>:</p>
+<a href="06.html#tofu_oidc_iam_role_outputs">Example 95</a>:</p>
 
 </div>
 
 <div id="tofu_oidc_iam_role_outputs" class="exampleblock">
 
-<div class="title">Example 94. The output variables for the <code>ci-cd-permissions</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/outputs.tf">ch5/tofu/live/ci-cd-permissions/outputs.tf</a></em>)</div>
+<div class="title">Example 95. The output variables for the <code>ci-cd-permissions</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/outputs.tf">ch5/tofu/live/ci-cd-permissions/outputs.tf</a></em>)</div>
 
 <div class="content">
 
@@ -3190,13 +3198,13 @@ in CI, you&#8217;ll get errors due to name conflicts, as AWS requires Lambda fun
 
 <p>To fix this issue, the first step is to add a <em>variables.tf</em> file to the <code>lambda-sample</code> module with the
 
-contents shown in <a href="06.html#tofu_lambda_variables">Example 95</a>:</p>
+contents shown in <a href="06.html#tofu_lambda_variables">Example 96</a>:</p>
 
 </div>
 
 <div id="tofu_lambda_variables" class="exampleblock">
 
-<div class="title">Example 95. Define an input variable for the <code>lambda-sample</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/variables.tf">ch5/tofu/live/lambda-sample/variables.tf</a></em>)</div>
+<div class="title">Example 96. Define an input variable for the <code>lambda-sample</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/variables.tf">ch5/tofu/live/lambda-sample/variables.tf</a></em>)</div>
 
 <div class="content">
 
@@ -3234,13 +3242,13 @@ but by exposing this input variable, you&#8217;ll be able to override the value 
 
 <div class="paragraph">
 
-<p>Next, update <em>main.tf</em> to use <code>var.name</code> instead of any hard-coded names, as shown in <a href="06.html#tofu_lambda_main_name">Example 96</a>:</p>
+<p>Next, update <em>main.tf</em> to use <code>var.name</code> instead of any hard-coded names, as shown in <a href="06.html#tofu_lambda_main_name">Example 97</a>:</p>
 
 </div>
 
 <div id="tofu_lambda_main_name" class="exampleblock">
 
-<div class="title">Example 96. Update the <code>lambda-sample</code> module to use the <code>name</code> input variable instead of hard-coded names (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/main.tf">ch5/tofu/live/lambda-sample/main.tf</a></em>)</div>
+<div class="title">Example 97. Update the <code>lambda-sample</code> module to use the <code>name</code> input variable instead of hard-coded names (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/main.tf">ch5/tofu/live/lambda-sample/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -3284,13 +3292,13 @@ module "gateway" {
 
 <p>Now you can create a new workflow called <em>infra-tests.yml</em> in <em>.github/workflows</em>, with the initial contents shown in
 
-<a href="06.html#gh_actions_workflow_run_infra_tests">Example 97</a>:</p>
+<a href="06.html#gh_actions_workflow_run_infra_tests">Example 98</a>:</p>
 
 </div>
 
 <div id="gh_actions_workflow_run_infra_tests" class="exampleblock">
 
-<div class="title">Example 97. The first half of a GitHub Actions workflow to run the infrastructure automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/infra-tests.yml">.github/workflows/infra-tests.yml</a></em>)</div>
+<div class="title">Example 98. The first half of a GitHub Actions workflow to run the infrastructure automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/infra-tests.yml">.github/workflows/infra-tests.yml</a></em>)</div>
 
 <div class="content">
 
@@ -3356,13 +3364,13 @@ source workflow to install and run Terrascan, passing it the same parameters as 
 
 <div class="paragraph">
 
-<p><a href="06.html#gh_actions_workflow_run_infra_tests_part_2">Example 98</a> shows the second half of the workflow:</p>
+<p><a href="06.html#gh_actions_workflow_run_infra_tests_part_2">Example 99</a> shows the second half of the workflow:</p>
 
 </div>
 
 <div id="gh_actions_workflow_run_infra_tests_part_2" class="exampleblock">
 
-<div class="title">Example 98. The second half of a GitHub Actions workflow to run the infrastructure automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/infra-tests.yml">.github/workflows/infra-tests.yml</a></em>)</div>
+<div class="title">Example 99. The second half of a GitHub Actions workflow to run the infrastructure automated tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/infra-tests.yml">.github/workflows/infra-tests.yml</a></em>)</div>
 
 <div class="content">
 
@@ -3506,7 +3514,7 @@ the <code>lambda-sample</code> module, which is useful for deployment, but not s
 
 <p>Add, commit, and push all the changes to the <code>opentofu-tests</code> branch, and then open a pull request. You should see
 
-something similar to <a href="06.html#gh_actions_tests_tofu">Figure 52</a>:</p>
+something similar to <a href="06.html#gh_actions_tests_tofu">Figure 51</a>:</p>
 
 </div>
 
@@ -3518,7 +3526,7 @@ something similar to <a href="06.html#gh_actions_tests_tofu">Figure 52</a>:</p>
 
 </div>
 
-<div class="title">Figure 52. A PR showing the sample app unit tests, Terrascan, and OpenTofu tests running</div>
+<div class="title">Figure 51. A PR showing the sample app unit tests, Terrascan, and OpenTofu tests running</div>
 
 </div>
 
@@ -3550,7 +3558,7 @@ correctly, and the tests are passing, merge the PR.</p>
 
 <div class="paragraph">
 
-<p>Here are a few exercises you can try at home to get a better feel for running automated infrastructure tests in CI:</p>
+<p>Here&#8217;s an exercise you can try at home to get a better feel for running automated infrastructure tests in CI:</p>
 
 </div>
 
@@ -3600,7 +3608,7 @@ topic of the next section.</p>
 
 <div class="paragraph">
 
-<p><em>Continuous delivery (CD)</em> is a software development practice which is software development practice where you ensure
+<p><em>Continuous delivery (CD)</em> is a software development practice where you ensure
 
 that you can deploy to production at any time in a manner that is fast, reliable, and sustainable. You could choose to
 
@@ -3658,7 +3666,7 @@ this is yet another place where, if it hurts, you need to do it more often.</p>
 
 <p>To make it possible to deploy more often—and more importantly, to make it possible to deploy any time you want—you
 
-typically need to fulfill several requirements:</p>
+typically need to fulfill two requirements:</p>
 
 </div>
 
@@ -3796,6 +3804,12 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_downtime">Figure 52</a> shows an overview of downtime deployment:</p>
+
+</div>
+
 <div id="deployment_strategy_downtime" class="imageblock">
 
 <div class="content">
@@ -3804,13 +3818,7 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 </div>
 
-<div class="title">Figure 53. Downtime deployment</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_downtime">Figure 53</a>:</p>
+<div class="title">Figure 52. Downtime deployment</div>
 
 </div>
 
@@ -3908,18 +3916,6 @@ persisted across deployments (e.g., any sort of database or distributed data sys
 
 <dl>
 
-<dt class="hdlist1">Avoid when possible</dt>
-
-<dd>
-
-<p>In general, I would <em>not</em> recommend using this approach, as these days, there is wide
-
-support for the zero-downtime deployment strategies discussed in the following sections. The only exception is if
-
-downtime cannot practically be avoided, such as in the next few bullet points.</p>
-
-</dd>
-
 <dt class="hdlist1">Single-replica systems</dt>
 
 <dd>
@@ -3954,6 +3950,14 @@ error-prone than doing it with a brief downtime.</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>With the exceptions in the preceding handful of use cases, I would <em>not</em> recommend using downtime deployments, as
+
+these days, there is wide support for the zero-downtime deployment strategies discussed in the following sections.</p>
+
+</div>
+
 </div>
 
 <div class="sect4">
@@ -3978,6 +3982,12 @@ old versions of the app.</p>
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_rolling_without_replacement">Figure 53</a> shows an overview of rolling deployment without replacement:</p>
+
+</div>
+
 <div id="deployment_strategy_rolling_without_replacement" class="imageblock">
 
 <div class="content">
@@ -3986,13 +3996,7 @@ old versions of the app.</p>
 
 </div>
 
-<div class="title">Figure 54. Rolling deployment without replacement</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_rolling_without_replacement">Figure 54</a>:</p>
+<div class="title">Figure 53. Rolling deployment without replacement</div>
 
 </div>
 
@@ -4100,17 +4104,11 @@ next section, you&#8217;ll see a version of rolling deployment that does work wi
 
 <dl>
 
-<dt class="hdlist1">Deploying stateless apps when blue-green deployment isn&#8217;t available</dt>
+<dt class="hdlist1">Deploying stateless apps</dt>
 
 <dd>
 
-<p>For stateless apps, blue-green deployments,
-
-which you&#8217;ll see a little later in this post, are usually a better option, but not all
-
-systems support them. In those cases, the rolling deployment without replacement, which is widely supported, is
-
-usually your best bet.</p>
+<p>For stateless apps, a rolling deployment without replacement can be an effective option.</p>
 
 </dd>
 
@@ -4121,6 +4119,18 @@ usually your best bet.</p>
 </dd>
 
 </dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>As you&#8217;ll see a little later in this post, blue-green deployments are typically a better
+
+choice for stateless apps. However, relatively few systems support blue-green deployments natively, whereas rolling
+
+deployment without replacement is widely supported (you saw several examples of it in <a href="04.html#how_to_deploy_many_apps">Part 3</a>), so
+
+it&#8217;s often your best bet for stateless apps.</p>
 
 </div>
 
@@ -4134,11 +4144,7 @@ usually your best bet.</p>
 
 <p>This is nearly identical to the rolling deployment in the previous section, except here, you remove the old version
 
-of the app, in batches, <em>before</em> booting up the new version. This is typically useful for stateful apps, where the
-
-number of replicas you can run is fixed, as each replica has a unique set of data on its local hard-drive that needs to
-
-be persisted across the deployment.</p>
+of the app, in batches, <em>before</em> booting up the new version.</p>
 
 </div>
 
@@ -4150,6 +4156,12 @@ be persisted across the deployment.</p>
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_rolling_with_replacement">Figure 54</a> shows an overview of rolling deployment with replacement:</p>
+
+</div>
+
 <div id="deployment_strategy_rolling_with_replacement" class="imageblock">
 
 <div class="content">
@@ -4158,13 +4170,7 @@ be persisted across the deployment.</p>
 
 </div>
 
-<div class="title">Figure 55. Rolling deployment with replacement</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_rolling_with_replacement">Figure 55</a>:</p>
+<div class="title">Figure 54. Rolling deployment with replacement</div>
 
 </div>
 
@@ -4184,7 +4190,7 @@ network-attached hard-drives.</p>
 
 <p>You disconnect one v1 replica from the load balancer, shut down the server, and move its hard drive to a new v2
 
-server (since it&#8217;s a network-attached hard-drive, you do the move through software).<sup class="footnote">[<a id="_footnoteref_40" class="footnote" href="13-footnotes.html#_footnotedef_40" title="View footnote.">40</a>]</sup> Once that new v2 server starts passing health checks, the load balancer starts sending traffic
+server (since it&#8217;s a network-attached hard-drive, you do the move through software).<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup> Once that new v2 server starts passing health checks, the load balancer starts sending traffic
 
 to it.</p>
 
@@ -4290,9 +4296,11 @@ which can be a jarring user experience, or even cause bugs if you&#8217;re not c
 
 <dd>
 
-<p>This strategy allows you to deploy changes to stateful systems (e.g., distributed data
+<p>This strategy allows you to do zero-downtime deployments for stateful systems where each replica has a unique set
 
-stores such as Consul, Elasticsearch, and ZooKeeper) without downtime.</p>
+of data on its local hard-drive that needs to be persisted across the deployment (e.g., distributed data stores
+
+such as Consul, Elasticsearch, and ZooKeeper).</p>
 
 </dd>
 
@@ -4303,6 +4311,14 @@ stores such as Consul, Elasticsearch, and ZooKeeper) without downtime.</p>
 </dd>
 
 </dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>When it comes to stateful apps, rolling deployment with replacement is the gold standard. However, for stateless apps,
+
+blue-green deployment is the gold standard, as discussed in the next section.</p>
 
 </div>
 
@@ -4328,6 +4344,12 @@ instantaneously switch all traffic from the old version (blue) to the new versio
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_blue_green">Figure 55</a> shows an overview of blue-green deployment:</p>
+
+</div>
+
 <div id="deployment_strategy_blue_green" class="imageblock">
 
 <div class="content">
@@ -4336,13 +4358,7 @@ instantaneously switch all traffic from the old version (blue) to the new versio
 
 </div>
 
-<div class="title">Figure 56. Blue-green deployment</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_blue_green">Figure 56</a>:</p>
+<div class="title">Figure 55. Blue-green deployment</div>
 
 </div>
 
@@ -4468,6 +4484,14 @@ new version, so blue-green deployments aren&#8217;t an option (without downtime)
 
 </div>
 
+<div class="paragraph">
+
+<p>All the deployment strategies you&#8217;ve seen so far can be use standalone. Let&#8217;s now turn our attention to some strategies
+
+that are meant to be combined with other strategies, starting with canary deployment.</p>
+
+</div>
+
 </div>
 
 <div class="sect4">
@@ -4506,6 +4530,12 @@ problems, you roll back the deployment before it can cause more damage.</p>
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_canary">Figure 56</a> shows an overview of canary deployment:</p>
+
+</div>
+
 <div id="deployment_strategy_canary" class="imageblock">
 
 <div class="content">
@@ -4514,13 +4544,7 @@ problems, you roll back the deployment before it can cause more damage.</p>
 
 </div>
 
-<div class="title">Figure 57. Canary deployment</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 57</a>:</p>
+<div class="title">Figure 56. Canary deployment</div>
 
 </div>
 
@@ -4640,6 +4664,16 @@ your app at the same time, which can be a jarring user experience, or even cause
 
 </div>
 
+<div class="paragraph">
+
+<p>Canary deployments offer one way to reduce the <em>blast radius</em> if a deployment goes wrong. If you combine canary
+
+deployments with feature toggle deployments, which are discussed in the next section, you can reduce the risk of
+
+deployments even further.</p>
+
+</div>
+
 </div>
 
 <div class="sect4">
@@ -4666,6 +4700,12 @@ with other strategies, such as rolling deployment or blue-green deployment.</p>
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_canary">Figure 56</a> shows an overview of feature toggle deployment:</p>
+
+</div>
+
 <div id="deployment_strategy_feature_toggle" class="imageblock">
 
 <div class="content">
@@ -4674,13 +4714,7 @@ with other strategies, such as rolling deployment or blue-green deployment.</p>
 
 </div>
 
-<div class="title">Figure 58. Feature toggle deployment</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_canary">Figure 57</a>:</p>
+<div class="title">Figure 57. Feature toggle deployment</div>
 
 </div>
 
@@ -4758,11 +4792,7 @@ disable that feature toggle to turn the feature off. In many cases, this gives y
 
 much faster than having to write and deploy new code. It&#8217;s one of the big reasons the companies mentioned in
 
-<a href="02.html#world_class_delivery">Section 1.1</a> can recover from downtime 170 times faster. If you&#8217;re paged at 3AM because of an outage,
-
-the ability to disable the feature causing the outage in a few clicks, so you can all go back to sleep and put in a
-
-more permanent fix during normal working hours, truly feels like a superpower.</p>
+<a href="02.html#world_class_delivery">Section 1.1</a> can recover from downtime 170 times faster.</p>
 
 </dd>
 
@@ -4798,7 +4828,7 @@ ramp back down.</p>
 
 <dd>
 
-<p>One more superpower you get from feature toggles is the ability to do <em>A/B testing</em> (AKA
+<p>Feature toggles also give you the ability to do <em>A/B testing</em> (AKA
 
 <em>bucket testing</em>), where you can compare how different versions of your product perform against each other. For example,
 
@@ -4810,7 +4840,7 @@ the new feature increase engagement? Downloads? Purchases? Referrals? This is ju
 
 control and experimental groups: as long as (a) you randomly assign users to buckets, (b) the only difference between
 
-the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_41" class="footnote" href="13-footnotes.html#_footnotedef_41" title="View footnote.">41</a>]</sup> then you can be reasonably confident that any difference in metrics between the
+the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_30" class="footnote" href="13-footnotes.html#_footnotedef_30" title="View footnote.">30</a>]</sup> then you can be reasonably confident that any difference in metrics between the
 
 buckets is due to the new feature. In other words, you are using data to establish a causal relationship!</p>
 
@@ -4820,7 +4850,7 @@ buckets is due to the new feature. In other words, you are using data to establi
 
 (i.e., you can show users different versions of the product, and you have sufficient traffic to generate statistically
 
-significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_42" class="footnote" href="13-footnotes.html#_footnotedef_42" title="View footnote.">42</a>]</sup></p>
+significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_31" class="footnote" href="13-footnotes.html#_footnotedef_31" title="View footnote.">31</a>]</sup></p>
 
 </div>
 
@@ -4910,6 +4940,18 @@ ability to do A/B testing and data-driven development.</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>If you&#8217;re paged at 3AM because of an outage, the ability to disable the feature causing the outage in a few clicks, so
+
+you can all go back to sleep and put in a more permanent fix during normal working hours, truly feels like a
+
+superpower. Almost all companies that have world-class software delivery processes make heavy use of feature toggles.
+
+Most of these companies also promote changes from environment to environment, as discussed next.</p>
+
+</div>
+
 </div>
 
 <div class="sect4">
@@ -4938,6 +4980,12 @@ production (you&#8217;ll learn more about multiple environments in <a href="09.h
 
 <dd>
 
+<div class="paragraph">
+
+<p><a href="06.html#deployment_strategy_promotion">Figure 58</a> shows an overview of promotion deployment:</p>
+
+</div>
+
 <div id="deployment_strategy_promotion" class="imageblock">
 
 <div class="content">
@@ -4946,13 +4994,7 @@ production (you&#8217;ll learn more about multiple environments in <a href="09.h
 
 </div>
 
-<div class="title">Figure 59. Promotion deployment</div>
-
-</div>
-
-<div class="paragraph">
-
-<p>As shown in <a href="06.html#deployment_strategy_promotion">Figure 59</a>:</p>
+<div class="title">Figure 58. Promotion deployment</div>
 
 </div>
 
@@ -5069,6 +5111,18 @@ deployments.</p>
 </dd>
 
 </dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you use multiple environments as a company (e.g., dev, stage, prod), something you&#8217;ll learn more about in
+
+<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>, you should almost certainly use promotion workflows as well. Moreover, if you
+
+manage your infrastructure as code, promotion workflows are essential for automating infrastructure deployments, as
+
+discussed in the next section.</p>
 
 </div>
 
@@ -5232,6 +5286,14 @@ as a company, you should consider using this approach for all infrastructure dep
 
 </div>
 
+<div class="paragraph">
+
+<p>Now that you&#8217;ve seen all the basic deployment strategies, let&#8217;s turn our attention to how to implement these strategies
+
+as code in the form of deployment pipelines.</p>
+
+</div>
+
 </div>
 
 </div>
@@ -5314,7 +5376,7 @@ you saw earlier in the post (e.g., <a href="https://github.com/features/actions"
 
 that are designed for a specific technology: for example, for OpenTofu and Terraform, you might use the
 
-<a href="https://www.hashicorp.com/cloud">HashiCorp Cloud Platform</a>), <a href="https://www.env0.com/">env0</a>,
+<a href="https://www.hashicorp.com/cloud">HashiCorp Cloud Platform</a>, <a href="https://www.env0.com/">env0</a>,
 
 <a href="https://www.scalr.com/">Scalr</a>, <a href="https://spacelift.io/">Spacelift</a>, or <a href="https://www.runatlantis.io/">Atlantis</a>.</p>
 
@@ -5354,11 +5416,11 @@ After that, you&#8217;ll learn about deployment pipeline best practices that app
 
 <div class="paragraph">
 
-<p>To avoid introducing too many new tools, let&#8217;s stick use GitHub Actions as the deployment server and GitHub Actions
+<p>To avoid introducing too many new tools, let&#8217;s stick to using GitHub Actions as the deployment server and GitHub Actions
 
-YAML workflows as the primary language for defining the pipeline. The goal is to implement the following pipeline for
+YAML workflows as the primary language for defining the pipeline. The goal is to implement the pipeline shown in
 
-the <code>lambda-sample</code> module:</p>
+<a href="06.html#example_deployment_pipeline">Figure 59</a> for the <code>lambda-sample</code> module:</p>
 
 </div>
 
@@ -5370,7 +5432,7 @@ the <code>lambda-sample</code> module:</p>
 
 </div>
 
-<div class="title">Figure 60. The steps of a typical deployment pipeline (left) and the example technologies you&#8217;ll use (right)</div>
+<div class="title">Figure 59. The steps of a typical deployment pipeline (left) and the example technologies you&#8217;ll use (right)</div>
 
 </div>
 
@@ -5648,7 +5710,7 @@ the following reasons:</p>
 
 <p>It&#8217;s designed for 99.999999999% durability and 99.99% availability, which means you don&#8217;t need to worry too much
 
-about data loss or outages.<sup class="footnote">[<a id="_footnoteref_43" class="footnote" href="13-footnotes.html#_footnotedef_43" title="View footnote.">43</a>]</sup></p>
+about data loss or outages.<sup class="footnote">[<a id="_footnoteref_32" class="footnote" href="13-footnotes.html#_footnotedef_32" title="View footnote.">32</a>]</sup></p>
 
 </li>
 
@@ -5674,7 +5736,7 @@ if something goes wrong.</p>
 
 <li>
 
-<p>It&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_44" class="footnote" href="13-footnotes.html#_footnotedef_44" title="View footnote.">44</a>]</sup></p>
+<p>It&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_33" class="footnote" href="13-footnotes.html#_footnotedef_33" title="View footnote.">33</a>]</sup></p>
 
 </li>
 
@@ -5738,7 +5800,7 @@ key-value store. It supports strongly consistent reads and conditional writes, w
 
 for a distributed lock system. Moreover, it&#8217;s completely managed, so you don&#8217;t have any infrastructure to run yourself,
 
-and it&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_45" class="footnote" href="13-footnotes.html#_footnotedef_45" title="View footnote.">45</a>]</sup></p>
+and it&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_34" class="footnote" href="13-footnotes.html#_footnotedef_34" title="View footnote.">34</a>]</sup></p>
 
 </div>
 
@@ -5784,13 +5846,13 @@ $ cd ch5/tofu/live/tofu-state</pre>
 
 <div class="paragraph">
 
-<p>Within the <em>tofu-state</em> folder, create a <em>main.tf</em> file with the contents shown in <a href="06.html#tofu_state_bucket_s3">Example 99</a>:</p>
+<p>Within the <em>tofu-state</em> folder, create a <em>main.tf</em> file with the contents shown in <a href="06.html#tofu_state_bucket_s3">Example 100</a>:</p>
 
 </div>
 
 <div id="tofu_state_bucket_s3" class="exampleblock">
 
-<div class="title">Example 99. Configure the <code>state-bucket</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/tofu-state/main.tf">ch5/tofu/live/tofu-state/main.tf</a></em>)</div>
+<div class="title">Example 100. Configure the <code>state-bucket</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/tofu-state/main.tf">ch5/tofu/live/tofu-state/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -5864,13 +5926,13 @@ $ tofu apply</pre>
 
 update your OpenTofu modules with a <code>backend</code> configuration. As a first step, add a <em>backend.tf</em> file to the
 
-<code>tofu-state</code> module with the contents shown in <a href="06.html#tofu_state_bucket_backend">Example 100</a>:</p>
+<code>tofu-state</code> module with the contents shown in <a href="06.html#tofu_state_bucket_backend">Example 101</a>:</p>
 
 </div>
 
 <div id="tofu_state_bucket_backend" class="exampleblock">
 
-<div class="title">Example 100. OpenTofu code to use an S3 bucket and DynamoDB table as a backend (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/tofu-state/backend.tf">ch5/tofu/live/tofu-state/backend.tf</a></em>)</div>
+<div class="title">Example 101. OpenTofu code to use an S3 bucket and DynamoDB table as a backend (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/tofu-state/backend.tf">ch5/tofu/live/tofu-state/backend.tf</a></em>)</div>
 
 <div class="content">
 
@@ -6028,13 +6090,13 @@ to handle concurrent access.</p>
 
 <p>You should make the same change in the <code>lambda-sample</code> module as well, adding the <em>backend.tf</em> file shown in
 
-<a href="06.html#tofu_state_lambda_backend">Example 101</a>:</p>
+<a href="06.html#tofu_state_lambda_backend">Example 102</a>:</p>
 
 </div>
 
 <div id="tofu_state_lambda_backend" class="exampleblock">
 
-<div class="title">Example 101. Update the <code>lambda-sample</code> module to use S3 as a backend (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/backend.tf">ch5/tofu/live/lambda-sample/backend.tf</a></em>)</div>
+<div class="title">Example 102. Update the <code>lambda-sample</code> module to use S3 as a backend (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/backend.tf">ch5/tofu/live/lambda-sample/backend.tf</a></em>)</div>
 
 <div class="content">
 
@@ -6120,7 +6182,7 @@ overwrite each other&#8217;s state!</p>
 
 <td class="content">
 
-<div class="title">Get your hands dirty: reduce duplication in the <code>backend</code> config</div>
+<div class="title">Get your hands dirty</div>
 
 <div class="paragraph">
 
@@ -6188,6 +6250,14 @@ duplication:</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>Now that you have a remote backend set up, you can move onto the next step, which is setting up IAM roles that will
+
+allow you to do deployments from GitHub Actions.</p>
+
+</div>
+
 </div>
 
 <div class="sect4">
@@ -6242,7 +6312,7 @@ review the code changes—the IAM role you use for <code>plan</code> should be l
 
 <div class="paragraph">
 
-<p>Open up <em>main.tf</em> in the <code>ci-cd-permissions</code> module and add the code shown in <a href="06.html#tofu_oidc_iam_role_plan">Example 102</a> to enable
+<p>Open up <em>main.tf</em> in the <code>ci-cd-permissions</code> module and add the code shown in <a href="06.html#tofu_oidc_iam_role_plan">Example 103</a> to enable
 
 creating IAM roles for both <code>plan</code> and <code>apply</code>:</p>
 
@@ -6250,7 +6320,7 @@ creating IAM roles for both <code>plan</code> and <code>apply</code>:</p>
 
 <div id="tofu_oidc_iam_role_plan" class="exampleblock">
 
-<div class="title">Example 102. Update the <code>ci-cd-permissions</code> module to enable IAM roles for <code>plan</code> and <code>apply</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
+<div class="title">Example 103. Update the <code>ci-cd-permissions</code> module to enable IAM roles for <code>plan</code> and <code>apply</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/main.tf">ch5/tofu/live/ci-cd-permissions/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -6338,13 +6408,13 @@ The <code>plan</code> role will get read-only access to this table; the <code>ap
 
 <p>Next, update <em>outputs.tf</em> with two new output variables that contain the ARNs of the two new IAM roles, as shown in
 
-<a href="06.html#tofu_oidc_iam_role_new_outputs">Example 103</a>:</p>
+<a href="06.html#tofu_oidc_iam_role_new_outputs">Example 104</a>:</p>
 
 </div>
 
 <div id="tofu_oidc_iam_role_new_outputs" class="exampleblock">
 
-<div class="title">Example 103. Add output variables for the two new IAM roles (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/outputs.tf">ch5/tofu/live/ci-cd-permissions/outputs.tf</a></em>)</div>
+<div class="title">Example 104. Add output variables for the two new IAM roles (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/ci-cd-permissions/outputs.tf">ch5/tofu/live/ci-cd-permissions/outputs.tf</a></em>)</div>
 
 <div class="content">
 
@@ -6408,7 +6478,7 @@ deployment pipeline itself!</p>
 
 <div class="paragraph">
 
-<p>Here are a few exercises you can try at home to get a better feel for IAM roles:</p>
+<p>Here are a couple of exercises you can try at home to get a better feel for IAM roles:</p>
 
 </div>
 
@@ -6498,7 +6568,7 @@ will do the following:</p>
 
 <div class="paragraph">
 
-<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_46" class="footnote" href="13-footnotes.html#_footnotedef_46" title="View footnote.">46</a>]</sup> It&#8217;s missing several important aspects, including:</p>
+<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup> It&#8217;s missing several important aspects, including:</p>
 
 </div>
 
@@ -6562,13 +6632,13 @@ on who can edit workflows), and a number of other checks to secure your pipeline
 
 <p>Let&#8217;s first create a workflow for the <code>plan</code> portion. Create a new file called <em>.github/workflows/tofu-plan.yml</em> with
 
-the contents shown in <a href="06.html#tofu_plan_workflow">Example 104</a>:</p>
+the contents shown in <a href="06.html#tofu_plan_workflow">Example 105</a>:</p>
 
 </div>
 
 <div id="tofu_plan_workflow" class="exampleblock">
 
-<div class="title">Example 104. The workflow to run <code>tofu plan</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/tofu-plan.yml">.github/workflows/tofu-plan.yml</a></em>)</div>
+<div class="title">Example 105. The workflow to run <code>tofu plan</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/tofu-plan.yml">.github/workflows/tofu-plan.yml</a></em>)</div>
 
 <div class="content">
 
@@ -6734,13 +6804,13 @@ respectively. This allows your team members to review the code and <code>plan</c
 
 <p>Next, create a workflow for the <code>apply</code> portion in a new file called _.github/workflows/tofu-apply.yml, with the
 
-contents shown in <a href="06.html#tofu_apply_workflow">Example 105</a>:</p>
+contents shown in <a href="06.html#tofu_apply_workflow">Example 106</a>:</p>
 
 </div>
 
 <div id="tofu_apply_workflow" class="exampleblock">
 
-<div class="title">Example 105. The workflow to run <code>tofu apply</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/tofu-apply.yml">.github/workflows/tofu-apply.yml</a></em>)</div>
+<div class="title">Example 106. The workflow to run <code>tofu apply</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/github-actions/tofu-apply.yml">.github/workflows/tofu-apply.yml</a></em>)</div>
 
 <div class="content">
 
@@ -6944,13 +7014,13 @@ $ git push origin main</pre>
 
 <p>Make a change to the <code>lambda-sample</code> module, such as changing the text it returns, as shown in
 
-<a href="06.html#lambda_module_update_response">Example 106</a>:</p>
+<a href="06.html#lambda_module_update_response">Example 107</a>:</p>
 
 </div>
 
 <div id="lambda_module_update_response" class="exampleblock">
 
-<div class="title">Example 106. Update the Lambda function response text (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/src/index.js">ch5/tofu/live/lambda-sample/src/index.js</a></em>)</div>
+<div class="title">Example 107. Update the Lambda function response text (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/src/index.js">ch5/tofu/live/lambda-sample/src/index.js</a></em>)</div>
 
 <div class="content">
 
@@ -6976,13 +7046,13 @@ $ git push origin main</pre>
 
 <p>And make sure to similarly update the assertion in the automated test in <em>deploy.tftest.hcl</em>, as shown in
 
-<a href="06.html#lambda_module_update_test">Example 107</a>:</p>
+<a href="06.html#lambda_module_update_test">Example 108</a>:</p>
 
 </div>
 
 <div id="lambda_module_update_test" class="exampleblock">
 
-<div class="title">Example 107. Update the Lambda module tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/deploy.tftest.hcl">ch5/tofu/live/lambda-sample/deploy.tftest.hcl</a></em>)</div>
+<div class="title">Example 108. Update the Lambda module tests (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch5/tofu/live/lambda-sample/deploy.tftest.hcl">ch5/tofu/live/lambda-sample/deploy.tftest.hcl</a></em>)</div>
 
 <div class="content">
 
@@ -7010,7 +7080,7 @@ $ git push origin main</pre>
 
 <p>Commit both of these changes, push them to the <code>deployment-pipeline-test</code> branch, open a pull request, and you should see
 
-a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">Figure 61</a>:</p>
+a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">Figure 60</a>:</p>
 
 </div>
 
@@ -7022,7 +7092,7 @@ a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">F
 
 </div>
 
-<div class="title">Figure 61. The deployment pipeline running in a GitHub PR</div>
+<div class="title">Figure 60. The deployment pipeline running in a GitHub PR</div>
 
 </div>
 
@@ -7068,7 +7138,7 @@ a page that looks like <a href="06.html#github_pr_deployment_pipeline_running">F
 
 <p>When everything has finished, the PR should automatically be updated with a comment that shows the <code>plan</code> output, as
 
-shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 62</a>:</p>
+shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 61</a>:</p>
 
 </div>
 
@@ -7080,7 +7150,7 @@ shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 62<
 
 </div>
 
-<div class="title">Figure 62. After opening the PR, the deployment pipeline will add a comment with the <code>plan</code> output</div>
+<div class="title">Figure 61. After opening the PR, the deployment pipeline will add a comment with the <code>plan</code> output</div>
 
 </div>
 
@@ -7090,7 +7160,7 @@ shown in <a href="06.html#github_pr_deployment_pipeline_plan_comment">Figure 62<
 
 the <code>apply</code> workflow, and after a minute or two, it should post a comment with the <code>apply</code> output, as shown in
 
-<a href="06.html#github_pr_deployment_pipeline_apply_comment">Figure 63</a>:</p>
+<a href="06.html#github_pr_deployment_pipeline_apply_comment">Figure 62</a>:</p>
 
 </div>
 
@@ -7102,7 +7172,7 @@ the <code>apply</code> workflow, and after a minute or two, it should post a com
 
 </div>
 
-<div class="title">Figure 63. After merging the PR, the deployment pipeline will add a comment with the <code>apply</code> output</div>
+<div class="title">Figure 62. After merging the PR, the deployment pipeline will add a comment with the <code>apply</code> output</div>
 
 </div>
 
@@ -7308,7 +7378,7 @@ deployment servers are a terrifying combination of (a) access to powerful, sensi
 
 every developer in your company, and (c) designed to execute arbitrary code. This is why deployment servers are
 
-particularly tempting targets for malicious actors.<sup class="footnote">[<a id="_footnoteref_47" class="footnote" href="13-footnotes.html#_footnotedef_47" title="View footnote.">47</a>]</sup></p>
+particularly tempting targets for malicious actors.<sup class="footnote">[<a id="_footnoteref_36" class="footnote" href="13-footnotes.html#_footnotedef_36" title="View footnote.">36</a>]</sup></p>
 
 <div class="paragraph">
 
@@ -7432,7 +7502,7 @@ folders (e.g., search team members can only make changes in the <em>search</em> 
 
 workflow definitions themselves, so only a trusted set of admins can update them, and only with PR approval from at
 
-least one other admin.<sup class="footnote">[<a id="_footnoteref_48" class="footnote" href="13-footnotes.html#_footnotedef_48" title="View footnote.">48</a>]</sup></p>
+least one other admin.<sup class="footnote">[<a id="_footnoteref_37" class="footnote" href="13-footnotes.html#_footnotedef_37" title="View footnote.">37</a>]</sup></p>
 
 </dd>
 
@@ -7443,6 +7513,22 @@ least one other admin.<sup class="footnote">[<a id="_footnoteref_48" class="foot
 </dd>
 
 </dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>Setting up a deployment pipeline the right way is a lot of work: this shouldn&#8217;t be too surprising, as what you&#8217;re
+
+effectively trying to do is to capture your company&#8217;s processes, rules, and culture in the form of Bash scripts and
+
+YAML workflow files. That isn&#8217;t easy. But it&#8217;s worth it. Think of it this way: your infrastructure code (which you
+
+learned about in <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>) and your CI / CD pipeline (which you learned about in this
+
+blog post) are essentially your company&#8217;s custom API for shipping software. Get the API right, and as
+
+you saw in <a href="02.html#how_to_deploy_your_app">Part 1</a>, you can accelerate your company by a factor of 10x, 100x, or more.</p>
 
 </div>
 
@@ -7597,7 +7683,7 @@ VPN, SSH, DNS, and more.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-11 13:58:45 -0400
+Last updated 2024-06-11 16:19:51 -0400
 
 </div>
 

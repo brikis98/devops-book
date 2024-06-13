@@ -925,9 +925,9 @@ table ul {
 
 <ul class="nav nav-pills flex-column">
 
-<li class="nav-item"><a href="#_example_git_basics" class="nav-link">Example: Git basics</a></li>
+<li class="nav-item"><a href="#_git_basics" class="nav-link">Git basics</a></li>
 
-<li class="nav-item"><a href="#_example_git_branching_and_merging" class="nav-link">Example: Git branching and merging</a></li>
+<li class="nav-item"><a href="#_git_branching_and_merging" class="nav-link">Git branching and merging</a></li>
 
 </ul>
 
@@ -977,15 +977,27 @@ table ul {
 
 <ul class="nav nav-pills flex-column">
 
-<li class="nav-item"><a href="#_example_add_automated_tests_for_the_node_js_app" class="nav-link">4.3.1. Example: Add Automated Tests for the Node.js App</a></li>
+<li class="nav-item"><a href="#_example_add_automated_tests_for_the_node_js_app" class="nav-link">4.3.1. Example: Add Automated Tests for the Node.js App</a>
+
+<ul class="nav nav-pills flex-column">
+
+<li class="nav-item"><a href="#_add_unit_tests_for_the_node_js_app" class="nav-link">Add unit tests for the Node.js App</a></li>
+
+<li class="nav-item"><a href="#_using_code_coverage_tools_to_improve_unit_tests" class="nav-link">Using code coverage tools to improve unit tests</a></li>
+
+<li class="nav-item"><a href="#_add_end_to_end_tests_for_the_node_js_app" class="nav-link">Add end-to-end tests for the Node.js App</a></li>
+
+</ul>
+
+</li>
 
 <li class="nav-item"><a href="#example_automated_tests_tofu" class="nav-link">4.3.2. Example: Add Automated Tests for the OpenTofu Code</a>
 
 <ul class="nav nav-pills flex-column">
 
-<li class="nav-item"><a href="#_example_add_static_analysis_for_your_opentofu_code_using_terrascan" class="nav-link">Example: add static analysis for your OpenTofu code using Terrascan</a></li>
+<li class="nav-item"><a href="#_add_static_analysis_for_your_opentofu_code_using_terrascan" class="nav-link">Add static analysis for your OpenTofu code using Terrascan</a></li>
 
-<li class="nav-item"><a href="#_example_add_unit_tests_for_your_opentofu_code_using_the_test_command" class="nav-link">Example: add unit tests for your OpenTofu code using the test command</a></li>
+<li class="nav-item"><a href="#_add_unit_tests_for_your_opentofu_code_using_the_test_command" class="nav-link">Add unit tests for your OpenTofu code using the test command</a></li>
 
 </ul>
 
@@ -1124,7 +1136,7 @@ per day.</p>
 
 <div class="paragraph">
 
-<p>Here&#8217;s the outline for this post:</p>
+<p>Here&#8217;s what we&#8217;ll cover in this post:</p>
 
 </div>
 
@@ -1151,6 +1163,12 @@ per day.</p>
 </li>
 
 </ul>
+
+</div>
+
+<div class="paragraph">
+
+<p>Let&#8217;s get started by understanding what version control is, why it&#8217;s important, and the best practices for using it.</p>
 
 </div>
 
@@ -1274,7 +1292,7 @@ until minutes before the deadline, you finally submit a file called something li
 
 <p>Believe it or not, what you&#8217;re doing is essentially version control. You could represent it with the diagram shown in
 
-<a href="05.html#vcs_word">Figure 31</a>:</p>
+<a href="05.html#vcs_word">Figure 30</a>:</p>
 
 </div>
 
@@ -1286,7 +1304,7 @@ until minutes before the deadline, you finally submit a file called something li
 
 </div>
 
-<div class="title">Figure 31. Visualizing your process with Word documents as version control</div>
+<div class="title">Figure 30. Visualizing your process with Word documents as version control</div>
 
 </div>
 
@@ -1422,7 +1440,7 @@ use Git (96% if you look solely at professional developers). So if you&#8217;re 
 
 <div class="sect4">
 
-<h4 id="_example_git_basics">Example: Git basics</h4>
+<h4 id="_git_basics">Git basics</h4>
 
 <div class="paragraph">
 
@@ -1692,7 +1710,7 @@ take a commit ID as an argument. Under the hood, a commit ID is calculated by ta
 
 the commit, all the commit metadata (author, date, and so on), and the ID of the previous commit. Calculating the ID
 
-this way gives Git a lot of its power.<sup class="footnote">[<a id="_footnoteref_33" class="footnote" href="13-footnotes.html#_footnotedef_33" title="View footnote.">33</a>]</sup> Commit IDs are 40 characters long, but in most commands, you can use just the first 7 characters, as that will
+this way gives Git a lot of its power.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup> Commit IDs are 40 characters long, but in most commands, you can use just the first 7 characters, as that will
 
 be unique enough to identify commits in all but the largest repos.</p>
 
@@ -1890,17 +1908,25 @@ piece of code came from, and why that change was made.</p>
 
 </div>
 
-</div>
-
-<div class="sect4">
-
-<h4 id="_example_git_branching_and_merging">Example: Git branching and merging</h4>
-
 <div class="paragraph">
 
 <p>So far, all of your commits have been on the default branch (<code>main</code>), but in real-world usage, you typically do work
 
-across multiple branches. To create a new branch, use the <code>git checkout</code> command:</p>
+across multiple branches, which is the focus of the next section.</p>
+
+</div>
+
+</div>
+
+<div class="sect4">
+
+<h4 id="_git_branching_and_merging">Git branching and merging</h4>
+
+<div class="paragraph">
+
+<p>Let&#8217;s practice creating and merging Git branches. To create a new branch and switch to it, use the <code>git checkout</code>
+
+command with the <code>-b</code> flag:</p>
 
 </div>
 
@@ -2162,9 +2188,9 @@ Fast-forward
 
 else, you now have a way to store revisions of your work that&#8217;s much more effective than <em>essay-v2.doc</em>,
 
-<em>essay-v3.doc</em>, etc. But to see the full power of Git, you&#8217;ll want to use it with others, which is the focus of the
+<em>essay-v3.doc</em>, etc. But to see the full power of Git, you&#8217;ll want to use it with other developers, which is the focus
 
-next section.</p>
+of the next section.</p>
 
 </div>
 
@@ -2504,7 +2530,7 @@ to learn to authenticate to GitHub from your terminal.</p>
 
 <p>Next, <a href="https://github.com/new">create a new repository in GitHub</a>, give it a name, make the repo public, and click
 
-"Create repository," as shown in <a href="05.html#create_new_gh_repo">Figure 32</a>:</p>
+"Create repository," as shown in <a href="05.html#create_new_gh_repo">Figure 31</a>:</p>
 
 </div>
 
@@ -2516,13 +2542,13 @@ to learn to authenticate to GitHub from your terminal.</p>
 
 </div>
 
-<div class="title">Figure 32. Create a new GitHub repo</div>
+<div class="title">Figure 31. Create a new GitHub repo</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>This will create a new, empty repo for you that looks something like <a href="05.html#new_empty_gh_repo">Figure 33</a>:</p>
+<p>This will create a new, empty repo for you that looks something like <a href="05.html#new_empty_gh_repo">Figure 32</a>:</p>
 
 </div>
 
@@ -2534,7 +2560,7 @@ to learn to authenticate to GitHub from your terminal.</p>
 
 </div>
 
-<div class="title">Figure 33. A newly created, empty GitHub repo</div>
+<div class="title">Figure 32. A newly created, empty GitHub repo</div>
 
 </div>
 
@@ -2584,7 +2610,7 @@ named <code>&lt;REMOTE&gt;</code>. So to push your <code>main</code> branch to t
 
 <div class="paragraph">
 
-<p>If you refresh your repo in GitHub, you should now see your code there, as shown in <a href="05.html#gh_repo_with_code">Figure 34</a>:</p>
+<p>If you refresh your repo in GitHub, you should now see your code there, as shown in <a href="05.html#gh_repo_with_code">Figure 33</a>:</p>
 
 </div>
 
@@ -2596,7 +2622,7 @@ named <code>&lt;REMOTE&gt;</code>. So to push your <code>main</code> branch to t
 
 </div>
 
-<div class="title">Figure 34. Your GitHub repo with code in it</div>
+<div class="title">Figure 33. Your GitHub repo with code in it</div>
 
 </div>
 
@@ -2606,7 +2632,7 @@ named <code>&lt;REMOTE&gt;</code>. So to push your <code>main</code> branch to t
 
 so let&#8217;s do it. Click the green Add a README button, and you&#8217;ll get a code editor where you can write the README in
 
-Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 35</a>:</p>
+Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 34</a>:</p>
 
 </div>
 
@@ -2618,7 +2644,7 @@ Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 35</a>:</p>
 
 </div>
 
-<div class="title">Figure 35. Filling in a README for the GitHub repo</div>
+<div class="title">Figure 34. Filling in a README for the GitHub repo</div>
 
 </div>
 
@@ -2630,7 +2656,7 @@ button. GitHub will prompt you for a commit message, so fill one in just like th
 
 click the "Commit changes" button. GitHub will commit the changes and then take you back to your repo, where you&#8217;ll be
 
-able to see your README, as shown in <a href="05.html#gh_repo_with_readme">Figure 36</a>:</p>
+able to see your README, as shown in <a href="05.html#gh_repo_with_readme">Figure 35</a>:</p>
 
 </div>
 
@@ -2642,7 +2668,7 @@ able to see your README, as shown in <a href="05.html#gh_repo_with_readme">Figur
 
 </div>
 
-<div class="title">Figure 36. Your GitHub repo with a README</div>
+<div class="title">Figure 35. Your GitHub repo with a README</div>
 
 </div>
 
@@ -2916,7 +2942,7 @@ remote:</pre>
 
 <p>In the log output, GitHub conveniently shows you a URL for creating a pull request. Open that URL in your
 
-web browser, and you should see a page that looks like <a href="05.html#gh_pr">Figure 37</a>:</p>
+web browser, and you should see a page that looks like <a href="05.html#gh_pr">Figure 36</a>:</p>
 
 </div>
 
@@ -2928,7 +2954,7 @@ web browser, and you should see a page that looks like <a href="05.html#gh_pr">F
 
 </div>
 
-<div class="title">Figure 37. Opening a pull request in GitHub</div>
+<div class="title">Figure 36. Opening a pull request in GitHub</div>
 
 </div>
 
@@ -2938,7 +2964,7 @@ web browser, and you should see a page that looks like <a href="05.html#gh_pr">F
 
 which should be the same ones you saw when running <code>git diff</code>. If those changes look OK, click the "Create pull request"
 
-button, and you&#8217;ll end up on the GitHub PR UI, as shown in <a href="05.html#gh_pr_open">Figure 38</a>:</p>
+button, and you&#8217;ll end up on the GitHub PR UI, as shown in <a href="05.html#gh_pr_open">Figure 37</a>:</p>
 
 </div>
 
@@ -2950,7 +2976,7 @@ button, and you&#8217;ll end up on the GitHub PR UI, as shown in <a href="05.htm
 
 </div>
 
-<div class="title">Figure 38. An open pull request in GitHub</div>
+<div class="title">Figure 37. An open pull request in GitHub</div>
 
 </div>
 
@@ -3378,7 +3404,7 @@ for humans as well!</p>
 
 <p>Having your code reviewed by someone else is a highly effective way to catch bugs, reducing defect rates by as much as
 
-50-80%.<sup class="footnote">[<a id="_footnoteref_34" class="footnote" href="13-footnotes.html#_footnotedef_34" title="View footnote.">34</a>]</sup> Code reviews
+50-80%.<sup class="footnote">[<a id="_footnoteref_25" class="footnote" href="13-footnotes.html#_footnotedef_25" title="View footnote.">25</a>]</sup> Code reviews
 
 are also an efficient mechanism to spread knowledge, culture, training, and a sense of ownership throughout the team.</p>
 
@@ -3566,6 +3592,18 @@ it.</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>Now that you know how to use a version control system to help everyone on your team work on the same code, the next
+
+step is ensure that you&#8217;re all working on that code in the same way: that is, building the code the same way,
+
+running the code the same way, using the same dependencies, and so on. This is where build system can come in handy,
+
+which is the focus of the next section.</p>
+
+</div>
+
 </div>
 
 </div>
@@ -3750,7 +3788,7 @@ file that looks similar to <a href="05.html#example_npm_package_json">Example 65
 
 <div id="example_npm_package_json" class="exampleblock">
 
-<div class="title">Example 65. The generated NPM build file (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app/package.initial.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 65. The generated NPM build file (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app/package.json">ch4/sample-app/package.json</a></em>)</div>
 
 <div class="content">
 
@@ -3764,7 +3802,7 @@ file that looks similar to <a href="05.html#example_npm_package_json">Example 65
 
   "version": "1.0.0",
 
-  "description": "Sample app for the book 'Fundamentals of DevOps and Software Delivery'",
+  "description": "Sample app for 'Fundamentals of DevOps and Software Delivery'",
 
   "scripts": {
 
@@ -3980,15 +4018,13 @@ app—which you will later in this blog post—the only thing you&#8217;ll need 
 
 <div class="paragraph">
 
-<p>Next, add a <code>dockerize</code> command to the <code>scripts</code> block in <em>package.json</em>, as shown in
-
-<a href="05.html#example_npm_package_json_docker_build">Example 68</a>:</p>
+<p>Second, create a script called <em>build-docker-image.sh</em> with the contents shown in <a href="05.html#build_docker_image_script">Example 68</a>:</p>
 
 </div>
 
-<div id="example_npm_package_json_docker_build" class="exampleblock">
+<div id="build_docker_image_script" class="exampleblock">
 
-<div class="title">Example 68. Add a <code>dockerize</code> command to the scripts block (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app/package.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 68. A script to build a Docker image (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app/build-docker-image.sh">ch4/sample-app/build-docker-image.sh</a></em>)</div>
 
 <div class="content">
 
@@ -3996,13 +4032,29 @@ app—which you will later in this blog post—the only thing you&#8217;ll need 
 
 <div class="content">
 
-<pre class="highlight"><code class="language-json" data-lang="json">  "scripts": {
+<pre class="highlight"><code class="language-bash" data-lang="bash">#!/usr/bin/env bash
 
-    "start": "node app.js",
 
-    "dockerize": "docker buildx build --platform=linux/amd64,linux/arm64 -t sample-app:$(npm pkg get version | tr -d '\"') .",
 
-  },</code></pre>
+set -e
+
+
+
+# <b class="conum">(1)</b>
+
+version=$(npm pkg get version | tr -d '"')
+
+
+
+# <b class="conum">(2)</b>
+
+docker buildx build \
+
+  --platform=linux/amd64,linux/arm64 \
+
+  -t sample-app:"$version" \
+
+  .</code></pre>
 
 </div>
 
@@ -4014,11 +4066,79 @@ app—which you will later in this blog post—the only thing you&#8217;ll need 
 
 <div class="paragraph">
 
-<p>Notice how the <code>dockerize</code> command sets the build tag (the <code>-t</code> flag) to the output of <code>npm pkg get version</code>, which is
+<p>This script does the following:</p>
 
-an NPM command that will return the value of the <code>version</code> value in <em>package.json</em>. So now your build file is also the
+</div>
 
-single location where you manage the version of your app.</p>
+<div class="colist arabic">
+
+<ol>
+
+<li>
+
+<p>Run <code>npm pkg get version</code> to get the value of the <code>version</code> parameter in <em>package.json</em>. This ensures
+
+<em>package.json</em> is the single location where you manage the version of your app.</p>
+
+</li>
+
+<li>
+
+<p>Run the same <code>docker buildx</code> command as before, setting the version to the value from (1).</p>
+
+</li>
+
+</ol>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, make the script executable:</p>
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ chmod u+x build-docker-image.sh</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Finally, add a <code>dockerize</code> command to the <code>scripts</code> block in <em>package.json</em> that executes <em>build-docker-image.sh</em>, as
+
+shown in <a href="05.html#example_npm_package_json_docker_build">Example 69</a>:</p>
+
+</div>
+
+<div id="example_npm_package_json_docker_build" class="exampleblock">
+
+<div class="title">Example 69. Add a <code>dockerize</code> command to the scripts block (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app/package.json">ch4/sample-app/package.json</a></em>)</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="highlight"><code class="language-json" data-lang="json">  "scripts": {
+
+    "start": "node app.js",
+
+    "dockerize": "./build-docker-image.sh",
+
+  },</code></pre>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -4060,6 +4180,14 @@ command, and not one of the ones built-into NPM):</p>
 
 </div>
 
+<div class="paragraph">
+
+<p>Now that you know how to use a build system to automate parts of your workflow, let&#8217;s talk about another key
+
+responsibility of most built systems: managing dependencies.</p>
+
+</div>
+
 </div>
 
 <div class="sect3">
@@ -4068,9 +4196,9 @@ command, and not one of the ones built-into NPM):</p>
 
 <div class="paragraph">
 
-<p>One of the key responsibilities of a build system is to help you manage your <em>dependencies</em>: that is, other software
+<p>Most software projects these days rely on a large number of <em>dependencies</em>: that is, other software packages and
 
-packages and libraries that your code uses. There are many kinds of dependencies:</p>
+libraries that your code uses. There are many kinds of dependencies:</p>
 
 </div>
 
@@ -4286,13 +4414,13 @@ you can run:</p>
 
 <p>If you look into <em>package.json</em>, you will now have a new <code>dependencies</code> section, as shown in
 
-<a href="05.html#example_npm_package_json_dependencies">Example 69</a>:</p>
+<a href="05.html#example_npm_package_json_dependencies">Example 70</a>:</p>
 
 </div>
 
 <div id="example_npm_package_json_dependencies" class="exampleblock">
 
-<div class="title">Example 69. NPM managed dependencies (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/package.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 70. NPM managed dependencies (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/package.json">ch4/sample-app/package.json</a></em>)</div>
 
 <div class="content">
 
@@ -4368,13 +4496,13 @@ build output is exactly the same every time. You&#8217;ll see an example of this
 
 <p>Now that Express is installed, you can rewrite the code in <em>app.js</em> to use the Express framework, as shown in
 
-<a href="05.html#example_express_app">Example 70</a>:</p>
+<a href="05.html#example_express_app">Example 71</a>:</p>
 
 </div>
 
 <div id="example_express_app" class="exampleblock">
 
-<div class="title">Example 70. The sample app rewritten using the Express framework (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/app.js">ch4/sample-app/app.js</a></em>)</div>
+<div class="title">Example 71. The sample app rewritten using the Express framework (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/app.js">ch4/sample-app/app.js</a></em>)</div>
 
 <div class="content">
 
@@ -4428,13 +4556,13 @@ routing, templating, error-handling, middleware, security, and so on.</p>
 
 <p>There&#8217;s one more thing you need to do now that the app has dependencies: you need to update the <em>Dockerfile</em> to
 
-install dependencies, as shown in <a href="05.html#example_express_docker">Example 71</a>:</p>
+install dependencies, as shown in <a href="05.html#example_express_docker">Example 72</a>:</p>
 
 </div>
 
 <div id="example_express_docker" class="exampleblock">
 
-<div class="title">Example 71. Update the Docker file to run <code>npm install</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/Dockerfile">ch4/sample-app/Dockerfile</a></em>)</div>
+<div class="title">Example 72. Update the Docker file to run <code>npm install</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/Dockerfile">ch4/sample-app/Dockerfile</a></em>)</div>
 
 <div class="content">
 
@@ -4544,7 +4672,7 @@ or <code>npm run dockerize</code> to check that the Docker image still builds co
 
 <td class="content">
 
-<div class="title">Get your hands dirty: alternative build tools for Node.js</div>
+<div class="title">Get your hands dirty</div>
 
 <div class="paragraph">
 
@@ -4599,6 +4727,16 @@ build systems:</p>
 </tr>
 
 </table>
+
+</div>
+
+<div class="paragraph">
+
+<p>Now that you&#8217;ve seen how a version control system allows your team members to work on the same code, and a build system
+
+allows your team members to work the same way, let&#8217;s turn our attention to one of the most important tools for allowing
+
+your team members to get work done quickly: automated tests.</p>
 
 </div>
 
@@ -4880,13 +5018,13 @@ I don&#8217;t want to add more legacy code to this world, so that means it&#8217
 
 <p>Consider the Node.js sample app you&#8217;ve been using in this blog post, as shown in
 
-<a href="05.html#example_node_js_sample_app_original">Example 72</a>:</p>
+<a href="05.html#example_node_js_sample_app_original">Example 73</a>:</p>
 
 </div>
 
 <div id="example_node_js_sample_app_original" class="exampleblock">
 
-<div class="title">Example 72. The Node.js sample app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/app.js">ch4/sample-app/app.js</a></em>)</div>
+<div class="title">Example 73. The Node.js sample app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express/app.js">ch4/sample-app/app.js</a></em>)</div>
 
 <div class="content">
 
@@ -4944,19 +5082,25 @@ larger (hundreds of developers making changes), manual testing will become too t
 
 that computers can perform these checks far faster and more reliably than a person. To get a feel for automated
 
-testing, let&#8217;s start with a very simple example: a unit test. To create a unit test, you need a unit of code.</p>
+testing, let&#8217;s start with a simple example: a unit test.</p>
 
 </div>
 
+<div class="sect4">
+
+<h4 id="_add_unit_tests_for_the_node_js_app">Add unit tests for the Node.js App</h4>
+
 <div class="paragraph">
 
-<p>Create a file called <em>reverse.js</em> with the contents shown in <a href="05.html#example_reverse">Example 73</a>:</p>
+<p>To create a unit test, you need a unit of code. Let&#8217;s create a basic one just for learning in a new file called
+
+<em>reverse.js</em> with the contents shown in <a href="05.html#example_reverse">Example 74</a>:</p>
 
 </div>
 
 <div id="example_reverse" class="exampleblock">
 
-<div class="title">Example 73. Example module that can reverse characters and words in strings (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.js">ch4/sample-app/reverse.js</a></em>)</div>
+<div class="title">Example 74. Example module that can reverse characters and words in strings (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.js">ch4/sample-app/reverse.js</a></em>)</div>
 
 <div class="content">
 
@@ -5154,13 +5298,13 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <div class="paragraph">
 
-<p>This will update <em>package.json</em> with a new <code>devDependencies</code> section, as shown in <a href="05.html#example_npm_package_json_dev_deps">Example 74</a>:</p>
+<p>This will update <em>package.json</em> with a new <code>devDependencies</code> section, as shown in <a href="05.html#example_npm_package_json_dev_deps">Example 75</a>:</p>
 
 </div>
 
 <div id="example_npm_package_json_dev_deps" class="exampleblock">
 
-<div class="title">Example 74. Your <em>package.json</em> file should now contain dev dependencies (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 75. Your <em>package.json</em> file should now contain dev dependencies (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
 
 <div class="content">
 
@@ -5196,13 +5340,13 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <div class="paragraph">
 
-<p>Next, update the <code>test</code> command in <em>package.json</em> to run Jest, as shown in <a href="05.html#example_npm_package_json_test">Example 75</a>:</p>
+<p>Next, update the <code>test</code> command in <em>package.json</em> to run Jest, as shown in <a href="05.html#example_npm_package_json_test">Example 76</a>:</p>
 
 </div>
 
 <div id="example_npm_package_json_test" class="exampleblock">
 
-<div class="title">Example 75. Update the test command to run Jest (<em>ch4/sample-app/package.json</em>)</div>
+<div class="title">Example 76. Update the test command to run Jest (<em>ch4/sample-app/package.json</em>)</div>
 
 <div class="content">
 
@@ -5228,13 +5372,13 @@ production deployments (where you don&#8217;t run tests):</p>
 
 <p>Now you can start writing tests. Create a file called <em>reverse.test.js</em> with the contents shown in
 
-<a href="05.html#example_reverse_test">Example 76</a>:</p>
+<a href="05.html#example_reverse_test">Example 77</a>:</p>
 
 </div>
 
 <div id="example_reverse_test" class="exampleblock">
 
-<div class="title">Example 76. Example unit test for the <code>reverseWords</code> function (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
+<div class="title">Example 77. Example unit test for the <code>reverseWords</code> function (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
 
 <div class="content">
 
@@ -5358,13 +5502,13 @@ Ran all test suites.</pre>
 
 <div class="paragraph">
 
-<p>Add a second test for <code>reverseWords</code> as shown in <a href="05.html#example_reverse_test_2">Example 77</a>:</p>
+<p>Add a second test for <code>reverseWords</code> as shown in <a href="05.html#example_reverse_test_2">Example 78</a>:</p>
 
 </div>
 
 <div id="example_reverse_test_2" class="exampleblock">
 
-<div class="title">Example 77. A second unit test for the <code>reverseWords</code> function (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
+<div class="title">Example 78. A second unit test for the <code>reverseWords</code> function (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
 
 <div class="content">
 
@@ -5450,13 +5594,13 @@ Ran all test suites.</pre>
 
 automated testing is that you can create tests for all the various corner cases and find out if your code really does
 
-what you expect. The fix for this issue shown in <a href="05.html#example_reverse_fixed">Example 78</a>:</p>
+what you expect. The fix for this issue shown in <a href="05.html#example_reverse_fixed">Example 79</a>:</p>
 
 </div>
 
 <div id="example_reverse_fixed" class="exampleblock">
 
-<div class="title">Example 78. Fix whitespace handling in <code>reverseWords</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.js">ch4/sample-app/reverse.js</a></em>)</div>
+<div class="title">Example 79. Fix whitespace handling in <code>reverseWords</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.js">ch4/sample-app/reverse.js</a></em>)</div>
 
 <div class="content">
 
@@ -5552,7 +5696,7 @@ code, and you can go faster and faster.</p>
 
 <td class="content">
 
-<div class="title">Key takeaway #4</div>
+<div class="title">Key takeaway #5</div>
 
 <div class="paragraph">
 
@@ -5594,7 +5738,7 @@ will prevent that bug from coming back. This is a <em>massive</em> boost to prod
 
 <td class="content">
 
-<div class="title">Key takeaway #4</div>
+<div class="title">Key takeaway #6</div>
 
 <div class="paragraph">
 
@@ -5612,6 +5756,12 @@ bugs because the tests prevented those bugs from slipping through in the first p
 
 </div>
 
+</div>
+
+<div class="sect4">
+
+<h4 id="_using_code_coverage_tools_to_improve_unit_tests">Using code coverage tools to improve unit tests</h4>
+
 <div class="paragraph">
 
 <p>A useful feature available with some automated testing tools is the ability to measure <em>code coverage</em>: that is, what
@@ -5622,13 +5772,13 @@ confidence can you have that your code really works, and that there aren&#8217;t
 
 measure code coverage, add the <code>--coverage</code> flag to the <code>test</code> command in <em>package.json</em>, as shown in
 
-<a href="05.html#example_npm_package_json_test_coverage">Example 79</a>:</p>
+<a href="05.html#example_npm_package_json_test_coverage">Example 80</a>:</p>
 
 </div>
 
 <div id="example_npm_package_json_test_coverage" class="exampleblock">
 
-<div class="title">Example 79. Update the test command to measure code coverage (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 80. Update the test command to measure code coverage (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
 
 <div class="content">
 
@@ -5708,7 +5858,7 @@ HTML reports within <em>coverage/lcov-report/index.html</em>. Try opening this f
 
 <div class="paragraph">
 
-<p>You should see a page that looks similar to <a href="05.html#code_coverage">Figure 39</a>:</p>
+<p>You should see a page that looks similar to <a href="05.html#code_coverage">Figure 38</a>:</p>
 
 </div>
 
@@ -5720,7 +5870,7 @@ HTML reports within <em>coverage/lcov-report/index.html</em>. Try opening this f
 
 </div>
 
-<div class="title">Figure 39. Code coverage output (<em>coverage/lcov-report/index.html</em>)</div>
+<div class="title">Figure 38. Code coverage output (<em>coverage/lcov-report/index.html</em>)</div>
 
 </div>
 
@@ -5728,7 +5878,7 @@ HTML reports within <em>coverage/lcov-report/index.html</em>. Try opening this f
 
 <p>As you can see, you&#8217;re only testing about two-thirds of your code. To get more details into what you missed, click on
 
-<em>reverse.js</em>, and you should see something similar to <a href="05.html#code_coverage_file">Figure 40</a>:</p>
+<em>reverse.js</em>, and you should see something similar to <a href="05.html#code_coverage_file">Figure 39</a>:</p>
 
 </div>
 
@@ -5740,7 +5890,7 @@ HTML reports within <em>coverage/lcov-report/index.html</em>. Try opening this f
 
 </div>
 
-<div class="title">Figure 40. Code coverage output for reverse.js (<em>coverage/lcov-report/index.html</em>)</div>
+<div class="title">Figure 39. Code coverage output for reverse.js (<em>coverage/lcov-report/index.html</em>)</div>
 
 </div>
 
@@ -5758,13 +5908,13 @@ there are no tests for the <code>reverseCharacters</code> function!</p>
 
 <p>Now that code coverage has helped you see where your tests are lacking, head into <em>reverse.test.js</em>, and add a new unit
 
-test for <code>reverseCharacters</code>, as shown in <a href="05.html#example_reverse_chars_test">Example 80</a>:</p>
+test for <code>reverseCharacters</code>, as shown in <a href="05.html#example_reverse_chars_test">Example 81</a>:</p>
 
 </div>
 
 <div id="example_reverse_chars_test" class="exampleblock">
 
-<div class="title">Example 80. Add a unit test for <code>reverseCharacters</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
+<div class="title">Example 81. Add a unit test for <code>reverseCharacters</code> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/reverse.test.js">ch4/sample-app/reverse.test.js</a></em>)</div>
 
 <div class="content">
 
@@ -5842,6 +5992,12 @@ All files   |     100 |      100 |     100 |     100 |
 
 </div>
 
+</div>
+
+<div class="sect4">
+
+<h4 id="_add_end_to_end_tests_for_the_node_js_app">Add end-to-end tests for the Node.js App</h4>
+
 <div class="paragraph">
 
 <p>Now that you have a feel for unit testing, let&#8217;s go back to the original problem of testing <em>app.js</em>, and add an
@@ -5858,13 +6014,13 @@ errors due to trying to listen on the same port.</p>
 
 <div class="paragraph">
 
-<p>First, update <em>app.js</em> to solely configure the Express app, and to export it, as shown in <a href="05.html#example_express_app_only">Example 81</a>:</p>
+<p>First, update <em>app.js</em> to solely configure the Express app, and to export it, as shown in <a href="05.html#example_express_app_only">Example 82</a>:</p>
 
 </div>
 
 <div id="example_express_app_only" class="exampleblock">
 
-<div class="title">Example 81. Update <em>app.js</em> to only create the app, but not listen on a port (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/app.js">ch4/sample-app/app.js</a></em>)</div>
+<div class="title">Example 82. Update <em>app.js</em> to only create the app, but not listen on a port (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/app.js">ch4/sample-app/app.js</a></em>)</div>
 
 <div class="content">
 
@@ -5902,13 +6058,13 @@ module.exports = app;</code></pre>
 
 <p>Next, create a new file called <em>server.js</em> that imports the code from <em>app.js</em> and has it listen on a port, as shown in
 
-<a href="05.html#example_express_app_server">Example 82</a>:</p>
+<a href="05.html#example_express_app_server">Example 83</a>:</p>
 
 </div>
 
 <div id="example_express_app_server" class="exampleblock">
 
-<div class="title">Example 82. Create <em>server.js</em> to listen on a port (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/server.js">ch4/sample-app/server.js</a></em>)</div>
+<div class="title">Example 83. Create <em>server.js</em> to listen on a port (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/server.js">ch4/sample-app/server.js</a></em>)</div>
 
 <div class="content">
 
@@ -5942,13 +6098,13 @@ app.listen(port, () =&gt; {
 
 <p>Make sure to update the <code>start</code> command in <em>package.json</em> to now use <em>server.js</em> instead of <em>app.js</em>, as shown in
 
-<a href="05.html#example_npm_package_json_update_start">Example 83</a>:</p>
+<a href="05.html#example_npm_package_json_update_start">Example 84</a>:</p>
 
 </div>
 
 <div id="example_npm_package_json_update_start" class="exampleblock">
 
-<div class="title">Example 83. Update the start command to run <em>server.js</em> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
+<div class="title">Example 84. Update the start command to run <em>server.js</em> (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/package.json">ch4/sample-app/package.json</a></em>)</div>
 
 <div class="content">
 
@@ -5968,13 +6124,13 @@ app.listen(port, () =&gt; {
 
 <div class="paragraph">
 
-<p>Now, finally, you can add a test for the app in a new file called <em>app.test.js</em>, as shown in <a href="05.html#example_test_for_app">Example 84</a>:</p>
+<p>Now, finally, you can add a test for the app in a new file called <em>app.test.js</em>, as shown in <a href="05.html#example_test_for_app">Example 85</a>:</p>
 
 </div>
 
 <div id="example_test_for_app" class="exampleblock">
 
-<div class="title">Example 84. Add an automated test for the app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/app.test.js">ch4/sample-app/app.test.js</a></em>)</div>
+<div class="title">Example 85. Add an automated test for the app (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/sample-app-express-with-tests/app.test.js">ch4/sample-app/app.test.js</a></em>)</div>
 
 <div class="content">
 
@@ -6166,6 +6322,8 @@ expected.</p>
 
 </div>
 
+</div>
+
 <div class="sect3">
 
 <h3 id="example_automated_tests_tofu">Example: Add Automated Tests for the OpenTofu Code</h3>
@@ -6272,19 +6430,19 @@ example of how to do that.</p>
 
 <div class="sect4">
 
-<h4 id="_example_add_static_analysis_for_your_opentofu_code_using_terrascan">Example: add static analysis for your OpenTofu code using Terrascan</h4>
+<h4 id="_add_static_analysis_for_your_opentofu_code_using_terrascan">Add static analysis for your OpenTofu code using Terrascan</h4>
 
 <div class="paragraph">
 
 <p>As an example, let&#8217;s use Terrascan as a static analysis tool for OpenTofu. First, create a config file for Terrascan
 
-called <em>terrascan.toml</em>, with the contents shown in <a href="05.html#terrascan_config">Example 85</a>:</p>
+called <em>terrascan.toml</em>, with the contents shown in <a href="05.html#terrascan_config">Example 86</a>:</p>
 
 </div>
 
 <div id="terrascan_config" class="exampleblock">
 
-<div class="title">Example 85. Config file for Terrascan (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/terrascan.toml">ch4/tofu/live/lambda-sample/terrascan.toml</a></em>)</div>
+<div class="title">Example 86. Config file for Terrascan (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/terrascan.toml">ch4/tofu/live/lambda-sample/terrascan.toml</a></em>)</div>
 
 <div class="content">
 
@@ -6438,13 +6596,13 @@ That said, in this simple example, you&#8217;re not passing any secrets around, 
 
 by adding its Rule ID to the <code>skip-rules</code> section of your Terrascan configuration file as shown in
 
-<a href="05.html#example_tofu_lambda_skip_ts">Example 86</a>:</p>
+<a href="05.html#example_tofu_lambda_skip_ts">Example 87</a>:</p>
 
 </div>
 
 <div id="example_tofu_lambda_skip_ts" class="exampleblock">
 
-<div class="title">Example 86. Configure Terrascan to skip a policy check (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/terrascan.toml">ch4/tofu/live/lambda-sample/terrascan.toml</a></em>)</div>
+<div class="title">Example 87. Configure Terrascan to skip a policy check (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/terrascan.toml">ch4/tofu/live/lambda-sample/terrascan.toml</a></em>)</div>
 
 <div class="content">
 
@@ -6488,7 +6646,7 @@ functionality, which allows you to catch a much wider variety of errors.</p>
 
 <div class="sect4">
 
-<h4 id="_example_add_unit_tests_for_your_opentofu_code_using_the_test_command">Example: add unit tests for your OpenTofu code using the test command</h4>
+<h4 id="_add_unit_tests_for_your_opentofu_code_using_the_test_command">Add unit tests for your OpenTofu code using the test command</h4>
 
 <div class="paragraph">
 
@@ -6536,13 +6694,13 @@ $ cp -r ../devops-book/ch4/tofu/modules/test-endpoint ch4/tofu/modules</pre>
 
 <p>Next, in the <code>lambda-sample</code> module, create a file called <em>deploy.tftest.hcl</em>, with the contents shown in
 
-<a href="05.html#example_tofu_test_lambda">Example 87</a>:</p>
+<a href="05.html#example_tofu_test_lambda">Example 88</a>:</p>
 
 </div>
 
 <div id="example_tofu_test_lambda" class="exampleblock">
 
-<div class="title">Example 87. Automated test for the <code>lambda-sample</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/deploy.tftest.hcl">ch4/tofu/live/lambda-sample/deploy.tftest.hcl</a></em>)</div>
+<div class="title">Example 88. Automated test for the <code>lambda-sample</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch4/tofu/live/lambda-sample/deploy.tftest.hcl">ch4/tofu/live/lambda-sample/deploy.tftest.hcl</a></em>)</div>
 
 <div class="content">
 
@@ -6828,13 +6986,13 @@ expected.</p>
 
 <p>The answer is: a mix of all of them! Each type of test has different types of errors they can catch, plus different
 
-strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weaknesses">Table 7</a>:</p>
+strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weaknesses">Table 8</a>:</p>
 
 </div>
 
 <table id="test_strengths_weaknesses" class="tableblock frame-all grid-all stretch">
 
-<caption class="title">Table 7. A comparison of different types of automated tests</caption>
+<caption class="title">Table 8. A comparison of different types of automated tests</caption>
 
 <colgroup>
 
@@ -7052,7 +7210,7 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Fast"></span> <strong>Fast</strong></p></td>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Fast"></span> <strong>Fast</strong> <sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-3-of-4.png" alt="Fast"></span> <strong>Fast</strong> <sup class="footnote">[<a id="_footnoteref_26" class="footnote" href="13-footnotes.html#_footnotedef_26" title="View footnote.">26</a>]</sup></p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="images/ch3/progress-bar-2-of-4.png" alt="Slow"></span> <strong>Slow</strong></p></td>
 
@@ -7116,7 +7274,7 @@ strengths and weaknesses, as summarized in <a href="05.html#test_strengths_weakn
 
 you use all the different types of tests in equal proportion. In most cases, you want the proportion of tests to follow
 
-the <em>test pyramid</em> shown in <a href="05.html#test_pyramid">Figure 41</a>:</p>
+the <em>test pyramid</em> shown in <a href="05.html#test_pyramid">Figure 40</a>:</p>
 
 </div>
 
@@ -7128,7 +7286,7 @@ the <em>test pyramid</em> shown in <a href="05.html#test_pyramid">Figure 41</a>:
 
 </div>
 
-<div class="title">Figure 41. The test pyramid</div>
+<div class="title">Figure 40. The test pyramid</div>
 
 </div>
 
@@ -7263,6 +7421,20 @@ tests is far lower than the cost of having a paralyzed dev team.</p>
 </dd>
 
 </dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>One thing that impacts both the cost of writing tests and the benefits you get from those tests is <em>when</em> you write
+
+those tests: trying to add tests several years after you write the code tends to be much more expensive
+
+and not as beneficial; adding tests a day after you write the code tends to be cheaper and have more benefits; and as
+
+it turns out, adding tests <em>before</em> you write the code may be the lowest cost and most beneficial option of all, as
+
+discussed in the next section.</p>
 
 </div>
 
@@ -7562,7 +7734,7 @@ $ git push origin main</pre>
 
 <p>You&#8217;ve now taken a big step forward in allowing your team members to collaborate on your code by following the
 
-4 key takeaways from this Part:</p>
+6 key takeaways from this Part:</p>
 
 </div>
 
@@ -7667,7 +7839,7 @@ next blog post, <a href="06.html#how_to_set_up_ci_cd">Part 5</a>.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-11 13:58:45 -0400
+Last updated 2024-06-11 16:19:51 -0400
 
 </div>
 

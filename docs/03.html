@@ -1040,7 +1040,7 @@ a company this way—what&#8217;s sometimes called <em>ClickOps</em>—it quickl
 
 improvements, and if they ever go on vacation, everything grinds to a halt (and you don&#8217;t even dare consider
 
-what would happen if they left the company or got hit by a bus).<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="13-footnotes.html#_footnotedef_10" title="View footnote.">10</a>]</sup></p>
+what would happen if they left the company or got hit by a bus).<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="13-footnotes.html#_footnotedef_11" title="View footnote.">11</a>]</sup></p>
 
 </dd>
 
@@ -1058,11 +1058,181 @@ infrastructure. This represents an important shift in mindset in which you treat
 
 software—even those aspects that represent hardware (e.g., setting up servers). In fact, a key insight of modern DevOps
 
-practices is that you can manage almost <em>everything</em> in code, including servers, databases, networks, logfiles,
+practices is that most tasks that you used to do manually can be managed as code instead, as shown in
 
-application configuration, documentation, automated tests, deployment processes, and so on.</p>
+<a href="03.html#manage_everything_as_code">Table 5</a>:</p>
 
 </div>
+
+<table id="manage_everything_as_code" class="tableblock frame-all grid-all stretch">
+
+<caption class="title">Table 5. A key insight of modern DevOps is that you can manage almost everything as code</caption>
+
+<colgroup>
+
+<col style="width: 10%;">
+
+<col style="width: 40%;">
+
+<col style="width: 40%;">
+
+<col style="width: 10%;">
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th class="tableblock halign-left valign-top">Task</th>
+
+<th class="tableblock halign-left valign-top">How to manage as code</th>
+
+<th class="tableblock halign-left valign-top">Example</th>
+
+<th class="tableblock halign-left valign-top">Part</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provision servers</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisioning tools</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use OpenTofu to deploy a server</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">This blog post</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure servers</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration management and templating</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Packer to create an image of a server</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">This blog post</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure apps</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration files and services</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read configuration from a JSON file during boot</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="09.html#how_to_work_with_multiple_teams">Part 8</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure networking</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisioning tools, service discovery</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Kubernetes service discovery</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07.html#how_to_set_up_networking">Part 6</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Build apps</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Build systems, continuous integration</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Build your app with NPM</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05.html#how_to_version_build_test">Part 4</a>, <a href="06.html#how_to_set_up_ci_cd">Part 5</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test apps</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automated tests, continuous integration</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write automated tests using Jest</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05.html#how_to_version_build_test">Part 4</a>, <a href="06.html#how_to_set_up_ci_cd">Part 5</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deploy apps</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automated deployment, continuous delivery</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Do a rolling deployment with Kubernetes</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04.html#how_to_deploy_many_apps">Part 3</a>, <a href="06.html#how_to_set_up_ci_cd">Part 5</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scale apps</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auto scaling</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set up auto scaling policies in AWS</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04.html#how_to_deploy_many_apps">Part 3</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recover from outages</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auto healing</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set up liveness probes in Kubernetes</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04.html#how_to_deploy_many_apps">Part 3</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manage databases</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schema migrations</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Flyway to update your database schema</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="10.html#how_to_store_data">Part 9</a></p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for compliance</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automated tests, policy as code</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check compliance using Open Policy Agent (OPA)</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05.html#how_to_version_build_test">Part 4</a></p></td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 <div class="paragraph">
 
@@ -1196,7 +1366,7 @@ a cost, so what are the benefits of IaC that make this worthwhile? This is the f
 
 <p>When your infrastructure is defined as code, you are able to use a wide variety of software engineering practices to
 
-dramatically improve your software delivery process, including the following:</p>
+dramatically improve your software delivery processes, including the following:</p>
 
 </div>
 
@@ -1776,21 +1946,9 @@ quite a few drawbacks in terms of using them to manage infrastructure, as discus
 
 clicking "Instance state," and choosing "Terminate instance" in the drop down, as shown in
 
-<a href="03.html#ec2_terminate_instance_instructions">Figure 20</a>. This ensures that your account doesn&#8217;t start accumulating any unwanted
+<a href="02.html#ec2_terminate_instance">Figure 18</a>. This ensures that your account doesn&#8217;t start accumulating any unwanted
 
 charges.</p>
-
-</div>
-
-<div id="ec2_terminate_instance_instructions" class="imageblock">
-
-<div class="content">
-
-<img src="images/ch1/ec2-terminate-instance.png" alt="Make sure to terminate your EC2 instance when you&#8217;re done testing">
-
-</div>
-
-<div class="title">Figure 20. Make sure to terminate your EC2 instance when you&#8217;re done testing.</div>
 
 </div>
 
@@ -1892,9 +2050,9 @@ security group names to be unique.</p>
 
 code however you want. The terrible thing about ad hoc scripts is that you can use any programming language you want,
 
-and you can write the code however you want. I wrote the Bash script one way; someone else might write it another way;
+and you can write the code however you want. I wrote the Bash script one way; you might write it another way;
 
-someone else may choose a different language entirely. If you&#8217;ve ever had to maintain a large repository of ad hoc
+your coworker may choose a different language entirely. If you&#8217;ve ever had to maintain a large repository of ad hoc
 
 scripts, you know that it almost always devolves into a mess of unmaintainable spaghetti code. As you&#8217;ll see shortly,
 
@@ -1988,15 +2146,75 @@ the job, such as one of the ones discussed in the next several sections.</p>
 
 moved on to <em>configuration management tools</em>, such as <a href="https://www.chef.io/">Chef</a>, <a href="https://www.puppet.com/">Puppet</a>,
 
-<a href="https://saltproject.io/index.html">Salt</a>, and <a href="https://www.ansible.com/">Ansible</a>. These tools first started to appear
+and <a href="https://www.ansible.com/">Ansible</a>. These tools first started to appear before cloud computing was ubiquitous, so
 
-before cloud computing was ubiquitous, so the way they were originally designed was to assume someone else had done the
+the way they were originally designed was to assume someone else had done the work of setting up the hardware (e.g.,
 
-work of setting up the hardware (e.g., your Ops team racked the servers in your own data center), and the primary
+your Ops team racked the servers in your own data center), and the primary purpose of these tools was to handle the
 
-purpose of these tools was to handle the software, including configuring the operating system, installing dependencies,
+software, including configuring the operating system, installing dependencies, deploying and updating apps, and so on.</p>
 
-deploying and updating apps, and so on.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Most configuration management tools make changes directly on a set of servers you specify: this is a <em>mutable
+
+infrastructure</em> paradigm, where you have long-running servers that you update (mutate) over and over again, over many
+
+years. To be able to make changes on those servers, you need two things:</p>
+
+</div>
+
+<div class="dlist">
+
+<dl>
+
+<dt class="hdlist1">Something to drive the changes</dt>
+
+<dd>
+
+<p>With Chef and Puppet, the idiomatic way to do this is to run one or more <em>master servers</em> (e.g., the Chef Server or
+
+Puppet Server), which take your code and apply it to all your other servers. Ansible, on the other hand, allows you
+
+to run the Ansible CLI tool anywhere: e.g., on your own computer, on a build server, or anywhere else. The advantage
+
+of a master server is that it can run a <em>reconciliation loop</em>, constantly checking that the configuration of each
+
+server matches your desired configuration, and making corrections if not. The drawback is that you have extra servers
+
+to deploy, configure, secure, monitor, and maintain.</p>
+
+</dd>
+
+<dt class="hdlist1">A way to connect to servers</dt>
+
+<dd>
+
+<p>With Chef and Puppet, the idiomatic way to do this is to install agent software on each server; the idiomatic way to
+
+do this with tools like Ansible is to connect to each server using SSH (a topic you&#8217;ll learn more about in
+
+<a href="07.html#how_to_set_up_networking">Part 6</a>). In either case, there is a bit of a chicken-and-egg problem you have to solve, where
+
+your goal is to be able to configure your servers, but before you can do that, you have to configure your servers
+
+(i.e., install an agent or configure SSH access)! Solving this chicken-and-egg problem requires either manual
+
+intervention or external tools (e.g., you&#8217;ll see an example shortly of how you can use AWS APIs to configure SSH
+
+access for Ansible). Using agents or SSH to configure servers is an advantage over the user data technique you saw
+
+with the Bash script, as user data has several significant limitations (only runs on first boot, max size 16 KB).
+
+However, the drawback is that both agents and SSH require that you open up extra ports and configure extra
+
+authentication mechanisms.</p>
+
+</dd>
+
+</dl>
 
 </div>
 
@@ -2156,17 +2374,7 @@ specific language (DSL)</em> defined on top of YAML. The YAML in the preceding p
 
 <li>
 
-<p><strong>Create a security group</strong>: Allow inbound HTTP requests on port 8080 and inbound SSH requests on port 22. The SSH
-
-port is new: Ansible configures servers by connecting to them over SSH (a topic you&#8217;ll learn more about in
-
-<a href="07.html#how_to_set_up_networking">Part 6</a>). In some ways, using SSH to configure servers is an advantage over the user data
-
-technique you saw with the Bash script, as user data has several significant limitations (only runs on first
-
-boot, max size 16 KB). However, the reliance on SSH requires you to deal with extra open ports and authentication
-
-mechanisms (e.g., EC2 key pairs, as described next), which is a drawback from a security perspective.</p>
+<p><strong>Create a security group</strong>: Allow inbound HTTP requests on port 8080 and inbound SSH requests on port 22.</p>
 
 </li>
 
@@ -2892,15 +3100,17 @@ This ensures that your account doesn&#8217;t start accumulating any unwanted cha
 
 configuration, read the current configuration to see if it matches the desired configuration, and if not, update the
 
-existing configuration. Unfortunately, most configuration management tools <em>don&#8217;t</em> support delete (which is why you
+existing configuration. That said, support for read and update is a bit hit or miss: for example, to be able to read
 
-had to undeploy the EC2 instance manually). For example, you can run the preceding Ansible code multiple times, and
+and update AWS resources, Ansible requires that you manually give each resource a unique name or tag, which is easy
 
-it&#8217;ll do the right thing: the first time, it&#8217;ll create the EC2 instance and configure it to run the app; the second
+to do with just a handful of resources, but becomes more challenging with thousands; Ansible does better at reading
 
-time and beyond, it&#8217;ll detect the EC2 instance already exists and is configured, and won&#8217;t try to make any changes.
+and updating the state of a server (which is what it was really designed to do), but only if you use tasks that
 
-However, if you wanted to <em>undeploy</em> the EC2 instance, you&#8217;d have to do that manually.</p>
+are idempotent, as you&#8217;ll see below. Finally, most configuration management tools <em>don&#8217;t</em> support delete (which is
+
+why you had to undeploy the EC2 instance manually).</p>
 
 </dd>
 
@@ -2986,17 +3196,17 @@ hoc script that supported all of this would be many times the length.</p>
 
 <p>Configuration management tools brought a number of advantages over ad hoc scripts, but they also introduced their
 
-own drawbacks. One big drawback is that some configuration management tools have a considerable setup cost: for
+own drawbacks. One big drawback is that some configuration management tools have a considerable setup cost: e.g., you
 
-example, the idiomatic way to use Chef and Puppet requires that you first (a) deploy a master server and (b) find a way
+may need to set up master servers and ways to connect to all your other servers (agents or SSH). A second big drawback
 
-to install special <em>agent software</em> on all your other servers, before you can effectively use Chef and Puppet to
+is that most configuration management tools were designed for a mutable infrastructure paradigm: this can be
 
-manage those servers. A second big drawback is that most configuration management tools were designed for a
+problematic due to <em>configuration drift</em>, where over time, your long-running servers can build up unique histories of
 
-<em>mutable infrastructure</em> paradigm, where you have long-running servers that you update (mutate) over and over again,
+changes, so each server is subtly different from the others, which can make it hard to reason about what&#8217;s deployed and
 
-over many years.</p>
+debug issues.</p>
 
 </div>
 
@@ -3086,15 +3296,15 @@ were originally designed for, and that led to new approaches, as discussed in th
 
 <p>An alternative to configuration management that has been growing in popularity recently are <em>server templating tools</em>
 
-such as Docker, Packer, and Vagrant. Instead of launching a bunch of servers and configuring them by running the same
+such as <a href="https://www.docker.com/">Docker</a>, <a href="https://www.packer.io/">Packer</a>, and <a href="https://www.vagrantup.com/">Vagrant</a>.
 
-code on each one, the idea behind server templating tools is to create an <em>image</em> of a server that captures a fully
+Instead of launching a bunch of servers and configuring them by running the same code on each one, the idea behind
 
-self-contained "snapshot" of the operating system (OS), the software, the files, and all other relevant details. You can
+server templating tools is to create an <em>image</em> of a server that captures a fully self-contained "snapshot" of the
 
-then use some other IaC tool (e.g., provisioning tools, as you&#8217;ll see in the next section) to install that image on all
+operating system (OS), the software, the files, and all other relevant details. You can then use some other IaC tool
 
-of your servers.</p>
+(e.g., provisioning tools, as you&#8217;ll see in the next section) to install that image on all of your servers.</p>
 
 </div>
 
@@ -3106,13 +3316,13 @@ of your servers.</p>
 
 </div>
 
-<div class="title">Figure 21. The two main types of images: VMs, on the left, and containers, on the right. VMs virtualize the hardware, whereas containers virtualize only user space.</div>
+<div class="title">Figure 20. The two main types of images: VMs, on the left, and containers, on the right. VMs virtualize the hardware, whereas containers virtualize only user space.</div>
 
 </div>
 
 <div class="paragraph">
 
-<p>As shown in <a href="03.html#vm_versus_container">Figure 21</a>, there are two broad categories of tools for working with images:</p>
+<p>As shown in <a href="03.html#vm_versus_container">Figure 20</a>, there are two broad categories of tools for working with images:</p>
 
 </div>
 
@@ -3148,7 +3358,7 @@ and startup time. You can define VM images as code using tools such as Packer an
 
 <dd>
 
-<p>A <em>container</em> emulates the user space of an OS.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="13-footnotes.html#_footnotedef_11" title="View footnote.">11</a>]</sup> You run a <em>container engine</em>, such as Docker or cri-o, to create isolated processes, memory, mount
+<p>A <em>container</em> emulates the user space of an OS.<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="13-footnotes.html#_footnotedef_12" title="View footnote.">12</a>]</sup> You run a <em>container engine</em>, such as Docker or cri-o, to create isolated processes, memory, mount
 
 points, and networking.</p>
 
@@ -3162,7 +3372,7 @@ computer, a QA server, a production server, etc.). The drawback is that all of t
 
 server share that server&#8217;s OS kernel and hardware, so it&#8217;s much more difficult to achieve the level of isolation and
 
-security you get with a VM.<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="13-footnotes.html#_footnotedef_12" title="View footnote.">12</a>]</sup> However, because the kernel
+security you get with a VM.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="13-footnotes.html#_footnotedef_13" title="View footnote.">13</a>]</sup> However, because the kernel
 
 and hardware are shared, your containers can boot up in milliseconds and have virtually no CPU or memory overhead. You
 
@@ -3184,9 +3394,11 @@ can define container images as code using tools such as Docker; you&#8217;ll see
 
 <div class="paragraph">
 
-<p>As an example, let&#8217;s take a look at using Packer to create a VM image for AWS called an <em>Amazon Machine Image (AMI)</em>.
+<p>As an example, let&#8217;s take a look at using Packer to create a VM image for AWS called an <em>Amazon Machine Image (AMI)</em>
 
-First, create a folder called <em>packer</em>:</p>
+(you&#8217;ll see an example of how to create container images using Docker in <a href="04.html#how_to_deploy_many_apps">Part 3</a>). First, create a
+
+folder called <em>packer</em>:</p>
 
 </div>
 
@@ -3646,13 +3858,37 @@ section.</p>
 
 <p>Whereas configuration management and server templating define the code that runs on each server,
 
-<em>provisioning tools</em> such as OpenTofu, Terraform, CloudFormation, OpenStack Heat, and Pulumi are responsible for
+<em>provisioning tools</em> such as <a href="https://opentofu.org/">OpenTofu</a>, <a href="https://www.terraform.io/">Terraform</a>,
 
-creating the servers themselves. In fact, you can use provisioning tools to create not only servers but also databases,
+<a href="https://aws.amazon.com/cloudformation/">CloudFormation</a>, <a href="https://wiki.openstack.org/wiki/Heat">OpenStack Heat</a>, and
 
-caches, load balancers, queues, monitoring, subnet configurations, firewall settings, routing rules, TLS certificates,
+<a href="https://www.pulumi.com/">Pulumi</a> are responsible for creating the servers themselves. In fact, you can use provisioning
 
-and almost every other aspect of your infrastructure.</p>
+tools to create not only servers but also databases, caches, load balancers, queues, monitoring, subnet configurations,
+
+firewall settings, routing rules, TLS certificates, and many other aspects of your infrastructure.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Under the hood, most provisioning tools work by translating the code you write into API calls to the cloud provider
+
+you&#8217;re using: e.g., if you write OpenTofu code to create a server in AWS (which you will do in the next section),
+
+when you run OpenTofu, it will parse your code, and based on the configuration you specify, make a number of API calls
+
+to AWS to create an EC2 instance.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>That means that, unlike with configuration management tools, you don&#8217;t have to do any extra work to set up master
+
+servers or connectivity: all of this is handled using the APIs and authentication mechanisms already provided by
+
+the cloud you&#8217;re using.</p>
 
 </div>
 
@@ -3700,15 +3936,15 @@ OpenTofu for all example code, but most of the examples should work with Terrafo
 
 <div class="paragraph">
 
-<p>As an example, lets create an OpenTofu <em>module</em> that can deploy an EC2 instance. You write OpenTofu modules in HCL (the
+<p>As an example of using a provisioning tool, lets create an OpenTofu <em>module</em> that can deploy an EC2 instance. You write
 
-same language you used with Packer), in <em>configuration files</em> with a <em>.tf</em> extension. OpenTofu will find all files with
+OpenTofu modules in HCL (the same language you used with Packer), in <em>configuration files</em> with a <em>.tf</em> extension.
 
-the <em>.tf</em> extension in a folder, so you can name the files whatever you want, but there are some standard conventions,
+OpenTofu will find all files with the <em>.tf</em> extension in a folder, so you can name the files whatever you want, but
 
-such as putting the main resources in <em>main.tf</em>, input variables in <em>variables.tf</em>, and output variables in
+there are some standard conventions, such as putting the main resources in <em>main.tf</em>, input variables in
 
-<em>outputs.tf</em>.</p>
+<em>variables.tf</em>, and output variables in <em>outputs.tf</em>.</p>
 
 </div>
 
@@ -3836,7 +4072,7 @@ into regions. An <em>AWS region</em> is a separate geographic area, such as <cod
 
 <code>ap-southeast-2</code> (Sydney). Within each region, there are multiple isolated datacenters known as <em>Availability
 
-Zones</em> (AZs), such as <code>us-east-2a</code>, <code>us-east-2b</code>, and so on.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="13-footnotes.html#_footnotedef_13" title="View footnote.">13</a>]</sup> There are
+Zones</em> (AZs), such as <code>us-east-2a</code>, <code>us-east-2b</code>, and so on.<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="13-footnotes.html#_footnotedef_14" title="View footnote.">14</a>]</sup> There are
 
 many other settings you can configure on this provider, but for now, let&#8217;s keep it simple.</p>
 
@@ -4308,7 +4544,7 @@ be created, anything with a minus sign (&#x2013;) will be deleted, and anything 
 
 in place. Every time you run <code>apply</code>, OpenTofu will show you this execution plan; you can also generate the execution
 
-plan without applying any changes by using the <code>plan</code> command.</p>
+plan without applying any changes by running <code>tofu plan</code> instead of <code>tofu apply</code>.</p>
 
 </div>
 
@@ -4554,9 +4790,9 @@ EC2 instance with your new tag.</p>
 
 <div class="paragraph">
 
-<p>When you&#8217;re done testing, you can have OpenTofu undeploy everything it deployed before by running the <code>tofu destroy</code>
+<p>When you&#8217;re done testing, you can run <code>tofu destroy</code> to have OpenTofu undeploy everything it deployed earlier, which
 
-command, which should give you log output that looks something like this (log output truncated for readability):</p>
+should give you log output that looks something like this (log output truncated for readability):</p>
 
 </div>
 
@@ -4716,7 +4952,7 @@ clean up everything it deployed.</p>
 
 <div class="paragraph">
 
-<p>There&#8217;s one more thing that you should take the time to learn about OpenTofu: the modules are <em>reusable</em>. In a general
+<p>One of OpenTofu&#8217;s more powerful features is that the modules are <em>reusable</em>. In a general
 
 purpose programming language (e.g., JavaScript, Python, Java), you put reusable code in a function; in OpenTofu, you
 
@@ -4864,7 +5100,7 @@ $ cd ch2/tofu/live/sample-app</pre>
 
 <p>A <code>source</code> parameter that contains the file path of the module you want to use: the preceding code sets <code>source</code> to
 
-the relative file path to the <code>ec2-instance</code> module in the <em>modules</em> folder.</p>
+the relative file path of the <code>ec2-instance</code> module in the <em>modules</em> folder.</p>
 
 </li>
 
@@ -4894,7 +5130,7 @@ But the beauty of code reuse is that you can use the module multiple times, as s
 
 <div id="example_tofu_ec2_module_usage_multiple" class="exampleblock">
 
-<div class="title">Example 19. Basic module usage (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch2/tofu/live/sample-app/main.tf">ch2/tofu/live/sample-app/main.tf</a></em>)</div>
+<div class="title">Example 19. Using a module multiple times (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch2/tofu/live/sample-app/main.tf">ch2/tofu/live/sample-app/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -5052,7 +5288,7 @@ resource "aws_instance" "sample_app" {
 
 <div class="paragraph">
 
-<p>Now, back in <code>sample-app</code>, you can set the <code>name</code> parameter to different values in each of the <code>module</code>
+<p>Now, back in <em>sample-app/main.tf</em>, you can set the <code>name</code> parameter to different values in each of the <code>module</code>
 
 blocks, as shown in <a href="03.html#example_tofu_ec2_module_usage_name">Example 22</a>:</p>
 
@@ -5136,7 +5372,7 @@ to a different AWS account, and so on. All you need to do is to move the <code>p
 
 <div id="example_tofu_ec2_module_usage_provider" class="exampleblock">
 
-<div class="title">Example 23. Move the <code>provider</code> block to the <code>sample-app</code> module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch2/tofu/live/sample-app/main.tf">ch2/tofu/live/sample-app/main.tf</a></em>)</div>
+<div class="title">Example 23. Move the <code>provider</code> block to the <code>sample-app</code> root module (<em><a href="https://github.com/brikis98/devops-book/blob/main/ch2/tofu/live/sample-app/main.tf">ch2/tofu/live/sample-app/main.tf</a></em>)</div>
 
 <div class="content">
 
@@ -5280,11 +5516,11 @@ $ tofu apply</pre>
 
 <p>When <code>apply</code> completes, you should have two EC2 instances running, and the output variables should show their IPs and
 
-instance IDs. If you open <code><a href="http://&lt;IP&gt;:8080" class="bare">http://&lt;IP&gt;:8080</a></code> in your browser, where <code>&lt;IP&gt;</code> is the public IP of either instance, you
+instance IDs. If you wait a minute or two for the instances to boot up, and open <code><a href="http://&lt;IP&gt;:8080" class="bare">http://&lt;IP&gt;:8080</a></code> in your browser,
 
-should see the familiar "Hello, World!" text. When you&#8217;re done experimenting, run <code>tofu destroy</code> to clean everything up
+where <code>&lt;IP&gt;</code> is the public IP of either instance, you should see the familiar "Hello, World!" text. When you&#8217;re done
 
-again.</p>
+experimenting, run <code>tofu destroy</code> to clean everything up again.</p>
 
 </div>
 
@@ -5408,7 +5644,7 @@ and manage the infrastructure they need for their apps.</p>
 
 <div class="paragraph">
 
-<p>This blog post series will make use of this pattern as well in future chapters: instead of writing every line of code
+<p>This blog post series will make use of this pattern in future chapters: instead of writing every line of code
 
 from scratch, you&#8217;ll be able to use modules directly from this series&#8217;s sample code repo to deploy the
 
@@ -5676,7 +5912,7 @@ the right tool(s) for the job.</p>
 
 topology (i.e., virtual private clouds [VPCs], subnets, route tables), data stores (e.g., MySQL, Redis), load balancers,
 
-and servers. You then use Ansible to deploy your apps on top of those servers, as depicted in <a href="03.html#tofu_and_ansible">Figure 22</a>.</p>
+and servers. You then use Ansible to deploy your apps on top of those servers, as depicted in <a href="03.html#tofu_and_ansible">Figure 21</a>.</p>
 
 </div>
 
@@ -5688,7 +5924,7 @@ and servers. You then use Ansible to deploy your apps on top of those servers, a
 
 </div>
 
-<div class="title">Figure 22. OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers.</div>
+<div class="title">Figure 21. OpenTofu deploys the infrastructure, including servers, and Ansible deploys apps onto those servers.</div>
 
 </div>
 
@@ -5716,7 +5952,7 @@ as your codebase, infrastructure, and team grow, maintenance and debugging can b
 
 with these VM images and the rest of your infrastructure, including the network topology (i.e., VPCs, subnets, route
 
-tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in <a href="03.html#tofu_and_packer">Figure 23</a>.</p>
+tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in <a href="03.html#tofu_and_packer">Figure 22</a>.</p>
 
 </div>
 
@@ -5728,7 +5964,7 @@ tables), data stores (e.g., MySQL, Redis), and load balancers, as illustrated in
 
 </div>
 
-<div class="title">Figure 23. OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers.</div>
+<div class="title">Figure 22. OpenTofu deploys the infrastructure, including servers, and Packer creates the VMs that run on those servers.</div>
 
 </div>
 
@@ -5774,7 +6010,7 @@ network topology (i.e., VPCs, subnets, route tables), data stores (e.g., MySQL, 
 
 when the cluster of servers boots up, it forms a Kubernetes cluster that you use to run and manage your Dockerized
 
-applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_docker">Figure 24</a>.</p>
+applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_docker">Figure 23</a>.</p>
 
 </div>
 
@@ -5786,7 +6022,7 @@ applications, as shown in <a href="03.html#tofu_and_packer_and_kubernetes_and_do
 
 </div>
 
-<div class="title">Figure 24. OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers.</div>
+<div class="title">Figure 23. OpenTofu deploys the infrastructure, including servers; Packer creates the VMs that run on those servers; and Kubernetes manages those VMs as a cluster for running Docker containers.</div>
 
 </div>
 
@@ -5954,9 +6190,7 @@ a bit of self-promotion, is to grab a copy of my other book,
 
 also a single point of failure. What if it crashes? What if the load exceeds the capacity of a single server? How do you
 
-roll out changes without downtime? All of these topics are the focus of the next blog post,
-
-<a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
+roll out changes without downtime? All of these topics are the focus of <a href="04.html#how_to_deploy_many_apps">Part 3</a>.</p>
 
 </div>
 
@@ -5995,7 +6229,7 @@ roll out changes without downtime? All of these topics are the focus of the next
 
 <div id="footer-text">
 
-Last updated 2024-06-11 13:58:45 -0400
+Last updated 2024-06-11 16:19:51 -0400
 
 </div>
 

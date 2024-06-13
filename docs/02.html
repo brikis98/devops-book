@@ -1144,7 +1144,7 @@ Assessment (DORA) metrics</em></a>, which are a quick way to assess the performa
 
 difference between elite performers and low performers at these metrics, based on data from the
 
-<a href="https://cloud.google.com/devops/state-of-devops">2023 State of DevOps Report</a>:<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="13-footnotes.html#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+<a href="https://cloud.google.com/devops/state-of-devops">2023 State of DevOps Report</a>:</p>
 
 </div>
 
@@ -1170,7 +1170,7 @@ difference between elite performers and low performers at these metrics, based o
 
 <th class="tableblock halign-left valign-top">Description</th>
 
-<th class="tableblock halign-left valign-top">Elite vs low performers</th>
+<th class="tableblock halign-left valign-top">Elite vs low performers<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="13-footnotes.html#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
 
 </tr>
 
@@ -1532,21 +1532,21 @@ shown in <a href="02.html#devops_shift">Table 3</a>:</p>
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment cadence</p></td>
-
-<td class="tableblock halign-left valign-top"><p class="tableblock">Weeks or months</p></td>
-
-<td class="tableblock halign-left valign-top"><p class="tableblock">Many times per day</p></td>
-
-</tr>
-
-<tr>
-
 <td class="tableblock halign-left valign-top"><p class="tableblock">Change process</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Change request tickets</p></td>
 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Self-service</p></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment cadence</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weeks or months</p></td>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many times per day</p></td>
 
 </tr>
 
@@ -1688,9 +1688,9 @@ revisit this high-level map at any time to see the big picture, and get your bea
 
 <div class="paragraph">
 
-<p>This is where most software projects start, including new startups, new initiatives at existing companies, and most
+<p>As shown <a href="02.html#evolution_diagram_1">Figure 1</a>, stage 1 is where most software projects start, including new startups, new
 
-side projects. <a href="02.html#evolution_diagram_1">Figure 1</a> shows step 1:</p>
+initiatives at existing companies, and most side projects:</p>
 
 </div>
 
@@ -1956,9 +1956,15 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <p>To help teams do better testing, you set up multiple environments (e.g., dev, stage, prod), each of which has a
 
-full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).
+full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
 
-(<a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>).</p>
+</dd>
+
+<dt class="hdlist1">Continuous delivery</dt>
+
+<dd>
+
+<p>To make deployments faster and more reliable, you set up continuous delivery (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 </dd>
 
@@ -1969,14 +1975,6 @@ full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_tea
 <p>To keep all the new environments secure, you lock down authentication, authorization, and secrets management
 
 (<a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
-
-</dd>
-
-<dt class="hdlist1">Continuous delivery</dt>
-
-<dd>
-
-<p>To make deployments faster and more reliable, you set up continuous delivery (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 </dd>
 
@@ -2014,7 +2012,7 @@ to step 6, as shown in <a href="02.html#evolution_diagram_6">Figure 6</a>:</p>
 
 <p>To allow teams to work more independently, you break up your monolith into multiple microservices, usually each
 
-with its own data store (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+with its own data stores and caches (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
 
 </dd>
 
@@ -2022,7 +2020,7 @@ with its own data store (<a href="09.html#how_to_work_with_multiple_teams">Part 
 
 <dd>
 
-<p>You can&#8217;t maintain so many environments manually, so you start to manage your infrastructure as code</p>
+<p>It&#8217;s hard to maintain so many environments manually, so you start to manage your infrastructure as code</p>
 
 </dd>
 
@@ -2036,7 +2034,7 @@ with its own data store (<a href="09.html#how_to_work_with_multiple_teams">Part 
 
 processes are more complicated, and you most likely need a dedicated infrastructure team to manage all of this. For a
 
-small percentage of companies, even this isn&#8217;t enough, and they are forced to move on to stage 3.</p>
+small percentage of companies, even this isn&#8217;t enough, and you are forced to move on to stage 3.</p>
 
 </div>
 
@@ -2106,7 +2104,7 @@ automatically communicate with each other (<a href="07.html#how_to_set_up_networ
 
 solution for the items above (observability, service, discovery, hardening), as well as load balancing, traffic
 
-control, error handling, and so on (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+control, and error handling (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
 
 </dd>
 
@@ -2174,7 +2172,7 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <div class="paragraph">
 
-<p>Finally, as your user base and employee base keeps growing, you move on top step 9, shown in <a href="02.html#evolution_diagram_9">Figure 9</a>:</p>
+<p>Finally, as your user base and employee base keeps growing, you move on to step 9, shown in <a href="02.html#evolution_diagram_9">Figure 9</a>:</p>
 
 </div>
 
@@ -2270,9 +2268,9 @@ architecture and processes of the largest and most elite companies. Let&#8217;s 
 
 (unless it is, in which case, congrats, you are an exceptionally rare outlier); you don&#8217;t have the same scale, you
 
-don&#8217;t have the same problems to solve, and therefore, the same solutions won&#8217;t work for you. Not only will
+don&#8217;t have the same problems to solve, and therefore, the same solutions won&#8217;t be a good fit. In fact, adopting, the
 
-those solutions not work for you, they will be actively harmful. Every time I see a 3-person startup running an
+solutions for a different stage of company may be actively harmful. Every time I see a 3-person startup running an
 
 architecture with 12 microservices, a service mesh, and an event bus, I just shake my head: you&#8217;re paying a massive
 
@@ -2586,7 +2584,7 @@ $ cd ch1/sample-app</pre>
 
 <div class="paragraph">
 
-<p>The sample app you&#8217;ll be using is a very simple "Hello, World" Node.js app, written in JavaScript. You don&#8217;t
+<p>The sample app you&#8217;ll be using is a minimal "Hello, World" Node.js app, written in JavaScript. You don&#8217;t
 
 need to understand much JavaScript to make sense of the app. In fact, one of the nice things about getting started with
 
@@ -2648,7 +2646,7 @@ server.listen(port,() =&gt; {
 
 <li>
 
-<p>Respond to all requests with the text "Hello, World!"</p>
+<p>Respond to all requests with a 200 status code and the text "Hello, World!"</p>
 
 </li>
 
@@ -2722,17 +2720,13 @@ the next section.</p>
 
 <p>By default, when you run an app on your computer, it is only available on <em>localhost</em>. This is a hostname that is
 
-configured on every computer to point back to the <em>loopback</em> network interface (typically 127.0.0.1—you can try out
+configured on every computer to point back to the <em>loopback network interface</em>,<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup> which means it bypasses any real network interface. In other words, when you&#8217;re running an app on
 
-<a href="http://127.0.0.1:8080" class="bare">http://127.0.0.1:8080</a> in your browser and it should give the same "Hello, World!" response), which means it bypasses
+your computer locally, it typically can <em>only</em> be accessed from your own computer, and not from the outside world. This
 
-any real network interface. In other words, when you&#8217;re running an app on your computer locally, it typically can
+is by design, and for the most part, a good thing, as the way you run apps on a personal computer for development and
 
-<em>only</em> be accessed from your own computer, and not from the outside world. This is by design, and for the most part, a
-
-good thing, as the way you run apps on a personal computer for development and testing is <em>not</em> the way you should run
-
-them when you want to expose them to outsiders.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="13-footnotes.html#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
+testing is <em>not</em> the way you should run them when you want to expose them to outsiders.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="13-footnotes.html#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
 
 </div>
 
@@ -2978,7 +2972,7 @@ teams from outside Amazon as well. The result was the launch of Amazon Web Servi
 
 computing platform</em> (<em>cloud</em> for short), which allowed you to rent servers from Amazon using a software
 
-interface.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="13-footnotes.html#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
+interface.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="13-footnotes.html#_footnotedef_7" title="View footnote.">7</a>]</sup></p>
 
 </div>
 
@@ -3136,7 +3130,7 @@ Internet connection) and get instant access to dozens of data centers around the
 
 <p>The cloud industry is massive and growing at an incredible rate. For example, as of the end of
 
-2023, AWS alone is a
+2023, AWS alone (<em>not</em> including the rest of Amazon&#8217;s businesses) is a
 
 <a href="https://ir.aboutamazon.com/news-release/news-release-details/2024/Amazon.com-Announces-Fourth-Quarter-Results/">$100
 
@@ -3180,7 +3174,7 @@ companies are establishing a presence in the cloud as well, often preferring it 
 
 <div class="paragraph">
 
-<p>Using the cloud should be your <em>default</em> choice for most deployments these days.</p>
+<p>Using the cloud should be your <em>default</em> choice for most new deployments these days.</p>
 
 </div>
 
@@ -3218,7 +3212,7 @@ companies are establishing a presence in the cloud as well, often preferring it 
 
 <dd>
 
-<p>If it ain&#8217;t broke, don&#8217;t fix it! If your company has been around a while and already has its own data centers—you&#8217;ve
+<p>If it ain&#8217;t broke, don&#8217;t fix it. If your company has been around a while and already has its own data centers—you&#8217;ve
 
 already made all the up-front investments, and things are working well for you—then sticking with on-prem may make
 
@@ -3244,9 +3238,15 @@ is if your company is large enough that you can afford to buy and manage your ow
 
 handle a lot of traffic, but that traffic is fairly steady and predictable. In that case, you aren&#8217;t benefiting as
 
-much from the elasticity of the cloud, and may find it cheaper to run things on prem.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="13-footnotes.html#_footnotedef_7" title="View footnote.">7</a>]</sup> One final example is if you need access to very specific hardware (e.g.,
+much from the elasticity of the cloud, and may find it cheaper to run things on prem.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="13-footnotes.html#_footnotedef_8" title="View footnote.">8</a>]</sup> One final example is if you need access to very specific hardware (e.g.,
 
-certain types of CPUs, GPUs, or hard-drives), you can&#8217;t always get that in the cloud, and may have to buy it yourself.</p>
+certain types of CPUs, GPUs, or hard-drives), you can&#8217;t always get that in the cloud, and may have to buy it yourself.
+
+But a word of warning: it&#8217;s easy to get the cost comparison wrong. You have to factor in not only what you pay
+
+for servers, bandwidth, and disk space, but also costs such as power, cooling, redundancy, data center employees,
+
+the need to replace your own hardware over time, and so on.</p>
 
 </dd>
 
@@ -3392,7 +3392,7 @@ operations, such as installing the app and its dependencies, setting up database
 
 <p>About a year later, in 2007, a company called Heroku came out with one of the first <em>Platform as a Service (PaaS)</em>
 
-offerings.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="13-footnotes.html#_footnotedef_8" title="View footnote.">8</a>]</sup> The
+offerings.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="13-footnotes.html#_footnotedef_9" title="View footnote.">9</a>]</sup> The
 
 key difference with PaaS is that the focus is on higher level primitives: not just the underlying infrastructure (i.e.,
 
@@ -4022,7 +4022,7 @@ into your AWS account, which are known as <em>Managed Policies</em>.</p>
 
 and add the <code>AdministratorAccess</code> Managed Policy to your IAM user (search for it, and click the checkbox next to it),
 
-as shown in <a href="02.html#managed_policies">Figure 11</a>.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="13-footnotes.html#_footnotedef_9" title="View footnote.">9</a>]</sup></p>
+as shown in <a href="02.html#managed_policies">Figure 11</a>.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="13-footnotes.html#_footnotedef_10" title="View footnote.">10</a>]</sup></p>
 
 </div>
 
@@ -4466,7 +4466,7 @@ its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 17</
 
 <div class="paragraph">
 
-<p>Copy and paste that IP address, open <code>http://&lt;IP&gt;</code>  in your browser (note: you have to actually type the <code>http://</code>
+<p>Copy and paste that IP address, open <code><a href="http://&lt;IP&gt" class="bare">http://&lt;IP&gt</a>;</code>  in your browser (note: you have to actually type the <code>http://</code>
 
 portion in your browser, or the browser may try to use <code>https://</code> by default, which will <em>not</em> work; you&#8217;ll learn more
 
@@ -4670,9 +4670,7 @@ should take advantage of that as much as possible. And that&#8217;s precisely wh
 
 software delivery. If you can find a PaaS that meets your requirements, then you should use it, stick with it for as
 
-long as you can, and avoid moving to an IaaS and investing in recreating all those software delivery pieces until you
-
-absolutely have to.</p>
+long as you can, and avoid having to recreate all those software delivery pieces until you absolutely have to.</p>
 
 </div>
 
@@ -4916,7 +4914,7 @@ enough, one or more of these needs will likely push you from PaaS to IaaS—it&#
 
 </dd>
 
-<dt class="hdlist1">Using the cloud should be your <em>default</em> choice for most deployments these days</dt>
+<dt class="hdlist1">Using the cloud should be your <em>default</em> choice for most new deployments these days</dt>
 
 <dd>
 
@@ -4968,9 +4966,9 @@ five or fifty; and imagine you had to do that many times per day. Not fun.</p>
 
 <div class="paragraph">
 
-<p>The solution is to automate everything by managing all of your infrastructure as code, which is the topic of the next
+<p>The solution is to automate everything by managing all of your infrastructure as code, which is the topic of
 
-blog post, <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
+<a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
 
 </div>
 
@@ -5009,7 +5007,7 @@ blog post, <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-11 13:58:45 -0400
+Last updated 2024-06-11 16:19:51 -0400
 
 </div>
 
