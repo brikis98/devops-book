@@ -1382,19 +1382,19 @@ overlap and conflict are much higher.</p>
 
 merging two branches that are just a day old, the conflicts will be relatively small, as you can&#8217;t change all that much
 
-code in just a few days, and the code will still be top-of-mind, as worked on it within the last 24 hours. On the other
+code in just a few days, and the code will still be top-of-mind, as you worked on it within the last 24 hours. On the
 
-hand, if you&#8217;re merging code that is several months old, then the conflicts will be larger, as you can make a lot of
+other hand, if you&#8217;re merging code that is several months old, then the conflicts will be larger, as you can make a lot
 
-changes in a few months, and you&#8217;re less likely to remember what the changes are about, as you may have worked on them
+of changes in a few months, and you&#8217;re less likely to remember what the changes are about, as you may have worked on
 
-months ago.</p>
+them months ago.</p>
 
 </div>
 
 <div class="paragraph">
 
-<p>The most important thing to understand is this: When you have multiple developers working on a single codebase at the
+<p>The most important thing to understand is this: when you have multiple developers working on a single codebase at the
 
 same time, merge conflicts are unavoidable, so the question isn&#8217;t how to avoid merge conflicts, but how to make those
 
@@ -1836,7 +1836,7 @@ don&#8217;t need to actually make these code changes; this is just for demonstra
 
 <li>
 
-<p>Use the <code>lookupFeatureToggle</code> function to look up the value of the "NEW_HOME_PAGE" feature toggle.</p>
+<p>Use the <code>lookupFeatureToggle</code> function to look up the value of the "HOME_PAGE_FLAVOR" feature toggle.</p>
 
 </li>
 
@@ -1872,7 +1872,7 @@ enabled by querying a dedicated <em>feature toggle service</em>, which is a serv
 
 <dd>
 
-<p>The mapping is from a feature toggle name (e.g, NEW_HOME_PAGE) to its value (e.g.,
+<p>The mapping is from a feature toggle name (e.g, HOME_PAGE_FLAVOR) to its value (e.g.,
 
 true, false, or an arbitrary string like "v2").</p>
 
@@ -1920,15 +1920,35 @@ toggle service such as <a href="https://www.split.io/">Split</a>, <a href="https
 
 <p>It might not be obvious, but the humble if-statement, combined with a feature toggle check, unlocks a superpower: you
 
-can now commit and regularly merge code, even before it&#8217;s done. If you wrap new features in a feature toggle check, as
+can now commit and regularly merge code, even before it&#8217;s done. This is because of the following key property of
 
-long as the code is syntactically valid (which you can validate with simple automated tests), you can merge your new
+feature toggles:</p>
 
-feature into <code>main</code> long before that feature is done. That&#8217;s because, by default, feature toggles are off, so no users
+</div>
 
-will see this feature! This is what allows you to develop large new features while still practicing continuous
+<div class="quoteblock">
 
-integration.</p>
+<blockquote>
+
+<div class="paragraph">
+
+<p>The default value for all feature toggles is off.</p>
+
+</div>
+
+</blockquote>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you wrap new features in a feature toggle check, as long as the code is syntactically valid (which you can validate
+
+with simple automated tests), you can merge your new feature into <code>main</code> long before that feature is done, as by
+
+default, the new feature is off, so it will have no impact on other developers or your users. This is what allows you
+
+to develop large new features while still practicing continuous integration.</p>
 
 </div>
 
@@ -2038,7 +2058,7 @@ $ cp -r ch4/sample-app ch5/sample-app</pre>
 
 <div class="paragraph">
 
-<p>With that done, create a new folder called <em>.github/workflows</em>:</p>
+<p>With that done, create a new folder called <em>.github/workflows</em> in the root of your repo:</p>
 
 </div>
 
@@ -2156,11 +2176,13 @@ jobs.</p>
 
 <p>Each job runs on a certain type of <em>runner</em>, which is how you configure the hardware (CPU, memory) and software
 
-(operating system and dependencies) to use for the build. The preceding code uses a runner with the default hardware
+(operating system and dependencies) to use for the build. The preceding code uses the
+
+<a href="https://github.com/actions/runner-images">ubuntu-latest runner</a>, which gives you the default hardware
 
 configuration (2 CPUs and 7GB of RAM, as of 2024) and a software configuration that has Ubuntu and a bunch of
 
-commonly used software engineering tools (including Node.js) pre-installed.<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup></p>
+commonly used software engineering tools (including Node.js) pre-installed.</p>
 
 </li>
 
@@ -2750,7 +2772,7 @@ AWS:</p>
 
 <p><strong>[GitHub] Generate an OIDC token</strong>: Inside a GitHub Actions workflow, GitHub generates an <em>OIDC token</em>, which is a
 
-<a href="https://jwt.io/">JSON Web Token</a>: that is, a JSON object that contains <em>claims</em>—that is, data that GitHub is
+<a href="https://jwt.io/">JSON Web Token</a>: a JSON object that contains <em>claims</em>—that is, data that GitHub is
 
 asserting—and a signature that can be cryptographically verified to prove the token really comes from GitHub. GitHub
 
@@ -2960,7 +2982,15 @@ several IAM roles for CI/CD with GitHub Actions. <a href="06.html#tofu_oidc_iam_
 
 <div class="content">
 
-<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "iam_roles" {
+<pre class="highlight"><code class="language-terraform" data-lang="terraform">module "oidc_provider" {
+
+  # ... (other params omitted) ...
+
+}
+
+
+
+module "iam_roles" {
 
   source = "github.com/brikis98/devops-book//ch5/tofu/modules/gh-actions-iam-roles"
 
@@ -3048,9 +3078,9 @@ For the testing IAM role, all branches in the specified repo will be allowed to 
 
 should be the same value you use for the <code>name</code> parameter in that module. This is necessary so the
 
-<code>gh-actions-iam-roles</code> module can create IAM roles with permissions to manage the <code>lambda-sample</code> resources, but
+<code>gh-actions-iam-roles</code> module can create IAM roles that only have permissions to manage the <code>lambda-sample</code>
 
-not anything else.</p>
+resources, and no other resources.</p>
 
 </li>
 
@@ -3174,7 +3204,7 @@ $ mkdir -p ch5/tofu/modules
 
 $ cp -r ch4/tofu/live/lambda-sample ch5/tofu/live
 
-$ cp -r ch4/tofu/modules/test-endpoint ch5/tofu/modules/test-endpoint</pre>
+$ cp -r ch4/tofu/modules/test-endpoint ch5/tofu/modules</pre>
 
 </div>
 
@@ -3458,7 +3488,9 @@ allow you to issue an OIDC token for authenticating to AWS in (2).</p>
 
 <li>
 
-<p>Use an open source workflow to authenticate to AWS using OIDC.</p>
+<p>Use an open source workflow to authenticate to AWS using OIDC. This calls the <code>AssumeRoleWithWebIdentity</code> API to
+
+exchange the OIDC token for temporary AWS credentials.</p>
 
 </li>
 
@@ -3532,11 +3564,11 @@ something similar to <a href="06.html#gh_actions_tests_tofu">Figure 51</a>:</p>
 
 <div class="paragraph">
 
-<p>If you look at the bottom of the pull request, you should see all your automated tests running, including both the
+<p>Congrats, you should now have both automated tests for your app code and for your infrastructure code running, as you
 
-automated tests for your app code and for your infrastructure code. After a minute or two, if everything is configured
+can see at the bottom of the PR! After a minute or two, if everything is configured correctly, and the tests are
 
-correctly, and the tests are passing, merge the PR.</p>
+passing, merge the PR.</p>
 
 </div>
 
@@ -3614,7 +3646,7 @@ that you can deploy to production at any time in a manner that is fast, reliable
 
 deploy daily, several times a day, thousands of times per day, or even after every single commit that passes the
 
-automated tests; this last approach is known as <em>continuous deployment</em>. But the key with CD is not how often you
+automated tests; this last approach is known as <em>continuous deployment</em>. The key with CD is not how often you
 
 deploy, but to ensure that the frequency of deployment is purely a business decision—not something limited by your
 
@@ -3706,7 +3738,7 @@ tools in <a href="03.html#how_to_manage_your_infra_as_code">Part 2</a>, gets you
 
 you need to automate the process <em>around</em> using IaC. This includes implementing deployment strategies and a deployment
 
-pipeline, as discussed in the next two subsections.</p>
+pipeline, as discussed in the next two sections.</p>
 
 </div>
 
@@ -3716,73 +3748,27 @@ pipeline, as discussed in the next two subsections.</p>
 
 <div class="paragraph">
 
-<p>There are many <em>deployment strategies</em> that you can use to roll out changes:</p>
+<p>There are many <em>deployment strategies</em> that you can use to roll out changes: some involve downtime, while others do
 
-</div>
+not; some are easy to implement, while others are more complicated; some only work with <em>stateless apps</em>, which are
 
-<div class="ulist">
+apps that don&#8217;t need to persist any of the data that they store on their local hard drives (e.g., most web frontend
 
-<ul>
+apps are stateless), while others also work with <em>stateful apps</em>, which are apps that store data on their local hard
 
-<li>
-
-<p>Downtime deployment</p>
-
-</li>
-
-<li>
-
-<p>Rolling deployment without replacement</p>
-
-</li>
-
-<li>
-
-<p>Rolling deployment with replacement</p>
-
-</li>
-
-<li>
-
-<p>Blue-green deployment</p>
-
-</li>
-
-<li>
-
-<p>Canary deployment</p>
-
-</li>
-
-<li>
-
-<p>Feature toggle deployment</p>
-
-</li>
-
-<li>
-
-<p>Promotion deployment</p>
-
-</li>
-
-<li>
-
-<p>Infrastructure deployment</p>
-
-</li>
-
-</ul>
+disks that needs to be persisted across deployments (e.g., any sort of database or distributed data system).</p>
 
 </div>
 
 <div class="paragraph">
 
-<p>The next several subsections will go over each of these strategies, including a basic overview of the strategy, its
+<p>The next several sections will go over some of the most common strategies used today,
 
-advantages and drawbacks, and common use cases where the strategy is typically a good fit. Note that these strategies
+including a basic overview of each strategy, its advantages and drawbacks, and common use cases where the strategy is
 
-are not mutually exclusive: you can, and often do, combine multiple strategies together.</p>
+typically a good fit. Note that these strategies are not mutually exclusive: you can, and often do, combine multiple
+
+strategies together.</p>
 
 </div>
 
@@ -3792,21 +3778,9 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 <div class="paragraph">
 
-<p>This is the most basic deployment strategy where you take a downtime to roll out changes.</p>
+<p>This is the most basic deployment strategy, where you take a downtime to roll out changes, as shown in
 
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_downtime">Figure 52</a> shows an overview of downtime deployment:</p>
+<a href="06.html#deployment_strategy_downtime">Figure 52</a>:</p>
 
 </div>
 
@@ -3848,11 +3822,11 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -3870,13 +3844,7 @@ are not mutually exclusive: you can, and often do, combine multiple strategies t
 
 <dd>
 
-<p>You can use this strategy with both <em>stateless apps</em>, which are apps that don&#8217;t
-
-need to persist any of the data that they store on their local hard drives (e.g., most web frontend apps are
-
-stateless), and <em>stateful apps</em>, which are applications that store data on their local hard disks that needs to be
-
-persisted across deployments (e.g., any sort of database or distributed data system).</p>
+<p>You can use this strategy with both stateless apps and stateful apps.</p>
 
 </dd>
 
@@ -3884,11 +3852,11 @@ persisted across deployments (e.g., any sort of database or distributed data sys
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -3906,11 +3874,11 @@ persisted across deployments (e.g., any sort of database or distributed data sys
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -3944,15 +3912,9 @@ error-prone than doing it with a brief downtime.</p>
 
 </div>
 
-</dd>
-
-</dl>
-
-</div>
-
 <div class="paragraph">
 
-<p>With the exceptions in the preceding handful of use cases, I would <em>not</em> recommend using downtime deployments, as
+<p>Except for the handful of use cases I just mentioned, I would <em>not</em> recommend using downtime deployments, as
 
 these days, there is wide support for the zero-downtime deployment strategies discussed in the following sections.</p>
 
@@ -3970,21 +3932,7 @@ these days, there is wide support for the zero-downtime deployment strategies di
 
 your app onto new servers, and once the new versions of the app start to pass health checks, you gradually remove the
 
-old versions of the app.</p>
-
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_rolling_without_replacement">Figure 53</a> shows an overview of rolling deployment without replacement:</p>
+old versions of the app, as shown in <a href="06.html#deployment_strategy_rolling_without_replacement">Figure 53</a>:</p>
 
 </div>
 
@@ -4028,11 +3976,11 @@ load balancer will send traffic to them, so for some period of time, users may s
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4058,11 +4006,11 @@ load balancer will send traffic to them, so for some period of time, users may s
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4094,11 +4042,11 @@ next section, you&#8217;ll see a version of rolling deployment that does work wi
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4109,12 +4057,6 @@ next section, you&#8217;ll see a version of rolling deployment that does work wi
 <dd>
 
 <p>For stateless apps, a rolling deployment without replacement can be an effective option.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -4144,21 +4086,9 @@ it&#8217;s often your best bet for stateless apps.</p>
 
 <p>This is nearly identical to the rolling deployment in the previous section, except here, you remove the old version
 
-of the app, in batches, <em>before</em> booting up the new version.</p>
+of the app <em>before</em> booting up the new version, as shown in
 
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_rolling_with_replacement">Figure 54</a> shows an overview of rolling deployment with replacement:</p>
+<a href="06.html#deployment_strategy_rolling_with_replacement">Figure 54</a>:</p>
 
 </div>
 
@@ -4188,11 +4118,11 @@ network-attached hard-drives.</p>
 
 <li>
 
-<p>You disconnect one v1 replica from the load balancer, shut down the server, and move its hard drive to a new v2
+<p>You disconnect one<sup class="footnote">[<a id="_footnoteref_28" class="footnote" href="13-footnotes.html#_footnotedef_28" title="View footnote.">28</a>]</sup> v1 replica from the load balancer, shut down the server, and move its hard drive to a new v2
 
-server (since it&#8217;s a network-attached hard-drive, you do the move through software).<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup> Once that new v2 server starts passing health checks, the load balancer starts sending traffic
+server (since it&#8217;s a network-attached hard-drive, you do the move through software). Once that new v2 server starts
 
-to it.</p>
+passing health checks, the load balancer starts sending traffic to it.</p>
 
 </li>
 
@@ -4208,11 +4138,11 @@ its hard-drive to a new v2 server, until all replicas are replaced with v2.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4246,11 +4176,11 @@ its hard-drive to a new v2 server, until all replicas are replaced with v2.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4282,11 +4212,11 @@ which can be a jarring user experience, or even cause bugs if you&#8217;re not c
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4301,12 +4231,6 @@ which can be a jarring user experience, or even cause bugs if you&#8217;re not c
 of data on its local hard-drive that needs to be persisted across the deployment (e.g., distributed data stores
 
 such as Consul, Elasticsearch, and ZooKeeper).</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -4332,21 +4256,9 @@ blue-green deployment is the gold standard, as discussed in the next section.</p
 
 <p>With blue-green deployments, you bring up the new (green) version of your app, wait for it to be fully ready, and then
 
-instantaneously switch all traffic from the old version (blue) to the new version (green).</p>
+instantaneously switch all traffic from the old version (blue) to the new version (green), as shown in
 
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_blue_green">Figure 55</a> shows an overview of blue-green deployment:</p>
+<a href="06.html#deployment_strategy_blue_green">Figure 55</a>:</p>
 
 </div>
 
@@ -4392,11 +4304,11 @@ v1 (blue) to v2 (green). At that point, you undeploy all the v1 servers, leaving
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4424,11 +4336,11 @@ a jarring user experience and potential bugs.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4456,11 +4368,11 @@ new version, so blue-green deployments aren&#8217;t an option (without downtime)
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4471,12 +4383,6 @@ new version, so blue-green deployments aren&#8217;t an option (without downtime)
 <dd>
 
 <p>Blue-green deployments are the gold standard for deploying stateless apps.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -4510,7 +4416,7 @@ replica before doing a full rollout.</p>
 
 <div class="paragraph">
 
-<p>The name canary server here comes from the proverbial "canary in the coal mine," which is a bird that coal miners would
+<p>The name "canary" comes from the proverbial "canary in the coal mine," which is a bird that coal miners would
 
 take into mines with them, as canaries are more sensitive to poisonous gasses than humans, so if the canary starts
 
@@ -4518,21 +4424,7 @@ reacting poorly or dies, it&#8217;s an early warning signal that you need to get
 
 deployments is similar: you deploy your new code on solely a single replica initially, and if that replica shows any
 
-problems, you roll back the deployment before it can cause more damage.</p>
-
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_canary">Figure 56</a> shows an overview of canary deployment:</p>
+problems, you roll back the deployment before it can cause more damage, as shown in <a href="06.html#deployment_strategy_canary">Figure 56</a>:</p>
 
 </div>
 
@@ -4582,11 +4474,11 @@ using one of the other strategies, such as rolling deployment or blue-green depl
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4604,11 +4496,11 @@ using one of the other strategies, such as rolling deployment or blue-green depl
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4628,11 +4520,11 @@ your app at the same time, which can be a jarring user experience, or even cause
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4651,12 +4543,6 @@ your app at the same time, which can be a jarring user experience, or even cause
 <dd>
 
 <p>Where a full-scale outage would cause significant problems for your business.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -4688,21 +4574,9 @@ regularly, even while making large-scale changes. It turns out that feature togg
 
 how you deploy software, too. This is also not a standalone deployment strategy, but a strategy meant to be combined
 
-with other strategies, such as rolling deployment or blue-green deployment.</p>
+with other strategies, such as rolling deployment or blue-green deployment. <a href="06.html#deployment_strategy_canary">Figure 56</a> shows an
 
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_canary">Figure 56</a> shows an overview of feature toggle deployment:</p>
+overview of feature toggle deployment:</p>
 
 </div>
 
@@ -4752,11 +4626,11 @@ start to see different functionality.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4792,7 +4666,7 @@ disable that feature toggle to turn the feature off. In many cases, this gives y
 
 much faster than having to write and deploy new code. It&#8217;s one of the big reasons the companies mentioned in
 
-<a href="02.html#world_class_delivery">Section 1.1</a> can recover from downtime 170 times faster.</p>
+<a href="02.html#world_class_delivery">Section 1.1</a> can recover from downtime 700-4000x faster.</p>
 
 </dd>
 
@@ -4800,9 +4674,9 @@ much faster than having to write and deploy new code. It&#8217;s one of the big 
 
 <dd>
 
-<p>A remarkable benefit of separating deployment from release is that it allows you to <em>ramp</em>
+<p>A remarkable benefit of separating deployment from release is that it allows you to <em>ramp</em> features gradually, rather
 
-features gradually, rather than them being on all at once. For example, at LinkedIn, one of the changes from Project
+than them being on for all users all at once. For example, at LinkedIn, one of the changes from Project
 
 Inversion was to require all new features to be wrapped in feature toggles, and to ramp them up gradually; Facebook,
 
@@ -4840,7 +4714,7 @@ the new feature increase engagement? Downloads? Purchases? Referrals? This is ju
 
 control and experimental groups: as long as (a) you randomly assign users to buckets, (b) the only difference between
 
-the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_30" class="footnote" href="13-footnotes.html#_footnotedef_30" title="View footnote.">30</a>]</sup> then you can be reasonably confident that any difference in metrics between the
+the buckets is the new feature, and (c) you gather enough data for it to be statistically significant,<sup class="footnote">[<a id="_footnoteref_29" class="footnote" href="13-footnotes.html#_footnotedef_29" title="View footnote.">29</a>]</sup> then you can be reasonably confident that any difference in metrics between the
 
 buckets is due to the new feature. In other words, you are using data to establish a causal relationship!</p>
 
@@ -4850,7 +4724,7 @@ buckets is due to the new feature. In other words, you are using data to establi
 
 (i.e., you can show users different versions of the product, and you have sufficient traffic to generate statistically
 
-significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_31" class="footnote" href="13-footnotes.html#_footnotedef_31" title="View footnote.">31</a>]</sup></p>
+significant results), it can be transformational.<sup class="footnote">[<a id="_footnoteref_30" class="footnote" href="13-footnotes.html#_footnotedef_30" title="View footnote.">30</a>]</sup></p>
 
 </div>
 
@@ -4860,11 +4734,11 @@ significant results), it can be transformational.<sup class="footnote">[<a id="_
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4898,11 +4772,11 @@ toggles that are unlikely to ever change again (e.g., feature toggles greater th
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -4927,12 +4801,6 @@ certain scale as a company, you should consider wrapping all new features in fea
 <p>Feature toggles are an incredibly powerful tool for product teams, as they give you the
 
 ability to do A/B testing and data-driven development.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -4968,21 +4836,9 @@ deploy your code across multiple environments, starting with internal pre-produc
 
 production environment, with the hope that you can catch issues in the pre-production environments before they affect
 
-production (you&#8217;ll learn more about multiple environments in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+production (you&#8217;ll learn more about multiple environments in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>), as shown in
 
-</div>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Overview</dt>
-
-<dd>
-
-<div class="paragraph">
-
-<p><a href="06.html#deployment_strategy_promotion">Figure 58</a> shows an overview of promotion deployment:</p>
+<a href="06.html#deployment_strategy_promotion">Figure 58</a>:</p>
 
 </div>
 
@@ -5036,11 +4892,11 @@ environment, and do a round of testing in stage.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5060,11 +4916,11 @@ same code goes to prod.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5082,11 +4938,11 @@ same code goes to prod.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5101,12 +4957,6 @@ same code goes to prod.</p>
 past a certain scale as a company, you should consider using multiple environments and promotion workflows for all
 
 deployments.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -5144,31 +4994,19 @@ are much more limited. Typically, it&#8217;s binary: either you make an infrastr
 
 create (or delete!) that database, or you don&#8217;t; there&#8217;s no gradual rollout, no feature toggles, no canaries, etc. That
 
-makes infrastructure deployments harder and riskier. In this section, I&#8217;ll describe the typical strategy used to
+makes infrastructure deployments harder and riskier. The typical strategy used to mitigate those risks comes down to
 
-mitigate those risks.</p>
+the following two steps:</p>
 
 </div>
 
-<div class="dlist">
+<div class="olist arabic">
 
-<dl>
+<ol class="arabic">
 
-<dt class="hdlist1">Overview</dt>
+<li>
 
-<dd>
-
-<p>Most infrastructure deployments come down to combining two strategies:</p>
-
-<div class="dlist">
-
-<dl>
-
-<dt class="hdlist1">Validate plan output</dt>
-
-<dd>
-
-<p>Assuming your infrastructure tool supports some sort of plan or dry-run operation, you should
+<p>Validate plan output: Assuming your infrastructure tool supports some sort of plan or dry-run operation, you should
 
 always analyze the plan output before deploying changes to an environment. For example, with OpenTofu, you can
 
@@ -5178,29 +5016,27 @@ but also the plan output, before merging changes in. You&#8217;ll see an example
 
 blog post.</p>
 
-</dd>
+</li>
 
-<dt class="hdlist1">Use a promotion workflow</dt>
+<li>
 
-<dd>
-
-<p>Promote infrastructure changes from environment to environment, just as you saw in the
+<p>Use a promotion workflow: Promote infrastructure changes from environment to environment, just as you saw in the
 
 previous section. For example, you deploy the same infrastructure code first in dev, then in stage, and then in prod,
 
 with a period of testing in each environment before moving onto the next one.</p>
 
-</dd>
+</li>
 
-</dl>
+</ol>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Advantages</dt>
+<p>Advantages of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5232,11 +5068,11 @@ code into that environment.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Drawbacks</dt>
+<p>Drawbacks of this strategy:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5254,11 +5090,11 @@ code into that environment.</p>
 
 </div>
 
-</dd>
+<div class="paragraph">
 
-<dt class="hdlist1">Use cases</dt>
+<p>Use cases where the strategy is typically a good fit:</p>
 
-<dd>
+</div>
 
 <div class="dlist">
 
@@ -5273,12 +5109,6 @@ code into that environment.</p>
 and having pre-prod environments to test in before prod, are so significant, that once you get past a certain scale
 
 as a company, you should consider using this approach for all infrastructure deployments.</p>
-
-</dd>
-
-</dl>
-
-</div>
 
 </dd>
 
@@ -5462,7 +5292,7 @@ YAML workflows as the primary language for defining the pipeline. The goal is to
 
 <p><strong>Run automations for open pull request</strong>: Your deployment server runs automations on the open PR, such as
 
-compiling the code, static analysis, functional tests (e.g., unit tests, integration tests, etc.), and generating
+compiling the code, static analysis, <em>functional tests</em> (e.g., unit tests, integration tests, etc.), and generating
 
 the plan output by running <code>tofu plan</code>.</p>
 
@@ -5708,9 +5538,9 @@ the following reasons:</p>
 
 <li>
 
-<p>It&#8217;s designed for 99.999999999% durability and 99.99% availability, which means you don&#8217;t need to worry too much
+<p>It&#8217;s designed for <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html">99.999999999% durability
 
-about data loss or outages.<sup class="footnote">[<a id="_footnoteref_32" class="footnote" href="13-footnotes.html#_footnotedef_32" title="View footnote.">32</a>]</sup></p>
+and 99.99% availability</a>, which means you don&#8217;t need to worry too much about data loss or outages.</p>
 
 </li>
 
@@ -5736,7 +5566,7 @@ if something goes wrong.</p>
 
 <li>
 
-<p>It&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_33" class="footnote" href="13-footnotes.html#_footnotedef_33" title="View footnote.">33</a>]</sup></p>
+<p>It&#8217;s <a href="https://aws.amazon.com/s3/pricing/">inexpensive</a>, with most OpenTofu usage easily fitting into the AWS Free Tier.</p>
 
 </li>
 
@@ -5800,7 +5630,9 @@ key-value store. It supports strongly consistent reads and conditional writes, w
 
 for a distributed lock system. Moreover, it&#8217;s completely managed, so you don&#8217;t have any infrastructure to run yourself,
 
-and it&#8217;s inexpensive, with most OpenTofu usage easily fitting into the AWS Free Tier.<sup class="footnote">[<a id="_footnoteref_34" class="footnote" href="13-footnotes.html#_footnotedef_34" title="View footnote.">34</a>]</sup></p>
+and it&#8217;s <a href="https://aws.amazon.com/dynamodb/pricing/">inexpensive</a>, with most OpenTofu usage easily fitting into the AWS
+
+Free Tier.</p>
 
 </div>
 
@@ -6040,13 +5872,13 @@ Initializing the backend...
 
 Do you want to copy existing state to the new backend?
 
-  Pre-existing state was found while migrating the previous "local" backend to the
+  Pre-existing state was found while migrating the previous "local" backend
 
-  newly configured "s3" backend. No existing state was found in the newly
+  to the newly configured "s3" backend. No existing state was found in the
 
-  configured "s3" backend. Do you want to copy this state to the new "s3"
+  newly configured "s3" backend. Do you want to copy this state to the new
 
-  backend? Enter "yes" to copy and "no" to start with an empty state.
+  "s3" backend? Enter "yes" to copy and "no" to start with an empty state.
 
 
 
@@ -6568,7 +6400,7 @@ will do the following:</p>
 
 <div class="paragraph">
 
-<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_35" class="footnote" href="13-footnotes.html#_footnotedef_35" title="View footnote.">35</a>]</sup> It&#8217;s missing several important aspects, including:</p>
+<p>The pipeline described here represents only a small piece of a real-world deployment pipeline.<sup class="footnote">[<a id="_footnoteref_31" class="footnote" href="13-footnotes.html#_footnotedef_31" title="View footnote.">31</a>]</sup> It&#8217;s missing several important aspects, including:</p>
 
 </div>
 
@@ -6802,7 +6634,7 @@ respectively. This allows your team members to review the code and <code>plan</c
 
 <div class="paragraph">
 
-<p>Next, create a workflow for the <code>apply</code> portion in a new file called _.github/workflows/tofu-apply.yml, with the
+<p>Next, create a workflow for the <code>apply</code> portion in a new file called <em>.github/workflows/tofu-apply.yml</em>, with the
 
 contents shown in <a href="06.html#tofu_apply_workflow">Example 106</a>:</p>
 
@@ -7064,7 +6896,7 @@ $ git push origin main</pre>
 
     condition     = data.http.test_endpoint.response_body == "Fundamentals of DevOps!"
 
-    error_message = "Website responded with body ${data.http.test_endpoint.response_body}"
+    error_message = "Unexpected body: ${data.http.test_endpoint.response_body}"
 
   }</code></pre>
 
@@ -7178,7 +7010,7 @@ the <code>apply</code> workflow, and after a minute or two, it should post a com
 
 <div class="paragraph">
 
-<p>And there you go, you now have a basic deployment pipeline in place for your <code>lambda-sample</code> module! It runs tests, it runs
+<p>Congrats, you now have a basic deployment pipeline in place for your <code>lambda-sample</code> module! It runs tests, it runs
 
 <code>plan</code>, and it runs <code>apply</code>.</p>
 
@@ -7320,9 +7152,9 @@ ability to deliver software.</p>
 
 button, that you get a CD pipeline that is fast, reliable, and sustainable; that you have environments that are truly
 
-reproducible; that all the steps are fully captured as code; that you can achieve world-class results like the
+reproducible; that you can achieve world-class results like the companies mentioned in <a href="02.html#world_class_delivery">Section 1.1</a>, who
 
-companies mentioned in <a href="02.html#world_class_delivery">Section 1.1</a>, who are able to deploy thousands of times per day.</p>
+are able to deploy thousands of times per day.</p>
 
 </div>
 
@@ -7372,13 +7204,17 @@ practices for a single server than it is to do for numerous developers with prod
 
 such as AWS credentials. In fact, to deploy arbitrary infrastructure changes—e.g., to be able to run <code>tofu apply</code> on
 
-arbitrary OpenTofu modules—you need arbitrary permissions, which is just a fun way of saying "admin permissions". So
+arbitrary OpenTofu modules—you need arbitrary permissions, which is just a fun way of saying "admin permissions." So
 
 deployment servers are a terrifying combination of (a) access to powerful, sensitive permissions, (b) accessible to
 
 every developer in your company, and (c) designed to execute arbitrary code. This is why deployment servers are
 
-particularly tempting targets for malicious actors.<sup class="footnote">[<a id="_footnoteref_36" class="footnote" href="13-footnotes.html#_footnotedef_36" title="View footnote.">36</a>]</sup></p>
+particularly
+
+<a href="https://research.nccgroup.com/2022/01/13/10-real-world-stories-of-how-weve-compromised-ci-cd-pipelines/">tempting
+
+targets for malicious actors</a>.</p>
 
 <div class="paragraph">
 
@@ -7502,7 +7338,7 @@ folders (e.g., search team members can only make changes in the <em>search</em> 
 
 workflow definitions themselves, so only a trusted set of admins can update them, and only with PR approval from at
 
-least one other admin.<sup class="footnote">[<a id="_footnoteref_37" class="footnote" href="13-footnotes.html#_footnotedef_37" title="View footnote.">37</a>]</sup></p>
+least one other admin.<sup class="footnote">[<a id="_footnoteref_32" class="footnote" href="13-footnotes.html#_footnotedef_32" title="View footnote.">32</a>]</sup></p>
 
 </dd>
 
@@ -7642,9 +7478,7 @@ day, every day.</p>
 
 <p>A proper networking setup can give you extra layers of protection, so you&#8217;re never just one mistake away from disaster.
 
-This is the focus of the next blog post, <a href="07.html#how_to_set_up_networking">Part 6</a>, where you&#8217;ll learn about VPCs,
-
-VPN, SSH, DNS, and more.</p>
+This is the focus of <a href="07.html#how_to_set_up_networking">Part 6</a>, where you&#8217;ll learn about VPCs, VPN, SSH, DNS, and more.</p>
 
 </div>
 

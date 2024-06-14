@@ -17,6 +17,7 @@ module "function" {
   environment_variables = {      
     NODE_ENV = "production"
   }
+
 }
 
 module "gateway" {

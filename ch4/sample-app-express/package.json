@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dockerize": "docker buildx build --platform=linux/amd64,linux/arm64 -t sample-app:$(npm pkg get version | tr -d '\"') .",
+    "dockerize": "./build-docker-image.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yevgeniy Brikman",

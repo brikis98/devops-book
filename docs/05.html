@@ -1046,7 +1046,7 @@ with all of that code? Is it just sitting on your computer? If so, that&#8217;s 
 
 you&#8217;re the only one touching that code, but with most real-world code, software development is a team sport, and not
 
-a solo effort. And that means, you need to figure out how to support many developers collaborating safely and
+a solo effort. Which means you need to figure out how to support many developers collaborating safely and
 
 efficiently on the same codebase.</p>
 
@@ -1580,39 +1580,13 @@ Untracked files:
 
 <div class="paragraph">
 
-<p>The <code>status</code> command is something you&#8217;ll run often, as it gives you several useful pieces of information:</p>
+<p>The <code>status</code> command is something you&#8217;ll run often, as it gives you several useful pieces of information: what branch
 
-</div>
+you&#8217;re on (<code>main</code> is the default branch when you create a new Git repo); any commits you&#8217;ve made; and any changes
 
-<div class="ulist">
+that haven&#8217;t been committed yet. To commit your changes, you first need to add the file(s) you want to commit to the
 
-<ul>
-
-<li>
-
-<p>It tells you that you&#8217;re on a branch called <code>main</code>. This is the default branch when you create a new repo.</p>
-
-</li>
-
-<li>
-
-<p>It tells you what commits there have been. You haven&#8217;t made any commits yet, so Git tells you this.</p>
-
-</li>
-
-<li>
-
-<p>It also tells you if there are any local changes to files that haven&#8217;t been committed yet.</p>
-
-</li>
-
-</ul>
-
-</div>
-
-<div class="paragraph">
-
-<p>To commit your changes, you first need to add the file(s) you want to commit to the <em>staging area</em> using <code>git add</code>:</p>
+<em>staging area</em> using <code>git add</code>:</p>
 
 </div>
 
@@ -1660,7 +1634,7 @@ Changes to be committed:
 
 <p>Now you can see that <em>example.txt</em> is in the staging area, ready to be committed. To commit the changes, use the
 
-<code>git commit</code> command, passing in a description of the commit to the <code>-m</code> flag:</p>
+<code>git commit</code> command, passing in a description of the commit via the <code>-m</code> flag:</p>
 
 </div>
 
@@ -1708,9 +1682,7 @@ Date:   Sat Apr 20 16:01:28 2024 -0400
 
 take a commit ID as an argument. Under the hood, a commit ID is calculated by taking the SHA-1 hash of the contents of
 
-the commit, all the commit metadata (author, date, and so on), and the ID of the previous commit. Calculating the ID
-
-this way gives Git a lot of its power.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup> Commit IDs are 40 characters long, but in most commands, you can use just the first 7 characters, as that will
+the commit, all the commit metadata (author, date, and so on), and the ID of the previous commit.<sup class="footnote">[<a id="_footnoteref_24" class="footnote" href="13-footnotes.html#_footnotedef_24" title="View footnote.">24</a>]</sup> Commit IDs are 40 characters long, but in most commands, you can use just the first 7 characters, as that will
 
 be unique enough to identify commits in all but the largest repos.</p>
 
@@ -1812,7 +1784,7 @@ $ git commit -m "Add another line to example.txt"</pre>
 
 <div class="paragraph">
 
-<p>Now, try <code>git log</code> once more:</p>
+<p>Now, try <code>git log</code> once more, this time adding the <code>--oneline</code> flag to get more concise output:</p>
 
 </div>
 
@@ -1820,27 +1792,11 @@ $ git commit -m "Add another line to example.txt"</pre>
 
 <div class="content">
 
-<pre>commit c4ff96d7c9ae4d916c3a85aeb8722107a57a1426 (HEAD -&gt; main)
+<pre>$ git log --oneline
 
-Author: Yevgeniy Brikman
+02897ae (HEAD -&gt; main) Add another line to example.txt
 
-Date:   Sat Apr 20 16:12:01 2024 -0400
-
-
-
-    Add another line to example.txt
-
-
-
-commit 7a536b3367981b5c86f22a27c94557412f3d915a
-
-Author: Yevgeniy Brikman
-
-Date:   Sat Apr 20 16:01:28 2024 -0400
-
-
-
-    Initial commit</pre>
+0da69c2 Initial commit</pre>
 
 </div>
 
@@ -2026,41 +1982,13 @@ $ git commit -m "Added a 3rd line to example.txt"</pre>
 
 <div class="content">
 
-<pre>$ git log
+<pre>$ git log --oneline
 
-commit c85c2bf93a57cab0a1c3374ea511ef549f1d6496 (HEAD -&gt; testing)
+5b1a597 (HEAD -&gt; testing) Added a 3rd line to example.txt
 
-Author: Yevgeniy Brikman
+02897ae (main) Add another line to example.txt
 
-Date:   Sat Apr 20 16:23:27 2024 -0400
-
-
-
-    Added a 3rd line to example.txt
-
-
-
-commit c4ff96d7c9ae4d916c3a85aeb8722107a57a1426 (main)
-
-Author: Yevgeniy Brikman
-
-Date:   Sat Apr 20 16:12:01 2024 -0400
-
-
-
-    Add another line to example.txt
-
-
-
-commit 7a536b3367981b5c86f22a27c94557412f3d915a
-
-Author: Yevgeniy Brikman
-
-Date:   Sat Apr 20 16:01:28 2024 -0400
-
-
-
-    Initial commit</pre>
+0da69c2 Initial commit</pre>
 
 </div>
 
@@ -2088,7 +2016,7 @@ Switched to branch 'main'</pre>
 
 <div class="paragraph">
 
-<p>Check the contents of <em>example.txt</em>. It&#8217;ll have only two lines! And if you run <code>git log</code>, it&#8217;ll have only two commits.
+<p>Check the contents of <em>example.txt</em>: it&#8217;ll have only two lines. And if you run <code>git log</code>, it&#8217;ll have only two commits.
 
 So each branch gives you a copy of all the files in the repo, and you can modify them in that branch, in isolation, as
 
@@ -2100,7 +2028,9 @@ much as you want, without affecting any other branches.</p>
 
 <p>Of course, working forever in isolation doesn&#8217;t usually make sense. You eventually will want to merge your work back
 
-together. One way to do that with Git is to run <code>git merge</code>:</p>
+together. One way to do that with Git is to run <code>git merge</code> to merge the contents of the <code>testing</code> branch into the
+
+<code>main</code> branch:</p>
 
 </div>
 
@@ -2628,11 +2558,21 @@ named <code>&lt;REMOTE&gt;</code>. So to push your <code>main</code> branch to t
 
 <div class="paragraph">
 
-<p>Notice how GitHub prompts you to "Add a README" on that page. Adding documentation for your code is always a good idea,
+<p>Congrats, you just learned how to push your changes to a remote endpoint, which gets you halfway there with being able
 
-so let&#8217;s do it. Click the green Add a README button, and you&#8217;ll get a code editor where you can write the README in
+to collaborate with other developers. Now it&#8217;s time to learn the other half, which is how to pull changes from a remote
 
-Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 34</a>:</p>
+endpoint.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>Notice how GitHub prompts you to "Add a README" to your new repo. Adding documentation for your code is always a good
+
+idea, so let&#8217;s do it. Click the green Add a README button, and you&#8217;ll get a code editor in your browser where you can
+
+write the README in Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 34</a>:</p>
 
 </div>
 
@@ -2650,7 +2590,7 @@ Markdown, as shown in <a href="05.html#gh_repo_readme">Figure 34</a>:</p>
 
 <div class="paragraph">
 
-<p>Fill in a reasonable description for the repo and instructions on how to use it and then click the "Commit changes&#8230;&#8203;"
+<p>Fill in a reasonable description for the repo and then click the "Commit changes&#8230;&#8203;"
 
 button. GitHub will prompt you for a commit message, so fill one in just like the <code>-m</code> flag on the command-line, and
 
@@ -2696,7 +2636,7 @@ from, and <code>&lt;BRANCH&gt;</code> is the branch to pull:</p>
 
 <p>The log output should show you that Git was able to pull the changes in and a summary of what changed, which should
 
-include the new <em>README.md</em> file.</p>
+include the new <em>README.md</em> file. Congrats, you now know how to pull changes from a remote endpoint!</p>
 
 </div>
 
@@ -2706,7 +2646,7 @@ include the new <em>README.md</em> file.</p>
 
 Instead, you first need to use <em>git clone</em> to checkout the initial copy of the repo (note: you don&#8217;t actually need to
 
-run this command, as you do have a copy of the repo already, but just be aware of this for working with other repos
+run this command, as you have a copy of this repo already, but just be aware of this for working with other repos
 
 in the future):</p>
 
@@ -2940,7 +2880,9 @@ remote:</pre>
 
 <div class="paragraph">
 
-<p>In the log output, GitHub conveniently shows you a URL for creating a pull request. Open that URL in your
+<p>In the log output, GitHub conveniently shows you a URL for creating a pull request (you can also create PRs by going to
+
+the Pull Requests tab of your repo in a web browser and clicking the New Pull Request button). Open that URL in your
 
 web browser, and you should see a page that looks like <a href="05.html#gh_pr">Figure 36</a>:</p>
 
@@ -2984,7 +2926,7 @@ button, and you&#8217;ll end up on the GitHub PR UI, as shown in <a href="05.htm
 
 <p>You and all your team members can use this PR page to see the code changes (try clicking the "Files changed" tab
 
-to get a view similar to <code>git diff</code>), discuss the changes, request reviewers, request changes, and so on. And all this
+to get a view similar to <code>git diff</code>), discuss the changes, request reviewers, request changes, and so on. All of this
 
 discussion gets stored in GitHub, so if later on, you&#8217;re trying to debug an issue or figure out why some code is the way
 
@@ -3182,7 +3124,7 @@ Fixes #123. Jira #456.</pre>
 
 <div class="paragraph">
 
-<p>Just by adding these two simple ingredients, summary and context, will make your commit messages already considerably
+<p>Just adding these two simple ingredients, summary and context, will make your commit messages already considerably
 
 better. If you&#8217;re able to follow these two rules consistently, you can level up your commit messages even further by
 
@@ -3230,7 +3172,7 @@ describe that thing in one short sentence—which, conveniently, you can use as 
 
 can&#8217;t fit everything into one sentence, then the commit is likely doing too many things at once, and should be broken
 
-down into smaller parts. For example, instead of a single, massive commit that implements an entire large feature,
+down into multiple commits. For example, instead of a single, massive commit that implements an entire large feature,
 
 aim for a series of smaller commits, where each one implements some logical slice of that feature: e.g., the backend
 
@@ -3359,6 +3301,60 @@ frequent commits.</p>
 </dd>
 
 </dl>
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Tip</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Get your hands dirty</div>
+
+<div class="paragraph">
+
+<p>It&#8217;s normal not to get your commits and commit messages quite right initially: often, you don&#8217;t know how to break
+
+something up into smaller, atomic parts until after you&#8217;ve done the whole thing. That&#8217;s OK! Learn to use the following
+
+Git tools to update your commit history and clean things up before sharing them with your team:</p>
+
+</div>
+
+<div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Amend commits: <code>git commit --amend</code></p>
+
+</li>
+
+<li>
+
+<p>Squash commits: <code>git merge --squash</code> or <code>git rebase</code></p>
+
+</li>
+
+</ul>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
 
 </div>
 
@@ -3554,7 +3550,7 @@ you can access it, and you
 
 <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">configure Git to use
 
-the private key to sign your commits</a>. Next, you upload the public key to your GitHub account, and enable
+the private key to sign your commits</a>. Next, you upload the public key to your GitHub account, enable
 
 <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification">GitHub&#8217;s commit signature verification</a>,
 
@@ -3756,9 +3752,23 @@ $ cd ch4/sample-app</pre>
 
 <div class="paragraph">
 
-<p>Copy the <em>app.js</em> file you first saw in <a href="02.html#example_run_sample_app_locally">Section 1.2.1</a> into the <em>sample-app</em> folder. Next,
+<p>Copy the <em>app.js</em> file you first saw in <a href="02.html#example_run_sample_app_locally">Section 1.2.1</a> into the <em>sample-app</em> folder:</p>
 
-make sure you have <a href="https://nodejs.org/en/download">Node.js installed</a>, which should also install NPM for you. To use
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre>$ cp ../../ch1/sample-app/app.js .</pre>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Next, make sure you have <a href="https://nodejs.org/en/download">Node.js installed</a>, which should also install NPM for you. To use
 
 NPM as a build system, you must first configure the build in a <em>package.json</em> file. You can create this file by hand,
 
@@ -4474,9 +4484,9 @@ This is useful because in <em>package.json</em>, you can specify a <em>version r
 
 For example, you may have noticed that <code>npm install</code> set the version of Express to <code>^4.19.2</code>. Note the caret (<code>^</code>) at
 
-the front: this is called a <em>caret version range</em>, and it allows NPM to install any version of Express at 4.x.y
+the front: this is called a <em>caret version range</em>, and it allows NPM to install any version of Express at or above
 
-version at or above 4.19.2 (but not, for example, 5.0.0). So every time you run <code>npm install</code>, you may get a new
+4.19.2 (so 4.20.0 would be OK, but not 5.0.0). So every time you run <code>npm install</code>, you may get a new
 
 version of Express. This can be a good thing, as you may be picking up bug fixes or security patches. But it can also
 
@@ -4678,7 +4688,7 @@ or <code>npm run dockerize</code> to check that the Docker image still builds co
 
 <p>To avoid introducing too many new tools, I used NPM as a build system in this blog post, as it comes
 
-native with Node.js. However, for production use cases, you may want to try out one of these more modern and robust
+natively with Node.js. However, for production use cases, you may want to try out one of these more modern and robust
 
 build systems:</p>
 
@@ -4802,7 +4812,7 @@ code is often sufficient to extinguish that flame.</p>
 
 three more; the "trivial" change that took two months; the tiny performance tweak that brought the whole system down
 
-and pissed off all of your coworkers. So you&#8217;re afraid—of your own codebase. That&#8217;s a tough place to be.</p>
+and pissed off all of your coworkers. So now you&#8217;re afraid of your own codebase. That&#8217;s a tough place to be.</p>
 
 </div>
 
@@ -5766,7 +5776,7 @@ bugs because the tests prevented those bugs from slipping through in the first p
 
 <p>A useful feature available with some automated testing tools is the ability to measure <em>code coverage</em>: that is, what
 
-percent of your code got executed by your tests? If your tests are only executing 10% of your code, then how much
+percent of your code got executed by your tests. If your tests are only executing 10% of your code, then how much
 
 confidence can you have that your code really works, and that there aren&#8217;t bugs hiding in the other 90%? To have Jest
 
@@ -6292,7 +6302,7 @@ Time:        0.345 s, estimated 1 s</pre>
 
 <div class="paragraph">
 
-<p>Here are a few exercises you can try at home to get a better feel for writing automated tests for app code:</p>
+<p>Here is an exercise you can try at home to get a better feel for writing automated tests for app code:</p>
 
 </div>
 
@@ -6520,7 +6530,7 @@ example here, but you may wish to look at them for production code.</p>
 
 <dd>
 
-<p>By default, Terrascan tries to scan everything in the current folder and all subfolders. This flag avoid Terrascan
+<p>By default, Terrascan tries to scan everything in the current folder and all subfolders. This flag avoids Terrascan
 
 scanning the <code>src</code>  folder within <code>lambda-sample</code> and complaining that folder doesn&#8217;t contain OpenTofu code.</p>
 
@@ -6752,7 +6762,7 @@ run "validate" {
 
     condition     = data.http.test_endpoint.status_code == 200
 
-    error_message = "Website responded with HTTP status ${data.http.test_endpoint.status_code}"
+    error_message = "Unexpected status: ${data.http.test_endpoint.status_code}"
 
   }
 
@@ -6764,7 +6774,7 @@ run "validate" {
 
     condition     = data.http.test_endpoint.response_body == "Hello, World!"
 
-    error_message = "Website responded with body ${data.http.test_endpoint.response_body}"
+    error_message = "Unexpected body: ${data.http.test_endpoint.response_body}"
 
   }
 
@@ -7552,7 +7562,7 @@ TDD practitioners use TDD only for writing unit tests up front, but you can also
 
 end-to-end tests, and performance tests. Thinking about integration tests up front forces you to consider how the
 
-different parts of your system will communicate with one another. Thinking about end-to-end up front forces you to
+different parts of your system will communicate with one another. Thinking about end-to-end tests up front forces you to
 
 think through how to deploy everything. Thinking about performance tests up front forces you to think about where your
 
@@ -7660,7 +7670,7 @@ few tests in place, which will make it less scary—make it feel less like legac
 
 problem, so a good way to start on the fix is, as a first step, to write a failing test that reproduces the bug
 
-(test-driven bug fixing). That proves you understand the cause of the bug and, after you fix it, leaves you with an
+(test-driven bug fixing). That proves you understand the cause of the bug and, after you fix it, leaves you with a
 
 regression test that will prevent the bug from coming back.</p>
 
@@ -7798,9 +7808,9 @@ automated tests, but developers don&#8217;t always remember to run them, so brok
 
 system that automates some operations, but deployments are still largely manual. To implement a full, effective SDLC,
 
-you need two more ingredients: continuous integration (CI) and continuous delivery (CD), which are the topics of the
+you need two more ingredients: continuous integration (CI) and continuous delivery (CD), which are the topics of
 
-next blog post, <a href="06.html#how_to_set_up_ci_cd">Part 5</a>.</p>
+<a href="06.html#how_to_set_up_ci_cd">Part 5</a>.</p>
 
 </div>
 

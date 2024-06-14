@@ -1064,7 +1064,7 @@ table ul {
 
 <div class="footnote" id="_footnotedef_24">
 
-<a href="#_footnoteref_24">24</a>. The way Git calculates commit IDs is very clever. First, it ensures that commit IDs are consistent without the need for any central mechanism for issuing IDs: the same commit done on any computer. anywhere in the world, at any time always gets the exact same ID. Second, it ensures commits can&#8217;t be tampered with: change even 1 bit of the contents or metadata or history, and you get a totally different SHA-1 hash. Third, it gives you a very efficient way to compare commits. In part, this is because you can compare commits using just the IDs, without having to send the full contents. But even more interesting is that you can compare the full history just by comparing IDs. That&#8217;s because the commit ID calculation includes the ID of the previous commit, which, in turn, included the ID of its predecessor, and so on, so two commit IDs are only equal if their entire history is equal.
+<a href="#_footnoteref_24">24</a>. This method of calculating commit IDs is very clever. First, it ensures that commit IDs are consistent without the need for any central mechanism for issuing IDs: the same commit done on any computer. anywhere in the world, at any time always gets the exact same ID. Second, it ensures commits can&#8217;t be tampered with: change even 1 bit of the contents or metadata or history, and you get a totally different SHA-1 hash. Third, it gives you a very efficient way to compare commits. In part, this is because you can compare commits using just the IDs, without having to send the full contents. But even more interesting is that you can compare the full history just by comparing IDs. That&#8217;s because the commit ID calculation includes the ID of the previous commit, which, in turn, included the ID of its predecessor, and so on, so two commit IDs are only equal if their entire history is equal.
 
 </div>
 
@@ -1088,61 +1088,31 @@ table ul {
 
 <div class="footnote" id="_footnotedef_28">
 
-<a href="#_footnoteref_28">28</a>. See <a href="https://github.com/actions/runner-images" class="bare">https://github.com/actions/runner-images</a> for the details.
+<a href="#_footnoteref_28">28</a>. You can also update batches of servers instead of just one at a time: e.g., if you have 50 servers to update, you might take 5 down at a time, boot up 5 new ones, and when they are healthy, repeat with the next batch of 5, until all 50 are replaced.
 
 </div>
 
 <div class="footnote" id="_footnotedef_29">
 
-<a href="#_footnoteref_29">29</a>. For large deployments, you may be able to replace batches of servers rather than one at a time: e.g., if you have 50 nodes to replace, you might take 5 down at a time, boot up 5 new ones, and when they are healthy, repeat with the next batch of 5, until all 50 are replaced.
+<a href="#_footnoteref_29">29</a>. See <a href="http://www.experimentcalculator.com/" class="bare">http://www.experimentcalculator.com/</a>
 
 </div>
 
 <div class="footnote" id="_footnotedef_30">
 
-<a href="#_footnoteref_30">30</a>. See <a href="http://www.experimentcalculator.com/" class="bare">http://www.experimentcalculator.com/</a>
+<a href="#_footnoteref_30">30</a>. See <a href="http://mcfunley.com/data-driven-products-now">Data Driven Products Now!</a> by Dan McKinley for a great write-up on how data-driven product development works.
 
 </div>
 
 <div class="footnote" id="_footnotedef_31">
 
-<a href="#_footnoteref_31">31</a>. See <a href="http://mcfunley.com/data-driven-products-now">Data Driven Products Now!</a> by Dan McKinley for a great write-up on how data-driven product development works.
+<a href="#_footnoteref_31">31</a>. For an example of a full-featured deployment pipeline that implements most of this functionality out-of-the-box, see <a href="https://www.gruntwork.io/products/pipelines">Gruntwork Pipelines</a>.
 
 </div>
 
 <div class="footnote" id="_footnotedef_32">
 
-<a href="#_footnoteref_32">32</a>. Learn more about S3&#8217;s guarantees <a href="https://aws.amazon.com/s3/details/#durability">on the AWS website</a>.
-
-</div>
-
-<div class="footnote" id="_footnotedef_33">
-
-<a href="#_footnoteref_33">33</a>. See pricing information for S3 <a href="https://aws.amazon.com/s3/pricing/">on the AWS website</a>.
-
-</div>
-
-<div class="footnote" id="_footnotedef_34">
-
-<a href="#_footnoteref_34">34</a>. Pricing information for DynamoDB is available <a href="https://aws.amazon.com/dynamodb/pricing/">on the AWS website</a>.
-
-</div>
-
-<div class="footnote" id="_footnotedef_35">
-
-<a href="#_footnoteref_35">35</a>. For an example of a full-featured deployment pipeline that implements most of this functionality out-of-the-box, see <a href="https://www.gruntwork.io/products/pipelines">Gruntwork Pipelines</a>.
-
-</div>
-
-<div class="footnote" id="_footnotedef_36">
-
-<a href="#_footnoteref_36">36</a>. See <a href="https://research.nccgroup.com/2022/01/13/10-real-world-stories-of-how-weve-compromised-ci-cd-pipelines/">10 real-world stories of how we’ve compromised CI/CD pipelines.</a>
-
-</div>
-
-<div class="footnote" id="_footnotedef_37">
-
-<a href="#_footnoteref_37">37</a>. For example, see <a href="https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets:">GitHub&#8217;s push rulesets</a> for a way to lock down who can edit specific file paths in a repo.
+<a href="#_footnoteref_32">32</a>. For example, see <a href="https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets:">GitHub&#8217;s push rulesets</a> for a way to lock down who can edit specific file paths in a repo.
 
 </div>
 
