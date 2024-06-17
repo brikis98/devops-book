@@ -3618,7 +3618,7 @@ you can create a new Default VPC using the <a href="https://console.aws.amazon.c
 
 to use the Default VPC for production apps, but it&#8217;s OK to use it for learning and testing. In
 
-<a href="07.html#how_to_set_up_networking">Part 6</a>, you&#8217;ll learn more about VPCs, including how to create a custom VPC that you can use for
+<a href="08.html#how_to_set_up_networking">Part 7</a>, you&#8217;ll learn more about VPCs, including how to create a custom VPC that you can use for
 
 production apps instead of the Default VPC.</p>
 
@@ -3932,7 +3932,7 @@ load balancer itself (e.g., update to a new version of Nginx), it&#8217;s tricky
 
 production use cases—you&#8217;ll have to set it all up manually (you&#8217;ll learn more about encryption in
 
-<a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+<a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </dd>
 
@@ -6772,6 +6772,40 @@ considerably simpler. The one you&#8217;ll learn to use in this blog post series
 
 </div>
 
+<div class="admonitionblock warning">
+
+<table>
+
+<tr>
+
+<td class="icon">
+
+<div class="title">Warning</div>
+
+</td>
+
+<td class="content">
+
+<div class="title">Watch out for snakes: EKS is <em>not</em> part of the AWS free tier!</div>
+
+<div class="paragraph">
+
+<p>While most of the examples in this book are part of the AWS free tier, Amazon EKS is not: as of June 2024, the
+
+<a href="https://aws.amazon.com/eks/pricing/">pricing</a> is $0.10 per hour for the control plane. So please be aware that running
+
+the examples in this section will cost you a little bit of money.</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
 <div class="paragraph">
 
 <p>The blog post series&#8217;s sample code repo contains a module called <code>eks-cluster</code> in the <em>ch3/tofu/modules/eks-cluster</em>
@@ -9563,7 +9597,7 @@ the focus of the next blog post, <a href="05.html#how_to_version_build_test">Par
 
 <div id="footer-text">
 
-Last updated 2024-06-11 16:19:51 -0400
+Last updated 2024-06-17 17:45:43 -0400
 
 </div>
 

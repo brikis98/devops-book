@@ -956,13 +956,11 @@ table ul {
 
 <p>There are many guides out there on how to write software. This blog post series is a guide to <em>software delivery</em>: that
 
-is, all the processes, tools, and techniques that are required to run and maintain software in production so it can
+is, all the processes, tools, and techniques that are required to run and maintain software in production on an ongoing
 
-generate value for your customers and for your company on an ongoing basis. In particular, this
+basis. In particular, this series is a guide to <em>DevOps</em>, one of the methodologies used today to make
 
-series is a guide to <em>DevOps</em>, which is one of the main methodologies used today to make software
-
-delivery vastly more efficient.</p>
+software delivery vastly more efficient.</p>
 
 </div>
 
@@ -1018,19 +1016,19 @@ including:</p>
 
 <li>
 
-<p><a href="07.html#how_to_set_up_networking"><em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p>
+<p><a href="07.html#how_to_work_with_multiple_teams"><em>How to Work with Multiple Teams and Environments</em></a></p>
 
 </li>
 
 <li>
 
-<p><a href="08.html#how_to_manage_auth_and_secrets"><em>How to Manage Authentication, Authorization, and Secrets</em></a></p>
+<p><a href="08.html#how_to_set_up_networking"><em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p>
 
 </li>
 
 <li>
 
-<p><a href="09.html#how_to_work_with_multiple_teams"><em>How to Work with Multiple Teams and Environments</em></a></p>
+<p><a href="09.html#how_to_manage_auth_and_secrets"><em>How to Manage Authentication, Authorization, and Secrets</em></a></p>
 
 </li>
 
@@ -1772,7 +1770,7 @@ the key ideas you&#8217;ll explore and the hands-on examples you&#8217;ll get to
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07.html#how_to_set_up_networking">Part 6, <em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07.html#how_to_work_with_multiple_teams">Part 6, <em>How to Work with Multiple Teams and Environments</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 
@@ -1780,25 +1778,19 @@ the key ideas you&#8217;ll explore and the hands-on examples you&#8217;ll get to
 
 <li>
 
-<p>Virtual private clouds (VPCs).</p>
+<p>Internal developer platforms.</p>
 
 </li>
 
 <li>
 
-<p>Bastion host, SSH, VPN.</p>
+<p>Microservices.</p>
 
 </li>
 
 <li>
 
-<p>Moat &amp; bailey vs zero trust.</p>
-
-</li>
-
-<li>
-
-<p>DNS and domain names.</p>
+<p>Updating and patching.</p>
 
 </li>
 
@@ -1812,19 +1804,19 @@ the key ideas you&#8217;ll explore and the hands-on examples you&#8217;ll get to
 
 <li>
 
-<p>Deploy a custom VPC in AWS.</p>
+<p>Create multiple AWS accounts.</p>
 
 </li>
 
 <li>
 
-<p>Use SSH and EC2 Instance Connect.</p>
+<p>Deploy microservices in Kubernetes.</p>
 
 </li>
 
 <li>
 
-<p>Set up a custom domain name in Route 53.</p>
+<p>Configure automated updates.</p>
 
 </li>
 
@@ -1836,7 +1828,77 @@ the key ideas you&#8217;ll explore and the hands-on examples you&#8217;ll get to
 
 <tr>
 
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="08.html#how_to_manage_auth_and_secrets">Part 7, <em>How to Manage Authentication, Authorization, and Secrets</em></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="08.html#how_to_set_up_networking">Part 7, <em>How to Set Up Networking: VPCs, VPN, and DNS</em></a></p></td>
+
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+
+<ul>
+
+<li>
+
+<p>DNS, domain names, CDN.</p>
+
+</li>
+
+<li>
+
+<p>Virtual private clouds (VPCs).</p>
+
+</li>
+
+<li>
+
+<p>Service discovery, service meshes.</p>
+
+</li>
+
+<li>
+
+<p>Network access and hardening.</p>
+
+</li>
+
+</ul>
+
+</div></div></td>
+
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+
+<ul>
+
+<li>
+
+<p>Set up a custom domain name in Route 53.</p>
+
+</li>
+
+<li>
+
+<p>Deploy a custom VPC in AWS.</p>
+
+</li>
+
+<li>
+
+<p>Do service discovery with Kubernetes.</p>
+
+</li>
+
+<li>
+
+<p>Use SSH and EC2 Instance Connect.</p>
+
+</li>
+
+</ul>
+
+</div></div></td>
+
+</tr>
+
+<tr>
+
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="09.html#how_to_manage_auth_and_secrets">Part 8, <em>How to Manage Authentication, Authorization, and Secrets</em></a></p></td>
 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 
@@ -1889,76 +1951,6 @@ the key ideas you&#8217;ll explore and the hands-on examples you&#8217;ll get to
 <li>
 
 <p>Store secrets in AWS Secrets Manager.</p>
-
-</li>
-
-</ul>
-
-</div></div></td>
-
-</tr>
-
-<tr>
-
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="09.html#how_to_work_with_multiple_teams">Part 8, <em>How to Work with Multiple Teams and Environments</em></a></p></td>
-
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-
-<ul>
-
-<li>
-
-<p>Internal developer platforms.</p>
-
-</li>
-
-<li>
-
-<p>Microservices.</p>
-
-</li>
-
-<li>
-
-<p>Service discovery and service meshes.</p>
-
-</li>
-
-<li>
-
-<p>Updating and patching.</p>
-
-</li>
-
-</ul>
-
-</div></div></td>
-
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-
-<ul>
-
-<li>
-
-<p>Create multiple AWS accounts.</p>
-
-</li>
-
-<li>
-
-<p>Deploy microservices in Kubernetes.</p>
-
-</li>
-
-<li>
-
-<p>Do service discovery with Kubernetes.</p>
-
-</li>
-
-<li>
-
-<p>Configure automated updates.</p>
 
 </li>
 
@@ -2272,6 +2264,18 @@ protection, file integrity monitoring, sandboxing, hardened images, etc.</p>
 
 </dd>
 
+<dt class="hdlist1">Low-level networking</dt>
+
+<dd>
+
+<p>This book includes a blog post on networking, but it only focuses on higher level concepts: DNS,
+
+CDNs, VPCs, VPNs, service meshes, and basic network hardening. This post will not go into
+
+any lower-level details, such as routers, switches, links, routing protocols, and so on.</p>
+
+</dd>
+
 <dt class="hdlist1">Compliance</dt>
 
 <dd>
@@ -2569,7 +2573,7 @@ to <a href="02.html#how_to_deploy_your_app">Part 1</a> to learn the basics of de
 
 <div id="footer-text">
 
-Last updated 2024-06-11 16:19:51 -0400
+Last updated 2024-06-17 17:45:43 -0400
 
 </div>
 

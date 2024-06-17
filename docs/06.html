@@ -2526,7 +2526,7 @@ memorizing some sort of secret, such as a password. But what do you do when a ma
 
 authenticate to another machine? How can that machine "memorize" some sort of secret without leaking that secret
 
-to everyone else? You&#8217;ll learn various approaches to solve this problem in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>.</p>
+to everyone else? You&#8217;ll learn various approaches to solve this problem in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>.</p>
 
 </div>
 
@@ -2652,7 +2652,7 @@ they need; no human ever logs in as a machine user, so they only show up in audi
 
 and you can share access to a single machine user account across your team by using a secrets management tool (a topic
 
-you&#8217;ll learn more about in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+you&#8217;ll learn more about in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </div>
 
@@ -4836,7 +4836,7 @@ deploy your code across multiple environments, starting with internal pre-produc
 
 production environment, with the hope that you can catch issues in the pre-production environments before they affect
 
-production (you&#8217;ll learn more about multiple environments in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>), as shown in
+production (you&#8217;ll learn more about multiple environments in <a href="07.html#how_to_work_with_multiple_teams">Part 6</a>), as shown in
 
 <a href="06.html#deployment_strategy_promotion">Figure 58</a>:</p>
 
@@ -4968,7 +4968,7 @@ deployments.</p>
 
 <p>If you use multiple environments as a company (e.g., dev, stage, prod), something you&#8217;ll learn more about in
 
-<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>, you should almost certainly use promotion workflows as well. Moreover, if you
+<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>, you should almost certainly use promotion workflows as well. Moreover, if you
 
 manage your infrastructure as code, promotion workflows are essential for automating infrastructure deployments, as
 
@@ -5446,7 +5446,7 @@ to store sensitive data. For example, if you use the <code>aws_db_instance</code
 
 store the username and password for the database in a state file in plain text, and you shouldn&#8217;t store plain text
 
-secrets in version control (something you&#8217;ll learn more about in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+secrets in version control (something you&#8217;ll learn more about in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </dd>
 
@@ -5632,7 +5632,7 @@ for a distributed lock system. Moreover, it&#8217;s completely managed, so you d
 
 and it&#8217;s <a href="https://aws.amazon.com/dynamodb/pricing/">inexpensive</a>, with most OpenTofu usage easily fitting into the AWS
 
-Free Tier.</p>
+free tier.</p>
 
 </div>
 
@@ -6108,7 +6108,7 @@ automated tests, so you&#8217;d need to configure a new OIDC provider in your de
 
 simple in this post, let&#8217;s use the same AWS account for both deployment and testing (you&#8217;ll
 
-learn how to set up additional environments in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>). That allows you to use the same
+learn how to set up additional environments in <a href="07.html#how_to_work_with_multiple_teams">Part 6</a>). That allows you to use the same
 
 OIDC provider; however, you still need to create new IAM roles for the following reasons:</p>
 
@@ -6432,7 +6432,7 @@ test account. In real-world usage, your deployment pipeline usually needs to sup
 
 dev, stage, prod), and the ability to promote changes from one environment to the next. You&#8217;ll learn more about this
 
-in <a href="09.html#how_to_work_with_multiple_teams">Part 8</a>.</p>
+in <a href="07.html#how_to_work_with_multiple_teams">Part 6</a>.</p>
 
 </dd>
 
@@ -7236,9 +7236,9 @@ ensure all actions are logged, and so on. If possible, don&#8217;t even allow th
 
 public Internet: e.g., lock it down so you can only access it from your company&#8217;s offices or over a VPN connection.
 
-You&#8217;ll learn more about networking in <a href="07.html#how_to_set_up_networking">Part 6</a> and security functionality such as HTTPS and
+You&#8217;ll learn more about networking in <a href="08.html#how_to_set_up_networking">Part 7</a> and security functionality such as HTTPS and
 
-authentication in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>.</p>
+authentication in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>.</p>
 
 </dd>
 
@@ -7460,25 +7460,15 @@ release features—the faster you can go.</p>
 
 <div class="paragraph">
 
-<p>CI/CD considerably reduces risks, but there&#8217;s still more to do. One place where risks remain is with networking. So
+<p>As your company grows, you&#8217;re going to start to hitting new bottlenecks that limit your ability to go fast. Some of
 
-far, everything you&#8217;ve deployed—all the EC2 instances, EKS clusters, and so on—has been directly accessible over the
+these bottlenecks will be from forces outside your company: more users, more load, more money, more requirements. Some
 
-public Internet. This is convenient for learning and testing, but it means that any slight lapse in security—e.g.,
+of these bottlenecks will be from forces within your company: more products, more teams, more developers. To be able to
 
-leaving a port open by accident in a firewall or running out-of-date software that has a vulnerability—can be
+handle these new demands, you will need to learn how to work with multiple environments and multiple teams, which is
 
-<em>immediately</em> exploited by malicious actors. And those malicious actors are out there, scanning for vulnerabilities, all
-
-day, every day.</p>
-
-</div>
-
-<div class="paragraph">
-
-<p>A proper networking setup can give you extra layers of protection, so you&#8217;re never just one mistake away from disaster.
-
-This is the focus of <a href="07.html#how_to_set_up_networking">Part 6</a>, where you&#8217;ll learn about VPCs, VPN, SSH, DNS, and more.</p>
+the focus of <a href="07.html#how_to_work_with_multiple_teams">Part 6</a>.</p>
 
 </div>
 
@@ -7517,7 +7507,7 @@ This is the focus of <a href="07.html#how_to_set_up_networking">Part 6</a>, wher
 
 <div id="footer-text">
 
-Last updated 2024-06-11 16:19:51 -0400
+Last updated 2024-06-17 17:45:43 -0400
 
 </div>
 

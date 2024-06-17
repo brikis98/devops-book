@@ -1830,7 +1830,7 @@ continuous integration (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <dd>
 
-<p>To protect your servers, you put them into private networks (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+<p>To protect your servers, you put them into private networks (<a href="08.html#how_to_set_up_networking">Part 7</a>).</p>
 
 </dd>
 
@@ -1918,7 +1918,7 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <p>As traffic continues to grow, you add content distribution network (CDN) to cache content that doesn&#8217;t change often
 
-(<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+(<a href="08.html#how_to_set_up_networking">Part 7</a>).</p>
 
 </dd>
 
@@ -1956,7 +1956,7 @@ bases and more complexities. It starts with step 4, shown in <a href="02.html#ev
 
 <p>To help teams do better testing, you set up multiple environments (e.g., dev, stage, prod), each of which has a
 
-full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+full copy of your infrastructure (<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>).</p>
 
 </dd>
 
@@ -1974,7 +1974,7 @@ full copy of your infrastructure (<a href="09.html#how_to_work_with_multiple_tea
 
 <p>To keep all the new environments secure, you lock down authentication, authorization, and secrets management
 
-(<a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+(<a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </dd>
 
@@ -2012,7 +2012,7 @@ to step 6, as shown in <a href="02.html#evolution_diagram_6">Figure 6</a>:</p>
 
 <p>To allow teams to work more independently, you break up your monolith into multiple microservices, usually each
 
-with its own data stores and caches (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+with its own data stores and caches (<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>).</p>
 
 </dd>
 
@@ -2082,7 +2082,7 @@ in <a href="02.html#evolution_diagram_7">Figure 7</a>:</p>
 
 <p>As the number of microservices increases, you set up a service discovery system to help them dynamically and
 
-automatically communicate with each other (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+automatically communicate with each other (<a href="08.html#how_to_set_up_networking">Part 7</a>).</p>
 
 </dd>
 
@@ -2092,7 +2092,7 @@ automatically communicate with each other (<a href="07.html#how_to_set_up_networ
 
 <p>To meet various compliance standards (e.g., NIST, CIS, PCI), you work on server and network hardening
 
-(<a href="07.html#how_to_set_up_networking">Part 6</a>, <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+(<a href="08.html#how_to_set_up_networking">Part 7</a>, <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </dd>
 
@@ -2104,7 +2104,7 @@ automatically communicate with each other (<a href="07.html#how_to_set_up_networ
 
 solution for the items above (observability, service, discovery, hardening), as well as load balancing, traffic
 
-control, and error handling (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+control, and error handling (<a href="08.html#how_to_set_up_networking">Part 7</a>).</p>
 
 </dd>
 
@@ -2196,7 +2196,7 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <dd>
 
-<p>To handle a global user base, you set up multiple data centers around the world (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+<p>To handle a global user base, you set up multiple data centers around the world (<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>).</p>
 
 </dd>
 
@@ -2206,7 +2206,7 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <p>To handle a larger employee base, you isolate different teams and products in separate accounts
 
-(<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+(<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>).</p>
 
 </dd>
 
@@ -2214,7 +2214,7 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <dd>
 
-<p>You set up advanced networking to connect all your data centers and accounts together (<a href="07.html#how_to_set_up_networking">Part 6</a>).</p>
+<p>You set up advanced networking to connect all your data centers and accounts together (<a href="08.html#how_to_set_up_networking">Part 7</a>).</p>
 
 </dd>
 
@@ -2224,7 +2224,7 @@ canary deployments (<a href="06.html#how_to_set_up_ci_cd">Part 5</a>).</p>
 
 <p>To help boost developer productivity, while ensuring all the new accounts are secure, you set up an internal developer
 
-platform, account baselines, and an account factory (<a href="09.html#how_to_work_with_multiple_teams">Part 8</a>).</p>
+platform, account baselines, and an account factory (<a href="07.html#how_to_work_with_multiple_teams">Part 6</a>).</p>
 
 </dd>
 
@@ -3808,7 +3808,7 @@ You&#8217;ll learn more about this topic in <a href="04.html#how_to_deploy_many_
 
 <p>Fly.io automatically creates a custom subdomain for your app (e.g., <code>&lt;NAME&gt;.fly.dev</code>); it also supports custom
 
-top-level domain names (e.g., <code>your-domain.com</code>). You&#8217;ll learn more about this topic in <a href="07.html#how_to_set_up_networking">Part 6</a>.</p>
+top-level domain names (e.g., <code>your-domain.com</code>). You&#8217;ll learn more about this topic in <a href="08.html#how_to_set_up_networking">Part 7</a>.</p>
 
 </dd>
 
@@ -3818,7 +3818,7 @@ top-level domain names (e.g., <code>your-domain.com</code>). You&#8217;ll learn 
 
 <p>Note how the Fly.io URL is https, not http. This means Fly.io also takes care of TLS certificates and TLS
 
-termination, a topic you&#8217;ll learn more about in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>.</p>
+termination, a topic you&#8217;ll learn more about in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>.</p>
 
 </dd>
 
@@ -3888,15 +3888,97 @@ to IaaS, which is the topic of the next section.</p>
 
 <div class="paragraph">
 
-<p>Just as with PaaS, there are many IaaS providers to choose from, including <a href="https://aws.amazon.com/">Amazon Web Services
+<p>Broadly speaking, the IaaS space falls into three buckets:</p>
 
-(AWS)</a>, <a href="https://azure.microsoft.com/">Microsoft Azure</a>, <a href="https://cloud.google.com/">Google Cloud Platform (GCP)</a>,
+</div>
 
-<a href="https://www.alibabacloud.com/">Alibaba Cloud</a>, <a href="https://www.ibm.com/cloud">IBM Cloud</a>, and
+<div class="dlist">
 
-<a href="https://www.oracle.com/cloud/">Oracle Cloud Infrastructure (OCI)</a>. For the examples in this blog post series, I wanted
+<dl>
 
-an IaaS provider that met the following requirements:</p>
+<dt class="hdlist1">Virtual private server (VPS)</dt>
+
+<dd>
+
+<p>There are a number of companies who primarily focus on giving you access to a <em>virtual private server (VPS)</em> for
+
+as cheap as possible. These companies might offer a few other features (e.g., networking, storage) as well, but
+
+the main reason you&#8217;d go with one of these providers is that you just want a replacement for having to rack your own
+
+servers, and prefer to have someone else do it for you, and give you access. Some of the big players in this space
+
+include <a href="https://www.hetzner.com/">Hetzner</a>, <a href="https://www.digitalocean.com/">DigitalOcean</a>, <a href="https://www.vultr.com/">Vultr</a>,
+
+<a href="https://www.linode.com/">Linode</a> (now known as Akamai Connected Cloud after the acquisition),
+
+<a href="https://buyvm.net/">BuyVM</a>, <a href="https://www.first-root.com/">First Root</a>, and <a href="https://oneprovider.com/">OneProvider</a></p>
+
+</dd>
+
+<dt class="hdlist1">Content delivery networks (CDNs)</dt>
+
+<dd>
+
+<p>There are also a number of companies who primarily focus on <em>content delivery networks (CDNs)</em>, which are servers
+
+that are distributed all over the world, typically for the purpose of serving and caching content (especially static
+
+assets, such as images, JavaScript, and CSS) close to your users (you&#8217;ll learn more about CDNs in
+
+<a href="08.html#how_to_set_up_networking">Part 7</a>). Again, these companies might offer a few other features (e.g., protection against
+
+attacks), but the main reason you&#8217;d go with one of these providers is that your user base is geographically
+
+distributed, and you need a fast and reliable way to serve them content with low latency. Some of the big players in
+
+this space include <a href="https://www.cloudflare.com/">CloudFlare</a>, <a href="https://www.akamai.com/">Akamai</a>,
+
+<a href="https://www.fastly.com/">Fastly</a>, and <a href="https://www.imperva.com/">Imperva</a>.</p>
+
+</dd>
+
+<dt class="hdlist1">Cloud providers</dt>
+
+<dd>
+
+<p>There are also a small number of very large companies trying to provide all-purpose cloud solutions that offer
+
+everything: VPS, CDN, containers, serverless, data storage, file storage, machine learning, natural language
+
+processing, edge computing, and more. The big players in this space include <a href="https://aws.amazon.com/">Amazon Web
+
+Services (AWS)</a>, <a href="https://azure.microsoft.com/">Microsoft Azure</a>, <a href="https://cloud.google.com/">Google Cloud Platform
+
+(GCP)</a>, <a href="https://www.alibabacloud.com/">Alibaba Cloud</a>, <a href="https://www.ibm.com/cloud">IBM Cloud</a>, and
+
+<a href="https://www.oracle.com/cloud/">Oracle Cloud Infrastructure (OCI)</a>.</p>
+
+</dd>
+
+</dl>
+
+</div>
+
+<div class="paragraph">
+
+<p>In general, the VPS and CDN providers are specialists in their respective areas, so they will typically beat a general
+
+cloud provider in terms of features and pricing in those areas: for example, a VPS from Hetzner is usually much faster
+
+and cheaper than one from AWS. So if you <em>only</em> need those specific items, you&#8217;re better off going with a specialist.
+
+However, if you&#8217;re building the infrastructure for an entire company, especially one that is in the later stages of its
+
+DevOps evolution, your architecture usually needs many types of infrastructure, and the general-purpose cloud providers
+
+will typically be a better fit, as they can give you a one-stop-shop to meet all your needs.</p>
+
+</div>
+
+<div class="paragraph">
+
+<p>For the examples in this blog post series, I wanted an IaaS provider that met the following requirements:</p>
 
 </div>
 
@@ -3966,7 +4048,7 @@ accounts with more-limited permissions, and then switch to one of those accounts
 
 Make sure to store the root user credentials in a secure password manager, such as 1Password (you&#8217;ll learn more about
 
-secrets management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>).</p>
+secrets management in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>).</p>
 
 </div>
 
@@ -3976,7 +4058,7 @@ secrets management in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a
 
 and Access Management (IAM)</em> service. IAM is where you manage user accounts as well as the permissions for each user.
 
-We&#8217;ll go into more detail on this topic in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>, but for now, we&#8217;ll do the simplest thing
+We&#8217;ll go into more detail on this topic in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>, but for now, we&#8217;ll do the simplest thing
 
 we can to get started. To create a new <em>IAM user</em>, go to the <a href="https://console.aws.amazon.com/iam/">IAM Console</a> (note:
 
@@ -4128,9 +4210,9 @@ as shown in <a href="02.html#ec2_instance_type_key_pair">Figure 14</a>.</p>
 
 have. For this quick test, you can use the default, which should be <code>t2.micro</code> or <code>t3.micro</code>, small instances (1 CPU,
 
-1GB of memory) that are part of the AWS Free Tier. The <em>key pair</em> can be used to connect to the EC2 instance via SSH, a
+1GB of memory) that are part of the AWS free tier. The <em>key pair</em> can be used to connect to the EC2 instance via SSH, a
 
-topic you&#8217;ll learn more about in <a href="07.html#how_to_set_up_networking">Part 6</a>. You&#8217;re not going to be using SSH for this example, so
+topic you&#8217;ll learn more about in <a href="08.html#how_to_set_up_networking">Part 7</a>. You&#8217;re not going to be using SSH for this example, so
 
 select "Proceed without a key pair." Scroll down to the network settings, as shown in <a href="02.html#ec2_network_settings">Figure 15</a>.</p>
 
@@ -4150,7 +4232,7 @@ select "Proceed without a key pair." Scroll down to the network settings, as sho
 
 <div class="paragraph">
 
-<p>You&#8217;ll learn about  networking in <a href="07.html#how_to_set_up_networking">Part 6</a>. For now, you can leave most of these settings at their
+<p>You&#8217;ll learn about  networking in <a href="08.html#how_to_set_up_networking">Part 7</a>. For now, you can leave most of these settings at their
 
 defaults: the Network should pick your Default VPC (in <a href="02.html#ec2_network_settings">Figure 15</a>, my Default VPC has the ID
 
@@ -4470,7 +4552,7 @@ its public IP address, as shown in <a href="02.html#ec2_instance_ip">Figure 17</
 
 portion in your browser, or the browser may try to use <code>https://</code> by default, which will <em>not</em> work; you&#8217;ll learn more
 
-about HTTPS in <a href="08.html#how_to_manage_auth_and_secrets">Part 7</a>), and you should see:</p>
+about HTTPS in <a href="09.html#how_to_manage_auth_and_secrets">Part 8</a>), and you should see:</p>
 
 </div>
 
@@ -5007,7 +5089,7 @@ five or fifty; and imagine you had to do that many times per day. Not fun.</p>
 
 <div id="footer-text">
 
-Last updated 2024-06-11 16:19:51 -0400
+Last updated 2024-06-17 17:45:43 -0400
 
 </div>
 
