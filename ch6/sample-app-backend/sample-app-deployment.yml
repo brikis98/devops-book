@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-backend-deployment     
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: sample-app-backend-pods      
+    spec:
+      containers:
+        - name: sample-app-backend        
+          image: sample-app-backend:0.0.1 
+          ports:
+            - containerPort: 8081         
+          env:
+            - name: NODE_ENV
+              value: production
+  selector:
+    matchLabels:
+      app: sample-app-backend-pods        
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0

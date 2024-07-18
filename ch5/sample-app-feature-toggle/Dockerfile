@@ -7,7 +7,7 @@ COPY package-lock.json .
 
 RUN npm ci --only=production
 
-COPY app.js .
+COPY *.js .
 
 EXPOSE 8080
 

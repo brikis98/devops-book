@@ -19,6 +19,7 @@ variable "github_repo" {
 
 variable "lambda_base_name" {
   description = "The base name used for the lambda-sample app: especially its IAM roles. The IAM roles will have read or read & write access to this IAM role."
+  type        = string
 }
 
 # ---------------------------------------------------------------------------------------------------------------------

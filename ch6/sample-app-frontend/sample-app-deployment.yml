@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-frontend-deployment       
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: sample-app-frontend-pods        
+    spec:
+      containers:
+        - name: sample-app-frontend          
+          image: sample-app-frontend:0.0.1   
+          ports:
+            - containerPort: 8080
+          env:
+            - name: NODE_ENV
+              value: production
+  selector:
+    matchLabels:
+      app: sample-app-frontend-pods          
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
