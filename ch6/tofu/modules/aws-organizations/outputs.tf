@@ -13,17 +13,17 @@ output "prod_account_id" {
   value       = aws_organizations_account.prod.id
 }
 
-output "dev_account_iam_role_arn" {
+output "dev_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage the dev account from the management account"
   value       = "arn:aws:iam::${aws_organizations_account.dev.id}:role/OrganizationAccountAccessRole"
 }
 
-output "stage_account_iam_role_arn" {
+output "stage_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage the stage account from the management account"
   value       = "arn:aws:iam::${aws_organizations_account.stage.id}:role/OrganizationAccountAccessRole"
 }
 
-output "prod_account_iam_role_arn" {
+output "prod_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage the prod account from the management account"
   value       = "arn:aws:iam::${aws_organizations_account.prod.id}:role/OrganizationAccountAccessRole"
 }

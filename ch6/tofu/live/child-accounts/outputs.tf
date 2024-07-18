@@ -14,17 +14,17 @@ output "prod_account_id" {
   value       = module.child_accounts.prod_account_id
 }
 
-output "dev_account_iam_role_arn" {
+output "dev_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage dev from mgmt"
-  value       = module.child_accounts.dev_account_iam_role_arn
+  value       = module.child_accounts.dev_iam_role_arn
 }
 
-output "stage_account_iam_role_arn" {
+output "stage_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage stage from mgmt"
-  value       = module.child_accounts.stage_account_iam_role_arn
+  value       = module.child_accounts.stage_iam_role_arn
 }
 
-output "prod_account_iam_role_arn" {
+output "prod_iam_role_arn" {
   description = "The ARN of the IAM role you can use to manage prod from mgmt"
-  value       = module.child_accounts.prod_account_iam_role_arn
+  value       = module.child_accounts.prod_iam_role_arn
 }
