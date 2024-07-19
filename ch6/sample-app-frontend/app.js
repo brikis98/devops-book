@@ -2,10 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const backendHost =                                           
-  process.env.KUBERNETES_SERVICE_HOST                         
-  ? 'sample-app-backend-service'                              
-  : 'localhost:8081';                                         
+const backendHost = 'sample-app-backend-service';             
 
 app.get('/', async (req, res) => {
   const response = await fetch(`http://${backendHost}`);      

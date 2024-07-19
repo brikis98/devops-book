@@ -9,7 +9,7 @@ RUN npm ci --only=production
 
 COPY *.js .
 
-EXPOSE 8081
+EXPOSE 8080
 
 USER node
 
