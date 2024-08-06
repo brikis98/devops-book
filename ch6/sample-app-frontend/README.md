@@ -8,6 +8,8 @@ This folder contains:
 * `server.js`: Fires up the app in `app.js` to listen on port 8080.
 * `package.json`: An NPM build configuration for the Node.js app.
 * `Dockerfile`: Instructions on how to package the Node.js app as a Docker image.
+* `sample-app-deployment.yml`: Kubernetes Deployment for this app.
+* `sample-app-service.yml`: Kubernetes Service for this app.
 
 For more information, see Chapter 6, "How to Work with Multiple Teams and Environments", of [_Fundamentals of DevOps 
 and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
