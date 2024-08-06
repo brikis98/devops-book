@@ -21,6 +21,9 @@ module "public_instance" {
   vpc_id        = module.vpc.vpc.id                   
   subnet_id     = module.vpc.public_subnet.id         
 
+  # TODO: fill in your EC2 key pair name
+  key_name = "<YOUR_KEYPAIR_NAME>"
+
 }
 
 module "private_instance" {
@@ -35,4 +38,6 @@ module "private_instance" {
   vpc_id        = module.vpc.vpc.id
   subnet_id     = module.vpc.private_subnet.id         
 
+  # TODO: fill in your EC2 key pair name
+  key_name = "<YOUR_KEYPAIR_NAME>"
 }
