@@ -1,0 +1,20 @@
+{
+  "name": "sample-app-backend",
+  "version": "0.0.1",
+  "description": "Backend app for 'Fundamentals of DevOps and Software Delivery'",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dockerize": "./build-docker-image.sh",
+    "test": "jest --verbose --coverage"
+  },
+  "author": "Yevgeniy Brikman",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
