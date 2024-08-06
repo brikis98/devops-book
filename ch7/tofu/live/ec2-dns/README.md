@@ -3,7 +3,7 @@
 This folder contains a root OpenTofu module that uses the [ec2-instances module](../../modules/ec2-instances) to deploy 
 multiple EC2 instances and then configures a domain name for them by creating a Route 53 A record.
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of
+For more information, see Chapter 7, " How to Set Up Networking", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

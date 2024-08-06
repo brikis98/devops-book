@@ -4,7 +4,7 @@ This folder contains a root OpenTofu module that uses the [vpc module](../../mod
 [ec2-instances module](../../modules/ec2-instances) to deploy one EC2 instance into the public subnet of that VPC and
 one EC2 instance into the private subnet of that VPC. 
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of
+For more information, see Chapter 7, " How to Set Up Networking", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

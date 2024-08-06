@@ -7,7 +7,7 @@ This folder contains a reusable OpenTofu module that can create the following:
 3. A public subnet and route table, with a route to the Internet Gateway.
 4. A private subnet and route table.
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of
+For more information, see Chapter 7, " How to Set Up Networking", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

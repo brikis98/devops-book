@@ -9,7 +9,7 @@ This folder contains a reusable OpenTofu module that can do the following:
 4. Configure the EC2 instance to allow SSH access from the EC2 key pair specified via `key_name`. If `key_name` is
    specified, this module also configures the security group to allow SSH access on port 22.
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of 
+For more information, see Chapter 7, " How to Set Up Networking", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

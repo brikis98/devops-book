@@ -11,7 +11,7 @@ This folder contains:
 * `kubernetes-config.yml`: Kubernetes configuration for this microservice, including a Deployment, Service,
   Service Account, and Istio authorization policy.
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of
+For more information, see Chapter 7, " How to Set Up Networking", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

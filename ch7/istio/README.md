@@ -4,7 +4,7 @@ This folder contains configurations for Istio:
 
 * `istio-block-all.yml`: An Istio authorization policy that blocks all access by default.
 
-For more information, see Chapter 7, " How to Set Up Networking: VPCs, VPN, and DNS", of
+For more information, see Chapter 7, " How to Set Up Networking", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  
