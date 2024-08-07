@@ -28,7 +28,6 @@ resource "aws_autoscaling_group" "sample_app" {
   desired_capacity    = var.desired_capacity         
   vpc_zone_identifier = data.aws_subnets.default.ids 
 
-  
   launch_template {
     id      = aws_launch_template.sample_app.id
     version = aws_launch_template.sample_app.latest_version

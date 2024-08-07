@@ -11,7 +11,6 @@ resource "aws_lb_target_group" "sample_app" {
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
 
-  
   health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2
@@ -26,7 +25,6 @@ resource "aws_lb_listener" "sample_app" {
   port              = var.alb_http_port            
   protocol          = "HTTP"
 
-  
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.sample_app.arn

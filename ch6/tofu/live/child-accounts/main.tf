@@ -3,10 +3,8 @@ provider "aws" {
 }
 
 module "child_accounts" {
-  
   source = "github.com/brikis98/devops-book//ch6/tofu/modules/aws-organization"
 
-  
   # Set to false if you already enabled AWS Organizations in your account
   create_organization = true
 
