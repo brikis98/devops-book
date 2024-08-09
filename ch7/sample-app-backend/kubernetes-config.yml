@@ -46,7 +46,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-
 ---
 apiVersion: security.istio.io/v1                             
 kind: AuthorizationPolicy
@@ -60,7 +59,8 @@ spec:
   rules:                                                     
   - from:
     - source:
-        principals: ["cluster.local/ns/default/sa/sample-app-frontend-service-account"]
+        principals:
+          - "cluster.local/ns/default/sa/sample-app-frontend-service-account"
     to:
     - operation:
         methods: ["GET"]

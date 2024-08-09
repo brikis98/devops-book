@@ -19,6 +19,7 @@ spec:
           env:
             - name: NODE_ENV
               value: production
+
   selector:
     matchLabels:
       app: sample-app-frontend-pods
@@ -47,17 +48,30 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
+
 ---
-apiVersion: security.istio.io/v1
-kind: AuthorizationPolicy
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
 metadata:
-  name: sample-app-frontend-allow-http  
+  name: allow-without-mtls
+  namespace: default
 spec:
   selector:
     matchLabels:
-      app: sample-app-frontend-pods     
-  action: ALLOW                         
-  rules:                                
+      app: sample-app-frontend-pods 
+  mtls:
+    mode: DISABLE                   
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy                                     
+metadata:
+  name: sample-app-frontend-allow-http
+spec:
+  selector:
+    matchLabels:
+      app: sample-app-frontend-pods                           
+  action: ALLOW                                               
+  rules:                                                      
   - to:
     - operation:
         methods: ["GET"]
