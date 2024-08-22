@@ -41,8 +41,30 @@ resource "aws_instance" "sample_app" {
   user_data_replace_on_change = true
   subnet_id                   = var.subnet_id
   key_name                    = var.key_name
+  iam_instance_profile        = aws_iam_instance_profile.sample_app.name
 
   tags = {
     Name = var.name
   }
+}
+
+resource "aws_iam_role" "sample_app" {
+  name               = var.name
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+}
+
+data "aws_iam_policy_document" "assume_role_policy" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_instance_profile" "sample_app" {
+  name = aws_iam_role.sample_app.name
+  role = aws_iam_role.sample_app.name
 }

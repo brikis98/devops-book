@@ -1,13 +1,13 @@
 resource "aws_lb" "sample_app" {
   name               = var.name
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb.id]  
-  subnets            = data.aws_subnets.default.ids 
+  security_groups    = [aws_security_group.alb.id]
+  subnets            = data.aws_subnets.default.ids
 }
 
 resource "aws_lb_target_group" "sample_app" {
   name     = var.name
-  port     = var.app_http_port                      
+  port     = var.app_http_port
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
 
@@ -22,7 +22,7 @@ resource "aws_lb_target_group" "sample_app" {
 
 resource "aws_lb_listener" "sample_app" {
   load_balancer_arn = aws_lb.sample_app.arn
-  port              = var.alb_http_port            
+  port              = var.alb_http_port
   protocol          = "HTTP"
 
   default_action {
