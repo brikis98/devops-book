@@ -90,6 +90,12 @@ resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
   role       = aws_iam_role.node_group.name
 }
 
+resource "aws_eks_addon" "eks_pod_identity_agent" {
+  count        = var.enable_eks_pod_identity_agent ? 1 : 0
+  cluster_name = aws_eks_cluster.cluster.name
+  addon_name   = "eks-pod-identity-agent"
+}
+
 data "aws_vpc" "default" {
   default = true
 }

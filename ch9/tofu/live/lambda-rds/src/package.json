@@ -1,0 +1,12 @@
+{
+  "name": "lambda-rds-example",
+  "version": "0.0.1",
+  "description": "Example app 'Fundamentals of DevOps and Software Delivery'",
+  "author": "Yevgeniy Brikman",
+  "license": "MIT",
+  "dependencies": {
+    "knex": "^3.1.0",
+    "pg": "^8.12.0",
+    "sqlite3": "^5.1.7"
+  }
+}

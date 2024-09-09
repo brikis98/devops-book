@@ -38,3 +38,20 @@ data "aws_iam_policy_document" "policy" {
   }
 }
 
+resource "aws_iam_role_policy" "allow_logging" {
+  name   = "${var.name}-allow-logging"
+  role   = aws_iam_role.lambda.name
+  policy = data.aws_iam_policy_document.allow_logging.json
+}
+
+data "aws_iam_policy_document" "allow_logging" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    resources = ["arn:aws:logs:*:*:*"]
+  }
+}

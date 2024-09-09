@@ -33,9 +33,13 @@ data "aws_iam_policy_document" "tls_cert_access" {
     effect  = "Allow"
     actions = ["secretsmanager:GetSecretValue"]
     resources = [
-      "arn:aws:secretsmanager:us-east-2:${data.aws_caller_identity.current.account_id}:secret:certificate-*"
+      "arn:aws:secretsmanager:us-east-2:${local.account_id}:secret:certificate-*"
     ]
   }
+}
+
+locals {
+  account_id = data.aws_caller_identity.current.account_id
 }
 
 data "aws_caller_identity" "current" {}

@@ -9,7 +9,7 @@ variable "name" {
 
 variable "eks_version" {
   description = "The version of EKS to deploy. See https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html for available versions."
-  type = string
+  type        = string
 }
 
 variable "min_worker_nodes" {
@@ -35,4 +35,10 @@ variable "instance_type" {
   description = "The type of EC2 instances to deploy as worker nodes (e.g., t2.micro)"
   type        = string
   default     = "t2.micro"
+}
+
+variable "enable_eks_pod_identity_agent" {
+  description = "Set to true to install the EKS pod identity agent add-on, which can be used to give Pods IAM permissions."
+  type        = bool
+  default     = false
 }
