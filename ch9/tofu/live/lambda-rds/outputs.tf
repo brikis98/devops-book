@@ -3,7 +3,17 @@ output "app_endpoint" {
   value       = module.app_gateway.api_endpoint
 }
 
-output "migrations_results" {
-  description = "The result of applying migrations"
-  value       = jsondecode(aws_lambda_invocation.run_migrations.result)
+output "db_name" {
+  description = "The name of the database"
+  value       = module.rds_postgres.db_name
+}
+
+output "db_host" {
+  description = "The hostname of the database"
+  value       = module.rds_postgres.hostname
+}
+
+output "db_port" {
+  description = "The port of the database"
+  value       = module.rds_postgres.port
 }

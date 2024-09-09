@@ -3,8 +3,7 @@ provider "aws" {
 }
 
 module "s3_bucket" {
-  # TODO: replace with URL
-  source = "../../modules/s3-website"
+  source = "github.com/brikis98/devops-book//ch9/tofu/modules/s3-website"
 
   # TODO: fill in your own bucket name!
   name           = "fundamentals-of-devops-static-website" 
@@ -30,8 +29,7 @@ resource "aws_s3_object" "content" {
 }
 
 module "cloudfront" {
-  # TODO: replace with URL
-  source = "../../modules/cloudfront-s3-website"
+  source = "github.com/brikis98/devops-book//ch9/tofu/modules/cloudfront-s3-website"
 
   bucket_name             = module.s3_bucket.bucket_name      
   bucket_website_endpoint = module.s3_bucket.website_endpoint 
