@@ -11,7 +11,7 @@ db.bank.find();
 
 db.bank.find({_id: ObjectId('66e02de6107a0497244ec05e')});
 
-db.bank.find({date_of_birth: { $gt: new Date("1950-12-31")}});
+db.bank.find({date_of_birth: {$gt: new Date("1950-12-31")}});
 
 db.bank.updateMany({}, {$inc: {balance: -100}});
 

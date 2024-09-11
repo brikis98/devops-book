@@ -1,13 +1,9 @@
 html {
     max-width: 70ch;
-    padding: 3em 1em;
-    margin: auto;
-    line-height: 1.75;
-    font-size: 1.25em;
+    margin: 3em auto;
 }
 
-p,ul,ol {
-    margin-bottom: 2em;
+h1, p {
     color: #1d1d1d;
     font-family: sans-serif;
 }

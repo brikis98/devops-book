@@ -10,16 +10,13 @@ module "s3_bucket" {
   index_document = "index.html"                            
 }
 
-locals {
-  files_to_upload = {                            
+resource "aws_s3_object" "content" {
+  for_each = {                                   
     "index.html" = "text/html"
     "styles.css" = "text/css"
     "cover.png"  = "image/png"
   }
-}
 
-resource "aws_s3_object" "content" {
-  for_each      = local.files_to_upload          
   bucket        = module.s3_bucket.bucket_name   
   key           = each.key                       
   source        = "content/${each.key}"          
