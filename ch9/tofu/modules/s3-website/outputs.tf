@@ -17,10 +17,3 @@ output "hosted_zone_id" {
   description = "The hosted zone ID of the S3 bucket"
   value       = aws_s3_bucket.website.hosted_zone_id
 }
-
-output "mime_types" {
-  description = "A map from file extension to MIME type"
-  value = tomap({
-    for suffix, types in local.mapping : suffix => types[0]
-  })
-}

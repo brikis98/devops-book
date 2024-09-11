@@ -11,21 +11,21 @@ module "s3_bucket" {
 }
 
 locals {
-  files_to_upload = {
-    for file in fileset(path.module, "content/*"):        
-    file => replace(basename(file), "/.*([.].+)$/", "$1") 
-    if !startswith(file, "content/.")                     
+  files_to_upload = {                            
+    "index.html" = "text/html"
+    "styles.css" = "text/css"
+    "cover.png"  = "image/png"
   }
 }
 
 resource "aws_s3_object" "content" {
-  for_each      = local.files_to_upload                   
-  bucket        = module.s3_bucket.bucket_name            
-  key           = trimprefix(each.key, "content/")        
-  source        = each.key                                
-  etag          = filemd5(each.key)                       
-  content_type  = module.s3_bucket.mime_types[each.value] 
-  cache_control = "public, max-age=300"                   
+  for_each      = local.files_to_upload          
+  bucket        = module.s3_bucket.bucket_name   
+  key           = each.key                       
+  source        = "content/${each.key}"          
+  etag          = filemd5("content/${each.key}") 
+  content_type  = each.value                     
+  cache_control = "public, max-age=300"          
 }
 
 module "cloudfront" {

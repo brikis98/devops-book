@@ -38,32 +38,3 @@ data "aws_iam_policy_document" "allow_public_access" {
     }
   }
 }
-# From: https://gist.github.com/apparentlymart/e62fb9960e858d5651af932a5107dd29
-locals {
-  raw_content = file("${path.module}/mime.types")
-  raw_lines = [
-    for rawl in split("\n", local.raw_content) :
-    trimspace(replace(rawl, "/(#.*)/", ""))
-  ]
-  lines = [
-    for l in local.raw_lines : split(" ", replace(l, "/\\s+/", " "))
-    if l != ""
-  ]
-  pairs = flatten([
-    for l in local.lines : [
-      for suf in slice(l, 1, length(l)) : {
-        content_type = l[0]
-        suffix = ".${suf}"
-      }
-    ]
-  ])
-  # There can potentially be more than one entry for the same
-  # suffix in a mime.types file, so we'll gather them all up
-  # here and then just discard all but the first one when
-  # we produce our result below, mimicking a behavior of
-  # scanning through the mime.types file until you find the
-  # first mention of a particular suffix.
-  mapping = tomap({
-    for pair in local.pairs : pair.suffix => pair.content_type...
-  })
-}

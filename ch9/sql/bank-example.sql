@@ -1,8 +1,8 @@
 CREATE TABLE customers (
-   customer_id     SERIAL PRIMARY KEY,
-   name            VARCHAR(128),
-   date_of_birth   DATE,
-   balance         INT
+   id            SERIAL PRIMARY KEY,
+   name          VARCHAR(128),
+   date_of_birth DATE,
+   balance       INT
 );
 
 INSERT INTO customers (name, date_of_birth, balance)
@@ -24,16 +24,16 @@ SET balance = balance - 100;
 START TRANSACTION;
     UPDATE customers
     SET balance = balance - 100
-    WHERE customer_id = 1;
+    WHERE id = 1;
 
     UPDATE customers
     SET balance = balance + 100
-    WHERE customer_id = 2;
+    WHERE id = 2;
 COMMIT;
 
 CREATE TABLE accounts (
-    account_id      SERIAL PRIMARY KEY,                   -- <1>
-    account_type    VARCHAR(20),                          -- <2>
-    balance         INT,                                  -- <3>
-    customer_id     INT REFERENCES customers(customer_id) -- <4>
+    account_id      SERIAL PRIMARY KEY,          -- <1>
+    account_type    VARCHAR(20),                 -- <2>
+    balance         INT,                         -- <3>
+    customer_id     INT REFERENCES customers(id) -- <4>
 );

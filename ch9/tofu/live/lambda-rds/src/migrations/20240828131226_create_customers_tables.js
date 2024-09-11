@@ -1,9 +1,7 @@
 exports.up = async (knex) => {             
   await knex.schema
     .createTable('customers', (table) => { 
-      table
-        .increments('customer_id')
-        .primary();
+      table.increments('id').primary();
       table.string('name', 128);
       table.date('date_of_birth');
       table.integer('balance');
