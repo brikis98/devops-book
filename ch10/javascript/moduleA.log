@@ -1,0 +1,2 @@
+{"ip":"1.2.3.4","label":"A","level":"info","message":"A message at info level","method":"GET","path":"/foo","timestamp":"2024-10-05T20:30:15.450Z"}
+{"ip":"1.2.3.4","label":"A","level":"info","message":"A message at info level","method":"GET","path":"/foo","timestamp":"2024-10-05T20:30:15.451Z"}

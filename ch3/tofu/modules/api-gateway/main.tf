@@ -21,6 +21,12 @@ resource "aws_apigatewayv2_stage" "default" {
   api_id      = aws_apigatewayv2_api.api.id
   name        = "$default"
   auto_deploy = true
+
+  default_route_settings {
+    detailed_metrics_enabled = var.detailed_metrics_enabled
+    throttling_rate_limit    = var.throttling_rate_limit
+    throttling_burst_limit   = var.throttling_burst_limit
+  }
 }
 
 resource "aws_lambda_permission" "allow_invoke" {
