@@ -11,8 +11,8 @@ source "amazon-ebs" "amazon_linux" {
   ami_name        = "sample-app-packer-${uuidv4()}"
   ami_description = "An Amazon Linux 2023 AMI that has a Node.js sample app installed."
   instance_type   = "t2.micro"
-  region          = "us-east-2"
-  source_ami      = "ami-0900fe555666598a2"
+  region          = "us-west-2"
+  source_ami      = "ami-08d8ac128e0a1b91c"
   ssh_username    = "ec2-user"
 }
 

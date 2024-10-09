@@ -2,7 +2,9 @@
   hosts: localhost
   gather_facts: no
   environment:
-    AWS_REGION: us-east-2
+    AWS_REGION: us-west-2
+  vars:
+    ansible_python_interpreter: /home/naul2354/ansible-env/bin/python
   vars_prompt:                                                
     - name: num_instances
       prompt: How many instances to create?
@@ -41,6 +43,6 @@
         key_name: "{{ aws_ec2_key_pair.key.name }}"
         instance_type: t2.micro
         security_group: "{{ aws_security_group.group_id }}"
-        image_id: ami-0900fe555666598a2
+        image_id: ami-08d8ac128e0a1b91c
         tags:
           Ansible: "{{ base_name }}"                          

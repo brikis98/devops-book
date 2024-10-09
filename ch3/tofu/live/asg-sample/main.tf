@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-west-2"
 }
 
 module "asg" {
@@ -8,7 +8,7 @@ module "asg" {
   name = "sample-app-asg"                                   
 
   # TODO: fill in with your own AMI ID!
-  ami_id        = "ami-0f5b3d9c244e6026d"                   
+  ami_id        = "ami-07f12c0f2ab5ba89d"                   
   user_data     = filebase64("${path.module}/user-data.sh") 
   app_http_port = 8080                                      
 
