@@ -1,9 +1,6 @@
-# Node.js Sample App for Fly.io
+# Node.js Sample App
 
-This folder contains:
-
-* `app.js`: A simple Node.js "Hello, World" server that listens on port 8080.
-* `fly.toml`: A configuration file you can use to run the Node.js app on Fly.io.
+This folder contains a simple Node.js "Hello, World" server that listens on port 8080.
 
 For more information, see Chapter 1, "An Introduction to DevOps and Software Delivery", of [_Fundamentals of DevOps and 
 Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
