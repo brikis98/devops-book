@@ -1,12 +1,9 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello, World!\n');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
 
-const port = 8080;
-server.listen(port,() => {
-  console.log(`Listening on port ${port}`);
-});
-
+module.exports = app;

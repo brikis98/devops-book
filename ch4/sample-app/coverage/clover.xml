@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1728872048622" clover="3.2.0">
+  <project timestamp="1728872048622" name="All files">
+    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="11" coveredelements="11" complexity="0" loc="8" ncloc="8" packages="1" files="2" classes="2"/>
+    <file name="app.js" path="/home/naul2354/devops-book/ch4/sample-app/app.js">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+    </file>
+    <file name="reverse.js" path="/home/naul2354/devops-book/ch4/sample-app/reverse.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
