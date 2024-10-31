@@ -1,4 +1,3 @@
-
 output "dev_account_id" {
   description = "The ID of the dev account"
   value       = module.child_accounts.dev_account_id

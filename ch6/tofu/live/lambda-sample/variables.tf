@@ -3,9 +3,3 @@ variable "name" {
   type        = string
   default     = "lambda-sample"
 }
-
-variable "aws_profile" {
-  description = "If specified, the profile to use to authenticate to AWS."
-  type        = string
-  default     = null
-}

@@ -1,6 +1,6 @@
 name: Tofu Apply
 on:
-  push: 
+  push:                                                                      
     branches: ["main"]
     paths: ["ch5/tofu/live/lambda-sample/**"]
 jobs:
@@ -23,19 +23,19 @@ jobs:
 
       - uses: opentofu/setup-opentofu@v1
 
-      - name: tofu apply 
+      - name: tofu apply                                                     
         id: apply
         working-directory: ch5/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu apply -no-color -input=false -lock-timeout=60m -auto-approve
 
-      - uses: jwalton/gh-find-current-pr@master 
+      - uses: jwalton/gh-find-current-pr@master                              
         id: find_pr
         with:
           state: all
 
-      - uses: peter-evans/create-or-update-comment@v4 
+      - uses: peter-evans/create-or-update-comment@v4                        
         if: steps.find_pr.outputs.number
         env:
           RESULT_EMOJI: ${{ steps.apply.outcome == 'success' && '✅' || '⚠️' }}

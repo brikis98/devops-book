@@ -3,7 +3,7 @@
 This folder contains a reusable OpenTofu module that can deploy an HTTP v2 API Gateway that sends traffic to an AWS 
 Lambda function.
 
-For more information, see Chapter 3, "How to Deploy Your Apps: Orchestration, VMs, Containers, and Serverless", of
+For more information, see Chapter 3, "How to Deploy Your Apps", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

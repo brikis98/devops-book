@@ -1,6 +1,5 @@
 provider "aws" {
-  region  = "us-east-2"
-  profile = var.aws_profile
+  region = "us-east-2"
 }
 
 module "function" {
@@ -15,7 +14,8 @@ module "function" {
   timeout     = 5
 
   environment_variables = {
-    NODE_ENV = terraform.workspace
+    NODE_ENV = "production"
+    ENV_NAME = terraform.workspace
   }
 }
 

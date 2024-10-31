@@ -3,21 +3,6 @@ name: Infrastructure Tests
 on: push
 
 jobs:
-  terrascan:
-    name: "Run Terrascan"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Run Terrascan
-        uses: tenable/terrascan-action@main
-        with:
-          iac_type: 'terraform'
-          iac_dir: 'ch5/tofu/live/lambda-sample'
-          verbose: true
-          non_recursive: true
-          config_path: 'ch5/tofu/live/lambda-sample/terrascan.toml'
-
   opentofu_test:
     name: "Run OpenTofu tests"
     runs-on: ubuntu-latest

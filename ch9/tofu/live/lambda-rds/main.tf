@@ -19,7 +19,7 @@ module "rds_postgres_replica" {
 
   name                = "bank-replica"                 
   replicate_source_db = module.rds_postgres.identifier 
-  instance_class      = "db.t4g.micro"                 
+  instance_class      = "db.t4g.micro"
 }
 
 module "app" {

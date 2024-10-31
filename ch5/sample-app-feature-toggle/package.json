@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dockerize": "./build-docker-image.sh",
-    "test": "node_modules/.bin/jest --verbose --coverage"
+    "test": "node_modules/.bin/jest --verbose"
   },
   "author": "Yevgeniy Brikman",
   "license": "MIT",

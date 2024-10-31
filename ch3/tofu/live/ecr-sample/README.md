@@ -3,7 +3,7 @@
 This folder contains a root OpenTofu module that uses the [ecr-repo](../../modules/ecr-repo) module to create an ECR
 repo.
 
-For more information, see Chapter 3, "How to Deploy Your Apps: Orchestration, VMs, Containers, and Serverless", of
+For more information, see Chapter 3, "How to Deploy Your Apps", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

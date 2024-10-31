@@ -6,11 +6,12 @@
   "scripts": {
     "start": "node server.js",
     "dockerize": "./build-docker-image.sh",
-    "test": "jest --verbose --coverage"
+    "test": "jest --verbose"
   },
   "author": "Yevgeniy Brikman",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   },
   "devDependencies": {

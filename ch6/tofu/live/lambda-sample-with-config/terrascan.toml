@@ -1,8 +1,0 @@
-[severity]
-level = "high"
-
-[rules]
-    skip-rules = [
-        # We are not passing any secrets to Lambda via env vars
-        "AC_AWS_0483"
-    ]

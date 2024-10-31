@@ -6,7 +6,6 @@ This folder contains:
   Gateway.
 * `deploy.tftest.hcl`: An automated tests that uses the `tofu test` command to validate the serverless app works as
   expected
-* `terrascan.toml`: A configuration file for Terrascan, which you can use to scan this module for compliance issues.
 
 For more information, see Chapter 5, "How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.

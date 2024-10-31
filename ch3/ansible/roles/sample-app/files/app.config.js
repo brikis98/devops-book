@@ -3,7 +3,7 @@ module.exports = {
     name   : "sample-app",
     script : "./app.js",       
     exec_mode: "cluster",      
-    instances: "max",          
+    instances: "max",
     env: {
       "NODE_ENV": "production" 
     }

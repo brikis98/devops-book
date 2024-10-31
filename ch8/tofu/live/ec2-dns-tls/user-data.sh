@@ -21,7 +21,7 @@ const server = https.createServer(options, (req, res) => {
   res.end('Hello, World!\n');
 });
 
-const port = 443;
+const port = process.env.PORT || 443;
 server.listen(port,() => {
   console.log(`Listening on port ${port}`);
 });

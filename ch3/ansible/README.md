@@ -12,7 +12,7 @@ This folder contains an example of how to do server orchestration with Ansible:
 * `inventory.aws_ec2.yml`: An Ansible dynamic inventory file to discover EC2 instances, which along with the 
   `group_vars` folder will allow you to connect to those instances and can configure them.
 
-For more information, see Chapter 3, "How to Deploy Your Apps: Orchestration, VMs, Containers, and Serverless", of 
+For more information, see Chapter 3, "How to Deploy Your Apps", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  
