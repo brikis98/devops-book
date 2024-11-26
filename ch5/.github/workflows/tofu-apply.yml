@@ -1,0 +1,46 @@
+name: Tofu Apply
+on:
+  push:                                                                      
+    branches: ["main"]
+    paths: ["ch5/tofu/live/lambda-sample/**"]
+jobs:
+  apply:
+    name: "Tofu Apply"
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: aws-actions/configure-aws-credentials@v3
+        with:
+          # TODO: fill in your IAM role ARN!
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-apply 
+          role-session-name: apply-${{ github.run_number }}-${{ github.actor }}
+          aws-region: us-east-2
+
+      - uses: opentofu/setup-opentofu@v1
+
+      - name: tofu apply                                                     
+        id: apply
+        working-directory: ch5/tofu/live/lambda-sample
+        run: |
+          tofu init -no-color -input=false
+          tofu apply -no-color -input=false -lock-timeout=60m -auto-approve
+
+      - uses: jwalton/gh-find-current-pr@master                              
+        id: find_pr
+        with:
+          state: all
+
+      - uses: peter-evans/create-or-update-comment@v4                        
+        if: steps.find_pr.outputs.number
+        env:
+          RESULT_EMOJI: ${{ steps.apply.outcome == 'success' && '✅' || '⚠️' }}
+        with:
+          issue-number: ${{ steps.find_pr.outputs.number }}
+          body: |
+            ## ${{ env.RESULT_EMOJI }} `tofu apply` output
+            ```${{ steps.apply.outputs.stdout }}```
