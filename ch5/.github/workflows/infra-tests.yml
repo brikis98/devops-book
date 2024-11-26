@@ -1,0 +1,30 @@
+name: Infrastructure Tests
+
+on: push
+
+jobs:
+  opentofu_test:
+    name: "Run OpenTofu tests"
+    runs-on: ubuntu-latest
+    permissions:                                                                
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: aws-actions/configure-aws-credentials@v3                          
+        with:
+          # TODO: fill in your IAM role ARN!
+          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-tests    
+          role-session-name: tests-${{ github.run_number }}-${{ github.actor }} 
+          aws-region: us-east-2
+
+      - uses: opentofu/setup-opentofu@v1                                        
+
+      - name: Tofu Test
+        env:
+          TF_VAR_name: lambda-sample-${{ github.run_id }}                       
+        working-directory: ch5/tofu/live/lambda-sample
+        run: |                                                                  
+          tofu init -backend=false -input=false
+          tofu test -verbose
