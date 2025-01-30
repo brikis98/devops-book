@@ -5,7 +5,7 @@ This folder contains a root OpenTofu module that deploys:
 * A PostgreSQL DB, using RDS.  
 * Schema migrations for the PostgreSQL DB are defined using [Knex.js](https://knexjs.org/) in the `src/migrations` 
   folder and may be applied using the Knex.js CLI.
-* A Node.js serverless web app, using AWS Lambda and API Gateway. This app makes queries to the PostgreSQL DB.
+* A Node.js serverless web app, using AWS Lambda and a Lambda function URL. This app makes queries to the PostgreSQL DB.
 
 For more information, see Chapter 9, "How to Store Data", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.

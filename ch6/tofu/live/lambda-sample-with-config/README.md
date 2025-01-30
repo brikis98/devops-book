@@ -2,8 +2,8 @@
 
 This folder contains: 
 
-* `*.tf` files: A root OpenTofu module that deploys a Node.js "Hello, World" serverless app using AWS Lambda and API 
-  Gateway.
+* `*.tf` files: A root OpenTofu module that deploys a Node.js "Hello, World" serverless app using AWS Lambda and a 
+  Lambda function URL.
 * `deploy.tftest.hcl`: An automated tests that uses the `tofu test` command to validate the serverless app works as
   expected
 

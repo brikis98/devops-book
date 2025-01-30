@@ -21,20 +21,13 @@ build {
     "source.amazon-ebs.amazon_linux"
   ]
 
-  provisioner "file" {                                                   
+  provisioner "file" {                         
     sources     = ["app.js", "app.config.js"]
     destination = "/tmp/"
   }
 
-  provisioner "shell" {
-    inline = [
-      "curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -",
-      "sudo yum install -y nodejs",
-      "sudo adduser app-user",                                           
-      "sudo mv /tmp/app.js /tmp/app.config.js /home/app-user/",          
-      "sudo npm install pm2@latest -g",                                  
-      "eval \"$(sudo su app-user bash -c 'pm2 startup' | tail -n1)\""    
-    ]
+  provisioner "shell" {                        
+    script       = "install-node.sh"
     pause_before = "30s"
   }
 }

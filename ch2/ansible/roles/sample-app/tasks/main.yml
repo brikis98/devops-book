@@ -1,5 +1,9 @@
-- name: Add Node packages to yum  
-  shell: curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
+- name: Add Node Yum repo         
+  yum_repository:
+    name: nodesource-nodejs
+    description: Node.js Packages for x86_64 Linux RPM based distros
+    baseurl: https://rpm.nodesource.com/pub_23.x/nodistro/nodejs/x86_64
+    gpgkey: https://rpm.nodesource.com/gpgkey/ns-operations-public.key
 
 - name: Install Node.js
   yum:

@@ -36,6 +36,12 @@ variable "timeout" {
 # OPTIONAL PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
 
+variable "create_url" {
+  description = "If set to true, expose this function via a Lambda function URL."
+  type        = bool
+  default     = false
+}
+
 variable "environment_variables" {
   description = "The environment variables to set for the Lambda function."
   type        = map(string)

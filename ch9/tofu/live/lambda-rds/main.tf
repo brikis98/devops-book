@@ -41,12 +41,6 @@ module "app" {
     DB_PASSWORD = var.password
   }
 
-}
+  create_url = true                     
 
-module "app_gateway" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
-
-  name               = "lambda-rds-app" 
-  function_arn       = module.app.function_arn
-  api_gateway_routes = ["GET /"]
 }

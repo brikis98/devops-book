@@ -12,9 +12,8 @@ module "asg" {
   app_http_port = 8080
 
   instance_type     = "t2.micro"
-  min_size          = 1
+  min_size          = 3
   max_size          = 10
-  desired_capacity  = 3
   target_group_arns = [module.alb.target_group_arn]
 
   instance_refresh = {

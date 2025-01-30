@@ -10,7 +10,7 @@ run "validate" {
   }
 
   variables {
-    endpoint = run.deploy.api_endpoint
+    endpoint = run.deploy.function_url
   }
 
   assert {

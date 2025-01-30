@@ -25,10 +25,7 @@ build {
   }
 
   provisioner "shell" {                               
-    inline = [
-      "curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -",
-      "sudo yum install -y nodejs"
-    ]
+    script       = "install-node.sh"
     pause_before = "30s"
   }
 }

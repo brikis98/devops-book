@@ -57,7 +57,7 @@ data "aws_iam_policy_document" "test_serverless_app" {
   statement {
     sid       = "ServerlessPermissions"
     effect    = "Allow"
-    actions   = ["lambda:*", "apigateway:*", "apigatewayv2:*"]
+    actions   = ["lambda:*"]
     resources = ["*"]
   }
 }
@@ -116,7 +116,7 @@ data "aws_iam_policy_document" "plan_serverless_app" {
   statement {
     sid       = "ServerlessReadOnlyPermissions"
     effect    = "Allow"
-    actions   = ["lambda:Get*", "lambda:List*", "apigateway:GET", "apigatewayv2:Get*"]
+    actions   = ["lambda:Get*", "lambda:List*"]
     resources = ["*"]
   }
 
@@ -191,7 +191,7 @@ data "aws_iam_policy_document" "apply_serverless_app" {
   statement {
     sid       = "ServerlessPermissions"
     effect    = "Allow"
-    actions   = ["lambda:*", "apigateway:*", "apigatewayv2:*"]
+    actions   = ["lambda:*"]
     resources = ["*"]
   }
 

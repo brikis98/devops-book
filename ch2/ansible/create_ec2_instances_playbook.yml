@@ -3,12 +3,12 @@
   gather_facts: no
   environment:
     AWS_REGION: us-east-2
-  vars:
+  vars:                                                 
     num_instances: 1
     base_name: sample_app_ansible
     http_port: 8080
   tasks:
-    - name: Create security group
+    - name: Create security group                       
       amazon.aws.ec2_security_group:
         name: "{{ base_name }}"
         description: "{{ base_name }} HTTP and SSH"
@@ -21,14 +21,14 @@
             cidr_ip: 0.0.0.0/0
       register: aws_security_group
 
-    - name: Create a new EC2 key pair
+    - name: Create a new EC2 key pair                   
       amazon.aws.ec2_key:
         name: "{{ base_name }}"
-        file_name: "{{ base_name }}.key"
+        file_name: "{{ base_name }}.key"                
       no_log: true
       register: aws_ec2_key_pair
 
-    - name: Create EC2 instances with Amazon Linux
+    - name: Create EC2 instances with Amazon Linux      
       loop: "{{ range(num_instances | int) | list }}"
       amazon.aws.ec2_instance:
         name: "{{ '%s_%d' | format(base_name, item) }}"
@@ -37,4 +37,4 @@
         security_group: "{{ aws_security_group.group_id }}"
         image_id: ami-0900fe555666598a2
         tags:
-          Ansible: "{{ base_name }}"
+          Ansible: "{{ base_name }}"                    

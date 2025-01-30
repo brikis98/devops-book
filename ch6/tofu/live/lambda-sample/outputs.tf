@@ -1,3 +1,4 @@
-output "api_endpoint" {
-  value = module.gateway.api_endpoint
+output "function_url" {
+  description = "The URL of the Lambda function"
+  value       = module.function.function_url
 }

@@ -2,7 +2,11 @@
 
 set -e
 
-curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
+tee /etc/yum.repos.d/nodesource-nodejs.repo > /dev/null <<EOF
+[nodesource-nodejs]
+baseurl=https://rpm.nodesource.com/pub_23.x/nodistro/nodejs/x86_64
+gpgkey=https://rpm.nodesource.com/gpgkey/ns-operations-public.key
+EOF
 yum install -y nodejs
 
 export CERTIFICATE=$(aws secretsmanager get-secret-value \

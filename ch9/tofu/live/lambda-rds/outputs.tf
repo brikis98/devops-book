@@ -1,6 +1,6 @@
-output "app_endpoint" {
-  description = "API Gateway endpoint for the app"
-  value       = module.app_gateway.api_endpoint
+output "function_url" {
+  description = "The URL of the Lambda function"
+  value       = module.function.function_url
 }
 
 output "db_name" {

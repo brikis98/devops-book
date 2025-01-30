@@ -22,11 +22,6 @@ variable "max_size" {
   type        = number
 }
 
-variable "desired_capacity" {
-  description = "The desired number of instances in the ASG"
-  type        = number
-}
-
 variable "app_http_port" {
   description = "The port the app listens on for HTTP requests"
   type        = number
@@ -61,5 +56,11 @@ variable "target_group_arns" {
 variable "user_data" {
   description = "The base64-encoded user data script to run on each instance"
   type        = string
+  default     = null
+}
+
+variable "desired_capacity" {
+  description = "The desired number of instances in the ASG"
+  type        = number
   default     = null
 }

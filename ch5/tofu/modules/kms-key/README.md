@@ -1,11 +1,9 @@
-# Serverless Module with Automated Tests 
+# KMS Key Module 
 
-This folder contains: 
-
-* `*.tf` files: A root OpenTofu module that deploys a Node.js "Hello, World" serverless app using AWS Lambda and a
-  Lambda function URL.
-* `deploy.tftest.hcl`: An automated tests that uses the `tofu test` command to validate the serverless app works as
-  expected
+This folder contains a reusable OpenTofu module that can create a key in AWS KMS, configure admins (full management
+rights, but no usage rights) and users (full encrypt/decrypt rights, but no management rights) for the key, and
+create an alias for the key. Note that the user that runs `apply` on this module is always added as both an admin and
+a user.
 
 For more information, see Chapter 5, "How to Set Up Continuous Integration (CI) and Continuous Delivery (CD)", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.

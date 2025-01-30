@@ -55,3 +55,9 @@ data "aws_iam_policy_document" "allow_logging" {
     resources = ["arn:aws:logs:*:*:*"]
   }
 }
+
+resource "aws_lambda_function_url" "url" {
+  count              = var.create_url ? 1 : 0
+  function_name      = aws_lambda_function.function.function_name
+  authorization_type = "NONE"
+}

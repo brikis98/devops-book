@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: sample-app-frontend-deployment
 spec:
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:

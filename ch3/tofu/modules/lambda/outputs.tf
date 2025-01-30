@@ -17,3 +17,7 @@ output "iam_role_arn" {
 output "iam_role_name" {
   value = aws_iam_role.lambda.name
 }
+
+output "function_url" {
+  value = length(aws_lambda_function_url.url) > 0 ? aws_lambda_function_url.url[0].function_url : null
+}
