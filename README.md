@@ -18,6 +18,12 @@ It's worth noting that most of the examples show you what the code looks like at
 you want to maximize your learning, you're better off writing the code yourself, from scratch, and checking the
 "official" solutions only at the very end.
 
+## OpenTofu/Terraform modules and the OpenTofu/Terraform Registries
+
+Note that the reusable OpenTofu/Terraform modules from this repo have been published to another repo,
+https://github.com/brikis98/terraform-book-devops, so that they can be published to the OpenTofu/Terraform Registries.
+Please see that repo for instructions on consuming those modules from the Registries.
+
 ## License
 
 This code is released under the MIT License. See [LICENSE.txt](./LICENSE.txt).
