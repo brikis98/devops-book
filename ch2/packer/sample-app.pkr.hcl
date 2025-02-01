@@ -7,17 +7,26 @@ packer {
   }
 }
 
-source "amazon-ebs" "amazon_linux" {                  
+data "amazon-ami" "amazon-linux" {                    
+  filters = {
+    name = "al2023-ami-2023.*-x86_64"
+  }
+  owners      = ["amazon"]
+  most_recent = true
+  region      = "us-east-2"
+}
+
+source "amazon-ebs" "amazon-linux" {                  
   ami_name        = "sample-app-packer-${uuidv4()}"
-  ami_description = "Amazon Linux 2023 AMI with a Node.js sample app."
+  ami_description = "Amazon Linux AMI with a Node.js sample app."
   instance_type   = "t2.micro"
   region          = "us-east-2"
-  source_ami      = "ami-0900fe555666598a2"
+  source_ami      = data.amazon-ami.amazon-linux.id
   ssh_username    = "ec2-user"
 }
 
 build {                                               
-  sources = ["source.amazon-ebs.amazon_linux"]
+  sources = ["source.amazon-ebs.amazon-linux"]
 
   provisioner "file" {                                
     source      = "app.js"

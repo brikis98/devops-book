@@ -5,9 +5,8 @@ provider "aws" {
 module "asg" {
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
 
-  # TODO: fill in with your own AMI ID!
-  ami_id        = "ami-0740b82e74f0b0c97"
   name          = "sample-app-asg"
+  ami_name      = "sample-app-packer-*"
   user_data     = filebase64("${path.module}/user-data.sh")
   app_http_port = 8080
 

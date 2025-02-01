@@ -1,6 +1,6 @@
 output "function_url" {
   description = "The URL of the Lambda function"
-  value       = module.function.function_url
+  value       = module.app.function_url
 }
 
 output "db_name" {

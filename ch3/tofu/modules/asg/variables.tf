@@ -7,11 +7,6 @@ variable "name" {
   type        = string
 }
 
-variable "ami_id" {
-  description = "The ID of the AMI to run. Should be built from the Packer template in the packer folder."
-  type        = string
-}
-
 variable "min_size" {
   description = "The minimum number of instances in the ASG"
   type        = number
@@ -30,6 +25,12 @@ variable "app_http_port" {
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
+
+variable "ami_name" {
+  description = "The name of the AMI to run on the EC2 instance. This module will search for the most recent version of the AMI with this name, so wildcards (e.g., my-app-*) are allowed."
+  type        = string
+  default     = "sample-app-packer-*"
+}
 
 variable "instance_type" {
   description = "The type of EC2 instances to deploy (e.g., t2.micro)"

@@ -10,12 +10,12 @@ module "function" {
   runtime = "nodejs20.x"
   handler = "index.handler"
 
-  memory_size = 128
+  memory_size = var.memory_size
   timeout     = 5
 
   environment_variables = {
     NODE_ENV = "production"
-    ENV_NAME = terraform.workspace
+    ENV_NAME = var.environment
   }
 
   create_url = true

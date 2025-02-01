@@ -2,42 +2,14 @@
 # REQUIRED PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "dev_account_email" {
-  description = "The email to use for the root user of the dev account."
-  type        = string
-}
-
-variable "stage_account_email" {
-  description = "The email to use for the root user of the stage account."
-  type        = string
-}
-
-variable "prod_account_email" {
-  description = "The email to use for the root user of the prod account."
-  type        = string
+variable "accounts" {
+  description = "A map of accounts to create, where the key is the account name, and the value is the email address for the root user of the account."
+  type = map(string)
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
-
-variable "dev_account_name" {
-  description = "The name to use for the dev account."
-  type        = string
-  default     = "development"
-}
-
-variable "stage_account_name" {
-  description = "The name to use for the stage account."
-  type        = string
-  default     = "staging"
-}
-
-variable "prod_account_name" {
-  description = "The name to use for the prod account."
-  type        = string
-  default     = "production"
-}
 
 variable "create_organization" {
   description = "Set to true to enable AWS organizations in this account. Set to false if it is already enabled."
@@ -56,7 +28,8 @@ variable "organizations_aws_service_access_principals" {
   type        = list(string)
   default = [
     "cloudtrail.amazonaws.com",
-    "config.amazonaws.com"
+    "config.amazonaws.com",
+    "sso.amazonaws.com"
   ]
 }
 

@@ -2,20 +2,33 @@ provider "aws" {
   region = "us-east-2"
 }
 
+data "aws_ami" "amazon_linux" {
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
+  }
+  owners      = ["amazon"]
+  most_recent = true
+}
+
 module "instances" {
   source = "github.com/brikis98/devops-book//ch7/tofu/modules/ec2-instances"
 
   name          = "ec2-dns-tls-example"
   num_instances = 3
   instance_type = "t2.micro"
-  ami_id        = "ami-0900fe555666598a2"
+  ami_id        = data.aws_ami.amazon_linux.id
   http_port     = 443 
   user_data     = file("${path.module}/user-data.sh")
 }
 
+data "aws_route53_zone" "zone" {
+  # TODO: fill in your own domain name!
+  name = "fundamentals-of-devops-example.com"
+}
+
 resource "aws_route53_record" "www" {
-  # TODO: fill in your own hosted zone ID!
-  zone_id = "Z0701806REYTQ0GZ0JCF"
+  zone_id = data.aws_route53_zone.zone.id
   # TODO: fill in your own domain name!
   name    = "www.fundamentals-of-devops-example.com"
   type    = "A"
@@ -28,18 +41,14 @@ resource "aws_iam_role_policy" "tls_cert_access" {
   policy = data.aws_iam_policy_document.tls_cert_access.json
 }
 
+data "aws_secretsmanager_secret" "certificate" {
+  name = "certificate"
+}
+
 data "aws_iam_policy_document" "tls_cert_access" {
   statement {
-    effect  = "Allow"
-    actions = ["secretsmanager:GetSecretValue"]
-    resources = [
-      "arn:aws:secretsmanager:us-east-2:${local.account_id}:secret:certificate-*"
-    ]
+    effect    = "Allow"
+    actions   = ["secretsmanager:GetSecretValue"]
+    resources = [data.aws_secretsmanager_secret.certificate.arn]
   }
 }
-
-locals {
-  account_id = data.aws_caller_identity.current.account_id
-}
-
-data "aws_caller_identity" "current" {}

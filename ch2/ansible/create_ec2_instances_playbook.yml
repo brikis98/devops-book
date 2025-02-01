@@ -28,6 +28,13 @@
       no_log: true
       register: aws_ec2_key_pair
 
+    - name: 'Get all Amazon Linux AMIs'                 
+      amazon.aws.ec2_ami_info:
+        owners: amazon
+        filters:
+          name: al2023-ami-2023.*-x86_64
+      register: amazon_linux_amis
+
     - name: Create EC2 instances with Amazon Linux      
       loop: "{{ range(num_instances | int) | list }}"
       amazon.aws.ec2_instance:
@@ -35,6 +42,6 @@
         key_name: "{{ aws_ec2_key_pair.key.name }}"
         instance_type: t2.micro
         security_group: "{{ aws_security_group.group_id }}"
-        image_id: ami-0900fe555666598a2
+        image_id: "{{ amazon_linux_amis.images[-1].image_id }}"
         tags:
           Ansible: "{{ base_name }}"                    

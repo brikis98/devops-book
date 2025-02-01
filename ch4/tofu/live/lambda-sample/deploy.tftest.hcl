@@ -6,7 +6,8 @@ run "validate" {
   command = apply
 
   module {
-    source = "../../modules/test-endpoint"
+    source = "github.com/brikis98/devops-book//ch4/tofu/modules/test-endpoint"
+    #source = "../../modules/test-endpoint"
   }
 
   variables {

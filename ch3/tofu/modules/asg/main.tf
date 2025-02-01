@@ -1,6 +1,15 @@
+data "aws_ami" "sample_app" {
+  filter {
+    name   = "name"
+    values = [var.ami_name]
+  }
+  owners      = ["self"]
+  most_recent = true
+}
+
 resource "aws_launch_template" "sample_app" {
   name_prefix            = var.name
-  image_id               = var.ami_id
+  image_id               = data.aws_ami.sample_app.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sample_app.id]
   user_data              = var.user_data

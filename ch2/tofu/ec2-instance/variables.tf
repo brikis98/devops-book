@@ -1,4 +1,5 @@
-variable "ami_id" {
-  description = "The ID of the AMI to run."
+variable "name" {
+  description = "The name for the EC2 instance and all resources."
   type        = string
+  default     = "sample-app-tofu"
 }

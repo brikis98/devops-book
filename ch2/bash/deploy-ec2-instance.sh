@@ -17,8 +17,14 @@ aws ec2 authorize-security-group-ingress \
   --port 80 \
   --cidr "0.0.0.0/0" > /dev/null
 
+image_id=$(aws ec2 describe-images \
+  --owners amazon \
+  --filters 'Name=name,Values=al2023-ami-2023.*-x86_64' \
+  --query 'reverse(sort_by(Images, &CreationDate))[:1] | [0].ImageId' \
+  --output text)
+
 instance_id=$(aws ec2 run-instances \
-  --image-id "ami-0900fe555666598a2" \
+  --image-id "$image_id" \
   --instance-type "t2.micro" \
   --security-group-ids "$security_group_id" \
   --user-data "$user_data" \

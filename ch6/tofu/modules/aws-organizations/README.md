@@ -3,7 +3,7 @@
 This folder contains a reusable OpenTofu module that can do the following:
 
 1. Enable AWS Organizations in your AWS account.
-2. Use AWS Organizations to create three child accounts: development, staging, and production.
+2. Use AWS Organizations to create child accounts based on the `accounts` input variable.
 
 For more information, see Chapter 6, "How to Work with Multiple Teams and Environments", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
