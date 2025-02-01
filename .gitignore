@@ -1,6 +1,5 @@
 *.tfstate
-*.tfstate.backup
-*.tfstate.lock.info
+*.tfstate.*
 .terraform
 *.iml
 *.idea
