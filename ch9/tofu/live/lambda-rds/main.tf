@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "rds_postgres" {
-  source = "github.com/brikis98/devops-book//ch9/tofu/modules/rds-postgres"
+  source  = "brikis98/devops/book//modules/rds-postgres"
+  version = "0.0.2"
 
   name              = "bank"         
   instance_class    = "db.t4g.micro" 
@@ -15,7 +16,8 @@ module "rds_postgres" {
 }
 
 module "rds_postgres_replica" {
-  source = "github.com/brikis98/devops-book//ch9/tofu/modules/rds-postgres"
+  source  = "brikis98/devops/book//modules/rds-postgres"
+  version = "0.0.2"
 
   name                = "bank-replica"                 
   replicate_source_db = module.rds_postgres.identifier 
@@ -23,7 +25,8 @@ module "rds_postgres_replica" {
 }
 
 module "app" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
+  source  = "brikis98/devops/book//modules/lambda"
+  version = "0.0.2"
 
   name        = "lambda-rds-app"
   src_dir     = "${path.module}/src"    

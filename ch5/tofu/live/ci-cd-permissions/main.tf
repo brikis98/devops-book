@@ -3,14 +3,16 @@ provider "aws" {
 }
 
 module "oidc_provider" {
-  source = "github.com/brikis98/devops-book//ch5/tofu/modules/github-aws-oidc"
+  source  = "brikis98/devops/book//modules/github-aws-oidc"
+  version = "0.0.2"
 
   provider_url = "https://token.actions.githubusercontent.com" 
 
 }
 
 module "iam_roles" {
-  source = "github.com/brikis98/devops-book//ch5/tofu/modules/gh-actions-iam-roles"
+  source  = "brikis98/devops/book//modules/gh-actions-iam-roles"
+  version = "0.0.2"
 
   name              = "lambda-sample"                           
   oidc_provider_arn = module.oidc_provider.oidc_provider_arn    

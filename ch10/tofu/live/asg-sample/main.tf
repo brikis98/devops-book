@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "asg" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/asg"
+  source  = "brikis98/devops/book//modules/asg"
+  version = "0.0.2"
 
   name          = "sample-app-asg"
   ami_name      = "sample-app-packer-*"
@@ -23,7 +24,8 @@ module "asg" {
 }
 
 module "alb" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/alb"
+  source  = "brikis98/devops/book//modules/alb"
+  version = "0.0.2"
 
   name                  = "sample-app-alb"
   alb_http_port         = 80
@@ -45,7 +47,8 @@ resource "aws_route53_health_check" "example" {
 }
 
 module "cloudwatch_dashboard" {
-  source = "github.com/brikis98/devops-book//ch10/tofu/modules/cloudwatch-dashboard"
+  source  = "brikis98/devops/book//modules/cloudwatch-dashboard"
+  version = "0.0.2"
 
   name            = "sample-app-dashboard"               
   asg_name        = module.asg.asg_name                  

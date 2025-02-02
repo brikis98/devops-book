@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "function" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
+  source  = "brikis98/devops/book//modules/lambda"
+  version = "0.0.2"
 
   name    = var.name
   src_dir = "${path.module}/src"

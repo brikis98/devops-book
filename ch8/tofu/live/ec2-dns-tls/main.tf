@@ -12,7 +12,8 @@ data "aws_ami" "amazon_linux" {
 }
 
 module "instances" {
-  source = "github.com/brikis98/devops-book//ch7/tofu/modules/ec2-instances"
+  source  = "brikis98/devops/book//modules/ec2-instances"
+  version = "0.0.2"
 
   name          = "ec2-dns-tls-example"
   num_instances = 3

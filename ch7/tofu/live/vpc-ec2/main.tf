@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "github.com/brikis98/devops-book//ch7/tofu/modules/vpc"
+  source  = "brikis98/devops/book//modules/vpc"
+  version = "0.0.2"
 
   name       = "example-vpc"   
   cidr_block = "10.0.0.0/16"   
@@ -19,7 +20,8 @@ data "aws_ami" "amazon_linux" {
 }
 
 module "public_instance" {                            
-  source = "github.com/brikis98/devops-book//ch7/tofu/modules/ec2-instances"
+  source  = "brikis98/devops/book//modules/ec2-instances"
+  version = "0.0.2"
 
   name          = "public-instance"                   
   num_instances = 1                                   
@@ -36,7 +38,8 @@ module "public_instance" {
 }
 
 module "private_instance" {
-  source = "github.com/brikis98/devops-book//ch7/tofu/modules/ec2-instances"
+  source  = "brikis98/devops/book//modules/ec2-instances"
+  version = "0.0.2"
 
   name          = "private-instance"                   
   num_instances = 1

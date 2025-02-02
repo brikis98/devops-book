@@ -26,7 +26,7 @@ This allows you to consume those modules using registry URLs, such as:
 
 ```terraform
 module "ec2_instance" {
-  source  = "brikis98/devops/book//modules/ch2/ec2-instance"
+  source  = "brikis98/devops/book//modules/ec2-instance"
   version = "1.0.0"
 }
 ```
