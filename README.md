@@ -22,7 +22,16 @@ you want to maximize your learning, you're better off writing the code yourself,
 
 Note that the reusable OpenTofu/Terraform modules from this repo have been published to another repo,
 https://github.com/brikis98/terraform-book-devops, so that they can be published to the OpenTofu/Terraform Registries.
-Please see that repo for instructions on consuming those modules from the Registries.
+This allows you to consume those modules using registry URLs, such as:
+
+```terraform
+module "ec2_instance" {
+  source  = "brikis98/devops/book//modules/ch2/ec2-instance"
+  version = "1.0.0"
+}
+```
+
+Please see https://github.com/brikis98/terraform-book-devops for more details.
 
 ## License
 
