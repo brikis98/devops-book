@@ -4,7 +4,7 @@ provider "aws" {
 
 module "function" {
   source  = "brikis98/devops/book//modules/lambda"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name = "lambda-sample"         
 

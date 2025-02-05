@@ -32,9 +32,18 @@ resource "aws_security_group_rule" "allow_all_outbound" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+data "aws_ami" "sample_app" {
+  filter {
+    name   = "name"
+    values = [var.ami_name]
+  }
+  owners      = ["self"]
+  most_recent = true
+}
+
 resource "aws_instance" "sample_app" {
   count                       = var.num_instances
-  ami                         = var.ami_id
+  ami                         = data.aws_ami.sample_app.id
   instance_type               = var.instance_type
   vpc_security_group_ids      = [aws_security_group.sample_app.id]
   user_data                   = var.user_data

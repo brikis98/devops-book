@@ -4,7 +4,7 @@ provider "aws" {
 
 module "child_accounts" {
   source  = "brikis98/devops/book//modules/aws-organizations"
-  version = "0.0.2"
+  version = "0.0.3"
 
   # Set to false if you already enabled AWS Organizations in your account
   create_organization = true

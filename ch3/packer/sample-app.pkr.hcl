@@ -29,7 +29,7 @@ build {
   sources = ["source.amazon-ebs.amazon-linux"]
 
   provisioner "file" {                         
-    sources     = ["app.js", "app.config.js"]
+    sources     = ["sample-app"]
     destination = "/tmp/"
   }
 

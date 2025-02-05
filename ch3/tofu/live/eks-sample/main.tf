@@ -4,7 +4,7 @@ provider "aws" {
 
 module "cluster" {
   source  = "brikis98/devops/book//modules/eks-cluster"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name        = "eks-sample"        
   eks_version = "1.29"              

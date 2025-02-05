@@ -65,3 +65,15 @@ variable "desired_capacity" {
   type        = number
   default     = null
 }
+
+variable "create_service_linked_role" {
+  description = "If set to true, create the service-linked role for auto scaling (autoscaling.amazonaws.com). You only need to set this to true in AWS accounts that have never used auto scaling before and therefore, don't already have this role."
+  type        = bool
+  default     = false
+}
+
+variable "key_name" {
+  description = "The EC2 key pair to associate with each EC2 instance. If set (if not null), this module will open port 22 in the security group to allow SSH access."
+  type        = string
+  default     = null
+}

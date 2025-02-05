@@ -1,0 +1,9 @@
+{
+  "name": "sample-app-packer",
+  "version": "0.0.1",
+  "description": "Sample app for 'Fundamentals of DevOps and Software Delivery'",
+  "author": "Yevgeniy Brikman",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.741.0"
+  }
+}

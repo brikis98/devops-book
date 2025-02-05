@@ -2,24 +2,15 @@ provider "aws" {
   region = "us-east-2"
 }
 
-data "aws_ami" "amazon_linux" {                       
-  filter {
-    name   = "name"
-    values = ["al2023-ami-2023.*-x86_64"]
-  }
-  owners      = ["amazon"]
-  most_recent = true
-}
-
 module "instances" {
   source  = "brikis98/devops/book//modules/ec2-instances"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name          = "ec2-dns-example"
   num_instances = 3                                   
   instance_type = "t2.micro"
-  ami_id        = data.aws_ami.amazon_linux.id        
-  http_port     = 80                                  
+  ami_name      = "sample-app-packer-*"               
+  http_port     = 8080                                
   user_data     = file("${path.module}/user-data.sh") 
 }
 

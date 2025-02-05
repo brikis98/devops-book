@@ -13,6 +13,7 @@ resource "aws_launch_template" "sample_app" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sample_app.id]
   user_data              = var.user_data
+  key_name               = var.key_name
 }
 
 resource "aws_security_group" "sample_app" {
@@ -29,13 +30,22 @@ resource "aws_security_group_rule" "sample_app_allow_http_inbound" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_autoscaling_group" "sample_app" {
+resource "aws_security_group_rule" "sample_app_allow_ssh_inbound" {
+  count             = var.key_name == null ? 0 : 1
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 22
+  to_port           = 22
+  security_group_id = aws_security_group.sample_app.id
+  cidr_blocks       = ["0.0.0.0/0"]
+}
 
+resource "aws_autoscaling_group" "sample_app" {
   name_prefix         = var.name
-  min_size            = var.min_size                 
-  max_size            = var.max_size                 
-  desired_capacity    = var.desired_capacity         
-  vpc_zone_identifier = data.aws_subnets.default.ids 
+  min_size            = var.min_size
+  max_size            = var.max_size
+  desired_capacity    = var.desired_capacity
+  vpc_zone_identifier = data.aws_subnets.default.ids
 
   launch_template {
     id      = aws_launch_template.sample_app.id
@@ -75,3 +85,7 @@ data "aws_subnets" "default" {
   }
 }
 
+resource "aws_iam_service_linked_role" "auto_scaling" {
+  count            = var.create_service_linked_role ? 1 : 0
+  aws_service_name = "autoscaling.amazonaws.com"
+}

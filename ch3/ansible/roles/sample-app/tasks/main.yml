@@ -1,12 +1,12 @@
 - name: Copy sample app                          
   copy:
     src: ./
-    dest: /home/app-user/
+    dest: /home/app-user/sample-app
 
 - name: Start sample app using pm2               
   shell: pm2 start app.config.js
   args:
-    chdir: /home/app-user/
+    chdir: /home/app-user/sample-app
 
 - name: Save pm2 app list so it survives reboot  
   shell: pm2 save

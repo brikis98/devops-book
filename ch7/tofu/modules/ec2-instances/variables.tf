@@ -17,11 +17,6 @@ variable "instance_type" {
   type        = string
 }
 
-variable "ami_id" {
-  description = "The ID of the AMI to run on each instance"
-  type        = string
-}
-
 variable "http_port" {
   description = "The port the instances will listen on for HTTP requests"
   type        = number
@@ -30,6 +25,12 @@ variable "http_port" {
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------
+
+variable "ami_name" {
+  description = "The name of the AMI to run on the EC2 instance. This module will search for the most recent version of the AMI with this name, so wildcards (e.g., my-app-*) are allowed."
+  type        = string
+  default     = "sample-app-packer-*"
+}
 
 variable "user_data" {
   description = "The user data script to run on each instance"
@@ -50,7 +51,7 @@ variable "subnet_id" {
 }
 
 variable "key_name" {
-  description = "The name of an EC2 key pair which will be allowed to SSH to the EC2 instance."
+  description = "The EC2 key pair to associate with each EC2 instance. If set (if not null), this module will open port 22 in the security group to allow SSH access."
   type        = string
   default     = null
 }

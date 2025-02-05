@@ -4,3 +4,9 @@
   become: true
   roles:
     - role: nginx        
+      vars:              
+        servers: >-
+          {{ groups['sample_app_instances']
+             | map('extract', hostvars, 'private_dns_name')
+             | map('regex_replace', '$', ':8080')
+             | list }}

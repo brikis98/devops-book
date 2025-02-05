@@ -28,3 +28,9 @@ variable "http_port" {
   type        = number
   default     = 8080
 }
+
+variable "key_name" {
+  description = "The EC2 key pair to associate with each EC2 instance. If set (if not null), this module will open port 22 in the security group to allow SSH access."
+  type        = string
+  default     = null
+}

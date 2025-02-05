@@ -10,6 +10,7 @@ EOF
 sudo yum install -y nodejs
 
 sudo adduser app-user                                         
-sudo mv /tmp/app.js /tmp/app.config.js /home/app-user/        
+sudo mv /tmp/sample-app /home/app-user                        
+sudo chown -R app-user /home/app-user/sample-app              
 sudo npm install pm2@latest -g                                
 eval "$(sudo su app-user bash -c 'pm2 startup' | tail -n1)"   
