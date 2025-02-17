@@ -3,7 +3,7 @@
 This folder contains a reusable OpenTofu module that can package up a source folder as a Lambda deployment package
 (zip file) and deploy that code as a Lambda function.
 
-For more information, see Chapter 3, "How to Deploy Your Apps", of
+For more information, see Chapter 3, "How to Manage Your Apps Using Orchestration Tools", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

@@ -4,7 +4,7 @@ provider "aws" {
 
 module "asg" {
   source  = "brikis98/devops/book//modules/asg"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name          = "sample-app-asg"                          
   ami_name      = "sample-app-packer-*"                     
@@ -26,7 +26,7 @@ module "asg" {
 
 module "alb" {
   source  = "brikis98/devops/book//modules/alb"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name                  = "sample-app-alb" 
   alb_http_port         = 80               

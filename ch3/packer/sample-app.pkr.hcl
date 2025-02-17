@@ -28,12 +28,12 @@ source "amazon-ebs" "amazon-linux" {
 build {
   sources = ["source.amazon-ebs.amazon-linux"]
 
-  provisioner "file" {                         
-    sources     = ["sample-app"]
+  provisioner "file" {
+    sources     = ["sample-app"] 
     destination = "/tmp/"
   }
 
-  provisioner "shell" {                        
+  provisioner "shell" {
     script       = "install-node.sh"
     pause_before = "30s"
   }

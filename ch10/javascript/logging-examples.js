@@ -63,7 +63,7 @@ const logFormattingContextExample = () => {
     level: 'info',
     defaultMeta: req,                                                          
     format: winston.format.combine(
-      winston.format.timestamp(),
+      winston.format.timestamp(),                                              
       winston.format.printf(({timestamp, ip, method, path, level, message}) => 
         `${timestamp} ${ip} ${method} ${path} [${level}]: ${message}`
       ),

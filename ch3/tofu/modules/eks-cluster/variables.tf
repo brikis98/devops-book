@@ -22,11 +22,6 @@ variable "max_worker_nodes" {
   type        = number
 }
 
-variable "desired_worker_nodes" {
-  description = "The desired number of worker nodes"
-  type        = number
-}
-
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # ---------------------------------------------------------------------------------------------------------------------

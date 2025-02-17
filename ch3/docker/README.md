@@ -5,7 +5,7 @@ This folder contains:
 * `app.js`: A Node.js "Hello, World" app that listens on port 8080.
 * `Dockerfile`: Instructions to build a Docker image for the Node.js sample app.
 
-For more information, see Chapter 3, "How to Deploy Your Apps", of 
+For more information, see Chapter 3, "How to Manage Your Apps Using Orchestration Tools", of 
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

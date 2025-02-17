@@ -4,7 +4,7 @@ provider "aws" {
 
 module "asg" {
   source  = "brikis98/devops/book//modules/asg"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name          = "sample-app-asg"
   ami_name      = "sample-app-packer-*"
@@ -25,7 +25,7 @@ module "asg" {
 
 module "alb" {
   source  = "brikis98/devops/book//modules/alb"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name                  = "sample-app-alb"
   alb_http_port         = 80
@@ -35,10 +35,10 @@ module "alb" {
 
 resource "aws_route53_health_check" "example" {
   fqdn              = module.alb.alb_dns_name 
-  port              = 80                      
   type              = "HTTP"                  
-  resource_path     = "/"                     
-  request_interval  = "10"                    
+  request_interval  = "10"
+  resource_path     = "/"
+  port              = 80
   failure_threshold = 1                       
 
   tags = {
@@ -48,7 +48,7 @@ resource "aws_route53_health_check" "example" {
 
 module "cloudwatch_dashboard" {
   source  = "brikis98/devops/book//modules/cloudwatch-dashboard"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name            = "sample-app-dashboard"               
   asg_name        = module.asg.asg_name                  

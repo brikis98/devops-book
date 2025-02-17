@@ -14,4 +14,4 @@ sudo mv /tmp/sample-app /home/app-user
 sudo npm ci --only=production --prefix /home/app-user/sample-app 
 sudo chown -R app-user /home/app-user/sample-app
 sudo npm install pm2@latest -g
-eval "$(sudo su app-user bash -c 'pm2 startup' | tail -n1)"
+eval "$(sudo -u app-user pm2 startup -u app-user | tail -n1)"

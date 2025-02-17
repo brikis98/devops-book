@@ -2,7 +2,7 @@
 
 This folder contains a simple Node.js "Hello, World" server that listens on port 8080.
 
-For more information, see Chapter 1, "An Introduction to DevOps and Software Delivery", of [_Fundamentals of DevOps and 
+For more information, see Chapter 1, "How to Deploy Your App", of [_Fundamentals of DevOps and 
 Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

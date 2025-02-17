@@ -4,7 +4,7 @@ provider "aws" {
 
 module "function" {
   source  = "brikis98/devops/book//modules/lambda"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name    = var.name
   src_dir = "${path.module}/src"

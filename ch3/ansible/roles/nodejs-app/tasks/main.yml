@@ -20,4 +20,4 @@
     global: true
 
 - name: Configure pm2 to run at startup as the app user
-  shell: eval "$(sudo su app-user bash -c 'pm2 startup' | tail -n1)"
+  shell: eval "$(sudo -u app-user pm2 startup -u app-user | tail -n1)"

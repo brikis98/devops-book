@@ -5,7 +5,7 @@ This folder contains:
 * `user-data.sh`: A script that you can copy into the user data of an EC2 instance to get that instance to run a
   simple Node.js "Hello, World" server on port 80.
 
-For more information, see Chapter 1, "An Introduction to DevOps and Software Delivery", of [_Fundamentals of DevOps and 
+For more information, see Chapter 1, "How to Deploy Your App", of [_Fundamentals of DevOps and 
 Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

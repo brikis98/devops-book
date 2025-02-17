@@ -4,7 +4,7 @@ provider "aws" {
 
 module "instances" {
   source  = "brikis98/devops/book//modules/ec2-instances"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name          = "ec2-dns-example"
   num_instances = 3                                   

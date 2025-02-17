@@ -4,7 +4,7 @@ provider "aws" {
 
 module "repo" {
   source  = "brikis98/devops/book//modules/ecr-repo"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name = "sample-app"
 }

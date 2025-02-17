@@ -7,7 +7,7 @@ run "validate" {
 
   module {
     source  = "brikis98/devops/book//modules/test-endpoint"
-    version = "0.0.2"
+    version = "1.0.0"
   }
 
   variables {

@@ -4,7 +4,7 @@ This folder, along with [ecr-sample](../ecr-sample) and the [kubernetes objects]
 example of container orchestration. This folder contains a root OpenTofu module that uses the 
 [eks-cluster](../../modules/eks-cluster) module to create an EKS cluster with a managed node group.
 
-For more information, see Chapter 3, "How to Deploy Your Apps", of
+For more information, see Chapter 3, "How to Manage Your Apps Using Orchestration Tools", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

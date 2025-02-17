@@ -4,7 +4,7 @@ This folder contains an example of serverless orchestration. It contains a root 
 the [lambda module](../../modules/lambda) to deploy a Node.js "Hello, World" app as Lambda function and trigger it via
 HTTP requests via a Lambda function URL.
 
-For more information, see Chapter 3, "How to Deploy Your Apps", of
+For more information, see Chapter 3, "How to Manage Your Apps Using Orchestration Tools", of
 [_Fundamentals of DevOps and Software Delivery_](https://www.fundamentals-of-devops.com) by Yevgeniy Brikman.
 
 > [!IMPORTANT]  

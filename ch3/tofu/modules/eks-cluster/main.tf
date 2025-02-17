@@ -25,7 +25,7 @@ resource "aws_eks_node_group" "nodes" {
   scaling_config {
     min_size     = var.min_worker_nodes
     max_size     = var.max_worker_nodes
-    desired_size = var.desired_worker_nodes
+    desired_size = var.min_worker_nodes
   }
 
   # Ensure that IAM Role permissions are created before and deleted after
@@ -36,6 +36,10 @@ resource "aws_eks_node_group" "nodes" {
     aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
   ]
+
+  lifecycle {
+    ignore_changes = [scaling_config[0].desired_size]
+  }
 }
 
 resource "aws_iam_role" "cluster" {

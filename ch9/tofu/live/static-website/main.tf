@@ -4,7 +4,7 @@ provider "aws" {
 
 module "s3_bucket" {
   source  = "brikis98/devops/book//modules/s3-website"
-  version = "0.0.3"
+  version = "1.0.0"
 
   # TODO: fill in your own bucket name!
   name           = "fundamentals-of-devops-static-website" 
@@ -28,7 +28,7 @@ resource "aws_s3_object" "content" {
 
 module "cloudfront" {
   source  = "brikis98/devops/book//modules/cloudfront-s3-website"
-  version = "0.0.3"
+  version = "1.0.0"
 
   bucket_name             = module.s3_bucket.bucket_name      
   bucket_website_endpoint = module.s3_bucket.website_endpoint 

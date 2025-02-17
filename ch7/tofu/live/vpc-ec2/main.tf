@@ -4,15 +4,15 @@ provider "aws" {
 
 module "vpc" {
   source  = "brikis98/devops/book//modules/vpc"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name       = "example-vpc"   
   cidr_block = "10.0.0.0/16"   
 }
 
-module "public_instance" {                            
+module "public_instance" {
   source  = "brikis98/devops/book//modules/ec2-instances"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name          = "public-instance"                   
   num_instances = 1                                   
@@ -23,14 +23,13 @@ module "public_instance" {
   vpc_id        = module.vpc.vpc.id                   
   subnet_id     = module.vpc.public_subnet.id         
 
-  # TODO: fill in your EC2 key pair name
-  key_name = "<YOUR_KEYPAIR_NAME>"
+  key_name = "<YOUR_KEYPAIR_NAME>" # TODO: fill in your EC2 key pair name
 
 }
 
 module "private_instance" {
   source  = "brikis98/devops/book//modules/ec2-instances"
-  version = "0.0.3"
+  version = "1.0.0"
 
   name          = "private-instance"                   
   num_instances = 1
@@ -41,6 +40,6 @@ module "private_instance" {
   vpc_id        = module.vpc.vpc.id
   subnet_id     = module.vpc.private_subnet.id         
 
-  # TODO: fill in your EC2 key pair name
-  key_name = "<YOUR_KEYPAIR_NAME>"
+  key_name = "<YOUR_KEYPAIR_NAME>" # TODO: fill in your EC2 key pair name
+
 }
