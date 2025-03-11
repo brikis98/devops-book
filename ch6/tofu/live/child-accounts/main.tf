@@ -8,9 +8,11 @@ module "child_accounts" {
 
   create_organization = true                 
 
-  accounts = {
-    development = "brikis98+devops-book-development@gmail.com"
-    staging     = "brikis98+devops-book-staging@gmail.com"
-    production  = "brikis98+devops-book-production@gmail.com"
+  # TODO: fill in your own account emails!
+  accounts = {                               
+    development = "username+dev@email.com"
+    staging     = "username+stage@email.com"
+    production  = "username+prod@email.com"
   }
+
 }
