@@ -2,8 +2,9 @@ FROM node:21.7
 
 WORKDIR /home/node/app
 
-COPY package.json .
-COPY app.js .
+COPY *.json .
+
+COPY *.js .
 
 EXPOSE 8080
 

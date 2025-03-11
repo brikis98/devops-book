@@ -1,7 +1,7 @@
 {
   "name": "sample-app-backend",
-  "version": "0.0.1",
   "description": "Backend app for 'Fundamentals of DevOps and Software Delivery'",
+  "version": "0.0.1",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",

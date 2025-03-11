@@ -1,6 +1,6 @@
 {
   "name": "sample-app",
-  "version": "v4",
+  "version": "0.0.1",
   "description": "Sample app for 'Fundamentals of DevOps and Software Delivery'",
   "main": "app.js",
   "scripts": {

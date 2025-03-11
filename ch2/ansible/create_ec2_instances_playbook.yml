@@ -1,5 +1,5 @@
 - name: Deploy EC2 instances in AWS
-  hosts: localhost
+  hosts: localhost                                      
   gather_facts: no
   environment:
     AWS_REGION: us-east-2

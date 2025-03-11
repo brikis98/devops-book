@@ -12,7 +12,7 @@ const client = new secretsMgr.SecretsManagerClient({region: 'us-east-2'});
 
   const server = https.createServer(options, (req, res) => {                
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, World!\n');
+    res.end('Hello, World!\n');                                             
   });
 
   const port = process.env.PORT || 443;                                     
