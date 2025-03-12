@@ -17,5 +17,8 @@ module.exports = {
       password: process.env.DB_PASSWORD || process.env.TF_VAR_password,
       ssl: {rejectUnauthorized: true, ca: rdsCaCert.toString()}
     }
-  }
+  },
+
+  
+  debug: true
 };
