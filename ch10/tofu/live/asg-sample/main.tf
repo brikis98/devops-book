@@ -13,7 +13,7 @@ module "asg" {
 
   instance_type     = "t2.micro"
   min_size          = 3
-  max_size          = 10
+  max_size          = 5
   target_group_arns = [module.alb.target_group_arn]
 
   instance_refresh = {
