@@ -7,7 +7,7 @@ module "cluster" {
   version = "1.0.0"
 
   name        = "eks-sample"        
-  eks_version = "1.32"              
+  eks_version = "1.37"              
 
   instance_type        = "t2.micro" 
   min_worker_nodes     = 3          
